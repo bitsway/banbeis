@@ -1134,7 +1134,7 @@ function uploadPhotoAch(imageURI, imageName) {
     options.params = params;
 
     var ft = new FileTransfer();
-    ft.upload(imageURI, encodeURI("http://i01.businesssolutionapps.com/que_image/quem_image_sync/fileUploader/"),winAchInfo,onfail,options);
+    ft.upload(imageURI, encodeURI("http://i01.businesssolutionapps.com/img/banbeis_image_sync/fileUploader/"),winAchInfo,onfail,options);
 	
 }
 
