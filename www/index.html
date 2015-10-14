@@ -1,0 +1,2886 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Banbeis</title>
+
+    <link rel="stylesheet" href="static/my.css" />
+
+    <link rel="stylesheet" href="static/jquery.mobile-1.4.0.min.css" />
+
+    
+
+ <!--   <link rel="stylesheet" href="static/jquery-ui.css" type="text/css" />
+
+	<link rel="stylesheet" href="static/jquery-ui-themes-1.11.1/jquery-ui.css" type="text/css" />  
+
+    <script src="static/jquery-ui.js"></script>-->
+
+    
+
+    <script src="static/jquery-1.10.2.min.js">   </script>
+
+    <script src="static/jquery.mobile-1.4.0.min.js">   </script>		
+
+    
+
+	<script src="static/ff_plan_details_progress_all_activity.js">   </script>
+
+	
+
+    <script src="static/banbeis.js">   </script>
+
+	
+
+	<script>
+
+		$(document).ready(function(){
+
+				$('#loader').hide();
+
+						
+
+				$(".datePicker").datepicker();	
+
+				
+
+				location.reload();				
+
+				
+
+		});
+
+	
+
+		function syncPage(){
+
+			$(".errorChk").text("");
+
+			$.mobile.navigate("#pagesync")
+
+			};		
+
+		
+
+			
+
+		
+
+	
+
+	function q1_Data(){
+
+		
+
+		q1_g=$("#q1_g").val();
+
+		q1_a=$("#q1_a").val();
+
+		q1_s=$("#q1_s").val();
+
+		
+
+		if(q1_g==q1_a){
+
+			$("#q1_s").val("সঠিক");
+
+		}else{
+
+			$("#q1_s").val("ভুল");
+
+		}
+
+		
+
+	}
+
+	
+
+	function q2_Data(){
+
+		
+
+		q2_g=$("#q2_g").val();
+
+		q2_a=$("#q2_a").val();
+
+		q2_s=$("#q2_s").val();
+
+		
+
+		if(q2_g==q2_a){
+
+			$("#q2_s").val("সঠিক");
+
+		}else{
+
+			$("#q2_s").val("ভুল");
+
+		}
+
+		
+
+	}
+
+	
+
+	function q3_Data(){
+
+		
+
+		q3_g=$("#q3_g").val();
+
+		q3_a=$("#q3_a").val();
+
+		q3_s=$("#q3_s").val();
+
+		
+
+		if(q3_g==q3_a){
+
+			$("#q3_s").val("সঠিক");
+
+		}else{
+
+			$("#q3_s").val("ভুল");
+
+		}
+
+	}
+
+		
+
+	function q4_Data(){
+
+		
+
+		q4_g=$("#q4_g").val();
+
+		q4_a=$("#q4_a").val();
+
+		q4_s=$("#q4_s").val();
+
+		
+
+		if(q4_g==q4_a){
+
+			$("#q4_s").val("সঠিক");
+
+		}else{
+
+			$("#q4_s").val("ভুল");
+
+		}
+
+	}
+
+		
+
+	function q5_Data(){
+
+		
+
+		q5_g=$("#q5_g").val();
+
+		q5_a=$("#q5_a").val();
+
+		q5_s=$("#q5_s").val();
+
+		
+
+		if(q5_g==q5_a){
+
+			$("#q5_s").val("সঠিক");
+
+		}else{
+
+			$("#q5_s").val("ভুল");
+
+		}
+
+	}		
+
+	
+
+	function q6_Data(){
+
+		
+
+		q6_g=$("#q6_g").val();
+
+		q6_a=$("#q6_a").val();
+
+		q6_s=$("#q6_s").val();
+
+		
+
+		if(q6_g==q6_a){
+
+			$("#q6_s").val("সঠিক");
+
+		}else{
+
+			$("#q6_s").val("ভুল");
+
+		}
+
+	}
+
+	
+
+	function q7_Data(){
+
+		
+
+		q7_g=$("#q7_g").val();
+
+		q7_a=$("#q7_a").val();
+
+		q7_s=$("#q7_s").val();
+
+		
+
+		if(q7_g==q7_a){
+
+			$("#q7_s").val("সঠিক");
+
+		}else{
+
+			$("#q7_s").val("ভুল");
+
+		}
+
+	}
+
+	
+
+	function q8_Data(){
+
+		
+
+		q8_g=$("#q8_g").val();
+
+		q8_a=$("#q8_a").val();
+
+		q8_s=$("#q8_s").val();
+
+		
+
+		if(q8_g==q8_a){
+
+			$("#q8_s").val("সঠিক");
+
+		}else{
+
+			$("#q8_s").val("ভুল");
+
+		}
+
+	}
+
+	
+
+	function q9_Data(){
+
+		
+
+		q9_g=$("#q9_g").val();
+
+		q9_a=$("#q9_a").val();
+
+		q9_s=$("#q9_s").val();
+
+		
+
+		if(q9_g==q9_a){
+
+			$("#q9_s").val("সঠিক");
+
+		}else{
+
+			$("#q9_s").val("ভুল");
+
+		}
+
+	}
+
+	
+
+	function q10_Data(){
+
+		
+
+		q10_g=$("#q10_g").val();
+
+		q10_a=$("#q10_a").val();
+
+		q10_s=$("#q10_s").val();
+
+		
+
+		if(q10_g==q10_a){
+
+			$("#q10_s").val("সঠিক");
+
+		}else{
+
+			$("#q10_s").val("ভুল");
+
+		}
+
+	}
+
+	
+
+	function q11_Data(){
+
+		
+
+		q11_g=$("#q11_g").val();
+
+		q11_a=$("#q11_a").val();
+
+		q11_s=$("#q11_s").val();
+
+		
+
+		if(q11_g==q11_a){
+
+			$("#q11_s").val("সঠিক");
+
+		}else{
+
+			$("#q11_s").val("ভুল");
+
+		}
+
+	}
+
+	
+
+	function q12_Data(){
+
+		
+
+		q12_g=$("#q12_g").val();
+
+		q12_a=$("#q12_a").val();
+
+		q12_s=$("#q12_s").val();
+
+		
+
+		if(q12_g==q12_a){
+
+			$("#q12_s").val("সঠিক");
+
+		}else{
+
+			$("#q12_s").val("ভুল");
+
+		}
+
+	}
+
+	
+
+	function q13_Data(){
+
+		
+
+		q13_g=$("#q13_g").val();
+
+		q13_a=$("#q13_a").val();
+
+		q13_s=$("#q13_s").val();
+
+		
+
+		if(q13_g==q13_a){
+
+			$("#q13_s").val("সঠিক");
+
+		}else{
+
+			$("#q13_s").val("ভুল");
+
+		}
+
+	}
+
+	
+
+	function q14_Data(){
+
+		
+
+		q14_g=$("#q14_g").val();
+
+		q14_a=$("#q14_a").val();
+
+		q14_s=$("#q14_s").val();
+
+		
+
+		if(q14_g==q14_a){
+
+			$("#q14_s").val("সঠিক");
+
+		}else{
+
+			$("#q14_s").val("ভুল");
+
+		}
+
+	}
+
+	
+
+	function q15_Data(){
+
+		
+
+		q15_g=$("#q15_g").val();
+
+		q15_a=$("#q15_a").val();
+
+		q15_s=$("#q15_s").val();
+
+		
+
+		if(q15_g==q15_a){
+
+			$("#q15_s").val("সঠিক");
+
+		}else{
+
+			$("#q15_s").val("ভুল");
+
+		}
+
+	}
+
+	
+
+	function q16_Data(){
+
+		
+
+		q16_g=$("#q16_g").val();
+
+		q16_a=$("#q16_a").val();
+
+		q16_s=$("#q16_s").val();
+
+		
+
+		if(q16_g==q16_a){
+
+			$("#q16_s").val("সঠিক");
+
+		}else{
+
+			$("#q16_s").val("ভুল");
+
+		}
+
+	}
+
+	
+
+	function q17_Data(){
+
+		
+
+		q17_g=$("#q17_g").val();
+
+		q17_a=$("#q17_a").val();
+
+		q17_s=$("#q17_s").val();
+
+		
+
+		if(q17_g==q17_a){
+
+			$("#q17_s").val("সঠিক");
+
+		}else{
+
+			$("#q17_s").val("ভুল");
+
+		}
+
+	}
+
+	
+
+	function q18_Data(){
+
+		
+
+		q18_g=$("#q18_g").val();
+
+		q18_a=$("#q18_a").val();
+
+		q18_s=$("#q18_s").val();
+
+		
+
+		if(q18_g==q18_a){
+
+			$("#q18_s").val("সঠিক");
+
+		}else{
+
+			$("#q18_s").val("ভুল");
+
+		}
+
+	}
+
+	
+
+	function q19_Data(){
+
+		
+
+		q19_g=$("#q19_g").val();
+
+		q19_a=$("#q19_a").val();
+
+		q19_s=$("#q19_s").val();
+
+		
+
+		if(q19_g==q19_a){
+
+			$("#q19_s").val("সঠিক");
+
+		}else{
+
+			$("#q19_s").val("ভুল");
+
+		}
+
+	}
+
+	
+
+	function q20_Data(){
+
+		
+
+		q20_g=$("#q20_g").val();
+
+		q20_a=$("#q20_a").val();
+
+		q20_s=$("#q20_s").val();
+
+		
+
+		if(q20_g==q20_a){
+
+			$("#q20_s").val("সঠিক");
+
+		}else{
+
+			$("#q20_s").val("ভুল");
+
+		}
+
+	}
+
+	
+
+	function q21_Data(){
+
+		
+
+		q21_g=$("#q21_g").val();
+
+		q21_a=$("#q21_a").val();
+
+		q21_s=$("#q21_s").val();
+
+		
+
+		if(q21_g==q21_a){
+
+			$("#q21_s").val("সঠিক");
+
+		}else{
+
+			$("#q21_s").val("ভুল");
+
+		}
+
+	}
+
+	
+
+	function q22_Data(){
+
+		
+
+		q22_g=$("#q22_g").val();
+
+		q22_a=$("#q22_a").val();
+
+		q22_s=$("#q22_s").val();
+
+		
+
+		if(q22_g==q22_a){
+
+			$("#q22_s").val("সঠিক");
+
+		}else{
+
+			$("#q22_s").val("ভুল");
+
+		}
+
+	}
+
+	
+
+	function q23_Data(){
+
+		
+
+		q23_g=$("#q23_g").val();
+
+		q23_a=$("#q23_a").val();
+
+		q23_s=$("#q23_s").val();
+
+		
+
+		if(q23_g==q23_a){
+
+			$("#q23_s").val("সঠিক");
+
+		}else{
+
+			$("#q23_s").val("ভুল");
+
+		}
+
+	}
+
+	
+
+	function q24_Data(){
+
+		
+
+		q24_g=$("#q24_g").val();
+
+		q24_a=$("#q24_a").val();
+
+		q24_s=$("#q24_s").val();
+
+		
+
+		if(q24_g==q24_a){
+
+			$("#q24_s").val("সঠিক");
+
+		}else{
+
+			$("#q24_s").val("ভুল");
+
+		}
+
+	}
+
+	
+
+	function q25_Data(){
+
+		
+
+		q25_g=$("#q25_g").val();
+
+		q25_a=$("#q25_a").val();
+
+		q25_s=$("#q25_s").val();
+
+		
+
+		if(q25_g==q25_a){
+
+			$("#q25_s").val("সঠিক");
+
+		}else{
+
+			$("#q25_s").val("ভুল");
+
+		}
+
+	}
+
+	
+
+	
+
+	function q26_Data(){
+
+		
+
+		q26_g=$("#q26_g").val();
+
+		q26_a=$("#q26_a").val();
+
+		q26_s=$("#q26_s").val();
+
+		
+
+		if(q26_g==q26_a){
+
+			$("#q26_s").val("সঠিক");
+
+		}else{
+
+			$("#q26_s").val("ভুল");
+
+		}
+
+	}
+
+	
+
+	function q27_Data(){
+
+		
+
+		q27_g=$("#q27_g").val();
+
+		q27_a=$("#q27_a").val();
+
+		q27_s=$("#q27_s").val();
+
+		
+
+		if(q27_g==q27_a){
+
+			$("#q27_s").val("সঠিক");
+
+		}else{
+
+			$("#q27_s").val("ভুল");
+
+		}
+
+	}
+
+
+
+
+
+function checkboxConfirm(){
+
+	parents_village=$("#parents_village").val();
+
+	parents_post=$("#parents_post").val();
+
+	parents_union=$("#parents_union").val();
+
+	parents_upazila=$("#parents_upazila").val();
+
+	//----------
+
+	student_village=$("#student_village").val();
+
+	student_post=$("#student_post").val();
+
+	student_union=$("#student_union").val();
+
+	student_upazila=$("#student_upazila").val();
+
+	//----------
+
+	checkConfirm=$("input[name='checkConfirmAddress']:checked").val()
+
+	
+
+	if(checkConfirm=="Yes"){
+
+		$("#student_village").val(parents_village);
+
+		$("#student_post").val(parents_post);
+
+		$("#student_union").val(parents_union);
+
+		$("#student_upazila").val(parents_upazila);
+
+	}else {
+
+		$("#student_village").val('');
+
+		$("#student_post").val('');
+
+		$("#student_union").val('');
+
+		$("#student_upazila").val('');	
+
+	}
+
+	}
+
+
+
+	</script>
+
+	       
+
+    <style>	
+
+        .reqField{ color:#FF0000;}
+
+        .errorChk{ color:#FF0000; text-shadow:none;}
+
+    	.auto_break{
+
+			word-wrap:break-word!important;
+
+			white-space:normal!important;
+
+		}
+
+    </style>	
+
+</head>
+
+
+
+<body >
+
+
+
+
+
+<!-- MAIN MENU ----------------------------------------------------------------------------- -->
+
+<div data-role="page" data-theme="d" id="homePage" style="overflow:scroll;">
+
+    <div data-theme="d" data-role="header" data-position="fixed" >
+
+        <a data-role="button" href="#leftpanel" data-icon="bullets" data-iconpos="left" class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="menu.png"></a>
+
+        
+
+        <a data-role="button"  onClick="exit();" ><img src="exit.png" /></a>
+
+        <h3>BANBEIS</h3>
+
+    </div>
+
+    <div data-role="content">
+
+            <div class="errorChk"></div>
+
+            <ul data-role="listview" data-inset="true">
+
+                <li><a href="#" onClick="pmthhVerification();" data-transition="slide">PMT HH Verification</a></li>
+
+                 <!--onClick="achivementclick();"-->
+
+               <!-- <li><a  onClick="waterQtyClick();" data-transition="slide">Water Quality Test</a></li>-->
+
+            </ul>
+
+            <ul data-role="listview" data-inset="true">
+
+               <!-- <li ><a href="#" onClick="reviewAchiveData();" data-transition="slide">Review Achievement</a></li>-->
+
+                <!--<li><a href="#" onClick="reviewWaterQData();" data-transition="slide">Review Water Quality Test</a></li>-->
+
+                <!--<li><a href="#" onClick="getAchivementImage()" id="#photo">Photo</a></a></li>
+
+                <li><a href="#" onClick="getLocationInfo()" id="#photo">location</a></a></li>-->
+
+                
+
+            </ul>
+
+			<ul data-role="listview" data-inset="true">
+
+               <!-- <li ><a href="#reportPage" data-transition="slide">Report</a></li>    -->        
+
+                
+
+            </ul>
+
+    </div>
+
+    <div data-theme="d" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting 20151004</div><!------/footer 20150401-20150309 -->
+
+    
+
+    <div data-role="panel" id="leftpanel" data-position="left" data-display="overlay" data-theme="d">
+
+        <div align="center"></div>
+
+        <br/>
+
+        <br/>
+
+        <br/>
+
+        <br/>
+
+        <br/>
+
+        <br/>
+
+        <ul data-role="listview" >
+
+          <li><a data-role="button" class="ui-btn" onclick="syncPage();"><center><img src="sync.png" /></center></a></li>		  
+
+        </ul>
+
+        <br/>
+
+        <br/>
+
+        <br/>
+
+        <div align="center"><img src="logo_gp.png"></div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+<!-- ------------------- sync page---------------------------------------------------------------------------------------- -->
+
+<div data-theme="d" data-role="page" id="pagesync" >
+
+    <div data-theme="d" data-role="header" data-position="fixed" >
+
+        <a data-role="button" onClick="menuClick();" data-icon="bullets" data-iconpos="left" class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="menu.png"></a>
+
+        <h3>Sync</h3>
+
+    </div>
+
+    <div data-role="content">
+
+        <div class="errorChk"></div>
+
+        <ul data-role="listview" data-inset="true" data-theme="d">
+
+            <li class="ui-field-contain">
+
+                <label for="mobile"> Mobile No</label>
+
+                <input name="mobile" id="mobile" placeholder="" value="" type="number">
+
+            </li>
+
+            <li class="ui-field-contain">
+
+                <label for="password">Password </label>
+
+                <input type="password" name="password" id="password" placeholder="" value="" >
+
+            </li>
+
+        </ul>
+
+        <a data-role="button" href="#" id="syncBasic" onclick="syncBasic()"  data-theme="d" data-transition="slide" >Sync</a>
+
+		<div id="#syncData"></div>
+
+        <br/>
+
+        <br/>
+
+        <br/>
+
+        <br/>
+
+        <br/>
+
+        <br/>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- --------------------banbeis page1------------------------------------------------- -->
+
+<div data-role="page" id="page1" style="overflow:scroll;">
+
+    <div data-theme="d" data-role="header" data-position="fixed" >
+
+        <a data-role="button" onClick="menuClick();" data-icon="bullets" data-iconpos="left" class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="menu.png"></a>
+
+        <a data-role="button" onclick="backClick();" data-rel="back" class="ui-btn-right" data-transition="slide"><img src="back.png" /></a>
+
+        <h3>BANBEIS</h3>
+
+    </div>
+
+    <div data-role="content" >
+
+    		
+
+            <div id="ffUpDiv"></div>
+
+            
+
+            <ul data-role="listview" data-inset="true">
+
+                <li style="background-color:#F2F2F2;" class="auto_break"><strong>PMT House Hold Verification Chart</strong> </li>
+
+                <li class="ui-field-contain">            	
+
+                    <label for="student_serial_no">Serial no. of the Students </label>
+
+                    <input type="number" name="student_serial_no" id="student_serial_no" />
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="booth_no">1. Booth no</label>
+
+                    <input type="number" name="booth_no" id="booth_no" />
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="union_name">2. Name of Union</label>
+
+                    <input type="text" name="union_name" maxlength="150" id="union_name"/>
+
+                 </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="ward_no">3. Ward no. of Union</label>
+
+                    <input type="number" name="ward_no" id="ward_no"/>
+
+                 </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="pourashave">4. Name of Pourashava</label>
+
+                    <input type="text" name="pourashave" maxlength="150" id="pourashave"/>
+
+                 </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="wardno_pourashave">5. Ward no. of Pourashava</label>
+
+                    <input type="number" name="wardno_pourashave" id="wardno_pourashave"/>                
+
+                 </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="upazila">6. Upazila</label>
+
+                    <input type="text" name="upazila" maxlength="150" id="upazila"/>
+
+                 </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="zila">7. Zila</label>
+
+                    <input type="text" name="zila" maxlength="150" id="zila"/>
+
+                 </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="division">8. Division</label>
+
+                    <input type="text" name="division" maxlength="150" id="division"/>
+
+                 </li>
+
+            </ul>
+
+            
+
+        <a data-role="button" onclick="banbeisDataNext()" href="#" data-transition="slide" >Next</a>
+
+        <div class="errorChk"></div>
+
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+    </div>
+
+    
+
+    <div data-theme="d" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- --------------------banbeis page2------------------------------------------------- -->
+
+<div data-role="page" id="page2" style="overflow:scroll;" >
+
+<div data-theme="d" data-role="header" data-position="fixed" >
+
+	<a data-role="button" onClick="menuClick();" data-icon="bullets" data-iconpos="left" class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="menu.png"></a>
+
+    <a data-role="button" onclick="backClick();" data-rel="back" class="ui-btn-right" data-transition="slide"><img src="back.png" /></a>
+
+    <h3>BANBEIS</h3>
+
+</div>
+
+
+
+<div data-role="content" >
+
+		<ul data-role="listview" data-inset="true">
+
+            <li class="ui-field-contain" style="background-color:#F2F2F2; font-weight:bold;">Applicant Info<sup class="reqField">*</sup></li>
+
+            <li class="ui-field-contain">
+
+                <label for="name_of_applicant">1. Name of the Applicant</label>
+
+                <input type="text" name="name_of_applicant" maxlength="150" id="name_of_applicant"/>
+
+            </li>
+
+            <li class="ui-field-contain">
+
+                <label for="dob">2. Date of Birth</label>
+
+                <input type="date" name="dob" id="dob" class="datePicker"/>
+
+            </li>
+
+            <li class="ui-field-contain">
+
+                <label for="fathers_name">3. Father's name in English</label>
+
+                <input type="text" name="fathers_name" maxlength="150" id="fathers_name"/>
+
+            </li>
+
+            <li class="ui-field-contain">
+
+                <label for="fathers_nid">4. Father's National ID no (if any)</label>
+
+                <input type="number" name="fathers_nid" id="fathers_nid"/>
+
+            </li>
+
+            <li class="ui-field-contain">
+
+                <label for="mothers_name">5. Mother's name in English</label>
+
+                <input type="text" name="mothers_name" maxlength="150" id="mothers_name"/>
+
+            </li>
+
+            <li class="ui-field-contain">
+
+                <label for="mothers_nid">6. Mother's National ID no (if any)</label>
+
+                <input type="number" name="mothers_nid" id="mothers_nid"/>
+
+            </li>
+
+            <li class="ui-field-contain">
+
+            	<label for="gender">7. Gender</label>
+
+                <select name="gender" id="gender" data-native-menu="false">
+
+                	<option value="Girl">Girl</option>
+
+                    <option value="Boy">Boy</option> 												
+
+                </select>
+
+            </li>
+
+          </ul>
+
+            
+
+          <ul data-role="listview" data-inset="true">
+
+            <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">অধ্যয়নরত শিক্ষা প্রতিষ্ঠান <sup class="reqField">*</sup></li>
+
+            <li class="ui-field-contain auto_break">
+
+                <label for="present_school">8. বর্তমানে অধ্যয়নরত শিক্ষা প্রতিষ্ঠানের নাম </label>
+
+                <input type="text" name="present_school" maxlength="200" id="present_school"/>
+
+            </li>
+
+            <li class="ui-field-contain ">
+
+                <label for="class_studied_present">9. বর্তমানে কোন শ্রেণিতে অধ্যয়নরত</label>
+
+                <input type="number" name="class_studied_present" id="class_studied_present"/>
+
+            </li>
+
+            <li class="ui-field-contain auto_break">
+
+                <label for="dropped_school_name_enrolled" class="auto_break">10.(ক) পূর্বে যে শিক্ষা প্রতিষ্ঠানে অধ্যয়নরত ছিল তার নাম </label>
+
+                <input type="text" name="dropped_school_name_enrolled" maxlength="200" id="dropped_school_name_enrolled"/>
+
+            </li>
+
+            <li class="ui-field-contain auto_break">
+
+                <label for="dropped_class_studied_past">10.(খ) পূর্বে কোন শ্রেণিতে অর্ধয়নরত ছিল </label>
+
+                <input type="number" name="dropped_class_studied_past" id="dropped_class_studied_past"/>
+
+            </li>
+
+            <li class="ui-field-contain auto_break">
+
+                <label for="guardian_absence_of_parents">11. যদি পিতা বা মাতা জীবিত না থাকেন </label>
+
+                <input type="text" name="guardian_absence_of_parents" maxlength="150" id="guardian_absence_of_parents"/>
+
+            </li>          
+
+            <li class="ui-field-contain auto_break">
+
+                <label for="relation_student_with_guardian">12. ছাত্র/ছাত্রীর সংগে অভিভাবকের সর্ম্পক </label>
+
+                    <select name="relation_student_with_guardian" id="relation_student_with_guardian" data-native-menu="false" >
+
+                        <option value="1">দাদা/নানা </option>
+
+                        <option value="2">দাদী/ নানী</option>
+
+                        <option value="3">চাচা/মামা/ফুপা/খালু</option>
+
+                        <option value="4">চাচী/মামী/ফুফু/খালা</option>
+
+                        <option value="5">বোন</option>
+
+                        <option value="6">ভাই</option>
+
+                        <option value="7">অন্যান্য</option>				
+
+                    </select>
+
+            </li>
+
+           
+
+          </ul>
+
+         <ul data-role="listview" data-inset="true">     
+
+           <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">13.(ক) Address of parents or guardian<sup class="reqField">*</sup></li>
+
+			<li class="ui-field-contain">    
+
+                <label for="parents_village">Village</label>
+
+                	<input type="text" name="parents_village" maxlength="100" id="parents_village"/>
+
+            </li>
+
+            <li class="ui-field-contain">
+
+                <label for="parents_post">Post</label>
+
+                	<input type="text" name="parents_post" maxlength="100" id="parents_post"/>
+
+            </li>
+
+            <li class="ui-field-contain">
+
+                <label for="parents_union">Union/Pourashava </label>
+
+                	<input type="text" name="parents_union" maxlength="100" id="parents_union"/>
+
+            </li>
+
+            <li class="ui-field-contain">
+
+                <label for="parents_upazila">Upazila</label>
+
+                	<input type="text" name="parents_upazila" maxlength="100" id="parents_upazila"/>
+
+            </li>
+
+          </ul>
+
+          <li class="ui-field-contain">
+
+          <label for="checkbox">Check Confirm</label>
+
+          <input type="checkbox" name="checkConfirmAddress" id="checkConfirmAddress" value="Yes" onclick="checkboxConfirm()"/>
+
+          </li>
+
+         <ul data-role="listview" data-inset="true"> 
+
+            <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">13.(খ) Present Address of students<sup class="reqField">*</sup></li>
+
+			<li class="ui-field-contain">
+
+                <label for="student_village">Village</label>
+
+                	<input type="text" name="student_village" maxlength="100" id="student_village" />
+
+            </li>
+
+            <li class="ui-field-contain">
+
+                <label for="student_post">Post</label>
+
+                	<input type="text" name="student_post" maxlength="100" id="student_post" />
+
+            </li>
+
+            <li class="ui-field-contain">
+
+                <label for="student_union">Union/Pourashava </label>
+
+               		<input type="text" name="student_union" maxlength="100" id="student_union" />
+
+            </li>
+
+            <li class="ui-field-contain">
+
+                <label for="student_upazila">Upazila</label>
+
+                	<input type="text" name="student_upazila" maxlength="100" id="student_upazila" />
+
+           </li>
+
+        </ul>
+
+        
+
+        <a data-role="button" onclick="banbeisData2Next()" href="#" data-transition="slide" >Next</a>
+
+    <div class="errorChk"></div>
+
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+</div>
+
+
+
+<div data-theme="d" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- --------------------banbeis page3------------------------------------------------- -->
+
+<div data-role="page" id="page3" style="overflow:scroll;">
+
+    <div data-theme="d" data-role="header" data-position="fixed" >
+
+        <a data-role="button" onClick="menuClick();" data-icon="bullets" data-iconpos="left" class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="menu.png"></a>
+
+        <a data-role="button" onclick="backClick();" data-rel="back" class="ui-btn-right" data-transition="slide"><img src="back.png" /></a>
+
+        <h3>BANBEIS</h3>
+
+    </div>
+
+
+
+    <div data-role="content" >
+
+            <ul data-role="listview" data-inset="true">
+
+                <li style="background-color:#F2F2F2;" class="auto_break"><strong>ছাত্র/ ছাত্রীর আর্থ-সামাজিক অবস্থা </strong></li>
+
+            </ul>
+
+            <ul data-role="listview" data-inset="true">
+
+                <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">Q1. আবেদনকারীর অভিভাবকের নাম ( ইংরেজীতে)<sup class="reqField">*</sup></li>	
+
+                <li class="ui-field-contain">
+
+                    <label for="q1_g">প্রদত্ত তথ্য</label>
+
+                        <input type="text" name="q1_g" id="q1_g" onchange="q1_Data()"/>
+
+                 </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q1_a">প্রকৃত তথ্য</label>
+
+                        <input type="text" name="q1_a" id="q1_a" onchange="q1_Data()"/>
+
+                 </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q1_s">ভুল / সঠিক</label>
+
+                        <input type="text" name="q1_s" id="q1_s" readonly="readonly" style="background-color:#E7E7E7; "/>
+
+                  </li> 
+
+             </ul>
+
+            <ul data-role="listview" data-inset="true">          	
+
+                <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">Q2. আবেদনকারীর অভিভাবক পুরুষ না মহিলা ?<sup class="reqField">*</sup></li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q2_g">প্রদত্ত তথ্য</label>
+
+                        <select name="q2_g" id="q2_g" data-native-menu="false" onchange="q2_Data()">
+
+                            <option value="1">পুরুষ</option>
+
+                            <option value="2">মহিলা </option>								 												
+
+                        </select>
+
+                </li>
+
+                <li class="ui-field-contain">	
+
+                    <label for="q2_a">প্রকৃত তথ্য</label>
+
+                        <select name="q2_a" id="q2_a" data-native-menu="false" onchange="q2_Data()">
+
+                            <option value="1">পুরুষ</option>
+
+                            <option value="2">মহিলা </option>								 												
+
+                        </select>
+
+               </li>
+
+                <li class="ui-field-contain"> 
+
+                    <label for="q2_s">ভুল / সঠিক</label>
+
+                        <input type="text" name="q2_s" id="q2_s" readonly="readonly" style="background-color:#E7E7E7; "/>
+
+                </li>  
+
+            </ul>
+
+            <ul data-role="listview" data-inset="true">    
+
+                <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">Q3. আবেদনকারীর অভিভাবকের বৈবাহিক অবস্থা?<sup class="reqField">*</sup></li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q3_g">প্রদত্ত তথ্য</label>
+
+                        <select name="q3_g" id="q3_g" data-native-menu="false" onchange="q3_Data()">
+
+                            <option value="1">বিবাহিত</option>
+
+                            <option value="2">অবিবাহিত</option>
+
+                            <option value="3">বিধবা/বিপত্নিক</option>
+
+                            <option value="4">তালাকপ্রাপ্ত</option>
+
+                            <option value="5">আলাদাভাবে বসবাসরত বা বিচ্ছিন্ন </option>								 												
+
+                        </select>
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q3_a">প্রকৃত তথ্য</label>
+
+                       <select name="q3_a" id="q3_a" data-native-menu="false" onchange="q3_Data()">
+
+                            <option value="1">বিবাহিত</option>
+
+                            <option value="2">অবিবাহিত</option>
+
+                            <option value="3">বিধবা/বিপত্নিক</option>
+
+                            <option value="4">তালাকপ্রাপ্ত</option>
+
+                            <option value="5">আলাদাভাবে বসবাসরত বা বিচ্ছিন্ন </option>								 												
+
+                        </select>
+
+                </li>
+
+                <li class="ui-field-contain">       
+
+                    <label for="q3_s">ভুল / সঠিক</label>
+
+                        <input type="text" name="q3_s" id="q3_s" readonly="readonly" style="background-color:#E7E7E7; "/>
+
+               </li> 
+
+            </ul>
+
+            <ul data-role="listview" data-inset="true">
+
+               <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">Q4. আবেদনকারীর অভিভাবকের সর্বোচ্চ শিক্ষাগত যোগ্যতা?<sup class="reqField">*</sup></li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q4_g">প্রদত্ত তথ্য</label>
+
+                        <select name="q4_g" id="q4_g" data-native-menu="false" onchange="q4_Data()">
+
+                            <option value="1">কখনো স্কুলে যায়নি</option>
+
+                            <option value="2">প্রাথমিক বিদ্যালয় হতে ঝরে পড়েছে</option>
+
+                            <option value="3">পঞ্চম শ্রেণি পাশ</option>
+
+                            <option value="4">JSC/JDC ( অষ্টম শ্রেণি) পাশ</option>
+
+                            <option value="5">এসএসসি/দাখিল/সমমানের পাশ</option>
+
+                            <option value="6">এইচএসসি/সমমানের পাশ</option>
+
+                            <option value="7">ডিগ্রী/সমমানের পাশ</option>
+
+                            <option value="8">মাষ্টারস বা উর্ধ্বে</option>								 												
+
+                        </select>	
+
+               </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q4_a">প্রকৃত তথ্য</label>
+
+                        <select name="q4_a" id="q4_a" data-native-menu="false" onchange="q4_Data()">
+
+                            <option value="1">কখনো স্কুলে যায়নি</option>
+
+                            <option value="2">প্রাথমিক বিদ্যালয় হতে ঝরে পড়েছে</option>
+
+                            <option value="3">পঞ্চম শ্রেণি পাশ</option>
+
+                            <option value="4">JSC/JDC ( অষ্টম শ্রেণি) পাশ</option>
+
+                            <option value="5">এসএসসি/দাখিল/সমমানের পাশ</option>
+
+                            <option value="6">এইচএসসি/সমমানের পাশ</option>
+
+                            <option value="7">ডিগ্রী/সমমানের পাশ</option>
+
+                            <option value="8">মাষ্টারস বা উর্ধ্বে</option>								 												
+
+                        </select>
+
+                  </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q4_s">ভুল / সঠিক</label>
+
+                        <input type="text" name="q4_s" id="q4_s" readonly="readonly" style="background-color:#E7E7E7; "/>
+
+                </li>  
+
+             </ul>
+
+            <ul data-role="listview" data-inset="true">            
+
+                <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">Q5. আবেদনকারীর অভিভাবকের স্বামী বা স্ত্রীর  (Spouse) সর্বোচ্চ শিক্ষাগত যোগ্যতা?<sup class="reqField">*</sup></li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q5_g">প্রদত্ত তথ্য</label>
+
+                        <select name="q5_g" id="q5_g" data-native-menu="false" onchange="q5_Data()">
+
+                            <option value="1">কখনো স্কুলে যায়নি</option>
+
+                            <option value="2">প্রাথমিক বিদ্যালয় হতে ঝরে পড়েছে</option>
+
+                            <option value="3">পঞ্চম শ্রেণি পাশ</option>
+
+                            <option value="4">JSC/JDC ( অষ্টম শ্রেণি) পাশ</option>
+
+                            <option value="5">এসএসসি/দাখিল/সমমানের পাশ</option>
+
+                            <option value="6">এইচএসসি/সমমানের পাশ</option>
+
+                            <option value="7">ডিগ্রী/সমমানের পাশ</option>
+
+                            <option value="8">মাষ্টারস বা উর্ধ্বে</option>								 												
+
+                        </select>
+
+               </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q5_a">প্রকৃত তথ্য</label>
+
+                        <select name="q5_a" id="q5_a" data-native-menu="false" onchange="q5_Data()">
+
+                            <option value="1">কখনো স্কুলে যায়নি</option>
+
+                            <option value="2">প্রাথমিক বিদ্যালয় হতে ঝরে পড়েছে</option>
+
+                            <option value="3">পঞ্চম শ্রেণি পাশ</option>
+
+                            <option value="4">JSC/JDC ( অষ্টম শ্রেণি) পাশ</option>
+
+                            <option value="5">এসএসসি/দাখিল/সমমানের পাশ</option>
+
+                            <option value="6">এইচএসসি/সমমানের পাশ</option>
+
+                            <option value="7">ডিগ্রী/সমমানের পাশ</option>
+
+                            <option value="8">মাষ্টারস বা উর্ধ্বে</option>								 												
+
+                        </select>
+
+                 </li>
+
+                <li class="ui-field-contain">
+
+                  
+
+                    <label for="q5_s">ভুল / সঠিক</label>
+
+                        <input type="text" name="q5_s" id="q5_s" readonly="readonly" style="background-color:#E7E7E7; "/>
+
+                </li>
+
+             </ul>
+
+            <ul data-role="listview" data-inset="true"> 
+
+                <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">Q6. আবেদনকারীর অভিভাবক কোন পেশায় নিয়োজিত?<sup class="reqField">*</sup></li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q6_g">প্রদত্ত তথ্য</label>
+
+                        <select name="q6_g" id="q6_g" data-native-menu="false" onchange="q6_Data()">
+
+                            <option value="1">চাকুরী (সরকারী/বেসরকারী)</option>
+
+                            <option value="2" class="auto_break" >আত্নকর্মসংস্থান/উদ্যোক্তা (নিজ পেশা- যেমন: দোকানদার, মিস্ত্রি, মেকার, ছোট ব্যবসা ইত্যাদি)</option>
+
+                            <option value="3">কৃষি ভিত্তিক দিন মজুর</option>
+
+                            <option value="4">অকৃষি ভিত্তিক দিন মজুর</option>
+
+                            <option value="5">কোন কাজে নিয়োজিত নেই</option>					
+
+                        </select>
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q6_a">প্রকৃত তথ্য</label>
+
+                        <select name="q6_a" id="q6_a" data-native-menu="false" onchange="q6_Data()">
+
+                            <option value="1">চাকুরী (সরকারী/বেসরকারী)</option>
+
+                            <option value="2" class="auto_break" >আত্নকর্মসংস্থান/উদ্যোক্তা (নিজ পেশা- যেমন: দোকানদার, মিস্ত্রি, মেকার, ছোট ব্যবসা ইত্যাদি)</option>
+
+                            <option value="3">কৃষি ভিত্তিক দিন মজুর</option>
+
+                            <option value="4">অকৃষি ভিত্তিক দিন মজুর</option>
+
+                            <option value="5">কোন কাজে নিয়োজিত নেই</option>					
+
+                        </select>
+
+                 </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q6_s">ভুল / সঠিক</label>
+
+                        <input type="text" name="q6_s" id="q6_s" readonly="readonly" style="background-color:#E7E7E7; "/>
+
+                </li>
+
+             </ul>
+
+            <ul data-role="listview" data-inset="true">
+
+                <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">Q7. আবেদনকারী বাদে অভিভাবকের পরিবারে ১৪ বৎসর অথবা তার নীচের বয়সের মোট কতজন সদস্য আছে?<sup class="reqField">*</sup></li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q7_g">প্রদত্ত তথ্য</label>
+
+                        <input type="number" name="q7_g" id="q7_g" onchange="q7_Data()" />
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q7_a">প্রকৃত তথ্য</label>
+
+                        <input type="number" name="q7_a" id="q7_a" onchange="q7_Data()" />
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q7_s">ভুল / সঠিক</label>
+
+                        <input type="text" name="q7_s" id="q7_s" readonly="readonly" style="background-color:#E7E7E7; "/>
+
+                </li>
+
+                
+
+            </ul>
+
+            <ul data-role="listview" data-inset="true">  
+
+                <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">Q8. আবেদনকারী বাদে অভিভাবকের পরিবারে ১৫ বৎসর অথবা তার উপরে বয়সের মোট কতজন সদস্য আছে?<sup class="reqField">*</sup></li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q8_g">প্রদত্ত তথ্য</label>
+
+                        <input type="number" name="q8_g" id="q8_g" onchange="q8_Data()"/>
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q8_a">প্রকৃত তথ্য</label>
+
+                        <input type="number" name="q8_a" id="q8_a" onchange="q8_Data()"/>
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q8_s">ভুল / সঠিক</label>
+
+                        <input type="text" name="q8_s" id="q8_s" readonly="readonly" style="background-color:#E7E7E7; "/>
+
+                </li>
+
+                
+
+            </ul>
+
+            
+
+            <a data-role="button" onclick="banbeisData3Next()"  href="#" data-transition="slide" >Next</a>
+
+            <div class="errorChk"></div>
+
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+    </div>
+
+    
+
+    <div data-theme="d" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- --------------------banbeis page4------------------------------------------------- -->
+
+<div data-role="page" id="page4" style="overflow:scroll;">
+
+    <div data-theme="d" data-role="header" data-position="fixed" >
+
+        <a data-role="button" onClick="menuClick();" data-icon="bullets" data-iconpos="left" class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="menu.png"></a>
+
+        <a data-role="button" onclick="backClick();" data-rel="back" class="ui-btn-right" data-transition="slide"><img src="back.png" /></a>
+
+        <h3>BANBEIS</h3>
+
+    </div>
+
+
+
+    <div data-role="content" >
+
+            <ul data-role="listview" data-inset="true">
+
+                <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">Q9. আবেদনকারীর অভিভাবকের পরিবারে নিজস্ব কয়টি গরু, ছাগল ও মহিষ আছে ? (সবগুলো যোগ করে )<sup class="reqField">*</sup></li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q9_g">প্রদত্ত তথ্য</label>
+
+                        <input type="number" name="q9_g" id="q9_g" onchange="q9_Data()" />
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q9_a">প্রকৃত তথ্য</label>
+
+                        <input type="number" name="q9_a" id="q9_a" onchange="q9_Data()" />
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q9_s">ভুল / সঠিক</label>
+
+                        <input type="text" name="q9_s" id="q9_s" readonly="readonly" style="background-color:#E7E7E7; "/>
+
+                 </li>
+
+             </ul>
+
+            <ul data-role="listview" data-inset="true">     
+
+                <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">Q10. আবেদনকারীর অভিভাবকের নিজের বাসগৃহের  মোট কয়টি কক্ষ আছে ? (ব্যবসার জন্য ব্যবহৃত কক্ষ অন্তর্ভুক্ত হবে না )<sup class="reqField">*</sup></li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q10_g">প্রদত্ত তথ্য</label>
+
+                        <input type="number" name="q10_g" id="q10_g" onchange="q10_Data()"/>
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q10_a">প্রকৃত তথ্য</label>
+
+                        <input type="number" name="q10_a" id="q10_a" onchange="q10_Data()"/>
+
+                       
+
+                 </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q10_s">ভুল / সঠিক</label>
+
+                        <input type="text" name="q10_s" id="q10_s" readonly="readonly" style="background-color:#E7E7E7; "/>
+
+                 </li>   
+
+             </ul>
+
+            <ul data-role="listview" data-inset="true">     
+
+                <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">Q11. আবেদনকারীর অভিভাবকের নিজের বাসগৃহের  প্রধান ঘরের দেয়াল কি দিয়ে তৈরী?<sup class="reqField">*</sup></li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q11_g">প্রদত্ত তথ্য</label>
+
+                        <select name="q11_g" id="q11_g" data-native-menu="false" onchange="q11_Data()">
+
+                            <option value="1">বাঁশের চটা বা চাটাই/পাইখড়িঃ </option>
+
+                            <option value="2">মাটির দেওয়ালঃ</option>
+
+                            <option value="3">টিন/ কাঠঃ</option>
+
+                            <option value="4">পাকাঃ </option>				
+
+                        </select>
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q11_a">প্রকৃত তথ্য</label>
+
+                        <select name="q11_a" id="q11_a" data-native-menu="false" onchange="q11_Data()">
+
+                            <option value="1">বাঁশের চটা বা চাটাই/পাইখড়িঃ </option>
+
+                            <option value="2">মাটির দেওয়ালঃ</option>
+
+                            <option value="3">টিন/ কাঠঃ</option>
+
+                            <option value="4">পাকাঃ </option>				
+
+                        </select>
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q11_s">ভুল / সঠিক</label>
+
+                        <input type="text" name="q11_s" id="q11_s" readonly="readonly" style="background-color:#E7E7E7; "/>
+
+               </li>
+
+            </ul>
+
+            <ul data-role="listview" data-inset="true"> 
+
+               <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">Q12. আবেদনকারীর অভিভাবকের নিজের বাসগৃহের প্রধান ঘরের ছাদ কি দিয়ে তৈরী?<sup class="reqField">*</sup></li>
+
+                <li class="ui-field-contain">               
+
+                    <label for="q12_g">প্রদত্ত তথ্য</label>
+
+                        <select name="q12_g" id="q12_g" data-native-menu="false" onchange="q12_Data()">
+
+                            <option value="1">ছন/খড়/পাতাঃ </option>
+
+                            <option value="2">টিন/কাঠ/টালিঃ </option>
+
+                            <option value="3">কংক্রিট ঢালাইঃ</option>
+
+                            <option value="4">অন্যান্যঃ </option>						 												
+
+                        </select>
+
+                 </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q12_a">প্রকৃত তথ্য</label>
+
+                        <select name="q12_a" id="q12_a" data-native-menu="false" onchange="q12_Data()">
+
+                            <option value="1">ছন/খড়/পাতাঃ </option>
+
+                            <option value="2">টিন/কাঠ/টালিঃ </option>
+
+                            <option value="3">কংক্রিট ঢালাইঃ</option>
+
+                            <option value="4">অন্যান্যঃ </option>						 												
+
+                        </select>
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q12_s">ভুল / সঠিক</label>
+
+                        <input type="text" name="q12_s" id="q12_s" readonly="readonly" style="background-color:#E7E7E7; "/>
+
+                </li>
+
+              </ul>
+
+            <ul data-role="listview" data-inset="true"> 
+
+                
+
+                <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">Q13. আবেদনকারীর অভিভাবকের পরিবারের নিজস্ব মোট জমির পরিমাণ কত? <sup class="reqField">*</sup></li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q13_g">প্রদত্ত তথ্য</label>
+
+                        <input type="number" name="q13_g" id="q13_g" onchange="q13_Data()"/>
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q13_a">প্রকৃত তথ্য</label>
+
+                        <input type="number" name="q13_a" id="q13_a" onchange="q13_Data()"/>
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q13_s">ভুল / সঠিক</label>
+
+                        <input type="text" name="q13_s" id="q13_s" readonly="readonly" style="background-color:#E7E7E7; "/>
+
+                </li>
+
+              </ul>
+
+            <ul data-role="listview" data-inset="true"> 
+
+                
+
+                <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">Q14. আলাদা খাবার ঘর (Dinning) আছে কিনা?<sup class="reqField">*</sup></li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q14_g">প্রদত্ত তথ্য</label>
+
+                        <select name="q14_g" id="q14_g" data-native-menu="false" onchange="q14_Data()">
+
+                        <option value="1">হ্যাঁ </option>
+
+                        <option value="2">না</option>				
+
+                    </select>
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q14_a">প্রকৃত তথ্য</label>
+
+                        <select name="q14_a" id="q14_a" data-native-menu="false" onchange="q14_Data()">
+
+                            <option value="1">হ্যাঁ </option>
+
+                            <option value="2">না</option>				
+
+                        </select>
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q14_s">ভুল / সঠিক</label>
+
+                        <input type="text" name="q14_s" id="q14_s" readonly="readonly" style="background-color:#E7E7E7; "/>
+
+                </li>
+
+                
+
+             </ul>
+
+            <ul data-role="listview" data-inset="true">  
+
+                <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">Q15. আলাদা রান্নাঘর (Kitchen) আছে কিনা?<sup class="reqField">*</sup></li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q15_g">প্রদত্ত তথ্য</label>
+
+                        <select name="q15_g" id="q15_g" data-native-menu="false" onchange="q15_Data()">
+
+                            <option value="1">হ্যাঁ </option>
+
+                            <option value="2">না</option>				
+
+                        </select>
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q15_a">প্রকৃত তথ্য</label>
+
+                        <select name="q15_a" id="q15_a" data-native-menu="false" onchange="q15_Data()">
+
+                            <option value="1">হ্যাঁ </option>
+
+                            <option value="2">না</option>				
+
+                        </select>
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q15_s">ভুল / সঠিক</label>
+
+                        <input type="text" name="q15_s" id="q15_s" readonly="readonly" style="background-color:#E7E7E7; "/>
+
+                </li>
+
+             </ul>
+
+            <ul data-role="listview" data-inset="true">             
+
+                <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">Q16. টিউবওয়েল ( Tube-wel) আছে কিনা?<sup class="reqField">*</sup></li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q16_g">প্রদত্ত তথ্য</label>
+
+                        <select name="q16_g" id="q16_g" data-native-menu="false" onchange="q16_Data()">
+
+                            <option value="1">হ্যাঁ </option>
+
+                            <option value="2">না</option>				
+
+                        </select>
+
+                 </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q16_a">প্রকৃত তথ্য</label>
+
+                        <select name="q16_a" id="q16_a" data-native-menu="false" onchange="q16_Data()">
+
+                            <option value="1">হ্যাঁ </option>
+
+                            <option value="2">না</option>				
+
+                        </select>
+
+                 </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q16_s">ভুল / সঠিক</label>
+
+                        <input type="text" name="q16_s" id="q16_s" readonly="readonly" style="background-color:#E7E7E7; "/>
+
+                </li>
+
+                
+
+            </ul>
+
+            
+
+            <!--onClick="waterData2Next();"-->
+
+            <a data-role="button" onclick="banbeisData4Next()" href="#" data-transition="slide" >Next</a>
+
+            <div class="errorChk"></div>
+
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+    </div>
+
+    
+
+    <div data-theme="d" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>
+
+
+
+</div>
+
+
+
+
+
+<!-- --------------------banbeis page5------------------------------------------------- -->
+
+<div data-role="page" id="page5" style="overflow:scroll;" >
+
+    <div data-theme="d" data-role="header" data-position="fixed" >
+
+        <a data-role="button" onClick="menuClick();" data-icon="bullets" data-iconpos="left" class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="menu.png"></a>
+
+        <a data-role="button" onclick="backClick();" data-rel="back" class="ui-btn-right" data-transition="slide"><img src="back.png" /></a>
+
+        <h3>BANBEIS</h3>
+
+    </div>
+
+
+
+    <div data-role="content" >
+
+            <ul data-role="listview" data-inset="true">
+
+                <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">Q17. বাসগৃহে বিদ্যুৎ (Electricity) আছে কিনা? (পল্লী বিদ্যুৎ/পিডিপি/আইপিএস/সৌর বিদ্যুৎ/ জেনারেটর সংযোগ থাকলে বিদ্যুৎ আছে বলে ধরে নিতে হবে)<sup class="reqField">*</sup></li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q17_g">প্রদত্ত তথ্য</label>
+
+                        <select name="q17_g" id="q17_g" data-native-menu="false" onchange="q17_Data()">
+
+                            <option value="1">হ্যাঁ </option>
+
+                            <option value="2">না</option>				
+
+                        </select>
+
+                 </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q17_a">প্রকৃত তথ্য</label>
+
+                        <select name="q17_a" id="q17_a" data-native-menu="false" onchange="q17_Data()">
+
+                            <option value="1">হ্যাঁ </option>
+
+                            <option value="2">না</option>				
+
+                        </select>
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q17_s">ভুল / সঠিক</label>
+
+                        <input type="text" name="q17_s" id="q17_s" readonly="readonly" style="background-color:#E7E7E7; "/>
+
+                </li> 	
+
+              </ul>
+
+            <ul data-role="listview" data-inset="true">    
+
+                <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">Q18. টেলিভিশন (টিভি) আছে কিনা?<sup class="reqField">*</sup></li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q18_g">প্রদত্ত তথ্য</label>
+
+                        <select name="q18_g" id="q18_g" data-native-menu="false" onchange="q18_Data()">
+
+                            <option value="1">হ্যাঁ </option>
+
+                            <option value="2">না</option>				
+
+                        </select>
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q18_a">প্রকৃত তথ্য</label>
+
+                        <select name="q18_a" id="q18_a" data-native-menu="false" onchange="q18_Data()">
+
+                            <option value="1">হ্যাঁ </option>
+
+                            <option value="2">না</option>				
+
+                        </select>
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q18_s">ভুল / সঠিক</label>
+
+                        <input type="text" name="q18_s" id="q18_s" readonly="readonly" style="background-color:#E7E7E7; "/>
+
+                  </li>  
+
+              </ul>
+
+            <ul data-role="listview" data-inset="true">     
+
+                <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">Q19. বৈদ্যুতিক পাখা (Fan) আছে কিনা?<sup class="reqField">*</sup></li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q19_g">প্রদত্ত তথ্য</label>
+
+                        <select name="q19_g" id="q19_g" data-native-menu="false" onchange="q19_Data()">
+
+                            <option value="1">হ্যাঁ </option>
+
+                            <option value="2">না</option>			
+
+                        </select>
+
+                 </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q19_a">প্রকৃত তথ্য</label>
+
+                        <select name="q19_a" id="q19_a" data-native-menu="false" onchange="q19_Data()">
+
+                            <option value="1">হ্যাঁ </option>
+
+                            <option value="2">না</option>			
+
+                        </select>
+
+                 </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q19_s">ভুল / সঠিক</label>
+
+                        <input type="text" name="q19_s" id="q19_s" readonly="readonly" style="background-color:#E7E7E7; "/>
+
+                </li>
+
+               
+
+             </ul>
+
+            <ul data-role="listview" data-inset="true"> 
+
+               <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">Q20. বাইসাইকেল/ভ্যান/মটরসাইকেল/জীপ/কার/বাস/ট্রাক/নছিমন/করিমন/ইঞ্জিন চালিত নৌকা ধরনের যানবাহন আছে কিনা?<sup class="reqField">*</sup></li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q20_g">প্রদত্ত তথ্য</label>
+
+                        <select name="q20_g" id="q20_g" data-native-menu="false" onchange="q20_Data()">
+
+                            <option value="1">হ্যাঁ </option>
+
+                            <option value="2">না</option>						 												
+
+                        </select>
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q20_a">প্রকৃত তথ্য</label>
+
+                        <select name="q20_a" id="q20_a" data-native-menu="false" onchange="q20_Data()">
+
+                            <option value="1">হ্যাঁ </option>
+
+                            <option value="2">না</option>						 												
+
+                        </select>
+
+                 </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q20_s">ভুল / সঠিক</label>
+
+                        <input type="text" name="q20_s" id="q20_s" readonly="readonly" style="background-color:#E7E7E7; "/>
+
+                </li>
+
+             </ul>
+
+            <ul data-role="listview" data-inset="true">             
+
+                <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">Q21. মোবাইল (Mobile) ফোন আছে কিনা? <sup class="reqField">*</sup></li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q21_g">প্রদত্ত তথ্য</label>
+
+                        <select name="q21_g" id="q21_g" data-native-menu="false" onchange="q21_Data()">
+
+                            <option value="1">হ্যাঁ </option>
+
+                            <option value="2">না</option>						 												
+
+                        </select>
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q21_a">প্রকৃত তথ্য</label>
+
+                        <select name="q21_a" id="q21_a" data-native-menu="false" onchange="q21_Data()">
+
+                            <option value="1">হ্যাঁ </option>
+
+                            <option value="2">না</option>						 												
+
+                        </select>
+
+                 </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q21_s">ভুল / সঠিক</label>
+
+                        <input type="text" name="q21_s" id="q21_s" readonly="readonly" style="background-color:#E7E7E7; "/>
+
+                </li>
+
+             </ul>
+
+            <ul data-role="listview" data-inset="true">             
+
+                <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">Q22. ল্যান্ড ফোন (Land Phone) আছে কিনা?<sup class="reqField">*</sup></li>
+
+                <li class="ui-field-contain"> 
+
+                    <label for="q22_g">প্রদত্ত তথ্য</label>
+
+                        <select name="q22_g" id="q22_g" data-native-menu="false" onchange="q22_Data()">
+
+                            <option value="1">হ্যাঁ </option>
+
+                            <option value="2">না</option>				
+
+                        </select>
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q22_a">প্রকৃত তথ্য</label>
+
+                        <select name="q22_a" id="q22_a" data-native-menu="false" onchange="q22_Data()">
+
+                            <option value="1">হ্যাঁ </option>
+
+                            <option value="2">না</option>				
+
+                        </select>
+
+                 </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q22_s">ভুল / সঠিক</label>
+
+                        <input type="text" name="q22_s" id="q22_s" readonly="readonly" style="background-color:#E7E7E7; "/>
+
+                </li>
+
+             </ul>
+
+            <ul data-role="listview" data-inset="true">             
+
+                <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">Q23. আবেদনকারী কোন ক্ষুদ্র নৃ গোষ্ঠী গোত্রের অন্তর্ভুক্ত আছে কিনা?<sup class="reqField">*</sup></li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q23_g">প্রদত্ত তথ্য</label>
+
+                        <select name="q23_g" id="q23_g" data-native-menu="false" onchange="q23_Data()">
+
+                            <option value="1">হ্যাঁ </option>
+
+                            <option value="2">না</option>				
+
+                        </select>
+
+                 </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q23_a">প্রকৃত তথ্য</label>
+
+                        <select name="q23_a" id="q23_a" data-native-menu="false" onchange="q23_Data()">
+
+                            <option value="1">হ্যাঁ </option>
+
+                            <option value="2">না</option>				
+
+                        </select>
+
+                 </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q23_s">ভুল / সঠিক</label>
+
+                        <input type="text" name="q23_s" id="q23_s" readonly="readonly" style="background-color:#E7E7E7; "/>
+
+                </li>
+
+             </ul>
+
+            <ul data-role="listview" data-inset="true">             
+
+                <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">Q24. পরিবারের কোন সদস্য বিদেশে কর্মরত থেকে পরিবারের জন্য নিয়মিত ঠাকা পাঠাচ্ছেন কিনা?<sup class="reqField">*</sup></li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q24_g">প্রদত্ত তথ্য</label>
+
+                        <select name="q24_g" id="q24_g" data-native-menu="false" onchange="q24_Data()">
+
+                            <option value="1">হ্যাঁ </option>
+
+                            <option value="2">না</option>				
+
+                        </select>
+
+                 </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q24_a">প্রকৃত তথ্য</label>
+
+                        <select name="q24_a" id="q24_a" data-native-menu="false" onchange="q24_Data()">
+
+                            <option value="1">হ্যাঁ </option>
+
+                            <option value="2">না</option>				
+
+                        </select>
+
+                 </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q24_s">ভুল / সঠিক</label>
+
+                        <input type="text" name="q24_s" id="q24_s" readonly="readonly" style="background-color:#E7E7E7; "/>
+
+                </li>
+
+                
+
+            </ul>
+
+            
+
+            <!--onClick="waterData2Next();"-->
+
+            <a data-role="button" onclick="banbeisData5Next()" href="#" data-transition="slide" >Next</a>
+
+            <div class="errorChk"></div>
+
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+    </div>
+
+    
+
+    <div data-theme="d" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>
+
+
+
+</div>
+
+
+
+
+
+<!-- --------------------banbeis page6------------------------------------------------- -->
+
+<div data-role="page" id="page6" style="overflow:scroll;" >
+
+    <div data-theme="d" data-role="header" data-position="fixed" >
+
+        <a data-role="button" onClick="menuClick();" data-icon="bullets" data-iconpos="left" class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="menu.png"></a>
+
+        <a data-role="button" onclick="backClick();" data-rel="back" class="ui-btn-right" data-transition="slide"><img src="back.png" /></a>
+
+        <h3>BANBEIS</h3>
+
+    </div>
+
+
+
+    <div data-role="content" >
+
+            <ul data-role="listview" data-inset="true">
+
+                <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">Q25. আবেদনকারী ছাত্র/ছাত্রী কি শারীরিক প্রতিবন্ধি  (Disable)?<sup class="reqField">*</sup></li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q25_g">প্রদত্ত তথ্য</label>
+
+                        <select name="q25_g" id="q25_g" data-native-menu="false" onchange="q25_Data()">
+
+                            <option value="1">হ্যাঁ </option>
+
+                            <option value="2">না</option>				
+
+                        </select>
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q25_a">প্রকৃত তথ্য</label>
+
+                        <select name="q25_a" id="q25_a" data-native-menu="false" onchange="q25_Data()">
+
+                            <option value="1">হ্যাঁ </option>
+
+                            <option value="2">না</option>				
+
+                        </select>
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q25_s">ভুল / সঠিক</label>
+
+                        <input type="text" name="q25_s" id="q25_s" readonly="readonly" style="background-color:#E7E7E7; "/>
+
+                </li> 	
+
+              </ul>
+
+            <ul data-role="listview" data-inset="true">    
+
+                <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">Q26. আবেদনকারী প্রাথমিক বিদ্যালয়ে উপবৃত্তি পেয়েছে/পায় কিনা?<sup class="reqField">*</sup></li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q26_g">প্রদত্ত তথ্য</label>
+
+                        <select name="q26_g" id="q26_g" data-native-menu="false" onchange="q26_Data()">
+
+                            <option value="1">হ্যাঁ </option>
+
+                            <option value="2">না</option>				
+
+                        </select>
+
+                 </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q26_a">প্রকৃত তথ্য</label>
+
+                        <select name="q26_a" id="q26_a" data-native-menu="false" onchange="q26_Data()">
+
+                            <option value="1">হ্যাঁ </option>
+
+                            <option value="2">না</option>				
+
+                        </select>
+
+                 </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q26_s">ভুল / সঠিক</label>
+
+                        <input type="text" name="q26_s" id="q26_s" readonly="readonly" style="background-color:#E7E7E7; "/>
+
+                   </li> 
+
+              </ul>
+
+            <ul data-role="listview" data-inset="true">     
+
+                <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;">Q27.আবেদনকারীর পরিবার কি ভিজিডি অথবা ভিজিএফ (VGD/VGF) কার্ড ধারী?<sup class="reqField">*</sup></li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q27_g">প্রদত্ত তথ্য</label>
+
+                        <select name="q27_g" id="q27_g" data-native-menu="false" onchange="q27_Data()">
+
+                            <option value="1">হ্যাঁ </option>
+
+                            <option value="2">না</option>			
+
+                        </select>
+
+                       
+
+                </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q27_a">প্রকৃত তথ্য</label>
+
+                        <select name="q27_a" id="q27_a" data-native-menu="false" onchange="q27_Data()">
+
+                            <option value="1">হ্যাঁ </option>
+
+                            <option value="2">না</option>			
+
+                        </select>
+
+                 </li>
+
+                <li class="ui-field-contain">
+
+                    <label for="q27_s">ভুল / সঠিক</label>
+
+                        <input type="text" name="q27_s" id="q27_s" readonly="readonly" style="background-color:#E7E7E7; "/>
+
+               </li>
+
+            </ul>
+
+            
+
+            <!--onClick="waterData2Next();"-->
+
+            <a data-role="button" onclick="banbeisData6Next()" href="#" data-transition="slide" >Next</a>
+
+            <div class="errorChk"></div>
+
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+    </div>
+
+    
+
+    <div data-theme="d" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>
+
+
+
+</div>
+
+
+
+<div data-role="page" id="inPhoto" >
+
+    <div data-theme="d" data-role="header" data-position="fixed" >
+
+    <a data-role="button" onClick="menuClick();" data-icon="bullets" data-iconpos="left" class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="menu.png"></a>
+
+        <!--<a data-role="button" data-rel="back"  data-icon="arrow-l" data-iconpos="left" class="ui-btn-right" data-transition="slide">Back</a>-->
+
+        <h3>BANBEIS</h3>
+
+  </div>
+
+    <div data-role="content">       
+
+        <!--<div class="activities" style="background-color:#E6E6E6; font-weight:bold; word-wrap: break-word; box-shadow:0px 0px 5px; padding:10px 10px; border-radius:5px; margin-bottom:10px;"></div>-->
+
+		
+
+        <a data-role="button" id="btn_take_pic" onClick="getAchivementImage();" class="ui-btn" >Take Picture</a>       
+
+        <img src="" width="128" height="128" alt="Image" id="myImageA">
+
+        <input name="achPhoto" id="achPhoto" value=""   type="hidden">
+
+       <!-- <input name="achlocation" id="achlocation"   type="text">-->
+
+        <input name="ach_lat" id="ach_lat" value=""   type="hidden">
+
+        <input name="ach_long" id="ach_long" value=""  type="hidden">
+
+        <a data-role="button" id="btn_ach_lat_long" onClick="getLocationInfoAch();" class="ui-btn" >Confirm Location</a>
+
+		<div class="errorChk" style="color:#F00;"></div>
+
+        <div id="sucChk" style="color:#00CA00;"></div>
+
+        <!--<div id="checkLocationAch" style="color:#FF0000;"></div>-->
+
+        <br/><br/>
+
+        <!--<a data-role="button" id="btn_pmt_save" onClick="pmtDataSave();" class="ui-btn" >Save</a>-->
+
+		<br/>
+
+        <a data-role="button" id="btn_pmt_submit" onClick="banbeisDataSubmit();" class="ui-btn"  >Submit</a> <!--onClick="pmtDataSubmit();"-->
+
+		
+
+        
+
+    </div>
+
+    
+
+	<div data-theme="d" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ------------------- review list---------------------------------------------------------------------------------------- -->
+
+<div data-theme="d" data-role="page" id="selectionConfirmed" >
+
+    <div data-theme="d" data-role="header" data-position="fixed" >
+
+        <a data-role="button" onClick="menuClick();"  data-icon="bullets" data-iconpos="left" class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><!--<img src="planbd-logo-small.jpg">--></a>
+
+        <a data-role="button" onclick="backClick();" data-rel="back"  data-icon="arrow-l" data-iconpos="left" class="ui-btn-right" data-transition="slide">Back</a>
+
+        <h3> Confirm Selection</h3>
+
+    </div>
+
+    <div data-role="content">
+
+    	<div class="activities" style="background-color:#E6E6E6; font-weight:bold; word-wrap: break-word; box-shadow:0px 0px 5px; padding:10px 10px; border-radius:5px; margin-bottom:10px;"></div>
+
+    	<br/>
+
+        <div>Selection Confirmed </div>
+
+        <br/>
+
+        <br/>
+
+        <a data-role="button" onClick="achDataNext2();"   data-transition="slide" >Next</a>
+
+        
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+<script type="text/javascript" src="phonegap.js"></script>
+
+
+
+
+
+</body>
+
+</html>
+
