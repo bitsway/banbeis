@@ -56,7 +56,7 @@ $(document).ready(function(){
 			}
 			
 			/*--------compliance-----------*/
-			$("input[name='agr_seqaep']:checked").val("");
+			//$("input[name='agr_seqaep']:checked").val("");
 			
 			/*--------compliance-end----------*/
 			
@@ -65,20 +65,20 @@ $(document).ready(function(){
 		}
 	$.mobile.navigate(url);
 	
-	if (localStorage.selectedSchool!='YES'){
+	/*if (localStorage.selectedSchool!='YES'){
 	 $("#c_search").show();
 	 $("#c_selected").hide();
 	 
-	 
+	 */
 		/*var temp='';
 		temp=localStorage.cp1;
 		if(temp.length > 3){
 			$("#cp1").html(localStorage.cp1);
 			}*/
-	}else{		
+	/*}else{		
 		$("#c_search").hide();
 		$("#c_selected").show();
-	}
+	}*/
 	
 });
 
@@ -126,7 +126,7 @@ function syncBasic() {
 						url = "#homePage";
 						$.mobile.navigate(url);
 						
-						localStorage.selectedSchool='NO';
+						//localStorage.selectedSchool='NO';
 						/*localStorage.cp1='NO';
 						localStorage.cp2='NO';
 						localStorage.cp3='NO';
@@ -1367,7 +1367,7 @@ function complianceData2Next(){
 		}else if (stu_got_married_6=="" ){
 			$(".errorChk").text("Required Numeric");
 		}else if (stu_rec_stipend_6<total6){             //3 col check cls 6
-			$(".errorChk").text("Less than 6");				
+			$(".errorChk").text("Less than Number of students who received PMT stipend VI");			
 		}else if (stu_present_visit_6=="" ){
 			$(".errorChk").text("Required Numeric");	
 		}else if (stu_rec_stipend_7=="" ){
@@ -1379,7 +1379,7 @@ function complianceData2Next(){
 		}else if (stu_got_married_7=="" ){
 			$(".errorChk").text("Required Numeric");	
 		}else if (stu_rec_stipend_7<total7){             //3 col check cls 7
-			$(".errorChk").text("Less than 7");			
+			$(".errorChk").text("Less than Number of students who received PMT stipend VII");			
 		}else if (stu_present_visit_7=="" ){
 			$(".errorChk").text("Required Numeric");	
 		}else if (stu_rec_stipend_8=="" ){
@@ -1391,7 +1391,7 @@ function complianceData2Next(){
 		}else if (stu_got_married_8=="" ){
 			$(".errorChk").text("Required Numeric");
 		}else if (stu_rec_stipend_8<total8){             //3 col check cls 8
-			$(".errorChk").text("Less than 8");				
+			$(".errorChk").text("Less than Number of students who received PMT stipend VIII");			
 		}else if (stu_present_visit_8=="" ){
 			$(".errorChk").text("Required Numeric");	
 		}else if (stu_rec_stipend_9=="" ){
@@ -1403,7 +1403,7 @@ function complianceData2Next(){
 		}else if (stu_got_married_9=="" ){
 			$(".errorChk").text("Required Numeric");
 		}else if (stu_rec_stipend_9<total9){             //3 col check cls 9
-			$(".errorChk").text("Less than 9");	
+			$(".errorChk").text("Less than Number of students who received PMT stipend IX");
 		}else if (stu_present_visit_9=="" ){
 			$(".errorChk").text("Required Numeric");	
 		}else if (stu_rec_stipend_10=="" ){
@@ -1415,7 +1415,7 @@ function complianceData2Next(){
 		}else if (stu_got_married_10=="" ){
 			$(".errorChk").text("Required Numeric");
 		}else if (stu_rec_stipend_10<total10){             //3 col check cls 10
-			$(".errorChk").text("Less than 10");	
+			$(".errorChk").text("Less than Number of students who received PMT stipend X");	
 		}else if (stu_present_visit_10=="" ){
 			$(".errorChk").text("Required Numeric");	
 									
