@@ -2231,20 +2231,20 @@ function complianceDataSubmit(){
 				$(".errorChk").text("Please confirm Photo 2 ");
 				$("#btn_com_submit").show();
 			}else{		
-				if(com_latitude==0 || com_latitude==0){
-					$(".errorChk").text("Please confirm your location ");
-					$("#btn_com_submit").show();
-				}else{				
-					imagePathA="test"					
+				//if(com_latitude==0 || com_latitude==0){
+				//	$(".errorChk").text("Please confirm your location ");
+				//	$("#btn_com_submit").show();
+				//}else{				
+					//imagePathA="test"					
 					if (imagePathA!=""){							
 						$(".errorChk").text("Syncing photo 1..");
 						imageName = localStorage.mobile_no+"_"+get_time+".jpg";						
 						uploadPhotoAch(imagePathA, imageName);						
 					}
 										
-				}//-Photo 2
+				/*}*/ //-end check location
 				
-			}//end check location
+			}//Photo 2
 		}//chk photo
 		
 	}
@@ -2293,7 +2293,7 @@ function winAchInfo(r) {
 	var d = new Date();	
 	var get_time=d.getTime();
 		
-	imagePath2A="test2"
+	//imagePath2A="test2"
 	if (imagePath2A!=""){							
 		$(".errorChk").text("Syncing photo 2..");
 		imageName2 = localStorage.mobile_no+"_"+get_time+".jpg";		
