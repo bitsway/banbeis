@@ -2238,7 +2238,7 @@ function complianceDataSubmit(){
 					//imagePathA="test"					
 					if (imagePathA!=""){							
 						$(".errorChk").text("Syncing photo 1..");
-						imageName = localStorage.mobile_no+"_"+get_time+".jpg";						
+						imageName = localStorage.mobile_no+"_"+get_time+".jpg";										
 						uploadPhotoAch(imagePathA, imageName);						
 					}
 										
@@ -2296,7 +2296,8 @@ function winAchInfo(r) {
 	//imagePath2A="test2"
 	if (imagePath2A!=""){							
 		$(".errorChk").text("Syncing photo 2..");
-		imageName2 = localStorage.mobile_no+"_"+get_time+".jpg";		
+		imageName2 = localStorage.mobile_no+"_"+get_time+".jpg";
+				
 		uploadPhoto2Ach(imagePath2A, imageName2);		
 	}
 	
@@ -2309,7 +2310,7 @@ function onfail(r) {
 	var d = new Date();	
 	var get_time=d.getTime();
 	
-	imagePath2A="test2"
+	//imagePath2A="test2"
 	if (imagePath2A!=""){							
 		$(".errorChk").text("Syncing photo 2..");
 		imageName2 = localStorage.mobile_no+"_"+get_time+".jpg";		
