@@ -32,12 +32,12 @@ function onError(error) {
 
 
 //---- online 
-var apipath="http://c003.cloudapp.net/banbeis/syncmobile/";
-var apipath_compliance="http://c003.cloudapp.net/banbeis/syncmobile_compliance/";
+//var apipath="http://c003.cloudapp.net/banbeis/syncmobile/";
+//var apipath_compliance="http://c003.cloudapp.net/banbeis/syncmobile_compliance/";
 
 //--- local
-//var apipath="http://127.0.0.1:8000/banbeis/syncmobile/";
-//var apipath_compliance="http://127.0.0.1:8000/banbeis/syncmobile_compliance/";
+var apipath="http://127.0.0.1:8000/banbeis/syncmobile/";
+var apipath_compliance="http://127.0.0.1:8000/banbeis/syncmobile_compliance/";
 
  url ="";
 
@@ -117,9 +117,9 @@ function syncBasic() {
 						$('#syncBasic').show();
 						
 						/*--------------*/
-						$("input[name='add_cls_seqaep']:checked").val("");
+						/*$("input[name='add_cls_seqaep']:checked").val("");
 						$("#agr_type_con").hide();
-						$("#des_cls_ref_sem").hide();
+						$("#des_cls_ref_sem").hide();*/
 						/*--------------*/
 						
 						
@@ -813,7 +813,7 @@ function banbeisDataSubmit(){
 				$(".errorChk").text("Please confirm your location ");
 				$("#btn_ach_submit").show();
 			}else{				
-				//imagePathA="test"
+				imagePathA="test"
 				if (imagePathA!=""){							
 					$(".errorChk").text("Syncing photo..");
 					imageName = localStorage.mobile_no+"_"+get_time+".jpg";
@@ -1227,7 +1227,7 @@ function complianceDataNext(){
 	};	
 
 
-function agrementSeq(){
+/*function agrementSeq(){
 	
 	agr=$("input[name='agr_seqaep']:checked").val();
 	
@@ -1236,7 +1236,7 @@ function agrementSeq(){
 	}else{
 	 	$("#agr_type_con").hide();
 	}
-}
+}*/
 
 
 function complianceData2Next(){
@@ -1900,7 +1900,7 @@ function complianceData4Next(){
 		}
 }
 
-function ins_agr_cls(){
+/*function ins_agr_cls(){
 	
 	cls_seq=$("input[name='add_cls_seqaep']:checked").val();
 	//alert(cls_seq);
@@ -1909,7 +1909,7 @@ function ins_agr_cls(){
 	}else{
 	 	$("#des_cls_ref_sem").hide();
 	}
-}
+}*/
 
 
 function complianceData5Next(){
