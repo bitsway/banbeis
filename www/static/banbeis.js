@@ -1134,12 +1134,12 @@ function getUpCom(){
 						 url="#compliancePage1";					
 						 $.mobile.navigate(url);
 						 
-						 localStorage.selectedSchool='YES';
-						 localStorage.selectedSName=school_name;
+						 //localStorage.selectedSchool='YES';
+						 //localStorage.selectedSName=school_name;
 						 
-						 $("#c_selected_school").html(localStorage.selectedSName);
-						 $("#c_search").hide();
-						 $("#c_selected").show();
+						 //$("#c_selected_school").html(localStorage.selectedSName);
+						 //$("#c_search").hide();
+						 //$("#c_selected").show();
 						 
 					}else if (resultStr[0]=="Failed"){
 						$("#comp_error").text(resultStr[1]);						
