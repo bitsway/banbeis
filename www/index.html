@@ -962,7 +962,7 @@ function totalAttSci(){
             <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     </div>
     
-    <div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>
+   <!-- <div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>-->
 
 </div>
 
@@ -1797,12 +1797,12 @@ function totalAttSci(){
     <div data-role="content" > 
     <div class="comp_error" style="color:#C00"></div> 
     	<!--<div id="c_search">-->
-            <ul data-role="listview" data-inset="true">
+           <!-- <ul data-role="listview" data-inset="true">
                  <li class="ui-field-contain" >
                     <input name="s_quick_school" type="text" id="s_quick_school" placeholder="School EIIN" autocomplete="off" />
-                    <input type="button" name="btnSearch" id="btnSearch" class="btn" value="Quick Search" onclick="school('QUICKS')" />
+                    <input type="button" name="btnQuickSearch" id="btnQuickSearch" class="btn" value="Quick Search" onclick="school('QUICKS')" />
                  </li>
-             </ul>
+             </ul>-->
              <ul data-role="listview" data-inset="true">
                  <li class="ui-field-contain" >
                     <div id="com_division"></div>
@@ -1831,13 +1831,13 @@ function totalAttSci(){
                         <option value="">Select Student ID</option>                   
                     </select>
                  </li>	-->
-                 <li class="ui-field-contain" > 
-                    <input type="button" name="btnSearch" id="btnSearch" class="btn" value="Search" onclick="school('BTNS')" />
-                 </li>
+                <!-- <li class="ui-field-contain" > 
+                    <input type="button" name="btnComSearch" id="btnComSearch" class="btn" value="Search" onclick="school('BTNS')" />
+                 </li>-->
                  
             </ul>
             
-       <!-- <a data-role="button" onclick="banbeisFirstDataNext()" href="#" data-theme="c" data-transition="slide" >Next</a>-->
+        <a data-role="button" onclick="banbeisFirstDataNext()" href="#" data-theme="c" data-transition="slide" >Next</a>
         <div class="errorChk"></div>
         
        <!-- <div id="c_selected">
@@ -1848,9 +1848,36 @@ function totalAttSci(){
             <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     </div>
     
-    <div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>
+    <!--<div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>-->
 
 </div>
+
+
+<div data-role="page" data-theme="c" id="com_first_next_page" style="overflow:scroll;">
+    <div data-theme="c" data-role="header" data-position="fixed" >
+        <a data-role="button" onClick="menuClick();" data-icon="bullets" data-iconpos="left" class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="menu.png" /></a>
+        <a data-role="button" onclick="backClick();" data-rel="back" class="ui-btn-right" data-transition="slide"><img src="back.png" /></a>
+        <h3>BANBEIS</h3>
+    </div>
+    <div data-role="content" > 
+    <div class="comp_error" style="color:#C00"></div> 
+    	
+         School Select        
+         <br/><br/><br/>           
+        <a data-role="button" onclick="school('BTNS')" href="#" data-theme="c" data-transition="slide" >Next</a>
+       
+       <!-- <div id="c_selected">
+        	 Selected School<br />
+            <div id="c_selected_school" style="font-weight:bold;"> </div>
+            <input type="button" name="btnNext" id="btnNext" class="btn" value="Next" onclick="searchNext()" />
+        </div>-->
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    </div>
+    
+    <!--<div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>-->
+
+</div>
+
 
 
 
@@ -1929,8 +1956,7 @@ function totalAttSci(){
                    		<label for="radio-choice-h-2a">Yes</label>
                         <input name="agr_seqaep" id="radio-choice-h-2a" value="1" checked="checked" type="radio" >
                         <label for="radio-choice-h-2b">No</label>
-                        <input name="agr_seqaep" id="radio-choice-h-2b" value="2" type="radio">
-                        
+                        <input name="agr_seqaep" id="radio-choice-h-2b" value="2" type="radio">                        
                     </fieldset>
                  </li>
                 <li class="ui-field-contain auto_break" id="agr_type_con">
@@ -1951,7 +1977,7 @@ function totalAttSci(){
      
     </div>
     
-    <div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>
+    <!--<div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>-->
 
 </div>
 
@@ -2185,7 +2211,7 @@ function totalAttSci(){
             <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     </div>
     
-    <div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>
+    <!--<div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>-->
 
 </div>
 
@@ -2334,7 +2360,7 @@ function totalAttSci(){
             <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     </div>
     
-    <div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>
+    <!--<div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>-->
 
 </div>
 
@@ -2712,7 +2738,7 @@ function totalAttSci(){
             <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     </div>
     
-    <div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>
+    <!--<div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>-->
 
 </div>
 
@@ -2975,7 +3001,7 @@ Head</label>
             <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     </div>
     
-    <div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>
+    <!--<div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>-->
 
 </div>
 
@@ -3468,7 +3494,7 @@ Head</label>
             <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     </div>
     
-    <div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>
+    <!--<div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>-->
 
 </div>
 
@@ -3969,7 +3995,7 @@ Head</label>
             <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     </div>
     
-    <div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>
+    <!--<div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>-->
 
 </div>
 
@@ -4163,7 +4189,7 @@ Head</label>
             <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     </div>
     
-    <div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>
+    <!--<div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>-->
 
 </div>
 
@@ -4190,11 +4216,11 @@ Head</label>
         <br/><br/>
 		<br/>
         <a data-role="button" id="btn_com_submit" onClick="complianceDataSubmit();" class="ui-btn" >Submit</a> 
-		
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
         
     </div>
     
-	<div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>
+	<!--<div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>-->
 </div>
 
 

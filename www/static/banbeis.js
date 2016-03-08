@@ -32,12 +32,12 @@ function onError(error) {
 
 
 //---- online 
-var apipath="http://c003.cloudapp.net/banbeis/syncmobile/";
-var apipath_compliance="http://c003.cloudapp.net/banbeis/syncmobile_compliance/";
+//var apipath="http://c003.cloudapp.net/banbeis/syncmobile/";
+//var apipath_compliance="http://c003.cloudapp.net/banbeis/syncmobile_compliance/";
 
 //--- local
-//var apipath="http://127.0.0.1:8000/banbeis/syncmobile/";
-//var apipath_compliance="http://127.0.0.1:8000/banbeis/syncmobile_compliance/";
+var apipath="http://127.0.0.1:8000/banbeis/syncmobile/";
+var apipath_compliance="http://127.0.0.1:8000/banbeis/syncmobile_compliance/";
 
  url ="";
 
@@ -1001,7 +1001,7 @@ function syncData(){
 //============================compliance Verification============================
 
 function complianceVerification(){
-	
+	$("#com_division").empty();
 	if(localStorage.sync_code==undefined || localStorage.sync_code==""){
 			$(".errorChk").text("Required Sync");
 			
@@ -1018,6 +1018,7 @@ function complianceVerification(){
 					  
 					  divCmbo+="</select>"
 					  $("#com_division").html(divCmbo);
+					  
 						url="#com_first_page";					
 						$.mobile.navigate(url);				  
 										  
@@ -1104,6 +1105,16 @@ function getUpCom(){
 }
 
 
+function banbeisFirstDataNext(){
+	var s_school=$("#s_com_school").val();
+	$("#s_com_school").val(s_school);
+	
+	url="#com_first_next_page";					
+	$.mobile.navigate(url);	
+	
+	}
+	
+
  function school(type){
 	$(".comp_error").text("");
 	
@@ -1165,12 +1176,7 @@ function getUpCom(){
 		
 }
 
-/*function searchNext(){
-	
-	url="#compliancePage1";					
-	$.mobile.navigate(url);	
-	
-	}*/
+
 
 function complianceDataNext(){
 		
