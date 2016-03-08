@@ -38,7 +38,7 @@
 				
 				$('#loader').hide();
 						
-				//$("#disbursement_date").datepicker();	
+				$("#disbursement_date").datepicker();	
 				
 				//location.reload();				
 				
@@ -1805,7 +1805,10 @@ function totalAttSci(){
              </ul>
              <ul data-role="listview" data-inset="true">
                  <li class="ui-field-contain" >
-                    <div id="com_division"></div>
+                    <label for="s_com_div">Division </label>
+                       <select name="s_com_div" id="s_com_div" data-native-menu="false" onchange="getDistCom()">
+                            <option value="">Select Division</option>							 												
+                        </select>
                   </li>
                   <li class="ui-field-contain" >
                      <label for="s_com_dist">District </label>

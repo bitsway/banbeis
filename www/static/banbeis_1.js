@@ -1011,13 +1011,12 @@ function complianceVerification(){
 			  url:apipath_compliance+'get_com_div_list?cid=BANBEIS&sync_code='+localStorage.sync_code,
 			  success: function(divStr) {
 					  divNameList=divStr.split("<fd>");
-					  divCmbo="<label for='s_com_div'>Division </label><select name='s_com_div' id='s_com_div' data-native-menu='false' onchange='getDistCom()'><option value=''>Select Division</option>";
+					  divCmbo="";
 					  for (i=0;i<divNameList.length;i++){					 
 						  divCmbo+="<option value="+encodeURIComponent(divNameList[i])+">"+divNameList[i]+"</option>";					  
 					  }	
 					  
-					  divCmbo+="</select>"
-					  $("#com_division").html(divCmbo);
+					  $("#s_com_div").html(divCmbo);
 						url="#com_first_page";					
 						$.mobile.navigate(url);				  
 										  
@@ -1083,7 +1082,7 @@ function getUpCom(){
 	up_name=$("#s_com_up").val();	
 	
 	
-	$.ajax({		
+	$.ajax({
 		  url:apipath_compliance+'get_comp_up_school_list?cid=BANBEIS&sync_code='+localStorage.sync_code+'&div_name='+encodeURIComponent(div_name)+'&dist_name='+encodeURIComponent(dist_name)+'&up_name='+encodeURIComponent(up_name),
 		  success: function(schoolStr) {
 				  schIdNameList=schoolStr.split("<fd>");				  
@@ -1105,8 +1104,7 @@ function getUpCom(){
 
 
  function school(type){
-	$(".comp_error").text("");
-	
+	//$("#comp_error").text("");
 	if (type=="QUICKS"){
 		var s_school=$("#s_quick_school").val();
 		
@@ -1118,7 +1116,8 @@ function getUpCom(){
 	
 	if (s_school==""){
 		$(".comp_error").text("Required School");
-				
+		url="#com_first_page";
+		
 	}else{
 		
 		//alert(apipath_compliance+'org_nameCheck?cid=BANBEIS&s_school='+s_school);
@@ -1126,15 +1125,14 @@ function getUpCom(){
 			  url:apipath_compliance+'org_nameCheck?cid=BANBEIS&s_school='+s_school,
 			  success: function(result) {				  
 				  	resultStr=result.split("<fd>");
-					//alert(resultStr);			  	
+								  	
 					 if (resultStr[0]=="Success"){
-						  var schoolNameStr=resultStr[1].split("fdfd");	
-						  					  
-						  var school_name=schoolNameStr[0];
-						  var union_name=schoolNameStr[1];		
-						  var upazila_thana=schoolNameStr[2];
-						  var dist_name=schoolNameStr[3];
-						  var school_code=schoolNameStr[4];
+						  schoolNameStr=resultStr[1].split("fdfd");						  
+						  school_name=schoolNameStr[0];
+						  union_name=schoolNameStr[1];		
+						  upazila_thana=schoolNameStr[2];
+						  dist_name=schoolNameStr[3];
+						  school_code=schoolNameStr[4];
 						  
 						  $("#institute_name").val(school_name);
 						  $("#com_union").val(union_name);
@@ -1144,7 +1142,7 @@ function getUpCom(){
 						  
 						  
 						 url="#compliancePage1";					
-						 $.mobile.navigate(url);
+						 
 						 
 						 //localStorage.selectedSchool='YES';
 						 //localStorage.selectedSName=school_name;
@@ -1154,14 +1152,14 @@ function getUpCom(){
 						 //$("#c_selected").show();
 						 
 					}else if (resultStr[0]=="Failed"){
-						$(".comp_error").text("Invalid School");
-											
+						$(".comp_error").text(resultStr[1]);
+						url="#com_first_page";						
 					} 
 				
 			  }
 		});
 	}
-	
+	$.mobile.navigate(url);
 		
 }
 
@@ -1174,19 +1172,19 @@ function getUpCom(){
 
 function complianceDataNext(){
 		
-		var institute_name=$("#institute_name").val();
-		var com_union=$("#com_union").val();
-		var com_upzila=$("#com_upzila").val();
-		var com_district=$("#com_district").val();
-		var com_eiin=$("#com_eiin").val();
-		var com_phoneno=$("#com_phoneno").val();
-		var com_ict_email=$("#com_ict_email").val();
-		var com_other_email=$("#com_other_email").val();
-		var com_web_address=$("#com_web_address").val();
-		var com_institute_category=$("#com_institute_category").val();
-		var com_type_institute=$("#com_type_institute").val();
-		var agr_seqaep=$("input[name='agr_seqaep']:checked").val();
-		var agr_type=$("input[name='agr_type']:checked").val();
+		institute_name=$("#institute_name").val();
+		com_union=$("#com_union").val();
+		com_upzila=$("#com_upzila").val();
+		com_district=$("#com_district").val();
+		com_eiin=$("#com_eiin").val();
+		com_phoneno=$("#com_phoneno").val();
+		com_ict_email=$("#com_ict_email").val();
+		com_other_email=$("#com_other_email").val();
+		com_web_address=$("#com_web_address").val();
+		com_institute_category=$("#com_institute_category").val();
+		com_type_institute=$("#com_type_institute").val();
+		agr_seqaep=$("input[name='agr_seqaep']:checked").val();
+		agr_type=$("input[name='agr_type']:checked").val();
 			
 		//alert(agr_seqaep);		
 		if (institute_name==""){
@@ -1256,65 +1254,65 @@ function complianceDataNext(){
 
 function complianceData2Next(){
 		
-		var pmt_boys_6=$("#pmt_boys_6").val()
-		var not_pmt_boys_6=$("#not_pmt_boys_6").val()
-		var pmt_girls_6=$("#pmt_girls_6").val()
-		var not_pmt_girls_6=$("#not_pmt_girls_6").val()
+		pmt_boys_6=$("#pmt_boys_6").val()
+		not_pmt_boys_6=$("#not_pmt_boys_6").val()
+		pmt_girls_6=$("#pmt_girls_6").val()
+		not_pmt_girls_6=$("#not_pmt_girls_6").val()
 		
-		var pmt_boys_7=$("#pmt_boys_7").val()
-		var not_pmt_boys_7=$("#not_pmt_boys_7").val()
-		var pmt_girls_7=$("#pmt_girls_7").val()
-		var not_pmt_girls_7=$("#not_pmt_girls_7").val()
+		pmt_boys_7=$("#pmt_boys_7").val()
+		not_pmt_boys_7=$("#not_pmt_boys_7").val()
+		pmt_girls_7=$("#pmt_girls_7").val()
+		not_pmt_girls_7=$("#not_pmt_girls_7").val()
 		
-		var pmt_boys_8=$("#pmt_boys_8").val()
-		var not_pmt_boys_8=$("#not_pmt_boys_8").val()
-		var pmt_girls_8=$("#pmt_girls_8").val()
-		var not_pmt_girls_8=$("#not_pmt_girls_8").val()
+		pmt_boys_8=$("#pmt_boys_8").val()
+		not_pmt_boys_8=$("#not_pmt_boys_8").val()
+		pmt_girls_8=$("#pmt_girls_8").val()
+		not_pmt_girls_8=$("#not_pmt_girls_8").val()
 		
-		var pmt_boys_9=$("#pmt_boys_9").val()
-		var not_pmt_boys_9=$("#not_pmt_boys_9").val()
-		var pmt_girls_9=$("#pmt_girls_9").val()
-		var not_pmt_girls_9=$("#not_pmt_girls_9").val()
+		pmt_boys_9=$("#pmt_boys_9").val()
+		not_pmt_boys_9=$("#not_pmt_boys_9").val()
+		pmt_girls_9=$("#pmt_girls_9").val()
+		not_pmt_girls_9=$("#not_pmt_girls_9").val()
 		
-		var pmt_boys_10=$("#pmt_boys_10").val()
-		var not_pmt_boys_10=$("#not_pmt_boys_10").val()
-		var pmt_girls_10=$("#pmt_girls_10").val()
-		var not_pmt_girls_10=$("#not_pmt_girls_10").val()
+		pmt_boys_10=$("#pmt_boys_10").val()
+		not_pmt_boys_10=$("#not_pmt_boys_10").val()
+		pmt_girls_10=$("#pmt_girls_10").val()
+		not_pmt_girls_10=$("#not_pmt_girls_10").val()
 		//alert(pmt_boys_6+','+not_pmt_boys_6+','+pmt_girls_6+','+not_pmt_girls_6+','+pmt_boys_7+','+not_pmt_boys_7+','+pmt_girls_7+','+not_pmt_girls_7+','+pmt_boys_8+','+not_pmt_boys_8+','+pmt_girls_8+','+not_pmt_girls_8+','+pmt_boys_9+','+not_pmt_boys_9+','+pmt_girls_9+','+not_pmt_girls_9+','+pmt_boys_10+','+not_pmt_boys_10+','+pmt_girls_10+','+not_pmt_girls_10);
 		/**********PMT Based Stipend Program**********/
 				
-		var stip_pro_semister=$("#stip_pro_semister").val()
-		var disbursement_date=$("#disbursement_date").val()
+		stip_pro_semister=$("#stip_pro_semister").val()
+		disbursement_date=$("#disbursement_date").val()
 		
-		var stu_rec_stipend_6=$("#stu_rec_stipend_6").val()
-		var stu_attendance_6=$("#stu_attendance_6").val()
-		var stu_pass_annual_exam_6=$("#stu_pass_annual_exam_6").val()
-		var stu_got_married_6=$("#stu_got_married_6").val()
-		var stu_present_visit_6=$("#stu_present_visit_6").val()
+		stu_rec_stipend_6=$("#stu_rec_stipend_6").val()
+		stu_attendance_6=$("#stu_attendance_6").val()
+		stu_pass_annual_exam_6=$("#stu_pass_annual_exam_6").val()
+		stu_got_married_6=$("#stu_got_married_6").val()
+		stu_present_visit_6=$("#stu_present_visit_6").val()
 		
-		var stu_rec_stipend_7=$("#stu_rec_stipend_7").val()
-		var stu_attendance_7=$("#stu_attendance_7").val()
-		var stu_pass_annual_exam_7=$("#stu_pass_annual_exam_7").val()
-		var stu_got_married_7=$("#stu_got_married_7").val()
-		var stu_present_visit_7=$("#stu_present_visit_7").val()
+		stu_rec_stipend_7=$("#stu_rec_stipend_7").val()
+		stu_attendance_7=$("#stu_attendance_7").val()
+		stu_pass_annual_exam_7=$("#stu_pass_annual_exam_7").val()
+		stu_got_married_7=$("#stu_got_married_7").val()
+		stu_present_visit_7=$("#stu_present_visit_7").val()
 		
-		var stu_rec_stipend_8=$("#stu_rec_stipend_8").val()
-		var stu_attendance_8=$("#stu_attendance_8").val()
-		var stu_pass_annual_exam_8=$("#stu_pass_annual_exam_8").val()
-		var stu_got_married_8=$("#stu_got_married_8").val()
-		var stu_present_visit_8=$("#stu_present_visit_8").val()
+		stu_rec_stipend_8=$("#stu_rec_stipend_8").val()
+		stu_attendance_8=$("#stu_attendance_8").val()
+		stu_pass_annual_exam_8=$("#stu_pass_annual_exam_8").val()
+		stu_got_married_8=$("#stu_got_married_8").val()
+		stu_present_visit_8=$("#stu_present_visit_8").val()
 		
-		var stu_rec_stipend_9=$("#stu_rec_stipend_9").val()
-		var stu_attendance_9=$("#stu_attendance_9").val()
-		var stu_pass_annual_exam_9=$("#stu_pass_annual_exam_9").val()
-		var stu_got_married_9=$("#stu_got_married_9").val()
-		var stu_present_visit_9=$("#stu_present_visit_9").val()	
+		stu_rec_stipend_9=$("#stu_rec_stipend_9").val()
+		stu_attendance_9=$("#stu_attendance_9").val()
+		stu_pass_annual_exam_9=$("#stu_pass_annual_exam_9").val()
+		stu_got_married_9=$("#stu_got_married_9").val()
+		stu_present_visit_9=$("#stu_present_visit_9").val()	
 		
-		var stu_rec_stipend_10=$("#stu_rec_stipend_10").val()
-		var stu_attendance_10=$("#stu_attendance_10").val()
-		var stu_pass_annual_exam_10=$("#stu_pass_annual_exam_10").val()
-		var stu_got_married_10=$("#stu_got_married_10").val()
-		var stu_present_visit_10=$("#stu_present_visit_10").val()
+		stu_rec_stipend_10=$("#stu_rec_stipend_10").val()
+		stu_attendance_10=$("#stu_attendance_10").val()
+		stu_pass_annual_exam_10=$("#stu_pass_annual_exam_10").val()
+		stu_got_married_10=$("#stu_got_married_10").val()
+		stu_present_visit_10=$("#stu_present_visit_10").val()
 		//alert(stip_pro_semister+','+disbursement_date+','+stu_rec_stipend_6+','+stu_attendance_6+','+stu_pass_annual_exam_6+','+stu_got_married_6+','+stu_present_visit_6+','+stu_rec_stipend_7+','+stu_attendance_7+','+stu_pass_annual_exam_7+','+stu_got_married_7+','+stu_present_visit_7+','+stu_rec_stipend_8+','+stu_attendance_8+','+stu_pass_annual_exam_8+','+stu_got_married_8+','+stu_present_visit_8+','+stu_rec_stipend_9+','+stu_attendance_9+','+stu_pass_annual_exam_9+','+stu_got_married_9+','+stu_present_visit_9+','+stu_rec_stipend_10+','+stu_attendance_10+','+stu_pass_annual_exam_10+','+stu_got_married_10+','+stu_present_visit_10);
 		/**********Enrolmentby Grade and Gender Check*********/	
 		var total6=(+stu_attendance_6)+(+stu_pass_annual_exam_6)+(+stu_got_married_6);
@@ -1474,45 +1472,45 @@ function complianceData2Next(){
 
 function complianceData3Next(){
 	
-		var pmt_st_1_name=$("#pmt_st_1_name").val()
+		pmt_st_1_name=$("#pmt_st_1_name").val()
 		//pmt_st_1_grade=$("#pmt_st_1_grade").val()
-		var pmt_st_1_id=$("#pmt_st_1_id").val()
-		var pmt_st_1_attendance=$("#pmt_st_1_attendance").val()
-		var pmt_st_1_final_exam_mark=$("#pmt_st_1_final_exam_mark").val()
-		var current_school_1=$("input[name='current_school_1']:checked").val();
-		var status_married_1=$("input[name='status_married_1']:checked").val();
+		pmt_st_1_id=$("#pmt_st_1_id").val()
+		pmt_st_1_attendance=$("#pmt_st_1_attendance").val()
+		pmt_st_1_final_exam_mark=$("#pmt_st_1_final_exam_mark").val()
+		current_school_1=$("input[name='current_school_1']:checked").val();
+		status_married_1=$("input[name='status_married_1']:checked").val();
 		
-		var pmt_st_2_name=$("#pmt_st_2_name").val()
+		pmt_st_2_name=$("#pmt_st_2_name").val()
 		//pmt_st_2_grade=$("#pmt_st_2_grade").val()
-		var pmt_st_2_id=$("#pmt_st_2_id").val()
-		var pmt_st_2_attendance=$("#pmt_st_2_attendance").val()
-		var pmt_st_2_final_exam_mark=$("#pmt_st_2_final_exam_mark").val()
-		var current_school_2=$("input[name='current_school_2']:checked").val();
-		var status_married_2=$("input[name='status_married_2']:checked").val();
+		pmt_st_2_id=$("#pmt_st_2_id").val()
+		pmt_st_2_attendance=$("#pmt_st_2_attendance").val()
+		pmt_st_2_final_exam_mark=$("#pmt_st_2_final_exam_mark").val()
+		current_school_2=$("input[name='current_school_2']:checked").val();
+		status_married_2=$("input[name='status_married_2']:checked").val();
 		
-		var pmt_st_3_name=$("#pmt_st_3_name").val()
+		pmt_st_3_name=$("#pmt_st_3_name").val()
 		//pmt_st_3_grade=$("#pmt_st_3_grade").val()
-		var pmt_st_3_id=$("#pmt_st_3_id").val()
-		var pmt_st_3_attendance=$("#pmt_st_3_attendance").val()
-		var pmt_st_3_final_exam_mark=$("#pmt_st_3_final_exam_mark").val()
-		var current_school_3=$("input[name='current_school_3']:checked").val();
-		var status_married_3=$("input[name='status_married_3']:checked").val();
+		pmt_st_3_id=$("#pmt_st_3_id").val()
+		pmt_st_3_attendance=$("#pmt_st_3_attendance").val()
+		pmt_st_3_final_exam_mark=$("#pmt_st_3_final_exam_mark").val()
+		current_school_3=$("input[name='current_school_3']:checked").val();
+		status_married_3=$("input[name='status_married_3']:checked").val();
 		
-		var pmt_st_4_name=$("#pmt_st_4_name").val()
+		pmt_st_4_name=$("#pmt_st_4_name").val()
 		//pmt_st_4_grade=$("#pmt_st_4_grade").val()
-		var pmt_st_4_id=$("#pmt_st_4_id").val()
-		var pmt_st_4_attendance=$("#pmt_st_4_attendance").val()
-		var pmt_st_4_final_exam_mark=$("#pmt_st_4_final_exam_mark").val()
-		var current_school_4=$("input[name='current_school_4']:checked").val();
-		var status_married_4=$("input[name='status_married_4']:checked").val();
+		pmt_st_4_id=$("#pmt_st_4_id").val()
+		pmt_st_4_attendance=$("#pmt_st_4_attendance").val()
+		pmt_st_4_final_exam_mark=$("#pmt_st_4_final_exam_mark").val()
+		current_school_4=$("input[name='current_school_4']:checked").val();
+		status_married_4=$("input[name='status_married_4']:checked").val();
 		
-		var pmt_st_5_name=$("#pmt_st_5_name").val()
+		pmt_st_5_name=$("#pmt_st_5_name").val()
 		//pmt_st_5_grade=$("#pmt_st_5_grade").val()
-		var pmt_st_5_id=$("#pmt_st_5_id").val()
-		var pmt_st_5_attendance=$("#pmt_st_5_attendance").val()
-		var pmt_st_5_final_exam_mark=$("#pmt_st_5_final_exam_mark").val()
-		var current_school_5=$("input[name='current_school_5']:checked").val();
-		var status_married_5=$("input[name='status_married_5']:checked").val();
+		pmt_st_5_id=$("#pmt_st_5_id").val()
+		pmt_st_5_attendance=$("#pmt_st_5_attendance").val()
+		pmt_st_5_final_exam_mark=$("#pmt_st_5_final_exam_mark").val()
+		current_school_5=$("input[name='current_school_5']:checked").val();
+		status_married_5=$("input[name='status_married_5']:checked").val();
 		
 		if (pmt_st_1_name==""){
 			$(".errorChk").text("Required Name");
@@ -1595,107 +1593,107 @@ function complianceData3Next(){
 
 function complianceData4Next(){
 
-		var add_cls_seqaep=$("input[name='add_cls_seqaep']:checked").val();
-		var add_class_semister=$("#add_class_semister").val()			
-		var act_1_dis_date=$("#act_1_dis_date").val()
-		var act_1_ag_date=$("#act_1_ag_date").val()
-		var act_1_total_work=$("#act_1_total_work").val()
-		var sub_add_cls=$("input[name='sub_add_cls']:checked").val();
+		add_cls_seqaep=$("input[name='add_cls_seqaep']:checked").val();
+		add_class_semister=$("#add_class_semister").val()			
+		act_1_dis_date=$("#act_1_dis_date").val()
+		act_1_ag_date=$("#act_1_ag_date").val()
+		act_1_total_work=$("#act_1_total_work").val()
+		sub_add_cls=$("input[name='sub_add_cls']:checked").val();
 		
-		var act_1_name=$("#act_1_name").val()	
-		var act_1_ag_inst=$("#act_1_ag_inst").val()
-		var act_1_sub=$("#act_1_sub").val()
-		var act_1_last_academic_cft=$("#act_1_last_academic_cft").val()
-		var receive_mark_1=$("input[name='receive_mark_1']:checked").val();
-		var act_1_cft_verify=$("#act_1_cft_verify").val()
-		var act_1_leave=$("#act_1_leave").val()
-		var act_1_absent=$("#act_1_absent").val()
-		var act_1_total_class=$("#act_1_total_class").val()
+		act_1_name=$("#act_1_name").val()	
+		act_1_ag_inst=$("#act_1_ag_inst").val()
+		act_1_sub=$("#act_1_sub").val()
+		act_1_last_academic_cft=$("#act_1_last_academic_cft").val()
+		receive_mark_1=$("input[name='receive_mark_1']:checked").val();
+		act_1_cft_verify=$("#act_1_cft_verify").val()
+		act_1_leave=$("#act_1_leave").val()
+		act_1_absent=$("#act_1_absent").val()
+		act_1_total_class=$("#act_1_total_class").val()
 		
-		var act_2_name=$("#act_2_name").val()	
-		var act_2_ag_inst=$("#act_2_ag_inst").val()
-		var act_2_sub=$("#act_2_sub").val()
-		var act_2_last_academic_cft=$("#act_2_last_academic_cft").val()
-		var receive_mark_2=$("input[name='receive_mark_2']:checked").val();
-		var act_2_cft_verify=$("#act_2_cft_verify").val()
-		var act_2_leave=$("#act_2_leave").val()
-		var act_2_absent=$("#act_2_absent").val()
-		var act_2_total_class=$("#act_2_total_class").val()
+		act_2_name=$("#act_2_name").val()	
+		act_2_ag_inst=$("#act_2_ag_inst").val()
+		act_2_sub=$("#act_2_sub").val()
+		act_2_last_academic_cft=$("#act_2_last_academic_cft").val()
+		receive_mark_2=$("input[name='receive_mark_2']:checked").val();
+		act_2_cft_verify=$("#act_2_cft_verify").val()
+		act_2_leave=$("#act_2_leave").val()
+		act_2_absent=$("#act_2_absent").val()
+		act_2_total_class=$("#act_2_total_class").val()
 		
-		var act_3_name=$("#act_3_name").val()	
-		var act_3_ag_inst=$("#act_3_ag_inst").val()
-		var act_3_sub=$("#act_3_sub").val()
-		var act_3_last_academic_cft=$("#act_3_last_academic_cft").val()
-		var receive_mark_3=$("input[name='receive_mark_3']:checked").val();
-		var act_3_cft_verify=$("#act_3_cft_verify").val()
-		var act_3_leave=$("#act_3_leave").val()
-		var act_3_absent=$("#act_3_absent").val()
-		var act_3_total_class=$("#act_3_total_class").val()
+		act_3_name=$("#act_3_name").val()	
+		act_3_ag_inst=$("#act_3_ag_inst").val()
+		act_3_sub=$("#act_3_sub").val()
+		act_3_last_academic_cft=$("#act_3_last_academic_cft").val()
+		receive_mark_3=$("input[name='receive_mark_3']:checked").val();
+		act_3_cft_verify=$("#act_3_cft_verify").val()
+		act_3_leave=$("#act_3_leave").val()
+		act_3_absent=$("#act_3_absent").val()
+		act_3_total_class=$("#act_3_total_class").val()
 		
-		var eng_enro_add_cls_6=$("#eng_enro_add_cls_6").val()	
-		var math_enro_add_cls_6=$("#math_enro_add_cls_6").val()
-		var sci_enro_add_cls_6=$("#sci_enro_add_cls_6").val()
-		var eng_reg_cls_6=$("#eng_reg_cls_6").val()
-		var math_reg_cls_6=$("#math_reg_cls_6").val()
-		var sci_reg_cls_6=$("#sci_reg_cls_6").val()
-		var eng_add_cls_6=$("#eng_add_cls_6").val()
-		var math_add_cls_6=$("#math_add_cls_6").val()
-		var sci_add_cls_6=$("#sci_add_cls_6").val()
-		var eng_ave_cls_6=$("#eng_ave_cls_6").val()
-		var math_ave_cls_6=$("#math_ave_cls_6").val()
-		var sci_ave_cls_6=$("#sci_ave_cls_6").val()
+		eng_enro_add_cls_6=$("#eng_enro_add_cls_6").val()	
+		math_enro_add_cls_6=$("#math_enro_add_cls_6").val()
+		sci_enro_add_cls_6=$("#sci_enro_add_cls_6").val()
+		eng_reg_cls_6=$("#eng_reg_cls_6").val()
+		math_reg_cls_6=$("#math_reg_cls_6").val()
+		sci_reg_cls_6=$("#sci_reg_cls_6").val()
+		eng_add_cls_6=$("#eng_add_cls_6").val()
+		math_add_cls_6=$("#math_add_cls_6").val()
+		sci_add_cls_6=$("#sci_add_cls_6").val()
+		eng_ave_cls_6=$("#eng_ave_cls_6").val()
+		math_ave_cls_6=$("#math_ave_cls_6").val()
+		sci_ave_cls_6=$("#sci_ave_cls_6").val()
 		
-		var eng_enro_add_cls_7=$("#eng_enro_add_cls_7").val()	
-		var math_enro_add_cls_7=$("#math_enro_add_cls_7").val()
-		var sci_enro_add_cls_7=$("#sci_enro_add_cls_7").val()
-		var eng_reg_cls_7=$("#eng_reg_cls_7").val()
-		var math_reg_cls_7=$("#math_reg_cls_7").val()
-		var sci_reg_cls_7=$("#sci_reg_cls_7").val()
-		var eng_add_cls_7=$("#eng_add_cls_7").val()
-		var math_add_cls_7=$("#math_add_cls_7").val()
-		var sci_add_cls_7=$("#sci_add_cls_7").val()
-		var eng_ave_cls_7=$("#eng_ave_cls_7").val()
-		var math_ave_cls_7=$("#math_ave_cls_7").val()
-		var sci_ave_cls_7=$("#sci_ave_cls_7").val()
+		eng_enro_add_cls_7=$("#eng_enro_add_cls_7").val()	
+		math_enro_add_cls_7=$("#math_enro_add_cls_7").val()
+		sci_enro_add_cls_7=$("#sci_enro_add_cls_7").val()
+		eng_reg_cls_7=$("#eng_reg_cls_7").val()
+		math_reg_cls_7=$("#math_reg_cls_7").val()
+		sci_reg_cls_7=$("#sci_reg_cls_7").val()
+		eng_add_cls_7=$("#eng_add_cls_7").val()
+		math_add_cls_7=$("#math_add_cls_7").val()
+		sci_add_cls_7=$("#sci_add_cls_7").val()
+		eng_ave_cls_7=$("#eng_ave_cls_7").val()
+		math_ave_cls_7=$("#math_ave_cls_7").val()
+		sci_ave_cls_7=$("#sci_ave_cls_7").val()
 		
-		var eng_enro_add_cls_8=$("#eng_enro_add_cls_8").val()	
-		var math_enro_add_cls_8=$("#math_enro_add_cls_8").val()
-		var sci_enro_add_cls_8=$("#sci_enro_add_cls_8").val()
-		var eng_reg_cls_8=$("#eng_reg_cls_8").val()
-		var math_reg_cls_8=$("#math_reg_cls_8").val()
-		var sci_reg_cls_8=$("#sci_reg_cls_8").val()
-		var eng_add_cls_8=$("#eng_add_cls_8").val()
-		var math_add_cls_8=$("#math_add_cls_8").val()
-		var sci_add_cls_8=$("#sci_add_cls_8").val()
-		var eng_ave_cls_8=$("#eng_ave_cls_8").val()
-		var math_ave_cls_8=$("#math_ave_cls_8").val()
-		var sci_ave_cls_8=$("#sci_ave_cls_8").val()
+		eng_enro_add_cls_8=$("#eng_enro_add_cls_8").val()	
+		math_enro_add_cls_8=$("#math_enro_add_cls_8").val()
+		sci_enro_add_cls_8=$("#sci_enro_add_cls_8").val()
+		eng_reg_cls_8=$("#eng_reg_cls_8").val()
+		math_reg_cls_8=$("#math_reg_cls_8").val()
+		sci_reg_cls_8=$("#sci_reg_cls_8").val()
+		eng_add_cls_8=$("#eng_add_cls_8").val()
+		math_add_cls_8=$("#math_add_cls_8").val()
+		sci_add_cls_8=$("#sci_add_cls_8").val()
+		eng_ave_cls_8=$("#eng_ave_cls_8").val()
+		math_ave_cls_8=$("#math_ave_cls_8").val()
+		sci_ave_cls_8=$("#sci_ave_cls_8").val()
 		
-		var eng_enro_add_cls_9=$("#eng_enro_add_cls_9").val()	
-		var math_enro_add_cls_9=$("#math_enro_add_cls_9").val()
-		var sci_enro_add_cls_9=$("#sci_enro_add_cls_9").val()
-		var eng_reg_cls_9=$("#eng_reg_cls_9").val()
-		var math_reg_cls_9=$("#math_reg_cls_9").val()
-		var sci_reg_cls_9=$("#sci_reg_cls_9").val()
-		var eng_add_cls_9=$("#eng_add_cls_9").val()
-		var math_add_cls_9=$("#math_add_cls_9").val()
-		var sci_add_cls_9=$("#sci_add_cls_9").val()
-		var eng_ave_cls_9=$("#eng_ave_cls_9").val()
-		var math_ave_cls_9=$("#math_ave_cls_9").val()
-		var sci_ave_cls_9=$("#sci_ave_cls_9").val()
+		eng_enro_add_cls_9=$("#eng_enro_add_cls_9").val()	
+		math_enro_add_cls_9=$("#math_enro_add_cls_9").val()
+		sci_enro_add_cls_9=$("#sci_enro_add_cls_9").val()
+		eng_reg_cls_9=$("#eng_reg_cls_9").val()
+		math_reg_cls_9=$("#math_reg_cls_9").val()
+		sci_reg_cls_9=$("#sci_reg_cls_9").val()
+		eng_add_cls_9=$("#eng_add_cls_9").val()
+		math_add_cls_9=$("#math_add_cls_9").val()
+		sci_add_cls_9=$("#sci_add_cls_9").val()
+		eng_ave_cls_9=$("#eng_ave_cls_9").val()
+		math_ave_cls_9=$("#math_ave_cls_9").val()
+		sci_ave_cls_9=$("#sci_ave_cls_9").val()
 		
-		var eng_enro_add_cls_10=$("#eng_enro_add_cls_10").val()	
-		var math_enro_add_cls_10=$("#math_enro_add_cls_10").val()
-		var sci_enro_add_cls_10=$("#sci_enro_add_cls_10").val()
-		var eng_reg_cls_10=$("#eng_reg_cls_10").val()
-		var math_reg_cls_10=$("#math_reg_cls_10").val()
-		var sci_reg_cls_10=$("#sci_reg_cls_10").val()
-		var eng_add_cls_10=$("#eng_add_cls_10").val()
-		var math_add_cls_10=$("#math_add_cls_10").val()
-		var sci_add_cls_10=$("#sci_add_cls_10").val()
-		var eng_ave_cls_10=$("#eng_ave_cls_10").val()
-		var math_ave_cls_10=$("#math_ave_cls_10").val()
-		var sci_ave_cls_10=$("#sci_ave_cls_10").val()
+		eng_enro_add_cls_10=$("#eng_enro_add_cls_10").val()	
+		math_enro_add_cls_10=$("#math_enro_add_cls_10").val()
+		sci_enro_add_cls_10=$("#sci_enro_add_cls_10").val()
+		eng_reg_cls_10=$("#eng_reg_cls_10").val()
+		math_reg_cls_10=$("#math_reg_cls_10").val()
+		sci_reg_cls_10=$("#sci_reg_cls_10").val()
+		eng_add_cls_10=$("#eng_add_cls_10").val()
+		math_add_cls_10=$("#math_add_cls_10").val()
+		sci_add_cls_10=$("#sci_add_cls_10").val()
+		eng_ave_cls_10=$("#eng_ave_cls_10").val()
+		math_ave_cls_10=$("#math_ave_cls_10").val()
+		sci_ave_cls_10=$("#sci_ave_cls_10").val()
 		
 		
 		/*
