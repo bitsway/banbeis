@@ -829,8 +829,9 @@ function banbeisDataSubmit(){
 
 
 function getAchivementImage() {
-	navigator.camera.getPicture(onSuccessA, onFailA, { quality: 10,
-	destinationType: Camera.DestinationType.FILE_URI });		
+	navigator.camera.getPicture(onSuccessA, onFailA, { quality: 50,
+	targetWidth: 300,
+	destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true });		
 }
 
 function onSuccessA(imageURI) {		
@@ -1017,6 +1018,7 @@ function complianceVerification(){
 					  }	
 					  
 					  divCmbo+="</select>"
+					  
 					  $("#com_division").html(divCmbo);
 					  
 						url="#com_first_page";					
@@ -2272,8 +2274,9 @@ function complianceDataSubmit(){
 
 //------------------------------------image 1
 function getAchivementImageCom() {
-	navigator.camera.getPicture(onSuccessA, onFailA, { quality: 10,
-	destinationType: Camera.DestinationType.FILE_URI });		
+	navigator.camera.getPicture(onSuccessA, onFailA, { quality: 50,
+	targetWidth: 300,
+	destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true});		
 }
 
 function onSuccessA(imageURI) {		
@@ -2342,8 +2345,9 @@ function onfail(r) {
 //-----------------------image 2
 
 function getAchivementImage2Com() {
-	navigator.camera.getPicture(onSuccess2A, onFail2A, { quality: 10,
-	destinationType: Camera.DestinationType.FILE_URI });		
+	navigator.camera.getPicture(onSuccess2A, onFail2A, { quality: 50,
+	targetWidth: 300,
+	destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true });		
 }
 
 function onSuccess2A(imageURI) {		
