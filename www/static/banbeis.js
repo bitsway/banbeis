@@ -1014,14 +1014,16 @@ function complianceVerification(){
 					  divCmbo="";
 					  for (i=0;i<divNameList.length;i++){					 
 						  divCmbo+="<option value="+encodeURIComponent(divNameList[i])+">"+divNameList[i]+"</option>";					  
-					  }				  
+					  }	
+					  
+					  $("#s_com_div").html(divCmbo);
+						url="#com_first_page";					
+						$.mobile.navigate(url);				  
 										  
 				  }		  
 			});	 
 			
-			$("#s_com_div").html(divCmbo);
-			url="#com_first_page";					
-			$.mobile.navigate(url);		
+				
 		}
 	
 }
@@ -1031,12 +1033,12 @@ function getDistCom(){
 	div_name=$("#s_com_div").val();
 	//alert(apipath_compliance+'get_comp_div_dist_list?cid=BANBEIS&sync_code='+localStorage.sync_code+'&div_name='+div_name);
 	$.ajax({
-		  url:apipath_compliance+'get_comp_div_dist_list?cid=BANBEIS&sync_code='+localStorage.sync_code+'&div_name='+div_name,
+		  url:apipath_compliance+'get_comp_div_dist_list?cid=BANBEIS&sync_code='+localStorage.sync_code+'&div_name='+encodeURIComponent(div_name),
 		  success: function(distStr) {
-				  distNameList=distStr.split("<fd>");
+				  distNameList=distStr.split("<fd>");				  
 				  distCmbo="";
 				  for (i=0;i<distNameList.length;i++){					 
-					  distCmbo+="<option value="+distNameList[i]+">"+distNameList[i]+"</option>";					  
+					  distCmbo+="<option value="+encodeURIComponent(distNameList[i])+">"+distNameList[i]+"</option>";					  
 				  }	
 				 
 				  var rpt_rep_ob=$("#s_com_dist");
@@ -1056,7 +1058,7 @@ function getUpCom(){
 	dist_name=$("#s_com_dist").val();	
 	
 	$.ajax({
-		  url:apipath_compliance+'get_comp_dist_up_list?cid=BANBEIS&sync_code='+localStorage.sync_code+'&div_name='+div_name+'&dist_name='+dist_name,
+		  url:apipath_compliance+'get_comp_dist_up_list?cid=BANBEIS&sync_code='+localStorage.sync_code+'&div_name='+encodeURIComponent(div_name)+'&dist_name='+encodeURIComponent(dist_name),
 		  success: function(upStr) {
 				  upNameList=upStr.split("<fd>");
 				  upCmbo="";
@@ -1081,12 +1083,14 @@ function getUpCom(){
 	
 	
 	$.ajax({
-		  url:apipath_compliance+'get_comp_up_school_list?cid=BANBEIS&sync_code='+localStorage.sync_code+'&div_name='+div_name+'&dist_name='+dist_name+'&up_name='+up_name,
+		  url:apipath_compliance+'get_comp_up_school_list?cid=BANBEIS&sync_code='+localStorage.sync_code+'&div_name='+encodeURIComponent(div_name)+'&dist_name='+encodeURIComponent(dist_name)+'&up_name='+encodeURIComponent(up_name),
 		  success: function(schoolStr) {
-				  schIdNameList=schoolStr.split("<fd>");
+				  schIdNameList=schoolStr.split("<fd>");				  
 				  schoolCmbo="";
-				  for (i=0;i<schIdNameList.length;i++){					  
-						 schoolCmbo+="<option value="+encodeURIComponent(schIdNameList[i])+">"+schIdNameList[i]+"</option>";						  				  
+				  for (i=0;i<schIdNameList.length;i++){
+					  	var com_school_id_name=schIdNameList[i].split('-');
+						var com_school_id=com_school_id_name[0];					  
+						 schoolCmbo+="<option value="+com_school_id+">"+schIdNameList[i]+"</option>";						  				  
 				  }	
 				  			  
 				  var rpt_rep_ob=$("#s_com_school");
@@ -1099,21 +1103,27 @@ function getUpCom(){
 }
 
 
- function school(){
+ function school(type){
 	//$("#comp_error").text("");
-	s_quick_school=$("#s_quick_school").val();
-	s_sch_school=$("#s_com_school").val();
-	
-	if (s_quick_school==""){
-		s_school=s_sch_school
-	}else{
-		s_school=s_quick_school
+	if (type=="QUICKS"){
+		var s_school=$("#s_quick_school").val();
+		
+	}else if (type=="BTNS"){
+		var s_school=$("#s_com_school").val();
+		
 		}
+		
+	
+	if (s_school==""){
+		$(".comp_error").text("Required School");
+		url="#com_first_page";
+		
+	}else{
 		
 		//alert(apipath_compliance+'org_nameCheck?cid=BANBEIS&s_school='+s_school);
 		$.ajax({
 			  url:apipath_compliance+'org_nameCheck?cid=BANBEIS&s_school='+s_school,
-			  success: function(result) {
+			  success: function(result) {				  
 				  	resultStr=result.split("<fd>");
 								  	
 					 if (resultStr[0]=="Success"){
@@ -1132,7 +1142,7 @@ function getUpCom(){
 						  
 						  
 						 url="#compliancePage1";					
-						 $.mobile.navigate(url);
+						 
 						 
 						 //localStorage.selectedSchool='YES';
 						 //localStorage.selectedSName=school_name;
@@ -1142,20 +1152,23 @@ function getUpCom(){
 						 //$("#c_selected").show();
 						 
 					}else if (resultStr[0]=="Failed"){
-						$("#comp_error").text(resultStr[1]);						
+						$(".comp_error").text(resultStr[1]);
+						url="#com_first_page";						
 					} 
 				
 			  }
 		});
+	}
+	$.mobile.navigate(url);
 		
 }
 
-function searchNext(){
+/*function searchNext(){
 	
 	url="#compliancePage1";					
 	$.mobile.navigate(url);	
 	
-	}
+	}*/
 
 function complianceDataNext(){
 		

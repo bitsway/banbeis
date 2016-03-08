@@ -1795,12 +1795,12 @@ function totalAttSci(){
         <h3>BANBEIS</h3>
     </div>
     <div data-role="content" > 
-    <div id="comp_error" style="color:#C00"></div> 
+    <div class="comp_error" style="color:#C00"></div> 
     	<!--<div id="c_search">-->
             <ul data-role="listview" data-inset="true">
                  <li class="ui-field-contain" >
                     <input name="s_quick_school" type="text" id="s_quick_school" placeholder="School EIIN" autocomplete="off" />
-                    <input type="button" name="btnSearch" id="btnSearch" class="btn" value="Quick Search" onclick="school()" />
+                    <input type="button" name="btnSearch" id="btnSearch" class="btn" value="Quick Search" onclick="school('QUICKS')" />
                  </li>
              </ul>
              <ul data-role="listview" data-inset="true">
@@ -1835,14 +1835,14 @@ function totalAttSci(){
                     </select>
                  </li>	-->
                  <li class="ui-field-contain" > 
-                    <input type="button" name="btnSearch" id="btnSearch" class="btn" value="Search" onclick="school()" />
+                    <input type="button" name="btnSearch" id="btnSearch" class="btn" value="Search" onclick="school('BTNS')" />
                  </li>
                  
             </ul>
             
        <!-- <a data-role="button" onclick="banbeisFirstDataNext()" href="#" data-theme="c" data-transition="slide" >Next</a>-->
         <div class="errorChk"></div>
-        </div>
+        
        <!-- <div id="c_selected">
         	 Selected School<br />
             <div id="c_selected_school" style="font-weight:bold;"> </div>
