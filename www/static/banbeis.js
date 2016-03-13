@@ -3325,8 +3325,8 @@ function complianceDataSubmit(){
 		com_latitude=$("#com_ach_lat").val();
 		com_longitude=$("#com_ach_long").val();
 		
-		com_achPhoto=$("#com_achPhoto").val('test1');
-		com_achPhoto_2=$("#com_achPhoto_2").val('test2');
+		com_achPhoto=$("#com_achPhoto").val('');
+		com_achPhoto_2=$("#com_achPhoto_2").val('');
 		
 		if (com_latitude==undefined || com_latitude==''){
 			com_latitude=0;
@@ -3347,7 +3347,7 @@ function complianceDataSubmit(){
 				//	$(".errorChk").text("Please confirm your location ");
 				//	$("#btn_com_submit").show();
 				//}else{				
-					imagePathA="test"					
+					//imagePathA="test"					
 					if (imagePathA!=""){							
 						$(".errorChk").text("Syncing photo 1..");
 						imageName = localStorage.mobile_no+"_"+get_time+".jpg";										
@@ -3406,7 +3406,7 @@ function winAchInfo(r) {
 	var d = new Date();	
 	var get_time=d.getTime();
 		
-	imagePath2A="test2"
+	//imagePath2A="test2"
 	if (imagePath2A!=""){							
 		$(".errorChk").text("Syncing photo 2..");
 		imageName2 = localStorage.mobile_no+"_"+get_time+".jpg";
@@ -3423,7 +3423,7 @@ function onfail(r) {
 	var d = new Date();	
 	var get_time=d.getTime();
 	
-	imagePath2A="test2"
+	//imagePath2A="test2"
 	if (imagePath2A!=""){							
 		$(".errorChk").text("Syncing photo 2..");
 		imageName2 = localStorage.mobile_no+"_"+get_time+".jpg";		
