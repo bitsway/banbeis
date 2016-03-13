@@ -5,13 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Banbeis</title>
     <link rel="stylesheet" href="static/c.min.css" />
-    <link rel="stylesheet" href="static/jquery.mobile-1.4.0.min.css" />
-    
-<!--    <link rel="stylesheet" href="static/jquery-ui.css" type="text/css" />
-	<link rel="stylesheet" href="static/jquery-ui-themes-1.11.1/jquery-ui.css" type="text/css" /> 
-    
-   
-    <script src="static/jquery-ui.js"></script>-->
+    <link rel="stylesheet" href="static/jquery.mobile-1.4.0.min.css" />    
+
     
     <script src="static/jquery-1.10.2.min.js">   </script>
     <script src="static/jquery.mobile-1.4.0.min.js">   </script>		
@@ -816,7 +811,219 @@ function totalAttSci(){
 	
 	}				
 				
+//===================================
+
+
+function total_drh_stu(){
+	
+	var stu_inc_drh_6=$("#stu_inc_drh_6").val();
+	var stu_inc_drh_7=$("#stu_inc_drh_7").val();
+	var stu_inc_drh_8=$("#stu_inc_drh_8").val();
+	var stu_inc_drh_9=$("#stu_inc_drh_9").val();
+	var stu_inc_drh_10=$("#stu_inc_drh_10").val();
+	
+	if(stu_inc_drh_6==''){
+			stu_inc_drh_6=0;
+			}
+	if(stu_inc_drh_7==''){
+			stu_inc_drh_7=0;
+			}
+	if(stu_inc_drh_8==''){
+			stu_inc_drh_8=0;
+			}		
+	if(stu_inc_drh_9==''){
+			stu_inc_drh_9=0;
+			}	
+	if(sci_ave_cls_10==''){
+			stu_inc_drh_10=0;
+			}		
 		
+	var total_drhStu=eval(stu_inc_drh_6)+eval(stu_inc_drh_7)+eval(stu_inc_drh_8)+eval(stu_inc_drh_9)+eval(stu_inc_drh_10);
+		
+	$("#stu_inc_drh_total").val(total_drhStu);
+	
+	}
+   
+function total_pro_book(){
+	
+	var pro_book_rec_6=$("#pro_book_rec_6").val();
+	var pro_book_rec_7=$("#pro_book_rec_7").val();
+	var pro_book_rec_8=$("#pro_book_rec_8").val();
+	var pro_book_rec_9=$("#pro_book_rec_9").val();
+	var pro_book_rec_10=$("#pro_book_rec_10").val();
+	
+	if(pro_book_rec_6==''){
+			pro_book_rec_6=0;
+			}
+	if(pro_book_rec_7==''){
+			pro_book_rec_7=0;
+			}
+	if(pro_book_rec_8==''){
+			pro_book_rec_8=0;
+			}		
+	if(pro_book_rec_9==''){
+			pro_book_rec_9=0;
+			}	
+	if(pro_book_rec_10==''){
+			pro_book_rec_10=0;
+			}		
+		
+	var total_proBooks=eval(pro_book_rec_6)+eval(pro_book_rec_7)+eval(pro_book_rec_8)+eval(pro_book_rec_9)+eval(pro_book_rec_10);
+		
+	$("#pro_book_rec_total").val(total_proBooks);
+	
+	}
+       
+function total_par_stu(){
+	
+	var stu_per_eva_6=$("#stu_per_eva_6").val();
+	var stu_per_eva_7=$("#stu_per_eva_7").val();
+	var stu_per_eva_8=$("#stu_per_eva_8").val();
+	var stu_per_eva_9=$("#stu_per_eva_9").val();
+	var stu_per_eva_10=$("#stu_per_eva_10").val();
+	
+	if(stu_per_eva_6==''){
+			stu_per_eva_6=0;
+			}
+	if(stu_per_eva_7==''){
+			stu_per_eva_7=0;
+			}
+	if(stu_per_eva_8==''){
+			stu_per_eva_8=0;
+			}		
+	if(stu_per_eva_9==''){
+			stu_per_eva_9=0;
+			}	
+	if(stu_per_eva_10==''){
+			stu_per_eva_10=0;
+			}		
+		
+	var total_stuPerEva=eval(stu_per_eva_6)+eval(stu_per_eva_7)+eval(stu_per_eva_8)+eval(stu_per_eva_9)+eval(stu_per_eva_10);
+		
+	$("#stu_per_eva_total").val(total_stuPerEva);
+	
+	}
+   
+function total_pass_eval_stu(){
+	
+	var stu_pass_eval_test_6=$("#stu_pass_eval_test_6").val();
+	var stu_pass_eval_test_7=$("#stu_pass_eval_test_7").val();
+	var stu_pass_eval_test_8=$("#stu_pass_eval_test_8").val();
+	var stu_pass_eval_test_9=$("#stu_pass_eval_test_9").val();
+	var stu_pass_eval_test_10=$("#stu_pass_eval_test_10").val();
+	
+	if(stu_pass_eval_test_6==''){
+			stu_pass_eval_test_6=0;
+			}
+	if(stu_pass_eval_test_7==''){
+			stu_pass_eval_test_7=0;
+			}
+	if(stu_pass_eval_test_8==''){
+			stu_pass_eval_test_8=0;
+			}		
+	if(stu_pass_eval_test_9==''){
+			stu_pass_eval_test_9=0;
+			}	
+	if(stu_pass_eval_test_10==''){
+			stu_pass_eval_test_10=0;
+			}		
+		
+	var total_stuPassEval=eval(stu_pass_eval_test_6)+eval(stu_pass_eval_test_7)+eval(stu_pass_eval_test_8)+eval(stu_pass_eval_test_9)+eval(stu_pass_eval_test_10);
+		
+	$("#stu_pass_eval_test_total").val(total_stuPassEval);
+	
+	}
+	  
+
+function total_awardness_stu(){
+	
+	var no_award_6=$("#no_award_6").val();
+	var no_award_7=$("#no_award_7").val();
+	var no_award_8=$("#no_award_8").val();
+	var no_award_9=$("#no_award_9").val();
+	var no_award_10=$("#no_award_10").val();
+	
+	if(no_award_6==''){
+			no_award_6=0;
+			}
+	if(no_award_7==''){
+			no_award_7=0;
+			}
+	if(no_award_8==''){
+			no_award_8=0;
+			}		
+	if(no_award_9==''){
+			no_award_9=0;
+			}	
+	if(no_award_10==''){
+			no_award_10=0;
+			}		
+		
+	var total_AwardNess=eval(no_award_6)+eval(no_award_7)+eval(no_award_8)+eval(no_award_9)+eval(no_award_10);
+		
+	$("#no_award_total").val(total_AwardNess);
+	
+	}	
+	  
+function total_drh_books(){
+	
+	var only_drh_book_6=$("#only_drh_book_6").val();
+	var only_drh_book_7=$("#only_drh_book_7").val();
+	var only_drh_book_8=$("#only_drh_book_8").val();
+	var only_drh_book_9=$("#only_drh_book_9").val();
+	var only_drh_book_10=$("#only_drh_book_10").val();
+	
+	if(only_drh_book_6==''){
+			only_drh_book_6=0;
+			}
+	if(only_drh_book_7==''){
+			only_drh_book_7=0;
+			}
+	if(only_drh_book_8==''){
+			only_drh_book_8=0;
+			}		
+	if(only_drh_book_9==''){
+			only_drh_book_9=0;
+			}	
+	if(only_drh_book_10==''){
+			only_drh_book_10=0;
+			}		
+		
+	var total_onlyDrhBooks=eval(only_drh_book_6)+eval(only_drh_book_7)+eval(only_drh_book_8)+eval(only_drh_book_9)+eval(only_drh_book_10);
+		
+	$("#only_drh_book_total").val(total_onlyDrhBooks);
+	
+	}	
+	
+function total_incdrh_books(){
+	
+	var inc_drh_book_6=$("#inc_drh_book_6").val();
+	var inc_drh_book_7=$("#inc_drh_book_7").val();
+	var inc_drh_book_8=$("#inc_drh_book_8").val();
+	var inc_drh_book_9=$("#inc_drh_book_9").val();
+	var inc_drh_book_10=$("#inc_drh_book_10").val();
+	
+	if(inc_drh_book_6==''){
+			inc_drh_book_6=0;
+			}
+	if(inc_drh_book_7==''){
+			inc_drh_book_7=0;
+			}
+	if(inc_drh_book_8==''){
+			inc_drh_book_8=0;
+			}		
+	if(inc_drh_book_9==''){
+			inc_drh_book_9=0;
+			}	
+	if(inc_drh_book_10==''){
+			inc_drh_book_10=0;
+			}		
+		
+	var total_incDrhBooks=eval(inc_drh_book_6)+eval(inc_drh_book_7)+eval(inc_drh_book_8)+eval(inc_drh_book_9)+eval(inc_drh_book_10);
+		
+	$("#inc_drh_book_total").val(total_incDrhBooks);
+	
+	}				
 	
 	</script>
 	       
@@ -1954,9 +2161,9 @@ function totalAttSci(){
                   9.Is there a cooperation agreement between SEQAEP and the institution?
                     <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
                    		<label for="radio-choice-h-2a">Yes</label>
-                        <input name="agr_seqaep" id="radio-choice-h-2a" value="1" checked="checked" type="radio" >
+                        <input name="agr_seqaep" id="radio-choice-h-2a" value="1"  type="radio" >
                         <label for="radio-choice-h-2b">No</label>
-                        <input name="agr_seqaep" id="radio-choice-h-2b" value="2" type="radio">                        
+                        <input name="agr_seqaep" id="radio-choice-h-2b" value="2" checked="checked" type="radio">                        
                     </fieldset>
                  </li>
                 <li class="ui-field-contain auto_break" id="agr_type_con">
@@ -2058,15 +2265,18 @@ function totalAttSci(){
                 
                 <li class="ui-field-contain auto_break">
                      1. Semester and Year
-                    <input type="text" name="stip_pro_semister" id="stip_pro_semister"/>
-                    <!--<select name="stip_pro_semister" id="stip_pro_semister" data-native-menu="false" >
+                    <select name="stip_pro_semister" id="stip_pro_semister" data-native-menu="false" >
                         <option value="0">Select</option>
-                        <option value="1">July-December-2015</option>
-                        <option value="2">January-June-2016</option>	
-                        <option value="3">July-December-2016</option>
-                        <option value="4">January-June-2017</option>
-                        <option value="5">July-December-2017</option>									 												
-                    </select>-->  
+                        <option value="1">January-June</option>	
+                        <option value="2">July-December</option>
+                        									 												
+                    </select>
+                    <select name="stip_pro_year" id="stip_pro_year" data-native-menu="false" >
+                        <option value="0">Select</option>
+                        <option value="1">2015</option>
+                        <option value="2">2016</option>	
+                        <option value="3">2017</option>									 												
+                    </select>  
                  </li>
                  <li class="ui-field-contain auto_break">
                      2. Latest disbursement date of Stipend to the PMT students
@@ -2226,7 +2436,7 @@ function totalAttSci(){
             <ul data-role="listview" data-inset="true">
                <li style="background-color:#e2e2e2;" class="auto_break">4. Among students who met all criteria above (attendance rate is at least 75% in 2015, received at least 33% pass mark in all subjects in 2015, and was unmarried in 2015), randomly select five students and fill the following table (at least one from each grade)</li> 
                
-                <li class="ui-field-contain" style="overflow:scroll;">   
+                <li class="ui-field-contain" style="overflow:scroll;"> 
                	  <table width="100%" border="1" class="tbl_bro_color" cellspacing="0" cellpadding="0">
                     	<tr>
                         	<td class="tbl_bro_color auto_break" width="14%">Name of the student </td>
@@ -2238,9 +2448,9 @@ function totalAttSci(){
                             <td class="tbl_bro_color auto_break" width="15%">Married or unmarried during Jul-Dec 2015 </td>
                       </tr>
                     	<tr>
-                    	  <td class="tbl_bro_color"><input type="text" name="pmt_st_1_name" id="pmt_st_1_name" /></td>
+                    	  <td class="tbl_bro_color"><input type="text" name="pmt_st_1_name" id="pmt_st_1_name" style="width:150px;" /></td>
                     	  <td align="center" class="tbl_bro_color">VI</td>
-                    	  <td class="tbl_bro_color"><input type="number" name="pmt_st_1_id" id="pmt_st_1_id" maxlength="14" /></td>
+                    	  <td class="tbl_bro_color" ><input type="number" name="pmt_st_1_id" id="pmt_st_1_id" maxlength="14" /></td>
                     	  <td class="tbl_bro_color"><input type="number" name="pmt_st_1_attendance" id="pmt_st_1_attendance" /></td>
                     	  <td class="tbl_bro_color"><input type="number" name="pmt_st_1_final_exam_mark" id="pmt_st_1_final_exam_mark" /></td>
                     	  <td class="tbl_bro_color">
@@ -2261,9 +2471,9 @@ function totalAttSci(){
                           </td>
                   	  </tr>
                     	<tr>
-                    	  <td class="tbl_bro_color"><input type="text" name="pmt_st_2_name" id="pmt_st_2_name" /></td>
+                    	  <td class="tbl_bro_color"><input type="text" name="pmt_st_2_name" id="pmt_st_2_name" style="width:150px;" /></td>
                     	  <td align="center" class="tbl_bro_color">VII</td>
-                    	  <td class="tbl_bro_color"><input type="number" name="pmt_st_2_id" id="pmt_st_2_id" maxlength="14"/></td>
+                    	  <td class="tbl_bro_color"><input type="number" name="pmt_st_2_id" id="pmt_st_2_id" maxlength="14" /></td>
                     	  <td class="tbl_bro_color"><input type="number" name="pmt_st_2_attendance" id="pmt_st_2_attendance" /></td>
                     	  <td class="tbl_bro_color"><input type="number" name="pmt_st_2_final_exam_mark" id="pmt_st_2_final_exam_mark" /></td>
                     	  <td class="tbl_bro_color">
@@ -2284,9 +2494,9 @@ function totalAttSci(){
                           </td>
                   	  </tr>
                       <tr>
-                    	  <td class="tbl_bro_color"><input type="text" name="pmt_st_3_name" id="pmt_st_3_name" /></td>
+                    	  <td class="tbl_bro_color"><input type="text" name="pmt_st_3_name" id="pmt_st_3_name" style="width:150px;" /></td>
                     	  <td align="center" class="tbl_bro_color">VIII</td>
-                   	    <td class="tbl_bro_color"><input type="number" name="pmt_st_3_id" id="pmt_st_3_id" maxlength="14"/></td>
+                   	    <td class="tbl_bro_color"><input type="number" name="pmt_st_3_id" id="pmt_st_3_id" maxlength="14" /></td>
                     	  <td class="tbl_bro_color"><input type="number" name="pmt_st_3_attendance" id="pmt_st_3_attendance" /></td>
                     	  <td class="tbl_bro_color"><input type="number" name="pmt_st_3_final_exam_mark" id="pmt_st_3_final_exam_mark" /></td>
                     	  <td class="tbl_bro_color">
@@ -2307,9 +2517,9 @@ function totalAttSci(){
                           </td>
                   	  </tr>
                       <tr>
-                    	  <td class="tbl_bro_color"><input type="text" name="pmt_st_4_name" id="pmt_st_4_name" /></td>
+                    	  <td class="tbl_bro_color"><input type="text" name="pmt_st_4_name" id="pmt_st_4_name" style="width:150px;" /></td>
                     	  <td align="center" class="tbl_bro_color">IX</td>
-                   	    <td class="tbl_bro_color"><input type="number" name="pmt_st_4_id" id="pmt_st_4_id" maxlength="14"/></td>
+                   	    <td class="tbl_bro_color"><input type="number" name="pmt_st_4_id" id="pmt_st_4_id" maxlength="14" /></td>
                     	  <td class="tbl_bro_color"><input type="number" name="pmt_st_4_attendance" id="pmt_st_4_attendance" /></td>
                     	  <td class="tbl_bro_color"><input type="number" name="pmt_st_4_final_exam_mark" id="pmt_st_4_final_exam_mark" /></td>
                     	  <td class="tbl_bro_color">
@@ -2330,9 +2540,9 @@ function totalAttSci(){
                           </td>
                   	  </tr>
                       <tr>
-                    	  <td class="tbl_bro_color"> <input type="text" name="pmt_st_5_name" id="pmt_st_5_name" /></td>
+                    	  <td class="tbl_bro_color"> <input type="text" name="pmt_st_5_name" id="pmt_st_5_name" style="width:150px;" /></td>
                     	  <td align="center" class="tbl_bro_color">X</td>
-                   	    <td class="tbl_bro_color"><input type="number" name="pmt_st_5_id" id="pmt_st_5_id" maxlength="14"/></td>
+                   	    <td class="tbl_bro_color"><input type="number" name="pmt_st_5_id" id="pmt_st_5_id" maxlength="14" /></td>
                     	  <td class="tbl_bro_color"><input type="number" name="pmt_st_5_attendance" id="pmt_st_5_attendance" /></td>
                     	  <td class="tbl_bro_color"><input type="number" name="pmt_st_5_final_exam_mark" id="pmt_st_5_final_exam_mark" /></td>
                     	  <td class="tbl_bro_color">
@@ -2372,29 +2582,33 @@ function totalAttSci(){
         <a data-role="button" onclick="backClick();" data-rel="back" class="ui-btn-right" data-transition="slide"><img src="back.png" /></a>
         <h3>BANBEIS</h3>
     </div>
-    <div data-role="content" >
+    <div data-role="content">
             <ul data-role="listview" data-inset="true">
                 <li style="background-color:#e2e2e2;" class="auto_break">C.	Additional Class Teacher (ACT)</li>
                 <li class="ui-field-contain auto_break" onclick="ins_agr_cls()">            	
                     1. Does the institution have any agreement with SEQAEP for Additional Class?
                         <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                            <input name="add_cls_seqaep" id="radio-choice-h-2a" value="1" checked="checked" type="radio" >
+                            <input name="add_cls_seqaep" id="radio-choice-h-2a" value="1"  type="radio" >
                             <label for="radio-choice-h-2a">Yes</label>
-                            <input name="add_cls_seqaep" id="radio-choice-h-2b" value="2" type="radio">
+                            <input name="add_cls_seqaep" id="radio-choice-h-2b" value="2" checked="checked" type="radio">
                             <label for="radio-choice-h-2b">No</label>
                         </fieldset>
                 </li>
+           <div id="act_con">
                  <li class="ui-field-contain">
                     2. Semester and Year
-                    <input type="text" name="add_class_semister" id="add_class_semister" />
-                    <!--<select name="add_class_semister" id="add_class_semister" data-native-menu="false" >
+                    <select name="add_class_semister" id="add_class_semister" data-native-menu="false" >
                         <option value="0">Select</option>
-                        <option value="1">July-December-2015</option>
-                        <option value="2">January-June-2016</option>	
-                        <option value="3">July-December-2016</option>
-                        <option value="4">January-June-2017</option>
-                        <option value="5">July-December-2017</option>									 												
-                    </select>-->  
+                        <option value="1">January-June</option>	
+                        <option value="2">July-December</option>
+                        									 												
+                    </select>
+                    <select name="add_class_year" id="add_class_year" data-native-menu="false" >
+                        <option value="0">Select</option>
+                        <option value="1">2015</option>
+                        <option value="2">2016</option>	
+                        <option value="3">2017</option>									 												
+                    </select>  
                 </li>
                 
                 <li class="ui-field-contain auto_break">    
@@ -2612,7 +2826,7 @@ function totalAttSci(){
                
                
                <li style="background-color:#F2F2F2;" class="auto_break">8. Description of Additional Classes and Regular Classes in reference Semester (July-December, 2015)</li>
-                <li class="ui-field-contain" style="overflow:scroll;" id="des_cls_ref_sem">  
+                <li class="ui-field-contain" style="overflow:scroll;">  
                 
                 <table width="100%" class="tbl_bro_color"  cellspacing="0" cellpadding="0" >  
                 	<tr >
@@ -2714,24 +2928,24 @@ function totalAttSci(){
               	  </tr> 
                   <tr >
                    	  <td class="tbl_bro_color" align="center">Total</td>
-               	     <td class="tbl_bro_color" align="center" ><input type="number" name="eng_enro_add_cls_total" id="eng_enro_add_cls_total" /></td>
-                	  <td class="tbl_bro_color" align="center"><input type="number" name="math_enro_add_cls_total" id="math_enro_add_cls_total" /></td>
-                	  <td class="tbl_bro_color" align="center"><input type="number" name="sci_enro_add_cls_total" id="sci_enro_add_cls_total" /></td>
-                	  <td class="tbl_bro_color" align="center"><input type="number" name="eng_reg_cls_total" id="eng_reg_cls_total" /></td>
-                	  <td class="tbl_bro_color" align="center"><input type="number" name="math_reg_cls_total" id="math_reg_cls_total" /></td>
-                	  <td class="tbl_bro_color" align="center"><input type="number" name="sci_reg_cls_total" id="sci_reg_cls_total" /></td>
-                	  <td class="tbl_bro_color" align="center"><input type="number" name="eng_add_cls_total" id="eng_add_cls_total" /></td>
-                	  <td class="tbl_bro_color" align="center"><input type="number" name="math_add_cls_total" id="math_add_cls_total" /></td>
-                	  <td class="tbl_bro_color" align="center"><input type="number" name="sci_add_cls_total" id="sci_add_cls_total" /></td>
-                	  <td class="tbl_bro_color" align="center"><input type="number" name="eng_ave_cls_total" id="eng_ave_cls_total" /></td>
-                	  <td class="tbl_bro_color" align="center"><input type="number" name="math_ave_cls_total" id="math_ave_cls_total" /></td>
-                	  <td class="tbl_bro_color" align="center"><input type="number" name="sci_ave_cls_total" id="sci_ave_cls_total" /></td>                	  
+               	     <td class="tbl_bro_color" align="center" ><input type="number" name="eng_enro_add_cls_total" id="eng_enro_add_cls_total" readonly="readonly" style="background-color:#E8E8E8;"/></td>
+                	  <td class="tbl_bro_color" align="center"><input type="number" name="math_enro_add_cls_total" id="math_enro_add_cls_total" readonly="readonly" style="background-color:#E8E8E8;"/></td>
+                	  <td class="tbl_bro_color" align="center"><input type="number" name="sci_enro_add_cls_total" id="sci_enro_add_cls_total" readonly="readonly" style="background-color:#E8E8E8;"/></td>
+                	  <td class="tbl_bro_color" align="center"><input type="number" name="eng_reg_cls_total" id="eng_reg_cls_total" readonly="readonly" style="background-color:#E8E8E8;"/></td>
+                	  <td class="tbl_bro_color" align="center"><input type="number" name="math_reg_cls_total" id="math_reg_cls_total" readonly="readonly" style="background-color:#E8E8E8;"/></td>
+                	  <td class="tbl_bro_color" align="center"><input type="number" name="sci_reg_cls_total" id="sci_reg_cls_total" readonly="readonly" style="background-color:#E8E8E8;"/></td>
+                	  <td class="tbl_bro_color" align="center"><input type="number" name="eng_add_cls_total" id="eng_add_cls_total" readonly="readonly" style="background-color:#E8E8E8;"/></td>
+                	  <td class="tbl_bro_color" align="center"><input type="number" name="math_add_cls_total" id="math_add_cls_total" readonly="readonly" style="background-color:#E8E8E8;"/></td>
+                	  <td class="tbl_bro_color" align="center"><input type="number" name="sci_add_cls_total" id="sci_add_cls_total" readonly="readonly" style="background-color:#E8E8E8;"/></td>
+                	  <td class="tbl_bro_color" align="center"><input type="number" name="eng_ave_cls_total" id="eng_ave_cls_total" readonly="readonly" style="background-color:#E8E8E8;"/></td>
+                	  <td class="tbl_bro_color" align="center"><input type="number" name="math_ave_cls_total" id="math_ave_cls_total" readonly="readonly" style="background-color:#E8E8E8;"/></td>
+                	  <td class="tbl_bro_color" align="center"><input type="number" name="sci_ave_cls_total" id="sci_ave_cls_total" readonly="readonly" style="background-color:#E8E8E8;"/></td>                	  
               	  </tr> 
                               
                 </table>
                 
               </li>
-             
+             </div>
             </ul>       
         <a data-role="button" onclick="complianceData4Next()" href="#" data-transition="slide" >Next</a>
         <div class="errorChk"></div>
@@ -2816,15 +3030,16 @@ function totalAttSci(){
                             <label for="radio-choice-h-2b">No</label>
                         </fieldset>
                </li>
-               <li class="ui-field-contain auto_break">    
+               <li class="ui-field-contain auto_break" onclick="pta_exist()">    
                     8. Does the PTA exist in the Institution
                       <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                            <input name="pta_exist_ins" id="radio-choice-h-2a" value="1" checked="checked" type="radio" >
+                            <input name="pta_exist_ins" id="radio-choice-h-2a" value="1"  type="radio" >
                             <label for="radio-choice-h-2a">Yes</label>
-                            <input name="pta_exist_ins" id="radio-choice-h-2b" value="2" type="radio">
+                            <input name="pta_exist_ins" id="radio-choice-h-2b" value="2" checked="checked" type="radio">
                             <label for="radio-choice-h-2b">No</label>
                       </fieldset>
                </li>
+          <div id="pta_con">
                <li class="ui-field-contain auto_break">    
                     8.1 If yes, when was PTA formed or reformed in the institution
                     <input type="date" name="pta_reformed_ins" id="pta_reformed_ins" placeholder="dd-mm-yyyy" />
@@ -2835,8 +3050,9 @@ function totalAttSci(){
                </li>
                <li class="ui-field-contain auto_break">    
                     8.3 Institute PTA grant received date 
-                    <input type="text" name="ins_grant_rec_date" id="ins_grant_rec_date" placeholder="dd-mm-yyyy" />
+                    <input type="date" name="ins_grant_rec_date" id="ins_grant_rec_date" placeholder="dd-mm-yyyy" />
                </li>
+           </div>
                <li class="ui-field-contain auto_break">    
                     8.4 If PTA is not yet formed, why not 
                         <fieldset data-role="controlgroup">
@@ -2902,15 +3118,18 @@ Head</label>
                <li style="background-color:#e2e2e2;" class="auto_break">E. Education Awareness and Community Mobilization (EACM)</li>
                <li class="ui-field-contain">    
                    1. Reference period
-                   <input type="text" name="eacm" id="eacm"/>   
-                      <!-- <select name="ref_period" id="ref_period" data-native-menu="false" >
-                        	<option value="0">Select</option>
-                            <option value="1">July-December-2015</option>
-                            <option value="2">January-June-2016</option>	
-                            <option value="3">July-December-2016</option>
-                            <option value="4">January-June-2017</option>
-                            <option value="5">July-December-2017</option>								 												
-                      </select>-->   
+                   <!--<input type="text" name="eacm" id="eacm"/> -->
+                    <select name="ref_period_sem" id="ref_period_sem" data-native-menu="false" >
+                        <option value="0">Select</option>
+                        <option value="1">January-June</option>	
+                        <option value="2">July-December</option>                        									 												
+                    </select>
+                    <select name="ref_period_year" id="ref_period_year" data-native-menu="false" >
+                        <option value="0">Select</option>
+                        <option value="1">2015</option>
+                        <option value="2">2016</option>	
+                        <option value="3">2017</option>									 												
+                    </select>      
                </li>
                <li class="ui-field-contain auto_break">    
                     2. Did the institution receive any Grant for EACM 
@@ -2956,16 +3175,18 @@ Head</label>
               
                <li style="background-color:#e2e2e2;" class="auto_break">F. Social Audit (SA)</li>
                <li class="ui-field-contain">    
-               		1. Reference period   
-                    <input type="text" name="social_audit" id="social_audit"/>  
-                   <!-- <select name="soci_ref_period" id="soci_ref_period" data-native-menu="false" >
-                        	<option value="0">Select</option>
-                            <option value="1">July-December-2015</option>
-                            <option value="2">January-June-2016</option>	
-                            <option value="3">July-December-2016</option>
-                            <option value="4">January-June-2017</option>
-                            <option value="5">July-December-2017</option>							 												
-                        </select> -->  
+               		1. Reference period    
+                     <select name="soci_ref_period_sem" id="soci_ref_period_sem" data-native-menu="false" >
+                        <option value="0">Select</option>
+                        <option value="1">January-June</option>	
+                        <option value="2">July-December</option>                        									 												
+                    </select>
+                    <select name="soci_ref_period_year" id="soci_ref_period_year" data-native-menu="false" >
+                        <option value="0">Select</option>
+                        <option value="1">2015</option>
+                        <option value="2">2016</option>	
+                        <option value="3">2017</option>									 												
+                    </select>   
                </li>
                <li class="ui-field-contain auto_break">    
                  2. Did the institution receive any Grant for SA in the 2nd Instalment of 2015
@@ -2976,17 +3197,17 @@ Head</label>
                         <label for="radio-choice-h-2b">No</label>
                     </fieldset>
                </li>
-               <li class="ui-field-contain auto_break">    
+               <li class="ui-field-contain auto_break" onclick="sa_exam_report()">    
                    3. Was there any report prepared after annual exam of 2015
                      <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                        <input name="report_pre_annu_exam" id="radio-choice-h-2a" value="1" checked="checked" type="radio" >
+                        <input name="report_pre_annu_exam" id="radio-choice-h-2a" value="1" type="radio" >
                         <label for="radio-choice-h-2a">Yes</label>
-                        <input name="report_pre_annu_exam" id="radio-choice-h-2b" value="2" type="radio">
+                        <input name="report_pre_annu_exam" id="radio-choice-h-2b" value="2" checked="checked" type="radio">
                         <label for="radio-choice-h-2b">No</label>
                     </fieldset>
                </li>
                
-               <li class="ui-field-contain auto_break">    
+               <li class="ui-field-contain auto_break" id="sa_report">    
                     3.1 If yes give date of report preparation
                     <input type="date" name="give_report_prepa" id="give_report_prepa" placeholder="dd-mm-yyyy" />
                </li>
@@ -3018,16 +3239,18 @@ Head</label>
             <ul data-role="listview" data-inset="true">               
                <li style="background-color:#e2e2e2;" class="auto_break">G. ICT Grant </li>
                 <li class="ui-field-contain">    
-                    1. Reference period   
-                    <input type="text" name="ict_grant" id="ict_grant"/>
-                    <!--<select name="ict_ref_period" id="ict_ref_period" data-native-menu="false" >
+                    1. Reference period  
+                    <select name="ict_ref_period_sem" id="ict_ref_period_sem" data-native-menu="false" >
                         <option value="0">Select</option>
-                        <option value="1">July-December-2015</option>
-                        <option value="2">January-June-2016</option>	
-                        <option value="3">July-December-2016</option>
-                        <option value="4">January-June-2017</option>
-                        <option value="5">July-December-2017</option>									 												
-                    </select>  -->
+                        <option value="1">January-June</option>	
+                        <option value="2">July-December</option>                        									 												
+                    </select>
+                    <select name="ict_ref_period_year" id="ict_ref_period_year" data-native-menu="false" >
+                        <option value="0">Select</option>
+                        <option value="1">2015</option>
+                        <option value="2">2016</option>	
+                        <option value="3">2017</option>									 												
+                    </select>   
                </li> 
                <li class="ui-field-contain auto_break">    
                     2. Does the institution have internet connection  
@@ -3096,7 +3319,7 @@ Head</label>
              <ul data-role="listview" data-inset="true"> 
                
                <li style="background-color:#e2e2e2;" class="auto_break">H. Improving School Facility (ISF) Grant</li>
-               <li class="ui-field-contain auto_break">    
+               <li class="ui-field-contain auto_break" onclick="isf_grant()">    
                     1. Did the Institution receive any ISF Grant in 2015 
                     <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
                         <input name="ins_rec_isf" id="radio-choice-h-2a" value="1" checked="checked" type="radio" >
@@ -3105,6 +3328,7 @@ Head</label>
                         <label for="radio-choice-h-2b">No</label>
                     </fieldset>
                </li>
+          <div id="isf">
                <li class="ui-field-contain auto_break" style="overflow:scroll;">    
                   1.1 If yes, fill up the following table
                     
@@ -3388,10 +3612,10 @@ Head</label>
                             </select>
                           </td>
                   	  </tr>
-                    </table>
-                    
+                    </table>                    
                </li>
-               <li class="ui-field-contain auto_break">    
+         </div>
+               <!--<li class="ui-field-contain auto_break">    
                     1.1 Name of the works undertaken from SEQAEP in AY 2015 with ISF Grant 
                     <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
                         <input name="name_work_isf_grant" id="radio-choice-h-2a" value="1" checked="checked" type="radio" >
@@ -3403,7 +3627,7 @@ Head</label>
                <li class="ui-field-contain auto_break">    
                     1.2 Status of each work
                     <input type="number" name="work_status" id="work_status" />
-               </li>
+               </li>-->
                
                <li style="background-color:#e2e2e2;" class="auto_break">Tubewells</li>
                <li class="ui-field-contain auto_break">    
@@ -3678,15 +3902,17 @@ Head</label>
                
                <li class="ui-field-contain auto_break">    
                     1. Reference period  
-                     <input type="text" name="stu_award_ref_period" id="stu_award_ref_period"  />
-                    <!--<select name="stu_award_ref_period" id="stu_award_ref_period" data-native-menu="false" >
+                   <select name="stu_award_ref_period_sem" id="stu_award_ref_period_sem" data-native-menu="false" >
                         <option value="0">Select</option>
-                        <option value="1">July-December-2015</option>
-                        <option value="2">January-June-2016</option>	
-                        <option value="3">July-December-2016</option>
-                        <option value="4">January-June-2017</option>
-                        <option value="5">July-December-2017</option>									 												
-                 </select>  -->
+                        <option value="1">January-June</option>	
+                        <option value="2">July-December</option>                        									 												
+                    </select>
+                    <select name="stu_award_ref_period_year" id="stu_award_ref_period_year" data-native-menu="false" >
+                        <option value="0">Select</option>
+                        <option value="1">2015</option>
+                        <option value="2">2016</option>	
+                        <option value="3">2017</option>									 												
+                    </select>   
                </li>
                <li class="ui-field-contain auto_break">    
                    2. Fill up the following tables
@@ -4014,18 +4240,21 @@ Head</label>
                <li style="background-color:#e2e2e2;" class="auto_break">L. Developing Reading Habit (DRH):</li>
                  
                <li class="ui-field-contain auto_break">    
-                    1. Reference period 
-                    <input type="text" name="dev_ref_period" id="dev_ref_period"/>  
-                   <!-- <select name="dev_ref_period" id="dev_ref_period" data-native-menu="false" >
+                    1. Reference period  
+                    <select name="dev_ref_period_sem" id="dev_ref_period_sem" data-native-menu="false" >
                         <option value="0">Select</option>
-                        <option value="1">July-December-2015</option>
-                        <option value="2">January-June-2016</option>	
-                        <option value="3">July-December-2016</option>
-                        <option value="4">January-June-2017</option>
-                        <option value="5">July-December-2017</option>							 												
-                    </select>  -->
+                        <option value="1">January-June</option>	
+                        <option value="2">July-December</option>                        									 												
+                    </select>
+                    <select name="dev_ref_period_year" id="dev_ref_period_year" data-native-menu="false" >
+                        <option value="0">Select</option>
+                        <option value="1">2015</option>
+                        <option value="2">2016</option>	
+                        <option value="3">2017</option>									 												
+                    </select>   
+                   
                </li>
-               <li class="ui-field-contain auto_break">    
+               <li class="ui-field-contain auto_break" onclick="drh_pro_ins()">    
                    2.Is there DRH program in the institution
                     <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
                         <input name="ins_drh_pro" id="radio-choice-h-2a" value="1" checked="checked" type="radio" >
@@ -4034,6 +4263,7 @@ Head</label>
                         <label for="radio-choice-h-2b">N</label>
                     </fieldset>
                </li>
+           <div id="drh">
                <li class="ui-field-contain auto_break">    
                     3. Who is the organizer for DRH program 
                      <select name="org_drh_pro" id="org_drh_pro" data-native-menu="false" >
@@ -4075,63 +4305,63 @@ Head</label>
                     </tr>
                     <tr>
                       <td align="center" class="tbl_bro_color" >VI</td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_inc_drh_6" id="stu_inc_drh_6" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="pro_book_rec_6" id="pro_book_rec_6" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_per_eva_6" id="stu_per_eva_6" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_pass_eval_test_6" id="stu_pass_eval_test_6" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="no_award_6" id="no_award_6" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="only_drh_book_6" id="only_drh_book_6" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="inc_drh_book_6" id="inc_drh_book_6" /></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_inc_drh_6" id="stu_inc_drh_6" onblur="total_drh_stu()" /></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="pro_book_rec_6" id="pro_book_rec_6" onblur="total_pro_book()"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_per_eva_6" id="stu_per_eva_6" onblur="total_par_stu()"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_pass_eval_test_6" id="stu_pass_eval_test_6" onblur="total_pass_eval_stu()"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="no_award_6" id="no_award_6" onblur="total_awardness_stu()"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="only_drh_book_6" id="only_drh_book_6" onblur="total_drh_books()"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="inc_drh_book_6" id="inc_drh_book_6" onblur="total_incdrh_books()"/></td>
                     </tr>
                     <tr>
                       <td align="center" class="tbl_bro_color">VII</td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_inc_drh_7" id="stu_inc_drh_7" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="pro_book_rec_7" id="pro_book_rec_7" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_per_eva_7" id="stu_per_eva_7" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_pass_eval_test_7" id="stu_pass_eval_test_7" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="no_award_7" id="no_award_7" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="only_drh_book_7" id="only_drh_book_7" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="inc_drh_book_7" id="inc_drh_book_7" /></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_inc_drh_7" id="stu_inc_drh_7" onblur="total_drh_stu()"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="pro_book_rec_7" id="pro_book_rec_7" onblur="total_pro_book()"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_per_eva_7" id="stu_per_eva_7" onblur="total_par_stu()"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_pass_eval_test_7" id="stu_pass_eval_test_7" onblur="total_pass_eval_stu()"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="no_award_7" id="no_award_7" onblur="total_awardness_stu()"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="only_drh_book_7" id="only_drh_book_7" onblur="total_drh_books()"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="inc_drh_book_7" id="inc_drh_book_7" onblur="total_incdrh_books()"/></td>
                     </tr>
                     <tr>
                       <td align="center" class="tbl_bro_color">VIII</td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_inc_drh_8" id="stu_inc_drh_8" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="pro_book_rec_8" id="pro_book_rec_8" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_per_eva_8" id="stu_per_eva_8" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_pass_eval_test_8" id="stu_pass_eval_test_8" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="no_award_8" id="no_award_8" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="only_drh_book_8" id="only_drh_book_8" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="inc_drh_book_8" id="inc_drh_book_8" /></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_inc_drh_8" id="stu_inc_drh_8" onblur="total_drh_stu()"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="pro_book_rec_8" id="pro_book_rec_8" onblur="total_pro_book()"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_per_eva_8" id="stu_per_eva_8" onblur="total_par_stu()"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_pass_eval_test_8" id="stu_pass_eval_test_8" onblur="total_pass_eval_stu()"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="no_award_8" id="no_award_8" onblur="total_awardness_stu()"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="only_drh_book_8" id="only_drh_book_8" onblur="total_drh_books()"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="inc_drh_book_8" id="inc_drh_book_8" onblur="total_incdrh_books()"/></td>
                     </tr>
                     <tr>
                       <td align="center" class="tbl_bro_color">IX</td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_inc_drh_9" id="stu_inc_drh_9" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="pro_book_rec_9" id="pro_book_rec_9" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_per_eva_9" id="stu_per_eva_9" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_pass_eval_test_9" id="stu_pass_eval_test_9" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="no_award_9" id="no_award_9" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="only_drh_book_9" id="only_drh_book_9" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="inc_drh_book_9" id="inc_drh_book_9" /></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_inc_drh_9" id="stu_inc_drh_9" onblur="total_drh_stu()"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="pro_book_rec_9" id="pro_book_rec_9" onblur="total_pro_book()"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_per_eva_9" id="stu_per_eva_9" onblur="total_par_stu()"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_pass_eval_test_9" id="stu_pass_eval_test_9" onblur="total_pass_eval_stu()"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="no_award_9" id="no_award_9" onblur="total_awardness_stu()"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="only_drh_book_9" id="only_drh_book_9" onblur="total_drh_books()"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="inc_drh_book_9" id="inc_drh_book_9" onblur="total_incdrh_books()"/></td>
                     </tr>
                     <tr>
                       <td align="center" class="tbl_bro_color">X</td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_inc_drh_10" id="stu_inc_drh_10" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="pro_book_rec_10" id="pro_book_rec_10" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_per_eva_10" id="stu_per_eva_10" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_pass_eval_test_10" id="stu_pass_eval_test_10" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="no_award_10" id="no_award_10" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="only_drh_book_10" id="only_drh_book_10" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="inc_drh_book_10" id="inc_drh_book_10" /></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_inc_drh_10" id="stu_inc_drh_10" onblur="total_drh_stu()"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="pro_book_rec_10" id="pro_book_rec_10" onblur="total_pro_book()"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_per_eva_10" id="stu_per_eva_10" onblur="total_par_stu()"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_pass_eval_test_10" id="stu_pass_eval_test_10" onblur="total_pass_eval_stu()"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="no_award_10" id="no_award_10" onblur="total_awardness_stu()"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="only_drh_book_10" id="only_drh_book_10" onblur="total_drh_books()" /></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="inc_drh_book_10" id="inc_drh_book_10" onblur="total_incdrh_books()"/></td>
                     </tr>
                     <tr>
                       <td align="center" class="tbl_bro_color">Total</td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_inc_drh_total" id="stu_inc_drh_total" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="pro_book_rec_total" id="pro_book_rec_total" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_per_eva_total" id="stu_per_eva_total" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_pass_eval_test_total" id="stu_pass_eval_test_total" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="no_award_total" id="no_award_total" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="only_drh_book_total" id="only_drh_book_total" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="inc_drh_book_total" id="inc_drh_book_total" /></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_inc_drh_total" id="stu_inc_drh_total" readonly="readonly" style="background-color:#E8E8E8;"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="pro_book_rec_total" id="pro_book_rec_total" readonly="readonly" style="background-color:#E8E8E8;"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_per_eva_total" id="stu_per_eva_total" readonly="readonly" style="background-color:#E8E8E8;"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="stu_pass_eval_test_total" id="stu_pass_eval_test_total" readonly="readonly" style="background-color:#E8E8E8;"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="no_award_total" id="no_award_total" readonly="readonly" style="background-color:#E8E8E8;"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="only_drh_book_total" id="only_drh_book_total" readonly="readonly" style="background-color:#E8E8E8;"/></td>
+                      <td align="center" class="tbl_bro_color"><input type="number" name="inc_drh_book_total" id="inc_drh_book_total" readonly="readonly" style="background-color:#E8E8E8;"/></td>
                     </tr>
                     </table>
                     <br /><br />
@@ -4144,7 +4374,9 @@ Head</label>
                         <option value="1">1-Verified </option>
                         <option value="2">2-Did not verify</option>						 												
                     </select>
-               </li> 
+               </li>
+          </div>
+           
                <li class="ui-field-contain auto_break">    
                     7. What proportion of the total DRH books are in usable condition
                      <select name="total_drh_book" id="total_drh_book" data-native-menu="false" >
@@ -4210,7 +4442,7 @@ Head</label>
         
         <input name="com_ach_lat" id="com_ach_lat" value=""  type="hidden">
         <input name="com_ach_long" id="com_ach_long" value=""  type="hidden">
-        <a data-role="button" id="btn_ach_lat_long" onClick="getLocationInfoAch();" class="ui-btn" >Confirm Location</a>
+        <a data-role="button" id="btn_ach_lat_long" onClick="getLocationInfoAchComp();" class="ui-btn" >Confirm Location</a>
 		<div class="errorChk" style="color:#F00;"></div>
         <div id="sucChk" style="color:#00CA00;"></div>
         <br/><br/>
