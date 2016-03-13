@@ -11,7 +11,6 @@ var imagePath2A="";
 var latitude="";
 var longitude="";
 var upListFlag=0;
-var divFlag=0;
 
 function getLocationInfoAch() {	
 	var options = { enableHighAccuracy: false};	
@@ -30,7 +29,6 @@ function onError(error) {
    $("#ach_long").val(0);
    $(".errorChk").html("Failed to Confirmed Location.");
 }
-
 
 function getLocationInfoAchComp() {	
 	var options = { enableHighAccuracy: false};	
@@ -76,13 +74,15 @@ $(document).ready(function(){
 			}
 			
 			/*--------compliance-----------*/
-			//$("input[name='agr_seqaep']:checked").val("");
-			$("#agr_type_con").hide();
+			$("#agr_type_con").hide();		
 			$("#act_con").hide();
 			$("#pta_con").hide();
 			$("#drh").hide();
 			$("#sa_report").hide();
 			$("#isf").hide();
+			$("#iaa").hide();
+			$("#award_dist").hide();
+			
 			/*--------compliance-end----------*/
 			
 			
@@ -142,14 +142,27 @@ function syncBasic() {
 						$('#syncBasic').show();
 						
 						/*--------------*/
-						//$("input[name='add_cls_seqaep']:checked").val("");
-						$("#agr_type_con").hide();
-						$("#act_con").hide();
-						$("#pta_con").hide();
-						$("#drh").hide();
-						$("#sa_report").hide();
-						$("#isf").hide();
+						$("input[name='agr_seqaep']:checked").val('2');
+						//$("#agr_type_con").hide();
+						$("input[name='add_cls_seqaep']:checked").val('2');						
+						//$("#act_con").hide();
+						$("input[name='add_cls_seqaep']:checked").val('2');
+						//$("#pta_con").hide();
+						$("input[name='pta_exist_ins']:checked").val('2');
+						//$("#drh").hide();
+						$("input[name='ins_drh_pro']:checked").val('2');
+						//$("#sa_report").hide();
+						$("input[name='report_pre_annu_exam']:checked").val('2');
+						//$("#isf").hide();
+						$("input[name='ins_rec_isf']:checked").val('2');
+						//$("#iaa").hide();
+						$("input[name='ins_receive_tk']:checked").val('2');
+						//$("#award_dist").hide();
+						$("input[name='smc_awared_dis']:checked").val('1');
+						
 						/*--------------*/
+						//$("#agr_type_con").val('');
+						
 						
 						
 						url = "#homePage";
@@ -188,16 +201,6 @@ function menuClick(){
 		
 		$('#up_list_search').val('');
 		
-		
-		if (divFlag==0){
-			$("#s_div").html(localStorage.divCmbo);
-			divFlag=1;
-		}else{
-			$('#s_div').empty();
-			$('#s_div').append(localStorage.divCmbo).trigger('create');
-		}
-		
-		
 		url = "#homePage";
 		$.mobile.navigate(url);
 	
@@ -207,13 +210,7 @@ function backClick(){
 	$(".errorChk").text("");
 	}
 
-	if (divFlag==0){
-		$("#s_div").html(localStorage.divCmbo);
-		divFlag=1;
-	}else{
-		$('#s_div').empty();
-		$('#s_div').append(localStorage.divCmbo).trigger('create');
-	}
+
 	
 //---------------------------Banbeis data page 
 var banbeisFirstData="";
@@ -240,18 +237,8 @@ function pmthhVerification(){
 					  }				  
 					  				  
 				  }		  
-			});
-			
-			localStorage.divCmbo=divCmbo	 
-			
-			if (divFlag==0){
-				$("#s_div").html(localStorage.divCmbo);
-				divFlag=1;
-			}else{
-				$('#s_div').empty();
-				$('#s_div').append(localStorage.divCmbo).trigger('create');
-			}
-			
+			});	 
+			$("#s_div").html(divCmbo);
 			
 			url="#first_page";					
 			$.mobile.navigate(url);		
@@ -1207,7 +1194,7 @@ function banbeisFirstDataNext(){
 						  $("#com_upzila").val(upazila_thana);
 						  $("#com_district").val(dist_name);
 						  $("#com_eiin").val(school_code);
-						  
+						 		  
 						  
 						 url="#compliancePage1";					
 						 $.mobile.navigate(url);
@@ -1248,6 +1235,7 @@ function complianceDataNext(){
 		var com_type_institute=$("#com_type_institute").val();
 		var agr_seqaep=$("input[name='agr_seqaep']:checked").val();
 		var agr_type=$("input[name='agr_type']:checked").val();
+		
 				
 		var firstCharFlag=false;
 		var secondCharFlag=false;
@@ -1267,8 +1255,9 @@ function complianceDataNext(){
 		}
 		
 		
-			
-		
+		//localStorage.com_phoneno=com_phoneno;
+		//localStorage.com_ict_email=com_ict_email;
+		//alert(localStorage.com_phoneno);
 		
 		
 		if(parseInt(com_phoneno.length)!=11){
@@ -1337,7 +1326,7 @@ function complianceDataNext(){
 function agrementSeq(){
 	
 	var agr=$("input[name='agr_seqaep']:checked").val();
-	
+	//alert(agr);
 	if(agr=="2"){
 		$("#agr_type_con").show();
 	}else{
@@ -1720,7 +1709,7 @@ function complianceData3Next(){
 		}else if (pmt_st_1_id==""){
 			$(".errorChk").text("Required PMT ID VI");
 		}else if (pmt_st_1_id.length!=14){
-			$(".errorChk").text("Invalid PMT ID VI");		
+			$(".errorChk").text("Maximum 14 digit PMT ID VI");		
 		}else if (pmt_st_1_attendance==""){
 			$(".errorChk").text("Required Attendance VI");	
 		}else if (pmt_st_1_attendance>999){
@@ -1739,7 +1728,7 @@ function complianceData3Next(){
 		}else if (pmt_st_2_id==""){
 			$(".errorChk").text("Required PMT ID VII");
 		}else if (pmt_st_2_id.length!=14){
-			$(".errorChk").text("Invalid PMT ID VII");
+			$(".errorChk").text("Maximum 14 digit PMT ID VII");
 		}else if (pmt_st_2_attendance==""){
 			$(".errorChk").text("Required Attendance VII");
 		}else if (pmt_st_2_attendance>999){
@@ -1758,7 +1747,7 @@ function complianceData3Next(){
 		}else if (pmt_st_3_id==""){
 			$(".errorChk").text("Required PMT ID VIII");
 		}else if (pmt_st_3_id.length!=14){
-			$(".errorChk").text("Invalid PMT ID VIII");
+			$(".errorChk").text("Maximum 14 digit PMT ID VIII");
 		}else if (pmt_st_3_attendance==""){
 			$(".errorChk").text("Required Attendance VIII");	
 		}else if (pmt_st_3_attendance>999){
@@ -1777,7 +1766,7 @@ function complianceData3Next(){
 		}else if (pmt_st_4_id==""){
 			$(".errorChk").text("Required PMT ID IX");
 		}else if (pmt_st_4_id.length!=14){
-			$(".errorChk").text("Invalid PMT ID IX");
+			$(".errorChk").text("Maximum 14 digit PMT ID IX");
 		}else if (pmt_st_4_attendance==""){
 			$(".errorChk").text("Required Attendance IX");
 		}else if (pmt_st_4_attendance>999){
@@ -1796,7 +1785,7 @@ function complianceData3Next(){
 		}else if (pmt_st_5_id==""){
 			$(".errorChk").text("Required PMT ID X");
 		}else if (pmt_st_5_id.length!=14){
-			$(".errorChk").text("Invalid PMT ID X");
+			$(".errorChk").text("Maximum 14 digit PMT ID X");
 		}else if (pmt_st_5_attendance==""){
 			$(".errorChk").text("Required Attendance X");	
 		}else if (pmt_st_5_attendance>999){
@@ -2976,38 +2965,67 @@ function complianceData7Next(){
 		
 		var rece_award_boys_7=$("input[name='rece_award_boys_7']:checked").val();
 		var rece_pmt_stipen_boys_7=$("input[name='rece_pmt_stipen_boys_7']:checked").val();
-		var per_mark_ann_exam_boys_7=$("input[name='per_mark_ann_exam_boys_7']:checked").val();
+		var per_mark_ann_exam_boys_7=$("#per_mark_ann_exam_boys_7").val();
+		
 		var pre_day_visit_boys_7=$("input[name='pre_day_visit_boys_7']:checked").val();
 		var about_award_amo_tell_boys_7=$("input[name='about_award_amo_tell_boys_7']:checked").val();
 		var rece_award_girls_7=$("input[name='rece_award_girls_7']:checked").val();
 		var rece_pmt_stipen_girls_7=$("input[name='rece_pmt_stipen_girls_7']:checked").val();
-		var per_mark_ann_exam_girls_7=$("input[name='per_mark_ann_exam_girls_7']:checked").val();
+		var per_mark_ann_exam_girls_7=$("#per_mark_ann_exam_girls_7").val();
+		
 		var pre_day_visit_girls_7=$("input[name='pre_day_visit_girls_7']:checked").val();
 		var about_award_amo_tell_girls_7=$("input[name='about_award_amo_tell_girls_7']:checked").val();
 		
 		var rece_award_boys_8=$("input[name='rece_award_boys_8']:checked").val();
 		var rece_pmt_stipen_boys_8=$("input[name='rece_pmt_stipen_boys_8']:checked").val();
-		var per_mark_ann_exam_boys_8=$("input[name='per_mark_ann_exam_boys_8']:checked").val();
+		var per_mark_ann_exam_boys_8=$("#per_mark_ann_exam_boys_8").val();
+		
 		var pre_day_visit_boys_8=$("input[name='pre_day_visit_boys_8']:checked").val();
 		var about_award_amo_tell_boys_8=$("input[name='about_award_amo_tell_boys_8']:checked").val();
 		var rece_award_girls_8=$("input[name='rece_award_girls_8']:checked").val();
 		var rece_pmt_stipen_girls_8=$("input[name='rece_pmt_stipen_girls_8']:checked").val();
-		var per_mark_ann_exam_girls_8=$("input[name='per_mark_ann_exam_girls_8']:checked").val();
+		var per_mark_ann_exam_girls_8=$("#per_mark_ann_exam_girls_8").val();
+		
 		var pre_day_visit_girls_8=$("input[name='pre_day_visit_girls_8']:checked").val();
 		var about_award_amo_tell_girls_8=$("input[name='about_award_amo_tell_girls_8']:checked").val();
 		
 		var rece_award_boys_10=$("input[name='rece_award_boys_10']:checked").val();
 		var rece_pmt_stipen_boys_10=$("input[name='rece_pmt_stipen_boys_10']:checked").val();
-		var per_mark_ann_exam_boys_10=$("input[name='per_mark_ann_exam_boys_10']:checked").val();
+		var per_mark_ann_exam_boys_10=$("#per_mark_ann_exam_boys_10").val();
+		
 		var pre_day_visit_boys_10=$("input[name='pre_day_visit_boys_10']:checked").val();
 		var about_award_amo_tell_boys_10=$("input[name='about_award_amo_tell_boys_10']:checked").val();
 		var rece_award_girls_10=$("input[name='rece_award_girls_10']:checked").val();
 		var rece_pmt_stipen_girls_10=$("input[name='rece_pmt_stipen_girls_10']:checked").val();
-		var per_mark_ann_exam_girls_10=$("input[name='per_mark_ann_exam_girls_10']:checked").val();
+		var per_mark_ann_exam_girls_10=$("#per_mark_ann_exam_girls_10").val();
+		
 		var pre_day_visit_girls_10=$("input[name='pre_day_visit_girls_10']:checked").val();
 		var about_award_amo_tell_girls_10=$("input[name='about_award_amo_tell_girls_10']:checked").val();
 		
 		award_dis=$("#award_dis").val()				
+		
+		if(ins_receive_tk==2){			
+			ins_receive_tk=ins_receive_tk;			
+			receive_amount_iaa=0;
+			amount_dis_manual=0;	
+			smc_awared_dis=0;
+			reason=0;
+			smc_meet_dis=0;
+			pta_aware_dis=0;
+			
+			/*if (reason==""||reason==0){
+			$(".errorChk").text("Required reason");	
+			}else{*/				
+			
+			banbeisComData7="&ins_receive_tk="+ins_receive_tk+"&receive_amount_iaa="+receive_amount_iaa+"&amount_dis_manual="+amount_dis_manual+"&smc_awared_dis="+smc_awared_dis+"&reason="+reason+"&smc_meet_dis="+smc_meet_dis+"&pta_aware_dis="+pta_aware_dis+"&pmt_stu_app_ssc_exam_13="+pmt_stu_app_ssc_exam_13+"&pmt_stu_pass_ssc_exam_13="+pmt_stu_pass_ssc_exam_13+"&pmt_stu_gpa_13="+pmt_stu_gpa_13+"&nonpmt_stu_app_ssc_exam_13="+nonpmt_stu_app_ssc_exam_13+"&nonpmt_stu_pass_ssc_exam_13="+nonpmt_stu_pass_ssc_exam_13+"&nonpmt_stu_gpa_13="+nonpmt_stu_gpa_13+"&pmt_stu_app_ssc_exam_14="+pmt_stu_app_ssc_exam_14+"&pmt_stu_pass_ssc_exam_14="+pmt_stu_pass_ssc_exam_14+"&pmt_stu_gpa_14="+pmt_stu_gpa_14+"&nonpmt_stu_app_ssc_exam_14="+nonpmt_stu_app_ssc_exam_14+"&nonpmt_stu_pass_ssc_exam_14="+nonpmt_stu_pass_ssc_exam_14+"&nonpmt_stu_gpa_14="+nonpmt_stu_gpa_14+"&pmt_stu_app_ssc_exam_15="+pmt_stu_app_ssc_exam_15+"&pmt_stu_pass_ssc_exam_15="+pmt_stu_pass_ssc_exam_15+"&pmt_stu_gpa_15="+pmt_stu_gpa_15+"&nonpmt_stu_app_ssc_exam_15="+nonpmt_stu_app_ssc_exam_15+"&nonpmt_stu_pass_ssc_exam_15="+nonpmt_stu_pass_ssc_exam_15+"&nonpmt_stu_gpa_15="+nonpmt_stu_gpa_15+"&total_stu_rec_stipend="+total_stu_rec_stipend+"&pmt_stu_app_ssc_exam="+pmt_stu_app_ssc_exam+"&pmt_stu_pass_ssc="+pmt_stu_pass_ssc+"&pmt_stu_coll_ssc_award="+pmt_stu_coll_ssc_award+"&pmt_stu_higher_study="+pmt_stu_higher_study+"&pass_award_dis="+pass_award_dis+"&stu_award_ref_period_sem="+stu_award_ref_period_sem+"&stu_award_ref_period_year="+stu_award_ref_period_year+"&rece_award_boys_7="+rece_award_boys_7+"&rece_pmt_stipen_boys_7="+rece_pmt_stipen_boys_7+"&per_mark_ann_exam_boys_7="+per_mark_ann_exam_boys_7+"&pre_day_visit_boys_7="+pre_day_visit_boys_7+"&about_award_amo_tell_boys_7="+about_award_amo_tell_boys_7+"&rece_award_girls_7="+rece_award_girls_7+"&rece_pmt_stipen_girls_7="+rece_pmt_stipen_girls_7+"&per_mark_ann_exam_girls_7="+per_mark_ann_exam_girls_7+"&pre_day_visit_girls_7="+pre_day_visit_girls_7+"&about_award_amo_tell_girls_7="+about_award_amo_tell_girls_7+"&rece_award_boys_8="+rece_award_boys_8+"&rece_pmt_stipen_boys_8="+rece_pmt_stipen_boys_8+"&per_mark_ann_exam_boys_8="+per_mark_ann_exam_boys_8+"&pre_day_visit_boys_8="+pre_day_visit_boys_8+"&about_award_amo_tell_boys_8="+about_award_amo_tell_boys_8+"&rece_award_girls_8="+rece_award_girls_8+"&rece_pmt_stipen_girls_8="+rece_pmt_stipen_girls_8+"&per_mark_ann_exam_girls_8="+per_mark_ann_exam_girls_8+"&pre_day_visit_girls_8="+pre_day_visit_girls_8+"&about_award_amo_tell_girls_8="+about_award_amo_tell_girls_8+"&rece_award_boys_10="+rece_award_boys_10+"&rece_pmt_stipen_boys_10="+rece_pmt_stipen_boys_10+"&per_mark_ann_exam_boys_10="+per_mark_ann_exam_boys_10+"&pre_day_visit_boys_10="+pre_day_visit_boys_10+"&about_award_amo_tell_boys_10="+about_award_amo_tell_boys_10+"&rece_award_girls_10="+rece_award_girls_10+"&rece_pmt_stipen_girls_10="+rece_pmt_stipen_girls_10+"&per_mark_ann_exam_girls_10="+per_mark_ann_exam_girls_10+"&pre_day_visit_girls_10="+pre_day_visit_girls_10+"&about_award_amo_tell_girls_10="+about_award_amo_tell_girls_10+"&award_dis="+award_dis	
+                                                                                                     		
+		$(".errorChk").text("");	
+		url="#compliancePage8";					
+		$.mobile.navigate(url);	
+		
+		//}
+		
+		}else{		
 		
 		if (pmt_stu_app_ssc_exam_13==""){
 			$(".errorChk").text("Required PMT Students Appeared SSC or Equivalent Exam 2013");	
@@ -3076,6 +3094,29 @@ function complianceData7Next(){
 		url="#compliancePage8";					
 		$.mobile.navigate(url);		
 		}
+	}
+}
+
+function ins_ach_award(){
+	var ins_receive_tk=$("input[name='ins_receive_tk']:checked").val();
+	//alert(ins_receive_tk);
+	if(ins_receive_tk=="2"){
+		$("#iaa").show();
+	}else{
+	 	$("#iaa").hide();
+	}
+	
+}
+
+function award_dis(){
+	var smc_awared_dis=$("input[name='smc_awared_dis']:checked").val();
+	//alert(smc_awared_dis);
+	if(smc_awared_dis=="2"){
+		$("#award_dist").hide();
+	}else{
+	 	$("#award_dist").show();
+	}
+	
 }
 
 function complianceData8Next(){

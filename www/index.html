@@ -3322,9 +3322,9 @@ Head</label>
                <li class="ui-field-contain auto_break" onclick="isf_grant()">    
                     1. Did the Institution receive any ISF Grant in 2015 
                     <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                        <input name="ins_rec_isf" id="radio-choice-h-2a" value="1" checked="checked" type="radio" >
+                        <input name="ins_rec_isf" id="radio-choice-h-2a" value="1"  type="radio" >
                         <label for="radio-choice-h-2a">Yes</label>
-                        <input name="ins_rec_isf" id="radio-choice-h-2b" value="2" type="radio">
+                        <input name="ins_rec_isf" id="radio-choice-h-2b" value="2" checked="checked" type="radio">
                         <label for="radio-choice-h-2b">No</label>
                     </fieldset>
                </li>
@@ -3734,15 +3734,16 @@ Head</label>
     		
             <ul data-role="listview" data-inset="true">               
                <li style="background-color:#e2e2e2;" class="auto_break">I. Information for Institution Achievement Award (IAA)</li>
-                <li class="ui-field-contain auto_break">    
+                <li class="ui-field-contain auto_break" onclick="ins_ach_award()">    
                     1. Did the institution ever receive TK 1,00,000 as IAA   
                     <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                        <input name="ins_receive_tk" id="radio-choice-h-2a" value="1" checked="checked" type="radio" >
+                        <input name="ins_receive_tk" id="radio-choice-h-2a" value="1"  type="radio" >
                         <label for="radio-choice-h-2a">Yes</label>
-                        <input name="ins_receive_tk" id="radio-choice-h-2b" value="2" type="radio">
+                        <input name="ins_receive_tk" id="radio-choice-h-2b" value="2" checked="checked" type="radio">
                         <label for="radio-choice-h-2b">No</label>
                     </fieldset>
-               </li>  
+               </li> 
+         <div id="iaa"> 
                <li class="ui-field-contain auto_break">    
                     2. The amount of IAA received in 
                         <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
@@ -3761,7 +3762,7 @@ Head</label>
                         <label for="radio-choice-h-2b">No</label>
                     </fieldset>
                </li>
-               <li class="ui-field-contain auto_break">    
+               <li class="ui-field-contain auto_break" onclick="award_dis()">    
                     4. Is SMC aware of this distribution 
                     <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
                         <input name="smc_awared_dis" id="radio-choice-h-2a" value="1" checked="checked" type="radio" >
@@ -3770,7 +3771,7 @@ Head</label>
                         <label for="radio-choice-h-2b">No</label>
                     </fieldset>
                </li>
-               <li class="ui-field-contain auto_break">    
+               <li class="ui-field-contain auto_break" id="award_dist">    
                     4.1 If no, what was the reason
                     <select name="reason" id="reason" data-native-menu="false" >
                     	<option value="0">Select</option>
@@ -3797,6 +3798,7 @@ Head</label>
                         <label for="radio-choice-h-2b">No</label>
                     </fieldset>
                </li>
+         </div>
                <li class="ui-field-contain auto_break">    
                     8. Pass rates of PMT students and others in SSC or equivalent exam 
                </li>
@@ -3858,8 +3860,28 @@ Head</label>
              <ul data-role="listview" data-inset="true">
              
                <li style="background-color:#e2e2e2;" class="auto_break">J. PMT SSC (or equivalent) Pass Award</li>
+               <li class="ui-field-contain auto_break" style="overflow:scroll;"> 
+               <table width="100%" border="1" class="tbl_bro_color" cellspacing="0" cellpadding="0">
+               	 <tr>
+                 	<td class="tbl_bro_color" align="center" >Total students in grade 10 to receive PMT stipend in 2015</td>
+                    <td class="tbl_bro_color" align="center">Total PMT students in grade 10 who appeared in the SSC exam in 2015</td>
+                    <td class="tbl_bro_color" align="center">Number of PMTstudents who passed SSC or equivalent in 2015</td>
+                    <td class="tbl_bro_color" align="center">Number of PMT students who collected PMT SSC or equivalent Pass award</td>
+                    <td class="tbl_bro_color" align="center">How many of these PMT students who passed SSC or equivalent went for higher secondary school study? (approximate number)</td>
+                 </tr>
+               	 <tr>
+               	   <td class="tbl_bro_color" align="center" ><input type="number" name="total_stu_rec_stipend" id="total_stu_rec_stipend" /></td>
+               	   <td class="tbl_bro_color" align="center"><input type="number" name="pmt_stu_app_ssc_exam" id="pmt_stu_app_ssc_exam" /></td>
+               	   <td class="tbl_bro_color" align="center"><input type="number" name="pmt_stu_pass_ssc" id="pmt_stu_pass_ssc"  /></td>
+               	   <td class="tbl_bro_color" align="center"><input type="number" name="pmt_stu_coll_ssc_award" id="pmt_stu_coll_ssc_award"  /></td>
+               	   <td class="tbl_bro_color" align="center"><input type="number" name="pmt_stu_higher_study" id="pmt_stu_higher_study" /></td>
+           	     </tr>
+                 
+               </table>
                
-               <li class="ui-field-contain auto_break">    
+             </li>  
+               
+               <!--<li class="ui-field-contain auto_break">    
                    1. PMT Students who appeared in SSC or Equivalent examination in 2015 
                </li>
                <li class="ui-field-contain auto_break">    
@@ -3881,7 +3903,7 @@ Head</label>
                <li class="ui-field-contain auto_break">    
                     How many of these PMT students who passed SSC or equivalent went for higher secondary school study? (approximate number)
                      <input type="number" name="pmt_stu_higher_study" id="pmt_stu_higher_study" />
-               </li> 
+               </li> -->
                
                <li class="ui-field-contain auto_break">    
                    2. How was the pass award distributed in 2015 (for 2015 exam results)
@@ -3957,12 +3979,7 @@ Head</label>
                         </fieldset>
                       </td>
                 	  <td align="center" class="tbl_bro_color" >
-                      	<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                            <input name="per_mark_ann_exam_boys_7" id="radio-choice-h-2a" value="1" checked="checked" type="radio" >
-                            <label for="radio-choice-h-2a">Y</label>
-                            <input name="per_mark_ann_exam_boys_7" id="radio-choice-h-2b" value="2" type="radio">
-                            <label for="radio-choice-h-2b">N</label>
-                        </fieldset>
+                      	<input type="number" id="per_mark_ann_exam_boys_7" name="per_mark_ann_exam_boys_7" />                    	
                       </td>
                 	  <td align="center" class="tbl_bro_color" >
                       	<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
@@ -3997,12 +4014,7 @@ Head</label>
                         </fieldset>
                       </td>
                 	  <td align="center" class="tbl_bro_color" >
-                      	<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                            <input name="per_mark_ann_exam_girls_7" id="radio-choice-h-2a" value="1" checked="checked" type="radio" >
-                            <label for="radio-choice-h-2a">Y</label>
-                            <input name="per_mark_ann_exam_girls_7" id="radio-choice-h-2b" value="2" type="radio">
-                            <label for="radio-choice-h-2b">N</label>
-                        </fieldset>
+                      <input type="number" id="per_mark_ann_exam_girls_7" name="per_mark_ann_exam_girls_7" />
                       </td>
                 	  <td align="center" class="tbl_bro_color" >
                       	<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
@@ -4040,12 +4052,7 @@ Head</label>
                         </fieldset>
                       </td>
                 	  <td align="center" class="tbl_bro_color" >
-                      	<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                            <input name="per_mark_ann_exam_boys_8" id="radio-choice-h-2a" value="1" checked="checked" type="radio" >
-                            <label for="radio-choice-h-2a">Y</label>
-                            <input name="per_mark_ann_exam_boys_8" id="radio-choice-h-2b" value="2" type="radio">
-                            <label for="radio-choice-h-2b">N</label>
-                        </fieldset>
+                      <input type="number" id="per_mark_ann_exam_boys_8" name="per_mark_ann_exam_boys_8" />
                       </td>
                 	  <td align="center" class="tbl_bro_color" >
                       	<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
@@ -4080,12 +4087,7 @@ Head</label>
                         </fieldset>
                       </td>
                 	  <td align="center" class="tbl_bro_color" >
-                      	<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                            <input name="per_mark_ann_exam_girls_8" id="radio-choice-h-2a" value="1" checked="checked" type="radio" >
-                            <label for="radio-choice-h-2a">Y</label>
-                            <input name="per_mark_ann_exam_girls_8" id="radio-choice-h-2b" value="2" type="radio">
-                            <label for="radio-choice-h-2b">N</label>
-                        </fieldset>
+                      <input type="number" id="per_mark_ann_exam_girls_8" name="per_mark_ann_exam_girls_8" />
                       </td>
                 	  <td align="center" class="tbl_bro_color" >
                       	<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
@@ -4123,12 +4125,7 @@ Head</label>
                         </fieldset>
                       </td>
                 	  <td align="center" class="tbl_bro_color" >
-                      	<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                            <input name="per_mark_ann_exam_boys_10" id="radio-choice-h-2a" value="1" checked="checked" type="radio" >
-                            <label for="radio-choice-h-2a">Y</label>
-                            <input name="per_mark_ann_exam_boys_10" id="radio-choice-h-2b" value="2" type="radio">
-                            <label for="radio-choice-h-2b">N</label>
-                        </fieldset>
+                      	<input type="number" id="per_mark_ann_exam_boys_10" name="per_mark_ann_exam_boys_10" />
                       </td>
                 	  <td align="center" class="tbl_bro_color" >
                       	<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
@@ -4163,12 +4160,7 @@ Head</label>
                         </fieldset>
                       </td>
                 	  <td align="center" class="tbl_bro_color" >
-                      	<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                            <input name="per_mark_ann_exam_girls_10" id="radio-choice-h-2a" value="1" checked="checked" type="radio" >
-                            <label for="radio-choice-h-2a">Y</label>
-                            <input name="per_mark_ann_exam_girls_10" id="radio-choice-h-2b" value="2" type="radio">
-                            <label for="radio-choice-h-2b">N</label>
-                        </fieldset>
+                      <input type="number" id="per_mark_ann_exam_girls_10" name="per_mark_ann_exam_girls_10" />
                       </td>
                 	  <td align="center" class="tbl_bro_color" >
                       	<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
@@ -4187,7 +4179,7 @@ Head</label>
                         </fieldset>
                       </td>
               	  </tr>
-                  <tr>
+                  <!--<tr>
                     <td align="center" class="tbl_bro_color">Total</td>
                     <td align="center" class="tbl_bro_color" ><input type="number" id="rece_award_boys_total" name="rece_award_boys_total" /></td>
                     <td align="center" class="tbl_bro_color" ><input type="number" id="rece_pmt_stipen_total" name="rece_pmt_stipen_total" /></td>
@@ -4200,7 +4192,7 @@ Head</label>
                     <td align="center" class="tbl_bro_color" ><input type="number" id="per_mark_ann_exam_girls_total" name="per_mark_ann_exam_girls_total" /></td>
                     <td align="center" class="tbl_bro_color" ><input type="number" id="pre_day_visit_girls_total" name="pre_day_visit_girls_total" /></td>
                     <td align="center" class="tbl_bro_color" ><input type="number" id="about_award_amo_tell_girls_total" name="about_award_amo_tell_girls_total" /></td>
-                  </tr>
+                  </tr>-->
                   
                 </table>
                                     
@@ -4257,9 +4249,9 @@ Head</label>
                <li class="ui-field-contain auto_break" onclick="drh_pro_ins()">    
                    2.Is there DRH program in the institution
                     <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                        <input name="ins_drh_pro" id="radio-choice-h-2a" value="1" checked="checked" type="radio" >
+                        <input name="ins_drh_pro" id="radio-choice-h-2a" value="1"  type="radio" >
                         <label for="radio-choice-h-2a">Y</label>
-                        <input name="ins_drh_pro" id="radio-choice-h-2b" value="2" type="radio">
+                        <input name="ins_drh_pro" id="radio-choice-h-2b" value="2" checked="checked" type="radio">
                         <label for="radio-choice-h-2b">N</label>
                     </fieldset>
                </li>
