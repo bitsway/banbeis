@@ -3356,6 +3356,7 @@ function drh_pro_ins(){
 	
 }
 
+
 function complianceDataSubmit(){
 		//$("#btn_com_submit").hide();
 		
@@ -3366,8 +3367,8 @@ function complianceDataSubmit(){
 		com_latitude=$("#com_ach_lat").val();
 		com_longitude=$("#com_ach_long").val();
 		
-		com_achPhoto=$("#com_achPhoto").val('');
-		com_achPhoto_2=$("#com_achPhoto_2").val('');
+		com_achPhoto=$("#com_achPhoto").val();
+		com_achPhoto_2=$("#com_achPhoto_2").val();
 		
 		if (com_latitude==undefined || com_latitude==''){
 			com_latitude=0;
@@ -3526,6 +3527,7 @@ function onfail(r) {
 
 function syncDataCom(){
 	
+	
 	//alert(apipath_compliance+"submitData_compliance?cid=BANBEIS&mobile_no="+localStorage.mobile_no+"&syncCode="+localStorage.sync_code+banbeisComData+banbeisComData2+banbeisComData3+banbeisComData4+banbeisComData5+banbeisComData6+banbeisComData7+banbeisComData8+'&com_achPhoto='+imageName+'&com_achPhoto2='+imageName2+'&latitude='+com_latitude+'&longitude='+com_longitude);
 			$.ajax({
 					type: 'POST',
@@ -3535,17 +3537,17 @@ function syncDataCom(){
 						
 						if(result=='Success'){							
 							
-							$("#com_latitude").val("");
-							$("#com_longitude").val("");
+							$("#com_ach_lat").val("");
+							$("#com_ach_long").val("");
 							$("#com_achPhoto").val("");
 							$("#com_achPhoto_2").val("");
 										
 						
 							$(".sucChk").text('Successfully Submitted');
 							$(".errorChk").text("");
-							$("#btn_pmt_save").hide();
-							$("#btn_take_pic").hide();
-							$("#btn_ach_lat_long").hide();
+							//$("#btn_1_take_pic").hide();
+							//$("#btn_2_take_pic").hide();
+							//$("#btn_com_ach_lat_long").hide();
 							//$("#btn_com_submit").hide();						
 						}else{
 							$(".errorChk").text('Unauthorized Access');																	

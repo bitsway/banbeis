@@ -2437,20 +2437,20 @@ function total_incdrh_books(){
                <li style="background-color:#e2e2e2;" class="auto_break">4. Among students who met all criteria above (attendance rate is at least 75% in 2015, received at least 33% pass mark in all subjects in 2015, and was unmarried in 2015), randomly select five students and fill the following table (at least one from each grade)</li> 
                
                 <li class="ui-field-contain" style="overflow:scroll;"> 
-               	  <table width="100%" border="1" class="tbl_bro_color" cellspacing="0" cellpadding="0">
+               	  <table border="1" class="tbl_bro_color" cellspacing="0" cellpadding="0">
                     	<tr>
-                        	<td class="tbl_bro_color auto_break" width="14%">Name of the student </td>
-                            <td width="14%" align="center" class="tbl_bro_color auto_break">Grade</td>
-                            <td class="tbl_bro_color auto_break" width="16%">PMT ID</td>
-                            <td class="tbl_bro_color auto_break" width="13%">Attendance % in July- December 2015</td>
-                            <td class="tbl_bro_color auto_break" width="14%">Marks in the final exam of 2015 </td>
-                            <td class="tbl_bro_color auto_break" width="14%">Currently  in School? </td>
-                            <td class="tbl_bro_color auto_break" width="15%">Married or unmarried during Jul-Dec 2015 </td>
+                        	<td class="tbl_bro_color auto_break" style="width:150px;" >Name of the student </td>
+                            <td align="center" class="tbl_bro_color auto_break">Grade</td>
+                            <td class="tbl_bro_color auto_break" style="width:150px;">PMT ID</td>
+                            <td class="tbl_bro_color auto_break" >Attendance % in July- December 2015</td>
+                            <td class="tbl_bro_color auto_break" >Marks in the final exam of 2015 </td>
+                            <td class="tbl_bro_color auto_break" >Currently  in School? </td>
+                            <td class="tbl_bro_color auto_break" >Married or unmarried during Jul-Dec 2015 </td>
                       </tr>
                     	<tr>
-                    	  <td class="tbl_bro_color"><input type="text" name="pmt_st_1_name" id="pmt_st_1_name" style="width:150px;" /></td>
+                    	  <td class="tbl_bro_color"><input type="text" name="pmt_st_1_name" id="pmt_st_1_name" style="width:160px;" /></td>
                     	  <td align="center" class="tbl_bro_color">VI</td>
-                    	  <td class="tbl_bro_color" ><input type="number" name="pmt_st_1_id" id="pmt_st_1_id" maxlength="14" /></td>
+                    	  <td class="tbl_bro_color" ><input type="number" name="pmt_st_1_id" id="pmt_st_1_id" maxlength="14" style="width:160px;" /></td>
                     	  <td class="tbl_bro_color"><input type="number" name="pmt_st_1_attendance" id="pmt_st_1_attendance" /></td>
                     	  <td class="tbl_bro_color"><input type="number" name="pmt_st_1_final_exam_mark" id="pmt_st_1_final_exam_mark" /></td>
                     	  <td class="tbl_bro_color">
@@ -4424,7 +4424,7 @@ Head</label>
         <h3>BANBEIS</h3>
   </div>
     <div data-role="content">       
-        <a data-role="button" id="btn_take_pic" onClick="getAchivementImageCom();" class="ui-btn" >Take Picture 1</a>       
+        <a data-role="button" id="btn_1_take_pic" onClick="getAchivementImageCom();" class="ui-btn" >Take Picture 1</a>       
         <img src="" width="128" height="128" alt="Image1" id="com_myImageA" />        
         <input name="com_achPhoto" id="com_achPhoto" value=""  type="hidden">
         
@@ -4434,9 +4434,9 @@ Head</label>
         
         <input name="com_ach_lat" id="com_ach_lat" value=""  type="hidden">
         <input name="com_ach_long" id="com_ach_long" value=""  type="hidden">
-        <a data-role="button" id="btn_ach_lat_long" onClick="getLocationInfoAchComp();" class="ui-btn" >Confirm Location</a>
+        <a data-role="button" id="btn_com_ach_lat_long" onClick="getLocationInfoAchComp();" class="ui-btn" >Confirm Location</a>
 		<div class="errorChk" style="color:#F00;"></div>
-        <div id="sucChk" style="color:#00CA00;"></div>
+        <div class="sucChk" style="color:#00CA00;"></div>
         <br/><br/>
 		<br/>
         <a data-role="button" id="btn_com_submit" onClick="complianceDataSubmit();" class="ui-btn" >Submit</a> 
