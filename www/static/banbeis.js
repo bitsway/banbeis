@@ -1311,7 +1311,7 @@ function complianceDataNext(){
 				
 				
 				<!------row hide------->
-				if(com_institute_category==1){
+				if(parseInt(com_institute_category)==1 ){
 					$("#gen_info_ix").hide();
 					$("#gen_info_x").hide();
 					$("#stipend_pro_ix").hide();
@@ -1322,7 +1322,7 @@ function complianceDataNext(){
 					$("#stipend_pro_ix").show();
 					$("#stipend_pro_x").show();
 				}
-				<!---->
+				
 				
 				
 				
@@ -1421,8 +1421,10 @@ function complianceData2Next(){
 		var stu_got_married_10=$("#stu_got_married_10").val();
 		var stu_present_visit_10=$("#stu_present_visit_10").val();
 		
+		
+		
 		<!------row hide------->
-		if(com_institute_category==1){
+		if(parseInt(com_institute_category)==1 ){
 			$("#stipend_pro_criteria_ix").hide();
 			$("#stipend_pro_criteria_x").hide();
 		}else{
@@ -1482,36 +1484,36 @@ function complianceData2Next(){
 		}else if (not_pmt_girls_8>999){
 			$(".errorChk").text("Required 3 digit VIII");
 		
-		}else if (pmt_boys_9=="" && com_institute_category!=1){
+		}else if (pmt_boys_9=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required pmt boys IX ");	
 		}else if (pmt_boys_9>999){
 			$(".errorChk").text("Required 3 digit IX");
-		}else if (not_pmt_boys_9=="" && com_institute_category!=1){
+		}else if (not_pmt_boys_9=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required non pmt boys IX");
 		}else if (not_pmt_boys_9>999){
 			$(".errorChk").text("Required 3 digit IX");	
-		}else if (pmt_girls_9=="" && com_institute_category!=1){
+		}else if (pmt_girls_9=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required pmt girls IX");
 		}else if (pmt_girls_9>999){
 			$(".errorChk").text("Required 3 digit IX");		
-		}else if (not_pmt_girls_9=="" && com_institute_category!=1){
+		}else if (not_pmt_girls_9=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required non pmt girls IX");	
 		}else if (not_pmt_girls_9>999){
 			$(".errorChk").text("Required 3 digit IX");
 				
-		}else if (pmt_boys_10=="" && com_institute_category!=1){
+		}else if (pmt_boys_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required pmt boys X");	
 		}else if (pmt_boys_10>999){
 			$(".errorChk").text("Required 3 digit X");
-		}else if (not_pmt_boys_10=="" && com_institute_category!=1){
+		}else if (not_pmt_boys_10=="" && parseInt(com_institute_category)!=1){
 			$(".errorChk").text("Required non pmt boys X");	
 		}else if (not_pmt_boys_10>999){
 			$(".errorChk").text("Required 3 digit X");
-		}else if (pmt_girls_10=="" && com_institute_category!=1){
+		}else if (pmt_girls_10=="" && parseInt(com_institute_category)!=1){
 			$(".errorChk").text("Required pmt girls X");
 		}else if (pmt_girls_10>999){
 			$(".errorChk").text("Required 3 digit X");	
-		}else if (not_pmt_girls_10=="" && com_institute_category!=1){
+		}else if (not_pmt_girls_10=="" && parseInt(com_institute_category)!=1){
 			$(".errorChk").text("Required non pmt girls X");	
 		}else if (not_pmt_girls_10>999){
 			$(".errorChk").text("Required 3 digit X");	
@@ -1610,19 +1612,19 @@ function complianceData2Next(){
 		}else if (stu_present_visit_8>999){
 			$(".errorChk").text("Required 3 digit VIII");
 				
-		}else if (stu_rec_stipend_9=="" && com_institute_category!=1){
+		}else if (stu_rec_stipend_9=="" && parseInt(com_institute_category)!=1){
 			$(".errorChk").text("Required Numeric IX");
 		}else if (stu_rec_stipend_9>999){
 			$(".errorChk").text("Required 3 digit IX");	
-		}else if (stu_attendance_9=="" && com_institute_category!=1){
+		}else if (stu_attendance_9=="" && parseInt(com_institute_category)!=1){
 			$(".errorChk").text("Required Numeric IX");	
 		}else if (stu_attendance_9>999){
 			$(".errorChk").text("Required 3 digit IX");	
-		}else if (stu_pass_annual_exam_9=="" && com_institute_category!=1){
+		}else if (stu_pass_annual_exam_9=="" && parseInt(com_institute_category)!=1){
 			$(".errorChk").text("Required Numeric IX");
 		}else if (stu_pass_annual_exam_9>999){
 			$(".errorChk").text("Required 3 digit IX");
-		}else if (stu_got_married_9=="" && com_institute_category!=1){
+		}else if (stu_got_married_9=="" && parseInt(com_institute_category)!=1){
 			$(".errorChk").text("Required Numeric IX");
 		}else if (stu_got_married_9>999){
 			$(".errorChk").text("Required 3 digit IX");
@@ -1634,24 +1636,24 @@ function complianceData2Next(){
 			$(".errorChk").text("Less than Number of students who received PMT stipend IX");	
 		}else if (parseInt(stu_rec_stipend_9)<parseInt(stu_present_visit_9)){             //3 col check cls 9
 			$(".errorChk").text("Less than Number of students who received PMT stipend IX");	
-		}else if (stu_present_visit_9=="" && com_institute_category!=1){
+		}else if (stu_present_visit_9=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Numeric IX");	
 		}else if (stu_present_visit_9>999){
 			$(".errorChk").text("Required 3 digit IX");
 			
-		}else if (stu_rec_stipend_10=="" && com_institute_category!=1){
+		}else if (stu_rec_stipend_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Numeric X");
 		}else if (stu_rec_stipend_10>999){
 			$(".errorChk").text("Required 3 digit X");	
-		}else if (stu_attendance_10=="" && com_institute_category!=1){
+		}else if (stu_attendance_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Numeric X");	
 		}else if (stu_attendance_10>999){
 			$(".errorChk").text("Required 3 digit X");	
-		}else if (stu_pass_annual_exam_10=="" && com_institute_category!=1){
+		}else if (stu_pass_annual_exam_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Numeric X");
 		}else if (stu_pass_annual_exam_10>999){
 			$(".errorChk").text("Required 3 digit X");		
-		}else if (stu_got_married_10=="" && com_institute_category!=1){
+		}else if (stu_got_married_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Numeric X");
 		}else if (stu_got_married_10>999){
 			$(".errorChk").text("Required 3 digit X");	
@@ -1663,7 +1665,7 @@ function complianceData2Next(){
 			$(".errorChk").text("Less than Number of students who received PMT stipend X");	
 		}else if (parseInt(stu_rec_stipend_10)<parseInt(stu_present_visit_10)){             //3 col check cls 10
 			$(".errorChk").text("Less than Number of students who received PMT stipend X");	
-		}else if (stu_present_visit_10=="" && com_institute_category!=1){
+		}else if (stu_present_visit_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Numeric X");
 		}else if (stu_present_visit_10>999){
 			$(".errorChk").text("Required 3 digit X");		
@@ -1726,7 +1728,7 @@ function complianceData3Next(){
 		
 		
 		<!------row hide------->
-		if(com_institute_category==1){
+		if(parseInt(com_institute_category)==1 ){
 			$("#act_attendance_ix").hide();
 			$("#act_attendance_x").hide();
 		}else{
@@ -1793,42 +1795,42 @@ function complianceData3Next(){
 		}else if (status_married_3==""){
 			$(".errorChk").text("Required Married/Unmarried VIII");	
 			
-		}else if (pmt_st_4_name=="" && com_institute_category!=1){
+		}else if (pmt_st_4_name=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Name IX");
-		}else if (pmt_st_4_id=="" && com_institute_category!=1){
+		}else if (pmt_st_4_id=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required PMT ID IX");
-		}else if (pmt_st_4_id.length!=14 && com_institute_category!=1){
+		}else if (pmt_st_4_id.length!=14 && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Maximum 14 digit PMT ID IX");
-		}else if (pmt_st_4_attendance=="" && com_institute_category!=1){
+		}else if (pmt_st_4_attendance=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Attendance IX");
 		}else if (pmt_st_4_attendance>999){
 			$(".errorChk").text("Required 3 digit IX");	
-		}else if (pmt_st_4_final_exam_mark=="" && com_institute_category!=1){
+		}else if (pmt_st_4_final_exam_mark=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Final Exam Marks IX");
 		}else if (pmt_st_4_final_exam_mark>999){
 			$(".errorChk").text("Required 3 digit IX");	
-		}else if (current_school_4=="" && com_institute_category!=1){
+		}else if (current_school_4=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Currently School IX");	
-		}else if (status_married_4=="" && com_institute_category!=1){
+		}else if (status_married_4=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Married/Unmarried IX");	
 			
-		}else if (pmt_st_5_name=="" && com_institute_category!=1){
+		}else if (pmt_st_5_name=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Name X");
-		}else if (pmt_st_5_id=="" && com_institute_category!=1){
+		}else if (pmt_st_5_id=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required PMT ID X");
-		}else if (pmt_st_5_id.length!=14 && com_institute_category!=1){
+		}else if (pmt_st_5_id.length!=14 && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Maximum 14 digit PMT ID X");
-		}else if (pmt_st_5_attendance=="" && com_institute_category!=1){
+		}else if (pmt_st_5_attendance=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Attendance X");	
 		}else if (pmt_st_5_attendance>999){
 			$(".errorChk").text("Required 3 digit X");
-		}else if (pmt_st_5_final_exam_mark=="" && com_institute_category!=1){
+		}else if (pmt_st_5_final_exam_mark=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Final Exam Marks X");	
 		}else if (pmt_st_5_final_exam_mark>999){
 			$(".errorChk").text("Required 3 digit X");
-		}else if (current_school_5=="" && com_institute_category!=1){
+		}else if (current_school_5=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Currently School X");	
-		}else if (status_married_5=="" && com_institute_category!=1){
+		}else if (status_married_5=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Married/Unmarried X");	
 			
 		}else{				
@@ -2283,100 +2285,100 @@ function complianceData4Next(){
 		}else if (sci_ave_cls_8>999){
 			$(".errorChk").text("Required 3 digit VIII");
 		
-		}else if (eng_enro_add_cls_9=="" && com_institute_category!=1){
+		}else if (eng_enro_add_cls_9=="" && parseInt(com_institute_category)!=1){
 			$(".errorChk").text("Required Enrolled Student English IX");
 		}else if (eng_enro_add_cls_9>999){
 			$(".errorChk").text("Required 3 digit IX");	
-		}else if (math_enro_add_cls_9=="" && com_institute_category!=1){
+		}else if (math_enro_add_cls_9=="" && parseInt(com_institute_category)!=1){
 			$(".errorChk").text("Required Enrolled Student Math IX");
 		}else if (math_enro_add_cls_9>999){
 			$(".errorChk").text("Required 3 digit IX");	
-		}else if (sci_enro_add_cls_9=="" && com_institute_category!=1){
+		}else if (sci_enro_add_cls_9=="" && parseInt(com_institute_category)!=1){
 			$(".errorChk").text("Required Enrolled Student Science IX");
 		}else if (sci_enro_add_cls_9>999){
 			$(".errorChk").text("Required 3 digit IX");	
-		}else if (eng_reg_cls_9=="" && com_institute_category!=1){
+		}else if (eng_reg_cls_9=="" && parseInt(com_institute_category)!=1){
 			$(".errorChk").text("Required Regular Class English IX");
 		}else if (eng_reg_cls_9>999){
 			$(".errorChk").text("Required 3 digit IX");	
-		}else if (math_reg_cls_9=="" && com_institute_category!=1){
+		}else if (math_reg_cls_9=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Regular Class Math IX");	
 		}else if (math_reg_cls_9>999){
 			$(".errorChk").text("Required 3 digit IX");
-		}else if (sci_reg_cls_9=="" && com_institute_category!=1){
+		}else if (sci_reg_cls_9=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Regular Class Science IX");
 		}else if (sci_reg_cls_9>999){
 			$(".errorChk").text("Required 3 digit IX");	
-		}else if (eng_add_cls_9=="" && com_institute_category!=1){
+		}else if (eng_add_cls_9=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Additional Class English IX");
 		}else if (eng_add_cls_9>999){
 			$(".errorChk").text("Required 3 digit IX");
-		}else if (math_add_cls_9=="" && com_institute_category!=1){
+		}else if (math_add_cls_9=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Additional Class Math IX");
 		}else if (math_add_cls_9>999){
 			$(".errorChk").text("Required 3 digit IX");	
-		}else if (sci_add_cls_9=="" && com_institute_category!=1){
+		}else if (sci_add_cls_9=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Additional Class Science IX");
 		}else if (sci_add_cls_9>999){
 			$(".errorChk").text("Required 3 digit IX");	
-		}else if (eng_ave_cls_9=="" && com_institute_category!=1){
+		}else if (eng_ave_cls_9=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Average Attendance English IX");
 		}else if (eng_ave_cls_9>999){
 			$(".errorChk").text("Required 3 digit IX");	
-		}else if (math_ave_cls_9=="" && com_institute_category!=1){
+		}else if (math_ave_cls_9=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Average Attendance Math IX");	
 		}else if (math_ave_cls_9>999){
 			$(".errorChk").text("Required 3 digit IX");
-		}else if (sci_ave_cls_9=="" && com_institute_category!=1){
+		}else if (sci_ave_cls_9=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Average Attendance Science IX");
 		}else if (sci_ave_cls_9>999){
 			$(".errorChk").text("Required 3 digit IX");
 		
-		}else if (eng_enro_add_cls_10=="" && com_institute_category!=1){
+		}else if (eng_enro_add_cls_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Enrolled Student English X");	
 		}else if (eng_enro_add_cls_10>999){
 			$(".errorChk").text("Required 3 digit X");
-		}else if (math_enro_add_cls_10=="" && com_institute_category!=1){
+		}else if (math_enro_add_cls_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Enrolled Student Math X");
 		}else if (math_enro_add_cls_10>999){
 			$(".errorChk").text("Required 3 digit X");
-		}else if (sci_enro_add_cls_10=="" && com_institute_category!=1){
+		}else if (sci_enro_add_cls_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Enrolled Student Science X");
 		}else if (sci_enro_add_cls_10>999){
 			$(".errorChk").text("Required 3 digit X");
-		}else if (eng_reg_cls_10=="" && com_institute_category!=1){
+		}else if (eng_reg_cls_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Regular Class English X");
 		}else if (eng_reg_cls_10>999){
 			$(".errorChk").text("Required 3 digit X");
-		}else if (math_reg_cls_10=="" && com_institute_category!=1){
+		}else if (math_reg_cls_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Regular Class Math X");
 		}else if (math_reg_cls_10>999){
 			$(".errorChk").text("Required 3 digit X");	
-		}else if (sci_reg_cls_10=="" && com_institute_category!=1){
+		}else if (sci_reg_cls_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Regular Class Science X");
 		}else if (sci_reg_cls_10>999){
 			$(".errorChk").text("Required 3 digit X");		
-		}else if (eng_add_cls_10=="" && com_institute_category!=1){
+		}else if (eng_add_cls_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Additional Class English X");
 		}else if (eng_add_cls_10>999){
 			$(".errorChk").text("Required 3 digit X");
-		}else if (math_add_cls_10=="" && com_institute_category!=1){
+		}else if (math_add_cls_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Additional Class Math X");
 		}else if (math_add_cls_10>999){
 			$(".errorChk").text("Required 3 digit X");	
-		}else if (sci_add_cls_10=="" && com_institute_category!=1){
+		}else if (sci_add_cls_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Additional Class Science X");
 		}else if (sci_add_cls_10>999){
 			$(".errorChk").text("Required 3 digit X");
-		}else if (eng_ave_cls_10=="" && com_institute_category!=1){
+		}else if (eng_ave_cls_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Average Attendance English X");
 		}else if (eng_ave_cls_10>999){
 			$(".errorChk").text("Required 3 digit X");
-		}else if (math_ave_cls_10=="" && com_institute_category!=1){
+		}else if (math_ave_cls_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Average Attendance Math X");
 		}else if (math_ave_cls_10>999){
 			$(".errorChk").text("Required 3 digit X");	
-		}else if (sci_ave_cls_10=="" && com_institute_category!=1){
+		}else if (sci_ave_cls_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Average Attendance Science X");
 		}else if (sci_ave_cls_10>999){
 			$(".errorChk").text("Required 3 digit X");
@@ -2717,7 +2719,7 @@ function complianceData6Next(){
 		
 		
 		<!------row hide------->
-		if(com_institute_category==1){
+		if(parseInt(com_institute_category)==1 ){
 			$("#bsaa_award_x").hide();
 		}else{
 			$("#bsaa_award_x").show();
@@ -3101,7 +3103,7 @@ function complianceData7Next(){
 		
 		
 		<!------row hide------->
-		if(com_institute_category==1){
+		if(parseInt(com_institute_category)==1 ){
 			$("#drh_ix").hide();
 			$("#drh_x").hide();
 		}else{
@@ -3219,7 +3221,7 @@ function complianceData7Next(){
 				$(".errorChk").text("Required Percentage of marks obtained annual exam boys VIII");	
 			}else if (per_mark_ann_exam_boys_8>999){
 				$(".errorChk").text("Required 3 digit boys VIII");
-			}else if (per_mark_ann_exam_boys_10=="" && com_institute_category!=1){
+			}else if (per_mark_ann_exam_boys_10=="" && parseInt(com_institute_category)!=1 ){
 				$(".errorChk").text("Required Percentage of marks obtained annual exam boys X");
 			}else if (per_mark_ann_exam_boys_10>999){
 				$(".errorChk").text("Required 3 digit boys X");
@@ -3232,7 +3234,7 @@ function complianceData7Next(){
 				$(".errorChk").text("Required Percentage of marks obtained annual exam girls VIII");
 			}else if (per_mark_ann_exam_girls_8>999){
 				$(".errorChk").text("Required 3 digit girls VIII");	
-			}else if (per_mark_ann_exam_girls_10=="" && com_institute_category!=1){
+			}else if (per_mark_ann_exam_girls_10=="" && parseInt(com_institute_category)!=1 ){
 				$(".errorChk").text("Required Percentage of marks obtained annual exam girls X");
 			}else if (per_mark_ann_exam_girls_10>999){
 				$(".errorChk").text("Required 3 digit girls X");			
@@ -3323,7 +3325,7 @@ function complianceData7Next(){
 			$(".errorChk").text("Required Percentage of marks obtained annual exam boys VIII");	
 		}else if (per_mark_ann_exam_boys_8>999){
 			$(".errorChk").text("Required 3 digit boys VIII");
-		}else if (per_mark_ann_exam_boys_10=="" && com_institute_category!=1){
+		}else if (per_mark_ann_exam_boys_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Percentage of marks obtained annual exam boys X");
 		}else if (per_mark_ann_exam_boys_10>999){
 			$(".errorChk").text("Required 3 digit boys X");
@@ -3336,7 +3338,7 @@ function complianceData7Next(){
 			$(".errorChk").text("Required Percentage of marks obtained annual exam girls VIII");
 		}else if (per_mark_ann_exam_girls_8>999){
 			$(".errorChk").text("Required 3 digit girls VIII");	
-		}else if (per_mark_ann_exam_girls_10=="" && com_institute_category!=1){
+		}else if (per_mark_ann_exam_girls_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Percentage of marks obtained annual exam girls X");
 		}else if (per_mark_ann_exam_girls_10>999){
 			$(".errorChk").text("Required 3 digit girls X");				
@@ -3576,48 +3578,48 @@ function complianceData8Next(){
 		}else if (parseInt(only_drh_book_8)>parseInt(inc_drh_book_8)){
 			$(".errorChk").text("Class VIII Column 7<Column 8 ");
 			
-		}else if (stu_inc_drh_9=="" && com_institute_category!=1){
+		}else if (stu_inc_drh_9=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required DRH program IX ");	
-		}else if (pro_book_rec_9=="" && com_institute_category!=1){
+		}else if (pro_book_rec_9=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required program books received IX ");	
-		}else if (stu_per_eva_9=="" && com_institute_category!=1){
+		}else if (stu_per_eva_9=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required students participated in evaluation IX");	
 		}else if (parseInt(stu_inc_drh_9)<parseInt(stu_per_eva_9)){
 			$(".errorChk").text("Class IX Column 2>=Column 4");			
-		}else if (stu_pass_eval_test_9=="" && com_institute_category!=1){
+		}else if (stu_pass_eval_test_9=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required students passed evaluation IX");	
 		}else if (parseInt(stu_per_eva_9)<parseInt(stu_pass_eval_test_9)){
 			$(".errorChk").text("Class IX Column 4>=Column 5");
-		}else if (no_award_9=="" && com_institute_category!=1){
+		}else if (no_award_9=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required awardees IX ");	
 		}else if (parseInt(stu_pass_eval_test_9)<parseInt(no_award_9)){
 			$(".errorChk").text("Class IX Column 5>=Column 6 ");
-		}else if (only_drh_book_9=="" && com_institute_category!=1){
+		}else if (only_drh_book_9=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Only DRH Books IX ");	
-		}else if (inc_drh_book_9=="" && com_institute_category!=1){
+		}else if (inc_drh_book_9=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Including DRH Books IX");	
 		}else if (parseInt(only_drh_book_9)>parseInt(inc_drh_book_9)){
 			$(".errorChk").text("Class IX Column 7<Column 8 ");
 			
-		}else if (stu_inc_drh_10=="" && com_institute_category!=1){
+		}else if (stu_inc_drh_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required DRH program X ");	
-		}else if (pro_book_rec_10=="" && com_institute_category!=1){
+		}else if (pro_book_rec_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required program books received X ");	
-		}else if (stu_per_eva_10=="" && com_institute_category!=1){
+		}else if (stu_per_eva_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required students participated in evaluation X");
 		}else if (parseInt(stu_inc_drh_10)<parseInt(stu_per_eva_10)){
 			$(".errorChk").text("Class X Column 2>=Column 4");			
-		}else if (stu_pass_eval_test_10=="" && com_institute_category!=1){
+		}else if (stu_pass_eval_test_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required students passed evaluation X");
 		}else if (parseInt(stu_per_eva_10)<parseInt(stu_pass_eval_test_10)){
 			$(".errorChk").text("Class X Column 4>=Column 5");	
-		}else if (no_award_10=="" && com_institute_category!=1){
+		}else if (no_award_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required awardees X ");
 		}else if (parseInt(stu_pass_eval_test_10)<parseInt(no_award_10)){
 			$(".errorChk").text("Class X Column 5>=Column 6 ");	
-		}else if (only_drh_book_10=="" && com_institute_category!=1){
+		}else if (only_drh_book_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Only DRH Books X ");	
-		}else if (inc_drh_book_10=="" && com_institute_category!=1){
+		}else if (inc_drh_book_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Including DRH Books X");
 		}else if (parseInt(only_drh_book_10)>parseInt(inc_drh_book_10)){
 			$(".errorChk").text(" Class X Column 7<Column 8 ");	
