@@ -833,7 +833,7 @@ function total_drh_stu(){
 	if(stu_inc_drh_9==''){
 			stu_inc_drh_9=0;
 			}	
-	if(sci_ave_cls_10==''){
+	if(stu_inc_drh_10==''){
 			stu_inc_drh_10=0;
 			}		
 		
@@ -1023,6 +1023,22 @@ function total_incdrh_books(){
 	$("#inc_drh_book_total").val(total_incDrhBooks);
 	
 	}				
+	
+	
+	
+	
+	
+/*function complianceDataNext() {
+	var com_web_address=$("#com_web_address").val();
+	alert(com_web_address);
+	var url="http://" + com_web_address;
+    alert( /^(https?|s?ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(url));
+}
+	*/
+	
+	
+	
+	
 	
 	</script>
 	       
@@ -2047,7 +2063,7 @@ function total_incdrh_books(){
                  
             </ul>
             
-        <a data-role="button" onclick="banbeisFirstDataNext()" href="#" data-theme="c" data-transition="slide" >Next</a>
+        <a data-role="button" onclick="banbeisFirstDataNext()" href="#" data-theme="c" data-transition="slide" >Search</a>
         <div class="errorChk"></div>
         
        <!-- <div id="c_selected">
@@ -2072,7 +2088,7 @@ function total_incdrh_books(){
     <div data-role="content" > 
     <div class="comp_error" style="color:#C00"></div> 
     	
-         Selected School   
+          School Selected
          <br/><br/><br/>           
         <a data-role="button" onclick="school('BTNS')" href="#" data-theme="c" data-transition="slide" >Next</a>
        
@@ -2238,14 +2254,14 @@ function total_incdrh_books(){
                         <td  class="tbl_bro_color" ><input type="number" name="pmt_girls_8" id="pmt_girls_8" onblur="total_pmt_girls()"/></td>
                         <td  class="tbl_bro_color" ><input type="number" name="not_pmt_girls_8" id="not_pmt_girls_8" onblur="total_notpmt_girls()"/></td>
                       </tr>
-                      <tr>
+                      <tr id="gen_info_ix">
                         <td  class="tbl_bro_color" align="center">IX</td>
                         <td  class="tbl_bro_color" ><input type="number" name="pmt_boys_9" id="pmt_boys_9" onblur="total_pmt_boys()"/></td>
                         <td  class="tbl_bro_color" ><input type="number" name="not_pmt_boys_9" id="not_pmt_boys_9" onblur="total_notpmt_boys()"/></td>
                         <td  class="tbl_bro_color" ><input type="number" name="pmt_girls_9" id="pmt_girls_9" onblur="total_pmt_girls()"/></td>
                         <td  class="tbl_bro_color" ><input type="number" name="not_pmt_girls_9" id="not_pmt_girls_9" onblur="total_notpmt_girls()"/></td>
                       </tr>
-                      <tr>
+                      <tr id="gen_info_x">
                         <td  class="tbl_bro_color" align="center">X</td>
                         <td  class="tbl_bro_color" ><input type="number" name="pmt_boys_10" id="pmt_boys_10" onblur="total_pmt_boys()"/></td>
                         <td  class="tbl_bro_color" ><input type="number" name="not_pmt_boys_10" id="not_pmt_boys_10" onblur="total_notpmt_boys()"/></td>
@@ -2362,7 +2378,7 @@ function total_incdrh_books(){
                         <input type="number" name="stu_present_visit_8" id="stu_present_visit_8" onblur="total_present_stu()"/>
                     </td>
                   </tr>
-                  <tr>
+                  <tr id="stipend_pro_ix">
                     <td  class="tbl_bro_color" align="center">IX</td>
                      <td  class="tbl_bro_color" width="100">
                         <input type="number" name="stu_rec_stipend_9" id="stu_rec_stipend_9" onblur="total_stipend_stu()"/>
@@ -2380,7 +2396,7 @@ function total_incdrh_books(){
                         <input type="number" name="stu_present_visit_9" id="stu_present_visit_9" onblur="total_present_stu()"/>
                     </td>
                   </tr>
-                  <tr>
+                  <tr id="stipend_pro_x">
                     <td  class="tbl_bro_color" align="center">X</td>
                      <td  class="tbl_bro_color" width="100">
                         <input type="number" name="stu_rec_stipend_10" id="stu_rec_stipend_10" onblur="total_stipend_stu()"/>
@@ -2519,7 +2535,7 @@ function total_incdrh_books(){
                             </fieldset>
                           </td>
                   	  </tr>
-                      <tr>
+                      <tr id="stipend_pro_criteria_ix">
                     	  <td class="tbl_bro_color"><input type="text" name="pmt_st_4_name" id="pmt_st_4_name" style="width:150px;" /></td>
                     	  <td align="center" class="tbl_bro_color">IX</td>
                    	    <td class="tbl_bro_color"><input type="number" name="pmt_st_4_id" id="pmt_st_4_id" maxlength="14" /></td>
@@ -2542,7 +2558,7 @@ function total_incdrh_books(){
                             </fieldset>
                           </td>
                   	  </tr>
-                      <tr>
+                      <tr id="stipend_pro_criteria_x">
                     	  <td class="tbl_bro_color"> <input type="text" name="pmt_st_5_name" id="pmt_st_5_name" style="width:150px;" /></td>
                     	  <td align="center" class="tbl_bro_color">X</td>
                    	    <td class="tbl_bro_color"><input type="number" name="pmt_st_5_id" id="pmt_st_5_id" maxlength="14" /></td>
@@ -2899,7 +2915,7 @@ function total_incdrh_books(){
                 	  <td class="tbl_bro_color" align="center"><input type="number" name="math_ave_cls_8" id="math_ave_cls_8" onblur="totalAttMath()"/></td>
                 	  <td class="tbl_bro_color" align="center"><input type="number" name="sci_ave_cls_8" id="sci_ave_cls_8" onblur="totalAttSci()"/></td>                	  
               	  </tr>  
-                   <tr >
+                   <tr id="act_attendance_ix">
                    	  <td class="tbl_bro_color" align="center">IX</td>
                	     <td class="tbl_bro_color" align="center" ><input type="number" name="eng_enro_add_cls_9" id="eng_enro_add_cls_9" onblur="totalEnroEng()"/></td>
                 	  <td class="tbl_bro_color" align="center"><input type="number" name="math_enro_add_cls_9" id="math_enro_add_cls_9" onblur="totalEnroMath()"/></td>
@@ -2914,7 +2930,7 @@ function total_incdrh_books(){
                 	  <td class="tbl_bro_color" align="center"><input type="number" name="math_ave_cls_9" id="math_ave_cls_9" onblur="totalAttMath()"/></td>
                 	  <td class="tbl_bro_color" align="center"><input type="number" name="sci_ave_cls_9" id="sci_ave_cls_9" onblur="totalAttSci()"/></td>                	  
               	  </tr> 
-                   <tr >
+                   <tr id="act_attendance_x">
                    	  <td class="tbl_bro_color" align="center">X</td>
                	     <td class="tbl_bro_color" align="center" ><input type="number" name="eng_enro_add_cls_10" id="eng_enro_add_cls_10" onblur="totalEnroEng()"/></td>
                 	  <td class="tbl_bro_color" align="center"><input type="number" name="math_enro_add_cls_10" id="math_enro_add_cls_10" onblur="totalEnroMath()"/></td>
@@ -3137,9 +3153,9 @@ Head</label>
                <li class="ui-field-contain auto_break">    
                     2. Did the institution receive any Grant for EACM 
                       <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                        <input name="ins_rec_grant_eacm" id="radio-choice-h-2a" value="1" checked="checked" type="radio" onclick="rec_grant_eacm()">
+                        <input name="ins_rec_grant_eacm" id="radio-choice-h-2a" value="1"  type="radio" onclick="rec_grant_eacm()">
                         <label for="radio-choice-h-2a">Yes</label>
-                        <input name="ins_rec_grant_eacm" id="radio-choice-h-2b" value="2" type="radio" onclick="rec_grant_eacm()">
+                        <input name="ins_rec_grant_eacm" id="radio-choice-h-2b" value="2" checked="checked" type="radio" onclick="rec_grant_eacm()">
                         <label for="radio-choice-h-2b">No</label>
                     </fieldset>
                </li>
@@ -3195,9 +3211,9 @@ Head</label>
                <li class="ui-field-contain auto_break">    
                  2. Did the institution receive any Grant for SA in the 2nd Instalment of 2015
                       <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                        <input name="ins_rec_grant_sa" id="radio-choice-h-2a" value="1" checked="checked" type="radio" onclick="rec_sec_instal()" >
+                        <input name="ins_rec_grant_sa" id="radio-choice-h-2a" value="1"  type="radio" onclick="rec_sec_instal()" >
                         <label for="radio-choice-h-2a">Yes</label>
-                        <input name="ins_rec_grant_sa" id="radio-choice-h-2b" value="2" type="radio" onclick="rec_sec_instal()">
+                        <input name="ins_rec_grant_sa" id="radio-choice-h-2b" value="2" type="radio" checked="checked" onclick="rec_sec_instal()">
                         <label for="radio-choice-h-2b">No</label>
                     </fieldset>
                </li>
@@ -3888,30 +3904,6 @@ Head</label>
                
              </li>  
                
-               <!--<li class="ui-field-contain auto_break">    
-                   1. PMT Students who appeared in SSC or Equivalent examination in 2015 
-               </li>
-               <li class="ui-field-contain auto_break">    
-                   Total students in grade 10 to receive PMT stipend in 2015
-                     <input type="number" name="total_stu_rec_stipend" id="total_stu_rec_stipend" />
-               </li> 
-               <li class="ui-field-contain auto_break">    
-                    Total PMT students in grade 10 who appeared in the SSC exam in 2015
-                     <input type="number" name="pmt_stu_app_ssc_exam" id="pmt_stu_app_ssc_exam" />
-               </li>
-               <li class="ui-field-contain auto_break">    
-                    Number of PMTstudents who passed SSC or equivalent in 2015
-                    <input type="number" name="pmt_stu_pass_ssc" id="pmt_stu_pass_ssc"  />
-               </li>
-               <li class="ui-field-contain auto_break">    
-                    Number of PMT students who collected PMT SSC or equivalent Pass award
-                    <input type="number" name="pmt_stu_coll_ssc_award" id="pmt_stu_coll_ssc_award"  />
-               </li>
-               <li class="ui-field-contain auto_break">    
-                    How many of these PMT students who passed SSC or equivalent went for higher secondary school study? (approximate number)
-                     <input type="number" name="pmt_stu_higher_study" id="pmt_stu_higher_study" />
-               </li> -->
-               
                <li class="ui-field-contain auto_break">    
                    2. How was the pass award distributed in 2015 (for 2015 exam results)
                       <select name="pass_award_dis" id="pass_award_dis" data-native-menu="false" >
@@ -4113,7 +4105,7 @@ Head</label>
                         </fieldset>
                       </td>
               	  </tr>
-                  <tr>
+                  <tr id="bsaa_award_x">
                 	  <td align="center" class="tbl_bro_color">X</td>
                 	  <td align="center" class="tbl_bro_color" >
                         <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
@@ -4186,21 +4178,6 @@ Head</label>
                         </fieldset>
                       </td>
               	  </tr>
-                  <!--<tr>
-                    <td align="center" class="tbl_bro_color">Total</td>
-                    <td align="center" class="tbl_bro_color" ><input type="number" id="rece_award_boys_total" name="rece_award_boys_total" /></td>
-                    <td align="center" class="tbl_bro_color" ><input type="number" id="rece_pmt_stipen_total" name="rece_pmt_stipen_total" /></td>
-                    <td align="center" class="tbl_bro_color" ><input type="number" id="per_mark_ann_exam_boys_total" name="per_mark_ann_exam_boys_total" /></td>
-                    <td align="center" class="tbl_bro_color" ><input type="number" id="pre_day_visit_boys_total" name="pre_day_visit_boys_total" /></td>
-                    <td align="center" class="tbl_bro_color" ><input type="number" id="about_award_amo_tell_boys_total" name="about_award_amo_tell_boys_total" /></td>
-                    
-                     <td align="center" class="tbl_bro_color" ><input type="number" id="rece_award_girls_total" name="rece_award_girls_total" /></td>
-                    <td align="center" class="tbl_bro_color" ><input type="number" id="rece_pmt_stipen_total" name="rece_pmt_stipen_total" /></td>
-                    <td align="center" class="tbl_bro_color" ><input type="number" id="per_mark_ann_exam_girls_total" name="per_mark_ann_exam_girls_total" /></td>
-                    <td align="center" class="tbl_bro_color" ><input type="number" id="pre_day_visit_girls_total" name="pre_day_visit_girls_total" /></td>
-                    <td align="center" class="tbl_bro_color" ><input type="number" id="about_award_amo_tell_girls_total" name="about_award_amo_tell_girls_total" /></td>
-                  </tr>-->
-                  
                 </table>
                                     
                </li> 
@@ -4332,7 +4309,7 @@ Head</label>
                       <td align="center" class="tbl_bro_color"><input type="number" name="only_drh_book_8" id="only_drh_book_8" onblur="total_drh_books()"/></td>
                       <td align="center" class="tbl_bro_color"><input type="number" name="inc_drh_book_8" id="inc_drh_book_8" onblur="total_incdrh_books()"/></td>
                     </tr>
-                    <tr>
+                    <tr id="drh_ix">
                       <td align="center" class="tbl_bro_color">IX</td>
                       <td align="center" class="tbl_bro_color"><input type="number" name="stu_inc_drh_9" id="stu_inc_drh_9" onblur="total_drh_stu()"/></td>
                       <td align="center" class="tbl_bro_color"><input type="number" name="pro_book_rec_9" id="pro_book_rec_9" onblur="total_pro_book()"/></td>
@@ -4342,7 +4319,7 @@ Head</label>
                       <td align="center" class="tbl_bro_color"><input type="number" name="only_drh_book_9" id="only_drh_book_9" onblur="total_drh_books()"/></td>
                       <td align="center" class="tbl_bro_color"><input type="number" name="inc_drh_book_9" id="inc_drh_book_9" onblur="total_incdrh_books()"/></td>
                     </tr>
-                    <tr>
+                    <tr id="drh_x">
                       <td align="center" class="tbl_bro_color">X</td>
                       <td align="center" class="tbl_bro_color"><input type="number" name="stu_inc_drh_10" id="stu_inc_drh_10" onblur="total_drh_stu()"/></td>
                       <td align="center" class="tbl_bro_color"><input type="number" name="pro_book_rec_10" id="pro_book_rec_10" onblur="total_pro_book()"/></td>
