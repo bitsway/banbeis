@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Banbeis</title>
     <link rel="stylesheet" href="static/c.min.css" />
-    <link rel="stylesheet" href="static/jquery.mobile-1.4.0.min.css" />    
-
-    
+    <link rel="stylesheet" href="static/jquery.mobile-1.4.0.min.css" /> 
+   
     <script src="static/jquery-1.10.2.min.js">   </script>
     <script src="static/jquery.mobile-1.4.0.min.js">   </script>		
     
@@ -2012,8 +2011,12 @@ function total_incdrh_books(){
              </ul>-->
              <ul data-role="listview" data-inset="true">
                  <li class="ui-field-contain" >
-                    <div id="com_division"></div>
+                    <label for="s_com_div">Division</label>
+                   <select name="s_com_div" id="s_com_div" data-native-menu="false" onchange="getDistCom()">
+                        <option value="">Select Division</option>							 												
+                    </select>
                   </li>
+                  
                   <li class="ui-field-contain" >
                      <label for="s_com_dist">District </label>
                        <select name="s_com_dist" id="s_com_dist" data-native-menu="false" onchange="getUpCom()">
@@ -2069,7 +2072,7 @@ function total_incdrh_books(){
     <div data-role="content" > 
     <div class="comp_error" style="color:#C00"></div> 
     	
-         School Select        
+         Selected School   
          <br/><br/><br/>           
         <a data-role="button" onclick="school('BTNS')" href="#" data-theme="c" data-transition="slide" >Next</a>
        
@@ -2140,35 +2143,35 @@ function total_incdrh_books(){
                 <li class="ui-field-contain">
                     7.Category of Institution
                     <select name="com_institute_category" id="com_institute_category" data-native-menu="false" >
-                    		<option value="0">Select </option>
-                            <option value="1">1-Junior Secondary </option>
-                            <option value="2">2-Secondary </option>
-                            <option value="3">3-School and College </option>
-                            <option value="4">4-Madrasah</option>
-                        </select>
+                        <option value="0">Select </option>
+                        <option value="1">1-Junior Secondary </option>
+                        <option value="2">2-Secondary </option>
+                        <option value="3">3-School and College </option>
+                        <option value="4">4-Madrasah</option>
+                    </select>
                  </li>
                 <li class="ui-field-contain">
                     8.Type of Institution
                     <select name="com_type_institute" id="com_type_institute" data-native-menu="false" >
-                            <option value="0">Select</option>
-                            <option value="1">1-Boys</option>
-                            <option value="2">2-Girls </option>
-                            <option value="3">3-Co-education together </option>
-                            <option value="4">4-Co-education in separate shift/class</option>
-                        </select>
+                        <option value="0">Select</option>
+                        <option value="1">1-Boys</option>
+                        <option value="2">2-Girls </option>
+                        <option value="3">3-Co-education together </option>
+                        <option value="4">4-Co-education in separate shift/class</option>
+                    </select>
                  </li>
-                 <li class="ui-field-contain auto_break" onclick="agrementSeq()">
+                 <li class="ui-field-contain auto_break" >
                   9.Is there a cooperation agreement between SEQAEP and the institution?
-                    <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                    <fieldset data-role="controlgroup" data-type="horizontal" >
                    		<label for="radio-choice-h-2a">Yes</label>
-                        <input name="agr_seqaep" id="radio-choice-h-2a" value="1"  type="radio" >
+                        <input name="agr_seqaep" id="radio-choice-h-2a" value="1"  type="radio" onclick="agrementSeq()">
                         <label for="radio-choice-h-2b">No</label>
-                        <input name="agr_seqaep" id="radio-choice-h-2b" value="2" checked="checked" type="radio">                        
+                        <input name="agr_seqaep" id="radio-choice-h-2b" value="2" checked="checked" type="radio" onclick="agrementSeq()">               
                     </fieldset>
                  </li>
                 <li class="ui-field-contain auto_break" id="agr_type_con">
                      9.1. If yes, what is the type of agreement? 
-                    <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" >
+                    <fieldset data-role="controlgroup" data-type="horizontal" >
                         <input name="agr_type" id="radio-choice-h-2a" value="1" checked="checked" type="radio" >
                         <label for="radio-choice-h-2a">Fresh</label>
                         <input name="agr_type" id="radio-choice-h-2b" value="2" type="radio">
@@ -2585,12 +2588,12 @@ function total_incdrh_books(){
     <div data-role="content">
             <ul data-role="listview" data-inset="true">
                 <li style="background-color:#e2e2e2;" class="auto_break">C.	Additional Class Teacher (ACT)</li>
-                <li class="ui-field-contain auto_break" onclick="ins_agr_cls()">            	
+                <li class="ui-field-contain auto_break" >            	
                     1. Does the institution have any agreement with SEQAEP for Additional Class?
                         <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                            <input name="add_cls_seqaep" id="radio-choice-h-2a" value="1"  type="radio" >
+                            <input name="add_cls_seqaep" id="radio-choice-h-2a" value="1"  type="radio" onclick="ins_agr_cls()">
                             <label for="radio-choice-h-2a">Yes</label>
-                            <input name="add_cls_seqaep" id="radio-choice-h-2b" value="2" checked="checked" type="radio">
+                            <input name="add_cls_seqaep" id="radio-choice-h-2b" value="2" checked="checked" type="radio" onclick="ins_agr_cls()">
                             <label for="radio-choice-h-2b">No</label>
                         </fieldset>
                 </li>
@@ -3030,12 +3033,12 @@ function total_incdrh_books(){
                             <label for="radio-choice-h-2b">No</label>
                         </fieldset>
                </li>
-               <li class="ui-field-contain auto_break" onclick="pta_exist()">    
+               <li class="ui-field-contain auto_break" >    
                     8. Does the PTA exist in the Institution
                       <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                            <input name="pta_exist_ins" id="radio-choice-h-2a" value="1"  type="radio" >
+                            <input name="pta_exist_ins" id="radio-choice-h-2a" value="1"  type="radio" onclick="pta_exist()">
                             <label for="radio-choice-h-2a">Yes</label>
-                            <input name="pta_exist_ins" id="radio-choice-h-2b" value="2" checked="checked" type="radio">
+                            <input name="pta_exist_ins" id="radio-choice-h-2b" value="2" checked="checked" type="radio" onclick="pta_exist()">
                             <label for="radio-choice-h-2b">No</label>
                       </fieldset>
                </li>
@@ -3134,12 +3137,13 @@ Head</label>
                <li class="ui-field-contain auto_break">    
                     2. Did the institution receive any Grant for EACM 
                       <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                        <input name="ins_rec_grant_eacm" id="radio-choice-h-2a" value="1" checked="checked" type="radio" >
+                        <input name="ins_rec_grant_eacm" id="radio-choice-h-2a" value="1" checked="checked" type="radio" onclick="rec_grant_eacm()">
                         <label for="radio-choice-h-2a">Yes</label>
-                        <input name="ins_rec_grant_eacm" id="radio-choice-h-2b" value="2" type="radio">
+                        <input name="ins_rec_grant_eacm" id="radio-choice-h-2b" value="2" type="radio" onclick="rec_grant_eacm()">
                         <label for="radio-choice-h-2b">No</label>
                     </fieldset>
                </li>
+         <div id="eacm">
                <li class="ui-field-contain auto_break">    
                     3. What type of activities was held with the EACM Grant
                      <select name="acti_with_eacm_grant" id="acti_with_eacm_grant" data-native-menu="false" >
@@ -3169,7 +3173,7 @@ Head</label>
                         <label for="radio-choice-h-2b">No</label>
                     </fieldset>
                </li>
-               
+          </div> 
              </ul>
              <ul data-role="listview" data-inset="true"> 
               
@@ -3191,18 +3195,19 @@ Head</label>
                <li class="ui-field-contain auto_break">    
                  2. Did the institution receive any Grant for SA in the 2nd Instalment of 2015
                       <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                        <input name="ins_rec_grant_sa" id="radio-choice-h-2a" value="1" checked="checked" type="radio" >
+                        <input name="ins_rec_grant_sa" id="radio-choice-h-2a" value="1" checked="checked" type="radio" onclick="rec_sec_instal()" >
                         <label for="radio-choice-h-2a">Yes</label>
-                        <input name="ins_rec_grant_sa" id="radio-choice-h-2b" value="2" type="radio">
+                        <input name="ins_rec_grant_sa" id="radio-choice-h-2b" value="2" type="radio" onclick="rec_sec_instal()">
                         <label for="radio-choice-h-2b">No</label>
                     </fieldset>
                </li>
-               <li class="ui-field-contain auto_break" onclick="sa_exam_report()">    
+          <div id="social_audit">
+               <li class="ui-field-contain auto_break" >    
                    3. Was there any report prepared after annual exam of 2015
                      <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                        <input name="report_pre_annu_exam" id="radio-choice-h-2a" value="1" type="radio" >
+                        <input name="report_pre_annu_exam" id="radio-choice-h-2a" value="1" type="radio" onclick="sa_exam_report()">
                         <label for="radio-choice-h-2a">Yes</label>
-                        <input name="report_pre_annu_exam" id="radio-choice-h-2b" value="2" checked="checked" type="radio">
+                        <input name="report_pre_annu_exam" id="radio-choice-h-2b" value="2" checked="checked" type="radio" onclick="sa_exam_report()">
                         <label for="radio-choice-h-2b">No</label>
                     </fieldset>
                </li>
@@ -3215,7 +3220,7 @@ Head</label>
                     4. When was the last parent gathering held where social audit report was discussed
                     <input type="date" name="last_soc_rep_dis" id="last_soc_rep_dis" placeholder="dd-mm-yyyy" />
                </li>
-                              
+         </div>                     
             </ul>        
         <a data-role="button" onclick="complianceData5Next()" href="#" data-transition="slide" >Next</a>
         <div class="errorChk"></div>
@@ -3319,12 +3324,12 @@ Head</label>
              <ul data-role="listview" data-inset="true"> 
                
                <li style="background-color:#e2e2e2;" class="auto_break">H. Improving School Facility (ISF) Grant</li>
-               <li class="ui-field-contain auto_break" onclick="isf_grant()">    
+               <li class="ui-field-contain auto_break" >    
                     1. Did the Institution receive any ISF Grant in 2015 
                     <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                        <input name="ins_rec_isf" id="radio-choice-h-2a" value="1"  type="radio" >
+                        <input name="ins_rec_isf" id="radio-choice-h-2a" value="1"  type="radio" onclick="isf_grant()">
                         <label for="radio-choice-h-2a">Yes</label>
-                        <input name="ins_rec_isf" id="radio-choice-h-2b" value="2" checked="checked" type="radio">
+                        <input name="ins_rec_isf" id="radio-choice-h-2b" value="2" checked="checked" type="radio" onclick="isf_grant()">
                         <label for="radio-choice-h-2b">No</label>
                     </fieldset>
                </li>
@@ -3634,10 +3639,10 @@ Head</label>
                     2. Total number of tubewells in the institution  
                     <input type="number" name="ins_total_tub" id="ins_total_tub" />
                </li>
-               <li class="ui-field-contain auto_break">    
+               <!--<li class="ui-field-contain auto_break">    
                     3. How many are tested 
                     <input type="number" name="test_tubewell" id="test_tubewell" />
-               </li>
+               </li>-->
                <li class="ui-field-contain auto_break">    
                      Number tested for arsenic
                     <input type="number" name="test_arsenic" id="test_arsenic" />
@@ -3663,16 +3668,16 @@ Head</label>
                     <input type="number" name="tub_manga_conta" id="tub_manga_conta" />
                </li>
                
-               <li class="ui-field-contain auto_break">    
+               <li class="ui-field-contain auto_break" >    
                     4. Is the water test done at the Institution premises by DPHE
                     <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                        <input name="ins_per_dphe_water" id="radio-choice-h-2a" value="1" checked="checked" type="radio" >
+                        <input name="ins_per_dphe_water" id="radio-choice-h-2a" value="1"  type="radio" onclick="dpeh()">
                         <label for="radio-choice-h-2a">Yes</label>
-                        <input name="ins_per_dphe_water" id="radio-choice-h-2b" value="2" type="radio">
+                        <input name="ins_per_dphe_water" id="radio-choice-h-2b" value="2" checked="checked" type="radio" onclick="dpeh()">
                         <label for="radio-choice-h-2b">No</label>
                     </fieldset>
                </li>
-               <li class="ui-field-contain auto_break">    
+              <!-- <li class="ui-field-contain auto_break">    
                     5. If yes ,does the Institution have arsenic and Manganese Report Card
                     <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
                         <input name="ins_arc_man_rep_card" id="radio-choice-h-2a" value="1" checked="checked" type="radio" >
@@ -3680,7 +3685,8 @@ Head</label>
                         <input name="ins_arc_man_rep_card" id="radio-choice-h-2b" value="2" type="radio">
                         <label for="radio-choice-h-2b">No</label>
                     </fieldset>
-               </li>
+               </li>-->
+        <div id="arsenic">
                <li class="ui-field-contain auto_break">    
                     5.1 Arsenic 
                     <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
@@ -3699,16 +3705,17 @@ Head</label>
                         <label for="radio-choice-h-2b">No</label>
                     </fieldset>
                </li>
-                <li class="ui-field-contain auto_break">    
+        </div>
+                <li class="ui-field-contain auto_break" >    
                     6. Was there any tubewell set up in the Institution by SEQAEP during FY 2015 
                     <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                        <input name="tube_setup_ins" id="radio-choice-h-2a" value="1" checked="checked" type="radio" >
+                        <input name="tube_setup_ins" id="radio-choice-h-2a" value="1"  type="radio" onclick="tube_setup()">
                         <label for="radio-choice-h-2a">Yes</label>
-                        <input name="tube_setup_ins" id="radio-choice-h-2b" value="2" type="radio">
+                        <input name="tube_setup_ins" id="radio-choice-h-2b" value="2" checked="checked" type="radio" onclick="tube_setup()">
                         <label for="radio-choice-h-2b">No</label>
                     </fieldset>
                </li>
-               <li class="ui-field-contain auto_break">    
+               <li class="ui-field-contain auto_break" id="ins_tube" >    
                   If yes, how many tubewells were installed
                     <input type="number" name="how_tub_install" id="how_tub_install"  />
                </li>
@@ -3734,12 +3741,12 @@ Head</label>
     		
             <ul data-role="listview" data-inset="true">               
                <li style="background-color:#e2e2e2;" class="auto_break">I. Information for Institution Achievement Award (IAA)</li>
-                <li class="ui-field-contain auto_break" onclick="ins_ach_award()">    
+                <li class="ui-field-contain auto_break" >    
                     1. Did the institution ever receive TK 1,00,000 as IAA   
                     <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                        <input name="ins_receive_tk" id="radio-choice-h-2a" value="1"  type="radio" >
+                        <input name="ins_receive_tk" id="radio-choice-h-2a" value="1"  type="radio" onclick="ins_ach_award()">
                         <label for="radio-choice-h-2a">Yes</label>
-                        <input name="ins_receive_tk" id="radio-choice-h-2b" value="2" checked="checked" type="radio">
+                        <input name="ins_receive_tk" id="radio-choice-h-2b" value="2" checked="checked" type="radio" onclick="ins_ach_award()">
                         <label for="radio-choice-h-2b">No</label>
                     </fieldset>
                </li> 
@@ -3762,12 +3769,12 @@ Head</label>
                         <label for="radio-choice-h-2b">No</label>
                     </fieldset>
                </li>
-               <li class="ui-field-contain auto_break" onclick="award_dis()">    
+               <li class="ui-field-contain auto_break" >    
                     4. Is SMC aware of this distribution 
                     <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                        <input name="smc_awared_dis" id="radio-choice-h-2a" value="1" checked="checked" type="radio" >
+                        <input name="smc_awared_dis" id="radio-choice-h-2a" value="1" checked="checked" type="radio" onclick="award_dis()">
                         <label for="radio-choice-h-2a">Yes</label>
-                        <input name="smc_awared_dis" id="radio-choice-h-2b" value="2" type="radio">
+                        <input name="smc_awared_dis" id="radio-choice-h-2b" value="2" type="radio" onclick="award_dis()">
                         <label for="radio-choice-h-2b">No</label>
                     </fieldset>
                </li>
@@ -3775,7 +3782,7 @@ Head</label>
                     4.1 If no, what was the reason
                     <select name="reason" id="reason" data-native-menu="false" >
                     	<option value="0">Select</option>
-                        <option value="1">1-SMCdoesn’t know about the distribution  </option>
+                        <option value="1">1-SMC doesn’t know about the distribution  </option>
                         <option value="2">2-Assigned person was not present </option>	
                         <option value="3">3-Other </option>					 												
                     </select>
@@ -4246,13 +4253,13 @@ Head</label>
                     </select>   
                    
                </li>
-               <li class="ui-field-contain auto_break" onclick="drh_pro_ins()">    
+               <li class="ui-field-contain auto_break" >    
                    2.Is there DRH program in the institution
                     <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
-                        <input name="ins_drh_pro" id="radio-choice-h-2a" value="1"  type="radio" >
-                        <label for="radio-choice-h-2a">Y</label>
-                        <input name="ins_drh_pro" id="radio-choice-h-2b" value="2" checked="checked" type="radio">
-                        <label for="radio-choice-h-2b">N</label>
+                        <input name="ins_drh_pro" id="radio-choice-h-2a" value="1"  type="radio" onclick="drh_pro_ins()">
+                        <label for="radio-choice-h-2a">Yes</label>
+                        <input name="ins_drh_pro" id="radio-choice-h-2b" value="2" checked="checked" type="radio" onclick="drh_pro_ins()">
+                        <label for="radio-choice-h-2b">No</label>
                     </fieldset>
                </li>
            <div id="drh">
@@ -4270,9 +4277,9 @@ Head</label>
                   4. Remuneration received by the organizer  during the reference period 
                     <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
                         <input name="rec_org_ref_per" id="radio-choice-h-2a" value="1" checked="checked" type="radio" >
-                        <label for="radio-choice-h-2a">Y</label>
+                        <label for="radio-choice-h-2a">Yes</label>
                         <input name="rec_org_ref_per" id="radio-choice-h-2b" value="2" type="radio">
-                        <label for="radio-choice-h-2b">N</label>
+                        <label for="radio-choice-h-2b">No</label>
                     </fieldset>
                </li>
                <li class="ui-field-contain auto_break">    

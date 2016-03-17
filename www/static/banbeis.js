@@ -12,6 +12,8 @@ var latitude="";
 var longitude="";
 var upListFlag=0;
 
+
+
 function getLocationInfoAch() {	
 	var options = { enableHighAccuracy: false};	
 	navigator.geolocation.getCurrentPosition(onSuccess, onError, options);				
@@ -82,7 +84,10 @@ $(document).ready(function(){
 			$("#isf").hide();
 			$("#iaa").hide();
 			$("#award_dist").hide();
-			
+			$("#arsenic").hide();
+			$("#ins_tube").hide();
+			$("#eacm").hide();
+			$("#social_audit").hide();
 			/*--------compliance-end----------*/
 			
 			
@@ -159,6 +164,14 @@ function syncBasic() {
 						$("input[name='ins_receive_tk']:checked").val('2');
 						//$("#award_dist").hide();
 						$("input[name='smc_awared_dis']:checked").val('1');
+						
+						$("input[name='ins_per_dphe_water']:checked").val('2');
+						
+						$("input[name='tube_setup_ins']:checked").val('2');
+						
+						$("input[name='ins_rec_grant_eacm']:checked").val('2');
+						
+						$("input[name='ins_rec_grant_sa']:checked").val('2');
 						
 						/*--------------*/
 						//$("#agr_type_con").val('');
@@ -1042,7 +1055,7 @@ function syncData(){
 //============================compliance Verification============================
 
 function complianceVerification(){
-	$("#com_division").empty();
+	
 	if(localStorage.sync_code==undefined || localStorage.sync_code==""){
 			$(".errorChk").text("Required Sync");
 			
@@ -1052,25 +1065,26 @@ function complianceVerification(){
 			  url:apipath_compliance+'get_com_div_list?cid=BANBEIS&sync_code='+localStorage.sync_code,
 			  success: function(divStr) {
 					  divNameList=divStr.split("<fd>");
-					  divCmbo="<label for='s_com_div'>Division </label><select name='s_com_div' id='s_com_div' data-native-menu='false' onchange='getDistCom()'><option value=''>Select Division</option>";
+					  divCmbo="";
 					  for (i=0;i<divNameList.length;i++){					 
 						  divCmbo+="<option value="+encodeURIComponent(divNameList[i])+">"+divNameList[i]+"</option>";					  
 					  }	
 					  
-					  divCmbo+="</select>"
-					  
-					  $("#com_division").html(divCmbo);
-					  
-						url="#com_first_page";					
-						$.mobile.navigate(url);				  
-										  
+					 	var rpt_rep_ob=$("#s_com_div");
+						rpt_rep_ob.empty();
+						rpt_rep_ob.append(divCmbo);
+						rpt_rep_ob.selectmenu("refresh");				  
+					 									  
 				  }		  
 			});	 
-			
+			url="#com_first_page";					
+			$.mobile.navigate(url);	
 				
 		}
 	
 }
+
+
 
 function getDistCom(){	
 	
@@ -1134,9 +1148,11 @@ function getUpCom(){
 				  for (i=0;i<schIdNameList.length;i++){
 					  	var com_school_id_name=schIdNameList[i].split('-');
 						var com_school_id=com_school_id_name[0];					  
-						 schoolCmbo+="<option value="+com_school_id+">"+schIdNameList[i]+"</option>";						  				  
+						 schoolCmbo+="<option value="+com_school_id+">"+schIdNameList[i]+"</option>";						  				  						
 				  }	
-				  			  
+				  
+				  
+				  		  
 				  var rpt_rep_ob=$("#s_com_school");
 					rpt_rep_ob.empty();
 					rpt_rep_ob.append(schoolCmbo);
@@ -1147,9 +1163,7 @@ function getUpCom(){
 }
 
 
-function banbeisFirstDataNext(){
-	var s_school=$("#s_com_school").val();
-	$("#s_com_school").val(s_school);
+function banbeisFirstDataNext(){	
 	
 	url="#com_first_next_page";					
 	$.mobile.navigate(url);	
@@ -1194,7 +1208,7 @@ function banbeisFirstDataNext(){
 						  $("#com_upzila").val(upazila_thana);
 						  $("#com_district").val(dist_name);
 						  $("#com_eiin").val(school_code);
-						 		  
+						 
 						  
 						 url="#compliancePage1";					
 						 $.mobile.navigate(url);
@@ -1219,7 +1233,6 @@ function banbeisFirstDataNext(){
 }
 
 
-
 function complianceDataNext(){
 		
 		var institute_name=$("#institute_name").val();
@@ -1236,6 +1249,7 @@ function complianceDataNext(){
 		var agr_seqaep=$("input[name='agr_seqaep']:checked").val();
 		var agr_type=$("input[name='agr_type']:checked").val();
 		
+		var mailformat=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;		
 				
 		var firstCharFlag=false;
 		var secondCharFlag=false;
@@ -1253,12 +1267,7 @@ function complianceDataNext(){
 				thirdCharFlag=true;				
 			}
 		}
-		
-		
-		//localStorage.com_phoneno=com_phoneno;
-		//localStorage.com_ict_email=com_ict_email;
-		//alert(localStorage.com_phoneno);
-		
+				
 		
 		if(parseInt(com_phoneno.length)!=11){
 			$(".errorChk").text("Required mobile no 11 digit");
@@ -1283,8 +1292,10 @@ function complianceDataNext(){
 			$(".errorChk").text("Required EIIN");
 		
 		}else if (com_ict_email=="" ){
-			$(".errorChk").text("Required Email 5.1");			
-					
+			$(".errorChk").text("Required Email 5.1");
+		}else if (!com_ict_email.match(mailformat)){
+			$(".errorChk").text("Invalid Email 5.1");	
+									
 		}else if (com_institute_category=="" || com_institute_category==0 ){
 			$(".errorChk").text("Required Institute Category");	
 		}else if (com_type_institute=="" ||com_type_institute==0 ){
@@ -1310,8 +1321,15 @@ function complianceDataNext(){
 								
 				//alert(banbeisComData);
 						
-				$(".errorChk").text("");				
-				url="#compliancePage2"
+				$(".errorChk").text("");
+				
+				if (agr_seqaep=="1"){
+					url="#compliancePage2"
+				}else{
+					
+					url="#compliancePage9"
+					}				
+				
 				//url="#inPhoto"
 				$.mobile.navigate(url);				
 				
@@ -1327,10 +1345,10 @@ function agrementSeq(){
 	
 	var agr=$("input[name='agr_seqaep']:checked").val();
 	//alert(agr);
-	if(agr=="2"){
+	if(agr=="1"){
 		$("#agr_type_con").show();
 	}else{
-	 	$("#agr_type_con").hide();
+	 	$("#agr_type_con").hide();			
 	}
 }
 
@@ -1510,7 +1528,9 @@ function complianceData2Next(){
 		}else if (parseInt(stu_rec_stipend_6)<parseInt(stu_pass_annual_exam_6) ){             //3 col check cls 6
 			$(".errorChk").text("Less than Number of students who received PMT stipend VI");
 		}else if (parseInt(stu_rec_stipend_6)<parseInt(stu_got_married_6)){             //3 col check cls 6
-			$(".errorChk").text("Less than Number of students who received PMT stipend VI");			
+			$(".errorChk").text("Less than Number of students who received PMT stipend VI");
+		}else if (parseInt(stu_rec_stipend_6)<parseInt(stu_present_visit_6)){             //3 col check cls 6
+			$(".errorChk").text("Less than Number of students who received PMT stipend VI");				
 		}else if (stu_present_visit_6=="" ){
 			$(".errorChk").text("Required Numeric VI");	
 		}else if (stu_present_visit_6>999){
@@ -1537,7 +1557,9 @@ function complianceData2Next(){
 		}else if (parseInt(stu_rec_stipend_7)<parseInt(stu_pass_annual_exam_7) ){             //3 col check cls 7
 			$(".errorChk").text("Less than Number of students who received PMT stipend VII");
 		}else if (parseInt(stu_rec_stipend_7)<parseInt(stu_got_married_7)){             //3 col check cls 7
-			$(".errorChk").text("Less than Number of students who received PMT stipend VII");		
+			$(".errorChk").text("Less than Number of students who received PMT stipend VII");
+		}else if (parseInt(stu_rec_stipend_7)<parseInt(stu_present_visit_7)){             //3 col check cls 7
+			$(".errorChk").text("Less than Number of students who received PMT stipend VII");			
 		}else if (stu_present_visit_7=="" ){
 			$(".errorChk").text("Required Numeric VII");
 		}else if (stu_present_visit_7>999){
@@ -1565,6 +1587,8 @@ function complianceData2Next(){
 			$(".errorChk").text("Less than Number of students who received PMT stipend VIII");
 		}else if (parseInt(stu_rec_stipend_8)<parseInt(stu_got_married_8)){             //3 col check cls 8
 			$(".errorChk").text("Less than Number of students who received PMT stipend VIII");	
+		}else if (parseInt(stu_rec_stipend_8)<parseInt(stu_present_visit_8)){             //3 col check cls 8
+			$(".errorChk").text("Less than Number of students who received PMT stipend VIII");		
 		}else if (stu_present_visit_8=="" ){
 			$(".errorChk").text("Required Numeric VIII");
 		}else if (stu_present_visit_8>999){
@@ -1592,6 +1616,8 @@ function complianceData2Next(){
 			$(".errorChk").text("Less than Number of students who received PMT stipend IX");
 		}else if (parseInt(stu_rec_stipend_9)<parseInt(stu_got_married_9)){             //3 col check cls 9
 			$(".errorChk").text("Less than Number of students who received PMT stipend IX");	
+		}else if (parseInt(stu_rec_stipend_9)<parseInt(stu_present_visit_9)){             //3 col check cls 9
+			$(".errorChk").text("Less than Number of students who received PMT stipend IX");	
 		}else if (stu_present_visit_9=="" ){
 			$(".errorChk").text("Required Numeric IX");	
 		}else if (stu_present_visit_9>999){
@@ -1618,6 +1644,8 @@ function complianceData2Next(){
 		}else if (parseInt(stu_rec_stipend_10)<parseInt(stu_pass_annual_exam_10) ){             //3 col check cls 10
 			$(".errorChk").text("Less than Number of students who received PMT stipend X");
 		}else if (parseInt(stu_rec_stipend_10)<parseInt(stu_got_married_10)){             //3 col check cls 10
+			$(".errorChk").text("Less than Number of students who received PMT stipend X");	
+		}else if (parseInt(stu_rec_stipend_10)<parseInt(stu_present_visit_10)){             //3 col check cls 10
 			$(".errorChk").text("Less than Number of students who received PMT stipend X");	
 		}else if (stu_present_visit_10=="" ){
 			$(".errorChk").text("Required Numeric X");
@@ -1820,7 +1848,7 @@ function complianceData4Next(){
 		var add_class_year=$("#add_class_year").val();
 					
 		var act_1_dis_date=$("#act_1_dis_date").val();
-		var act_1_ag_date=$("#act_1_ag_date").val();
+		var act_1_ag_date=$("#act_1_ag_date").val();	
 		var act_1_total_work=$("#act_1_total_work").val();
 		var sub_add_cls=$("input[name='sub_add_cls']:checked").val();
 		
@@ -2023,13 +2051,14 @@ function complianceData4Next(){
 			eng_ave_cls_10=0;
 			math_ave_cls_10=0;
 			sci_ave_cls_10=0;
-		
+					
 			banbeisComData4="&add_cls_seqaep="+add_cls_seqaep+"&add_class_semister="+add_class_semister+"&add_class_year="+add_class_year+"&act_1_dis_date="+act_1_dis_date+"&act_1_ag_date="+act_1_ag_date+"&act_1_total_work="+act_1_total_work+"&sub_add_cls="+sub_add_cls+"&act_1_name="+act_1_name+"&act_1_ag_inst="+act_1_ag_inst+"&act_1_sub="+act_1_sub+"&act_1_last_academic_cft="+act_1_last_academic_cft+"&receive_mark_1="+receive_mark_1+"&act_1_cft_verify="+act_1_cft_verify+"&act_1_leave="+act_1_leave+"&act_1_absent="+act_1_absent+"&act_1_total_class="+act_1_total_class+"&act_2_name="+act_2_name+"&act_2_ag_inst="+act_2_ag_inst+"&act_2_sub="+act_2_sub+"&act_2_last_academic_cft="+act_2_last_academic_cft+"&receive_mark_2="+receive_mark_2+"&act_2_cft_verify="+act_2_cft_verify+"&act_2_leave="+act_2_leave+"&act_2_absent="+act_2_absent+"&act_2_total_class="+act_2_total_class+"&act_3_name="+act_3_name+"&act_3_ag_inst="+act_3_ag_inst+"&act_3_sub="+act_3_sub+"&act_3_last_academic_cft="+act_3_last_academic_cft+"&receive_mark_3="+receive_mark_3+"&act_3_cft_verify="+act_3_cft_verify+"&act_3_leave="+act_3_leave+"&act_3_absent="+act_3_absent+"&act_3_total_class="+act_3_total_class+"&eng_enro_add_cls_6="+eng_enro_add_cls_6+"&math_enro_add_cls_6="+math_enro_add_cls_6+"&sci_enro_add_cls_6="+sci_enro_add_cls_6+"&eng_reg_cls_6="+eng_reg_cls_6+"&math_reg_cls_6="+math_reg_cls_6+"&sci_reg_cls_6="+sci_reg_cls_6+"&eng_add_cls_6="+eng_add_cls_6+"&math_add_cls_6="+math_add_cls_6+"&sci_add_cls_6="+sci_add_cls_6+"&eng_ave_cls_6="+eng_ave_cls_6+"&math_ave_cls_6="+math_ave_cls_6+"&sci_ave_cls_6="+sci_ave_cls_6+"&eng_enro_add_cls_7="+eng_enro_add_cls_7+"&math_enro_add_cls_7="+math_enro_add_cls_7+"&sci_enro_add_cls_7="+sci_enro_add_cls_7+"&eng_reg_cls_7="+eng_reg_cls_7+"&math_reg_cls_7="+math_reg_cls_7+"&sci_reg_cls_7="+sci_reg_cls_7+"&eng_add_cls_7="+eng_add_cls_7+"&math_add_cls_7="+math_add_cls_7+"&sci_add_cls_7="+sci_add_cls_7+"&eng_ave_cls_7="+eng_ave_cls_7+"&math_ave_cls_7="+math_ave_cls_7+"&sci_ave_cls_7="+sci_ave_cls_7+"&eng_enro_add_cls_8="+eng_enro_add_cls_8+"&math_enro_add_cls_8="+math_enro_add_cls_8+"&sci_enro_add_cls_8="+sci_enro_add_cls_8+"&eng_reg_cls_8="+eng_reg_cls_8+"&math_reg_cls_8="+math_reg_cls_8+"&sci_reg_cls_8="+sci_reg_cls_8+"&eng_add_cls_8="+eng_add_cls_8+"&math_add_cls_8="+math_add_cls_8+"&sci_add_cls_8="+sci_add_cls_8+"&eng_ave_cls_8="+eng_ave_cls_8+"&math_ave_cls_8="+math_ave_cls_8+"&sci_ave_cls_8="+sci_ave_cls_8+"&eng_enro_add_cls_9="+eng_enro_add_cls_9+"&math_enro_add_cls_9="+math_enro_add_cls_9+"&sci_enro_add_cls_9="+sci_enro_add_cls_9+"&eng_reg_cls_9="+eng_reg_cls_9+"&math_reg_cls_9="+math_reg_cls_9+"&sci_reg_cls_9="+sci_reg_cls_9+"&eng_add_cls_9="+eng_add_cls_9+"&math_add_cls_9="+math_add_cls_9+"&sci_add_cls_9="+sci_add_cls_9+"&eng_ave_cls_9="+eng_ave_cls_9+"&math_ave_cls_9="+math_ave_cls_9+"&sci_ave_cls_9="+sci_ave_cls_9+"&eng_enro_add_cls_10="+eng_enro_add_cls_10+"&math_enro_add_cls_10="+math_enro_add_cls_10+"&sci_enro_add_cls_10="+sci_enro_add_cls_10+"&eng_reg_cls_10="+eng_reg_cls_10+"&math_reg_cls_10="+math_reg_cls_10+"&sci_reg_cls_10="+sci_reg_cls_10+"&eng_add_cls_10="+eng_add_cls_10+"&math_add_cls_10="+math_add_cls_10+"&sci_add_cls_10="+sci_add_cls_10+"&eng_ave_cls_10="+eng_ave_cls_10+"&math_ave_cls_10="+math_ave_cls_10+"&sci_ave_cls_10="+sci_ave_cls_10
 		
 		url="#compliancePage5";					
 		$.mobile.navigate(url);
 			
 		}else{
+			
 		if (add_class_semister==""||add_class_semister==0){
 			$(".errorChk").text("Required Semester");
 		}else if (add_class_year==""||add_class_year==0){
@@ -2038,6 +2067,8 @@ function complianceData4Next(){
 			$(".errorChk").text("Required Disbursement Date ");	
 		}else if (act_1_ag_date==""){
 			$(".errorChk").text("Required Agreement Date");	
+		}else if (act_1_dis_date>act_1_ag_date){
+			$(".errorChk").text("Agreement date less than disbursement date");			
 		}else if (act_1_total_work==""){
 			$(".errorChk").text("Required Total Working days ");	
 		}else if (sub_add_cls==""){
@@ -2361,7 +2392,7 @@ function ins_agr_cls(){
 	
 	var cls_seq=$("input[name='add_cls_seqaep']:checked").val();
 	//alert(cls_seq);
-	if(cls_seq=="2"){
+	if(cls_seq=="1"){
 		$("#act_con").show();
 	}else{
 	 	$("#act_con").hide();
@@ -2402,7 +2433,7 @@ function complianceData5Next(){
 		var ins_rec_grant_sa=$("input[name='ins_rec_grant_sa']:checked").val();
 		var report_pre_annu_exam=$("input[name='report_pre_annu_exam']:checked").val();
 		var give_report_prepa=$("#give_report_prepa").val();
-		var last_soc_rep_dis=$("#last_soc_rep_dis").val()	;
+		var last_soc_rep_dis=$("#last_soc_rep_dis").val();
 		
 		
 		if(pta_exist_ins==2){
@@ -2418,7 +2449,9 @@ function complianceData5Next(){
 		}else if (smc_member==""){
 			$(".errorChk").text("Required SMC Member");	
 		}else if (smc_tran_seqaep==""){
-			$(".errorChk").text("Required SMC Member Received  Training ");		
+			$(".errorChk").text("Required SMC Member Received  Training ");	
+		}else if (parseInt(smc_member)<parseInt(smc_tran_seqaep)){
+			$(".errorChk").text("SMC members received training less than SMC members ");	
 		}else if (cha_att_seqaep==""){
 			$(".errorChk").text("Required SMC Chairperson Attended ");		
 		}else if (smc_meeting==""){
@@ -2441,12 +2474,12 @@ function complianceData5Next(){
 			$(".errorChk").text("Required Reference period year");		
 		}else if (ins_rec_grant_eacm==""){
 			$(".errorChk").text("Required any Grant for EACM");	
-		}else if (acti_with_eacm_grant==""||acti_with_eacm_grant==0){
+		/*}else if (acti_with_eacm_grant==""||acti_with_eacm_grant==0){
 			$(".errorChk").text("Required Activities  EACM Grant");	
 		}else if (topic_dis_eacm_pro==""||topic_dis_eacm_pro==0){
 			$(".errorChk").text("Required EACM programme ");	
 		}else if (chai_aware_eacm_expe==""){
-			$(".errorChk").text("Required PTA Chairperson Aware ");		
+			$(".errorChk").text("Required PTA Chairperson Aware ");	*/	
 		}else if (soci_ref_period_sem==""||soci_ref_period_sem==0){
 			$(".errorChk").text("Required reference period semester");	
 		}else if (soci_ref_period_year==""||soci_ref_period_year==0){
@@ -2455,8 +2488,8 @@ function complianceData5Next(){
 			$(".errorChk").text("Required Grant for SA");		
 		}else if (report_pre_annu_exam==""){
 			$(".errorChk").text("Required Report Prepared After Annual Exam ");	
-		}else if (last_soc_rep_dis==""){
-			$(".errorChk").text("Required Social Audit Report Discussed");	
+		/*}else if (last_soc_rep_dis==""){
+			$(".errorChk").text("Required Social Audit Report Discussed");*/	
 		}else{
 			
 			banbeisComData5="&inst_type_manag="+inst_type_manag+"&smc_type="+smc_type+"&smc_member="+smc_member+"&smc_tran_seqaep="+smc_tran_seqaep+"&cha_att_seqaep="+cha_att_seqaep+"&smc_meeting="+smc_meeting+"&smc_meet_chec_min="+smc_meet_chec_min+"&ins_annu_sch_dev_plan="+ins_annu_sch_dev_plan+"&pta_exist_ins="+pta_exist_ins+"&pta_reformed_ins="+pta_reformed_ins+"&pta_ins_rec_taka="+pta_ins_rec_taka+"&ins_grant_rec_date="+ins_grant_rec_date+"&why_not_pta_formed="+why_not_pta_formed+"&overall_com_mda="+overall_com_mda+"&pta_meet="+pta_meet+"&pta_meet_chec_min="+pta_meet_chec_min+"&pta_meet_min_seqaep="+pta_meet_min_seqaep+"&ref_period_sem="+ref_period_sem+"&ref_period_year="+ref_period_year+"&ins_rec_grant_eacm="+ins_rec_grant_eacm+"&acti_with_eacm_grant="+acti_with_eacm_grant+"&topic_dis_eacm_pro="+topic_dis_eacm_pro+"&chai_aware_eacm_expe="+chai_aware_eacm_expe+"&soci_ref_period_sem="+soci_ref_period_sem+"&soci_ref_period_year="+soci_ref_period_year+"&ins_rec_grant_sa="+ins_rec_grant_sa+"&report_pre_annu_exam="+report_pre_annu_exam+"&give_report_prepa="+give_report_prepa+"&last_soc_rep_dis="+last_soc_rep_dis
@@ -2474,7 +2507,9 @@ function complianceData5Next(){
 		}else if (smc_member==""){
 			$(".errorChk").text("Required SMC Member");	
 		}else if (smc_tran_seqaep==""){
-			$(".errorChk").text("Required SMC Member Received  Training ");		
+			$(".errorChk").text("Required SMC Member Received  Training ");	
+		}else if (parseInt(smc_member)<parseInt(smc_tran_seqaep)){
+			$(".errorChk").text("Less School Management Committee(SMC) members ");	
 		}else if (cha_att_seqaep==""){
 			$(".errorChk").text("Required SMC Chairperson Attended ");		
 		}else if (smc_meeting==""){
@@ -2488,7 +2523,9 @@ function complianceData5Next(){
 		}else if (pta_reformed_ins==""){
 			$(".errorChk").text("Required PTA formed or reformed institution");
 		}else if (ins_grant_rec_date==""){
-			$(".errorChk").text("Required PTA Grant received date");		
+			$(".errorChk").text("Required PTA Grant received date");
+		}else if (pta_reformed_ins>ins_grant_rec_date){
+			$(".errorChk").text("PTA grant received date greater than PTA formed or reformed in the institution");			
 		}else if (pta_ins_rec_taka==""){
 			$(".errorChk").text("Required PTA grants Receive Taka");				
 		}else if (why_not_pta_formed==""){
@@ -2537,10 +2574,30 @@ function complianceData5Next(){
 function pta_exist(){
 	var pta_exist=$("input[name='pta_exist_ins']:checked").val();
 	//alert(pta_exist);
-	if(pta_exist=="2"){
+	if(pta_exist=="1"){
 		$("#pta_con").show();
 	}else{
 	 	$("#pta_con").hide();
+	}
+}
+
+function rec_grant_eacm(){
+	var ins_rec_grant_eacm=$("input[name='ins_rec_grant_eacm']:checked").val();
+	//alert(ins_rec_grant_eacm);
+	if(ins_rec_grant_eacm=="1"){
+		$("#eacm").show();
+	}else{
+	 	$("#eacm").hide();
+	}
+}
+
+function rec_sec_instal(){
+	var ins_rec_grant_sa=$("input[name='ins_rec_grant_sa']:checked").val();
+	//alert(ins_rec_grant_sa);
+	if(ins_rec_grant_sa=="1"){
+		$("#social_audit").show();
+	}else{
+	 	$("#social_audit").hide();
 	}
 }
 
@@ -2548,7 +2605,7 @@ function sa_exam_report(){
 
 	var report_pre_annu_exam=$("input[name='report_pre_annu_exam']:checked").val();
 	//alert(report_pre_annu_exam);
-	if(report_pre_annu_exam=="2"){
+	if(report_pre_annu_exam=="1"){
 		$("#sa_report").show();
 	}else{
 	 	$("#sa_report").hide();
@@ -2634,7 +2691,7 @@ function complianceData6Next(){
 		//var name_work_isf_grant=$("input[name='name_work_isf_grant']:checked").val();
 		//var work_status=$("#work_status").val()
 		var ins_total_tub=$("#ins_total_tub").val()
-		var test_tubewell=$("#test_tubewell").val()
+		//var test_tubewell=$("#test_tubewell").val()
 		var test_arsenic=$("#test_arsenic").val()
 		var tested_manganese=$("#tested_manganese").val()
 		var tubewell_arsenic_free=$("#tubewell_arsenic_free").val()
@@ -2642,13 +2699,17 @@ function complianceData6Next(){
 		var tub_manga_free=$("#tub_manga_free").val()
 		var tub_manga_conta=$("#tub_manga_conta").val()
 		var ins_per_dphe_water=$("input[name='ins_per_dphe_water']:checked").val();
-		var ins_arc_man_rep_card=$("input[name='ins_arc_man_rep_card']:checked").val();
+		//var ins_arc_man_rep_card=$("input[name='ins_arc_man_rep_card']:checked").val();
 		var arsenic=$("input[name='arsenic']:checked").val();
 		var manganese=$("input[name='manganese']:checked").val();
 		var tube_setup_ins=$("input[name='tube_setup_ins']:checked").val();
 		var how_tub_install=$("#how_tub_install").val()
 		
-		var total_test_tubwels=(+test_arsenic)+(+tested_manganese)+(+tubewell_arsenic_free)+(+tub_ars_cont)+(+tub_manga_free)+(+tub_manga_conta);
+		var total_test_ars_man=(+test_arsenic)+(+tested_manganese);
+		var test_ars=(+tubewell_arsenic_free)+(+tub_ars_cont);
+		var test_mang=(+tub_manga_free)+(+tub_manga_conta);
+		
+		
 		//alert(total_test_tubwels);
 		
 		if(ins_rec_isf==2){
@@ -2717,7 +2778,7 @@ function complianceData6Next(){
 			money_stil_spent_9=0;
 			pre_condi_work_9=0;			
 			
-			banbeisComData6="&ict_ref_period_sem="+ict_ref_period_sem+"&ict_ref_period_year="+ict_ref_period_year+"&ins_internet_con="+ins_internet_con+"&ins_assi_ict_grant="+ins_assi_ict_grant+"&how_sec_email="+how_sec_email+"&email_sent_seqaep="+email_sent_seqaep+"&ict_grant_rec="+ict_grant_rec+"&sch_one_mail_seqaep="+sch_one_mail_seqaep+"&ins_rec_isf="+ins_rec_isf+"&work_status_isf_1="+work_status_isf_1+"&use_group_com_1="+use_group_com_1+"&total_taka_seqaep_1="+total_taka_seqaep_1+"&total_taka_commu_1="+total_taka_commu_1+"&money_stil_spent_1="+money_stil_spent_1+"&pre_condi_work_1="+pre_condi_work_1+"&work_status_isf_2="+work_status_isf_2+"&use_group_com_2="+use_group_com_2+"&total_taka_seqaep_2="+total_taka_seqaep_2+"&total_taka_commu_2="+total_taka_commu_2+"&money_stil_spent_2="+money_stil_spent_2+"&pre_condi_work_2="+pre_condi_work_2+"&work_status_isf_3="+work_status_isf_3+"&use_group_com_3="+use_group_com_3+"&total_taka_seqaep_3="+total_taka_seqaep_3+"&total_taka_commu_3="+total_taka_commu_3+"&money_stil_spent_3="+money_stil_spent_3+"&pre_condi_work_3="+pre_condi_work_3+"&work_status_isf_4="+work_status_isf_4+"&use_group_com_4="+use_group_com_4+"&total_taka_seqaep_4="+total_taka_seqaep_4+"&total_taka_commu_4="+total_taka_commu_4+"&money_stil_spent_4="+money_stil_spent_4+"&pre_condi_work_4="+pre_condi_work_4+"&work_status_isf_5="+work_status_isf_5+"&use_group_com_5="+use_group_com_5+"&total_taka_seqaep_5="+total_taka_seqaep_5+"&total_taka_commu_5="+total_taka_commu_5+"&money_stil_spent_5="+money_stil_spent_5+"&pre_condi_work_5="+pre_condi_work_5+"&work_status_isf_6="+work_status_isf_6+"&use_group_com_6="+use_group_com_6+"&total_taka_seqaep_6="+total_taka_seqaep_6+"&total_taka_commu_6="+total_taka_commu_6+"&money_stil_spent_6="+money_stil_spent_6+"&pre_condi_work_6="+pre_condi_work_6+"&work_status_isf_7="+work_status_isf_7+"&use_group_com_7="+use_group_com_7+"&total_taka_seqaep_7="+total_taka_seqaep_7+"&total_taka_commu_7="+total_taka_commu_7+"&money_stil_spent_7="+money_stil_spent_7+"&pre_condi_work_7="+pre_condi_work_7+"&work_status_isf_8="+work_status_isf_8+"&use_group_com_8="+use_group_com_8+"&total_taka_seqaep_8="+total_taka_seqaep_8+"&total_taka_commu_8="+total_taka_commu_8+"&money_stil_spent_8="+money_stil_spent_8+"&pre_condi_work_8="+pre_condi_work_8+"&work_status_isf_9="+work_status_isf_9+"&use_group_com_9="+use_group_com_9+"&total_taka_seqaep_9="+total_taka_seqaep_9+"&total_taka_commu_9="+total_taka_commu_9+"&money_stil_spent_9="+money_stil_spent_9+"&pre_condi_work_9="+pre_condi_work_9+"&ins_total_tub="+ins_total_tub+"&test_tubewell="+test_tubewell+"&test_arsenic="+test_arsenic+"&tested_manganese="+tested_manganese+"&tubewell_arsenic_free="+tubewell_arsenic_free+"&tub_ars_cont="+tub_ars_cont+"&tub_manga_free="+tub_manga_free+"&tub_manga_conta="+tub_manga_conta+"&ins_per_dphe_water="+ins_per_dphe_water+"&ins_arc_man_rep_card="+ins_arc_man_rep_card+"&arsenic="+arsenic+"&manganese="+manganese+"&tube_setup_ins="+tube_setup_ins+"&how_tub_install="+how_tub_install
+			banbeisComData6="&ict_ref_period_sem="+ict_ref_period_sem+"&ict_ref_period_year="+ict_ref_period_year+"&ins_internet_con="+ins_internet_con+"&ins_assi_ict_grant="+ins_assi_ict_grant+"&how_sec_email="+how_sec_email+"&email_sent_seqaep="+email_sent_seqaep+"&ict_grant_rec="+ict_grant_rec+"&sch_one_mail_seqaep="+sch_one_mail_seqaep+"&ins_rec_isf="+ins_rec_isf+"&work_status_isf_1="+work_status_isf_1+"&use_group_com_1="+use_group_com_1+"&total_taka_seqaep_1="+total_taka_seqaep_1+"&total_taka_commu_1="+total_taka_commu_1+"&money_stil_spent_1="+money_stil_spent_1+"&pre_condi_work_1="+pre_condi_work_1+"&work_status_isf_2="+work_status_isf_2+"&use_group_com_2="+use_group_com_2+"&total_taka_seqaep_2="+total_taka_seqaep_2+"&total_taka_commu_2="+total_taka_commu_2+"&money_stil_spent_2="+money_stil_spent_2+"&pre_condi_work_2="+pre_condi_work_2+"&work_status_isf_3="+work_status_isf_3+"&use_group_com_3="+use_group_com_3+"&total_taka_seqaep_3="+total_taka_seqaep_3+"&total_taka_commu_3="+total_taka_commu_3+"&money_stil_spent_3="+money_stil_spent_3+"&pre_condi_work_3="+pre_condi_work_3+"&work_status_isf_4="+work_status_isf_4+"&use_group_com_4="+use_group_com_4+"&total_taka_seqaep_4="+total_taka_seqaep_4+"&total_taka_commu_4="+total_taka_commu_4+"&money_stil_spent_4="+money_stil_spent_4+"&pre_condi_work_4="+pre_condi_work_4+"&work_status_isf_5="+work_status_isf_5+"&use_group_com_5="+use_group_com_5+"&total_taka_seqaep_5="+total_taka_seqaep_5+"&total_taka_commu_5="+total_taka_commu_5+"&money_stil_spent_5="+money_stil_spent_5+"&pre_condi_work_5="+pre_condi_work_5+"&work_status_isf_6="+work_status_isf_6+"&use_group_com_6="+use_group_com_6+"&total_taka_seqaep_6="+total_taka_seqaep_6+"&total_taka_commu_6="+total_taka_commu_6+"&money_stil_spent_6="+money_stil_spent_6+"&pre_condi_work_6="+pre_condi_work_6+"&work_status_isf_7="+work_status_isf_7+"&use_group_com_7="+use_group_com_7+"&total_taka_seqaep_7="+total_taka_seqaep_7+"&total_taka_commu_7="+total_taka_commu_7+"&money_stil_spent_7="+money_stil_spent_7+"&pre_condi_work_7="+pre_condi_work_7+"&work_status_isf_8="+work_status_isf_8+"&use_group_com_8="+use_group_com_8+"&total_taka_seqaep_8="+total_taka_seqaep_8+"&total_taka_commu_8="+total_taka_commu_8+"&money_stil_spent_8="+money_stil_spent_8+"&pre_condi_work_8="+pre_condi_work_8+"&work_status_isf_9="+work_status_isf_9+"&use_group_com_9="+use_group_com_9+"&total_taka_seqaep_9="+total_taka_seqaep_9+"&total_taka_commu_9="+total_taka_commu_9+"&money_stil_spent_9="+money_stil_spent_9+"&pre_condi_work_9="+pre_condi_work_9+"&ins_total_tub="+ins_total_tub+"&test_arsenic="+test_arsenic+"&tested_manganese="+tested_manganese+"&tubewell_arsenic_free="+tubewell_arsenic_free+"&tub_ars_cont="+tub_ars_cont+"&tub_manga_free="+tub_manga_free+"&tub_manga_conta="+tub_manga_conta+"&ins_per_dphe_water="+ins_per_dphe_water+"&arsenic="+arsenic+"&manganese="+manganese+"&tube_setup_ins="+tube_setup_ins+"&how_tub_install="+how_tub_install
 		
 		//alert(banbeisComData6);
 		$(".errorChk").text("");
@@ -2868,12 +2929,16 @@ function complianceData6Next(){
 			$(".errorChk").text("Required Total tubewells institution ");
 		}else if (ins_total_tub>6){
 			$(".errorChk").text("Required Maximum 6 Total tubewells institution");		
-		}else if (parseInt(ins_total_tub)<parseInt(test_tubewell)){
-			$(".errorChk").text("Less than total tuebwells ");
-		}else if (parseInt(test_tubewell)<parseInt(total_test_tubwels) ){
-			$(".errorChk").text("Less than total test tuebwells ");	
-		}else if (test_tubewell==""){
-			$(".errorChk").text("Required Total tested tubewells ");	
+		/*}else if (parseInt(ins_total_tub)<parseInt(test_tubewell)){
+			$(".errorChk").text("Less than total tuebwells ");*/
+		}else if (parseInt(ins_total_tub)<parseInt(total_test_ars_man) ){
+			$(".errorChk").text("tested arsenic + tested manganese less than total tuebwells ");
+		}else if (parseInt(test_arsenic)<parseInt(test_ars) ){
+			$(".errorChk").text("arsenic free + arsenic contaminated less than tested arsenic tuebwells ");	
+		}else if (parseInt(tested_manganese)<parseInt(test_mang) ){
+			$(".errorChk").text("manganese free + manganese contaminated less than tested manganese tuebwells ");	
+		/*}else if (test_tubewell==""){
+			$(".errorChk").text("Required Total tested tubewells ");	*/
 		}else if (test_arsenic==""){
 			$(".errorChk").text("Required Total tested arsenic ");	
 		}else if (tested_manganese==""){
@@ -2887,9 +2952,7 @@ function complianceData6Next(){
 		}else if (tub_manga_conta==""){
 			$(".errorChk").text("Required Total tested manganese contaminated ");		
 		}else if (ins_per_dphe_water==""){
-			$(".errorChk").text("Required Institution premises by DPHE ");		
-		}else if (ins_arc_man_rep_card==""){
-			$(".errorChk").text("Required Institution have arsenic and Manganese Report Card");	
+			$(".errorChk").text("Required Institution premises by DPHE ");	
 		}else if (arsenic==""){
 			$(".errorChk").text("Required arsenic");		
 		}else if (manganese==""){
@@ -2899,7 +2962,7 @@ function complianceData6Next(){
 						
 		}else{
 		
-		banbeisComData6="&ict_ref_period_sem="+ict_ref_period_sem+"&ict_ref_period_year="+ict_ref_period_year+"&ins_internet_con="+ins_internet_con+"&ins_assi_ict_grant="+ins_assi_ict_grant+"&how_sec_email="+how_sec_email+"&email_sent_seqaep="+email_sent_seqaep+"&ict_grant_rec="+ict_grant_rec+"&sch_one_mail_seqaep="+sch_one_mail_seqaep+"&ins_rec_isf="+ins_rec_isf+"&work_status_isf_1="+work_status_isf_1+"&use_group_com_1="+use_group_com_1+"&total_taka_seqaep_1="+total_taka_seqaep_1+"&total_taka_commu_1="+total_taka_commu_1+"&money_stil_spent_1="+money_stil_spent_1+"&pre_condi_work_1="+pre_condi_work_1+"&work_status_isf_2="+work_status_isf_2+"&use_group_com_2="+use_group_com_2+"&total_taka_seqaep_2="+total_taka_seqaep_2+"&total_taka_commu_2="+total_taka_commu_2+"&money_stil_spent_2="+money_stil_spent_2+"&pre_condi_work_2="+pre_condi_work_2+"&work_status_isf_3="+work_status_isf_3+"&use_group_com_3="+use_group_com_3+"&total_taka_seqaep_3="+total_taka_seqaep_3+"&total_taka_commu_3="+total_taka_commu_3+"&money_stil_spent_3="+money_stil_spent_3+"&pre_condi_work_3="+pre_condi_work_3+"&work_status_isf_4="+work_status_isf_4+"&use_group_com_4="+use_group_com_4+"&total_taka_seqaep_4="+total_taka_seqaep_4+"&total_taka_commu_4="+total_taka_commu_4+"&money_stil_spent_4="+money_stil_spent_4+"&pre_condi_work_4="+pre_condi_work_4+"&work_status_isf_5="+work_status_isf_5+"&use_group_com_5="+use_group_com_5+"&total_taka_seqaep_5="+total_taka_seqaep_5+"&total_taka_commu_5="+total_taka_commu_5+"&money_stil_spent_5="+money_stil_spent_5+"&pre_condi_work_5="+pre_condi_work_5+"&work_status_isf_6="+work_status_isf_6+"&use_group_com_6="+use_group_com_6+"&total_taka_seqaep_6="+total_taka_seqaep_6+"&total_taka_commu_6="+total_taka_commu_6+"&money_stil_spent_6="+money_stil_spent_6+"&pre_condi_work_6="+pre_condi_work_6+"&work_status_isf_7="+work_status_isf_7+"&use_group_com_7="+use_group_com_7+"&total_taka_seqaep_7="+total_taka_seqaep_7+"&total_taka_commu_7="+total_taka_commu_7+"&money_stil_spent_7="+money_stil_spent_7+"&pre_condi_work_7="+pre_condi_work_7+"&work_status_isf_8="+work_status_isf_8+"&use_group_com_8="+use_group_com_8+"&total_taka_seqaep_8="+total_taka_seqaep_8+"&total_taka_commu_8="+total_taka_commu_8+"&money_stil_spent_8="+money_stil_spent_8+"&pre_condi_work_8="+pre_condi_work_8+"&work_status_isf_9="+work_status_isf_9+"&use_group_com_9="+use_group_com_9+"&total_taka_seqaep_9="+total_taka_seqaep_9+"&total_taka_commu_9="+total_taka_commu_9+"&money_stil_spent_9="+money_stil_spent_9+"&pre_condi_work_9="+pre_condi_work_9+"&ins_total_tub="+ins_total_tub+"&test_tubewell="+test_tubewell+"&test_arsenic="+test_arsenic+"&tested_manganese="+tested_manganese+"&tubewell_arsenic_free="+tubewell_arsenic_free+"&tub_ars_cont="+tub_ars_cont+"&tub_manga_free="+tub_manga_free+"&tub_manga_conta="+tub_manga_conta+"&ins_per_dphe_water="+ins_per_dphe_water+"&ins_arc_man_rep_card="+ins_arc_man_rep_card+"&arsenic="+arsenic+"&manganese="+manganese+"&tube_setup_ins="+tube_setup_ins+"&how_tub_install="+how_tub_install
+		banbeisComData6="&ict_ref_period_sem="+ict_ref_period_sem+"&ict_ref_period_year="+ict_ref_period_year+"&ins_internet_con="+ins_internet_con+"&ins_assi_ict_grant="+ins_assi_ict_grant+"&how_sec_email="+how_sec_email+"&email_sent_seqaep="+email_sent_seqaep+"&ict_grant_rec="+ict_grant_rec+"&sch_one_mail_seqaep="+sch_one_mail_seqaep+"&ins_rec_isf="+ins_rec_isf+"&work_status_isf_1="+work_status_isf_1+"&use_group_com_1="+use_group_com_1+"&total_taka_seqaep_1="+total_taka_seqaep_1+"&total_taka_commu_1="+total_taka_commu_1+"&money_stil_spent_1="+money_stil_spent_1+"&pre_condi_work_1="+pre_condi_work_1+"&work_status_isf_2="+work_status_isf_2+"&use_group_com_2="+use_group_com_2+"&total_taka_seqaep_2="+total_taka_seqaep_2+"&total_taka_commu_2="+total_taka_commu_2+"&money_stil_spent_2="+money_stil_spent_2+"&pre_condi_work_2="+pre_condi_work_2+"&work_status_isf_3="+work_status_isf_3+"&use_group_com_3="+use_group_com_3+"&total_taka_seqaep_3="+total_taka_seqaep_3+"&total_taka_commu_3="+total_taka_commu_3+"&money_stil_spent_3="+money_stil_spent_3+"&pre_condi_work_3="+pre_condi_work_3+"&work_status_isf_4="+work_status_isf_4+"&use_group_com_4="+use_group_com_4+"&total_taka_seqaep_4="+total_taka_seqaep_4+"&total_taka_commu_4="+total_taka_commu_4+"&money_stil_spent_4="+money_stil_spent_4+"&pre_condi_work_4="+pre_condi_work_4+"&work_status_isf_5="+work_status_isf_5+"&use_group_com_5="+use_group_com_5+"&total_taka_seqaep_5="+total_taka_seqaep_5+"&total_taka_commu_5="+total_taka_commu_5+"&money_stil_spent_5="+money_stil_spent_5+"&pre_condi_work_5="+pre_condi_work_5+"&work_status_isf_6="+work_status_isf_6+"&use_group_com_6="+use_group_com_6+"&total_taka_seqaep_6="+total_taka_seqaep_6+"&total_taka_commu_6="+total_taka_commu_6+"&money_stil_spent_6="+money_stil_spent_6+"&pre_condi_work_6="+pre_condi_work_6+"&work_status_isf_7="+work_status_isf_7+"&use_group_com_7="+use_group_com_7+"&total_taka_seqaep_7="+total_taka_seqaep_7+"&total_taka_commu_7="+total_taka_commu_7+"&money_stil_spent_7="+money_stil_spent_7+"&pre_condi_work_7="+pre_condi_work_7+"&work_status_isf_8="+work_status_isf_8+"&use_group_com_8="+use_group_com_8+"&total_taka_seqaep_8="+total_taka_seqaep_8+"&total_taka_commu_8="+total_taka_commu_8+"&money_stil_spent_8="+money_stil_spent_8+"&pre_condi_work_8="+pre_condi_work_8+"&work_status_isf_9="+work_status_isf_9+"&use_group_com_9="+use_group_com_9+"&total_taka_seqaep_9="+total_taka_seqaep_9+"&total_taka_commu_9="+total_taka_commu_9+"&money_stil_spent_9="+money_stil_spent_9+"&pre_condi_work_9="+pre_condi_work_9+"&ins_total_tub="+ins_total_tub+"&test_arsenic="+test_arsenic+"&tested_manganese="+tested_manganese+"&tubewell_arsenic_free="+tubewell_arsenic_free+"&tub_ars_cont="+tub_ars_cont+"&tub_manga_free="+tub_manga_free+"&tub_manga_conta="+tub_manga_conta+"&ins_per_dphe_water="+ins_per_dphe_water+"&arsenic="+arsenic+"&manganese="+manganese+"&tube_setup_ins="+tube_setup_ins+"&how_tub_install="+how_tub_install
 		
 		//alert(banbeisComData6);
 		$(".errorChk").text("");
@@ -2912,14 +2975,32 @@ function complianceData6Next(){
 function isf_grant(){
 	var ins_rec_isf=$("input[name='ins_rec_isf']:checked").val();
 	//alert(ins_rec_isf);
-	if(ins_rec_isf=="2"){
+	if(ins_rec_isf=="1"){
 		$("#isf").show();
 	}else{
 	 	$("#isf").hide();
 	}
-
 }
 
+function dpeh(){
+	var ins_per_dphe_water=$("input[name='ins_per_dphe_water']:checked").val();
+	//alert(ins_per_dphe_water);
+	if(ins_per_dphe_water=="1"){
+		$("#arsenic").show();
+	}else{
+	 	$("#arsenic").hide();
+	}
+}
+
+function tube_setup(){
+	var tube_setup_ins=$("input[name='tube_setup_ins']:checked").val();
+	//alert(tube_setup_ins);
+	if(tube_setup_ins=="1"){
+		$("#ins_tube").show();
+	}else{
+	 	$("#ins_tube").hide();
+	}
+}
 
 
 function complianceData7Next(){
@@ -3002,7 +3083,7 @@ function complianceData7Next(){
 		var pre_day_visit_girls_10=$("input[name='pre_day_visit_girls_10']:checked").val();
 		var about_award_amo_tell_girls_10=$("input[name='about_award_amo_tell_girls_10']:checked").val();
 		
-		award_dis=$("#award_dis").val()				
+		var award_dis=$("#award_dis").val();				
 		
 		if(ins_receive_tk==2){			
 			ins_receive_tk=ins_receive_tk;			
@@ -3013,17 +3094,133 @@ function complianceData7Next(){
 			smc_meet_dis=0;
 			pta_aware_dis=0;
 			
-			/*if (reason==""||reason==0){
-			$(".errorChk").text("Required reason");	
-			}else{*/				
+			if (pmt_stu_app_ssc_exam_13==""){
+				$(".errorChk").text("Required PMT Students Appeared SSC or Equivalent Exam 2013");	
+			}else if (pmt_stu_pass_ssc_exam_13==""){
+				$(".errorChk").text("Required PMT Students Pass SSC or Equivalent Exam 2013");
+			}else if (parseInt(pmt_stu_app_ssc_exam_13)<parseInt(pmt_stu_pass_ssc_exam_13)){
+				$(".errorChk").text("Less than PMT Students Appeared SSC or Equivalent Exam 2013");	
+			}else if (pmt_stu_gpa_13==""){
+				$(".errorChk").text("Required PMT Student GPA-5 2013");	
+			}else if (parseInt(pmt_stu_pass_ssc_exam_13)<parseInt(pmt_stu_gpa_13)){
+				$(".errorChk").text("Less than PMT Students Pass SSC or Equivalent Exam 2013");	
 			
+			}else if (nonpmt_stu_app_ssc_exam_13==""){
+				$(".errorChk").text("Required Non PMT Students Appeared SSC or Equivalent Exam 2013");	
+			}else if (nonpmt_stu_pass_ssc_exam_13==""){
+				$(".errorChk").text("Required Non PMT Students Pass SSC or Equivalent Exam 2013");
+			}else if (parseInt(nonpmt_stu_app_ssc_exam_13)<parseInt(nonpmt_stu_pass_ssc_exam_13)){
+				$(".errorChk").text("Less than Non PMT Students Appeared SSC or Equivalent Exam 2013");		
+			}else if (nonpmt_stu_gpa_13==""){
+				$(".errorChk").text("Required Non PMT Student GPA-5 2013");	
+			}else if (parseInt(nonpmt_stu_pass_ssc_exam_13)<parseInt(nonpmt_stu_gpa_13)){
+				$(".errorChk").text("Less than Non PMT Students Pass SSC or Equivalent Exam 2013");	
+				
+			}else if (pmt_stu_app_ssc_exam_14==""){
+				$(".errorChk").text("Required PMT Students Appeared SSC or Equivalent Exam 2014");	
+			}else if (pmt_stu_pass_ssc_exam_14==""){
+				$(".errorChk").text("Required PMT Students Pass SSC or Equivalent Exam 2014");
+			}else if (parseInt(pmt_stu_app_ssc_exam_14)<parseInt(pmt_stu_pass_ssc_exam_14)){
+				$(".errorChk").text("Less than PMT Students Appeared SSC or Equivalent Exam 2014");		
+			}else if (pmt_stu_gpa_14==""){
+				$(".errorChk").text("Required PMT Student GPA-5 2014");	
+			}else if (parseInt(pmt_stu_pass_ssc_exam_14)<parseInt(pmt_stu_gpa_14)){
+				$(".errorChk").text("Less than PMT Students Pass SSC or Equivalent Exam 2014");
+				
+			}else if (nonpmt_stu_app_ssc_exam_14==""){
+				$(".errorChk").text("Required Non PMT Students Appeared SSC or Equivalent Exam 2014");	
+			}else if (nonpmt_stu_pass_ssc_exam_14==""){
+				$(".errorChk").text("Required Non PMT Students Pass SSC or Equivalent Exam 2014");
+			}else if (parseInt(nonpmt_stu_app_ssc_exam_14)<parseInt(nonpmt_stu_pass_ssc_exam_14)){
+				$(".errorChk").text("Less than Non PMT Students Appeared SSC or Equivalent Exam 2014");		
+			}else if (nonpmt_stu_gpa_14==""){
+				$(".errorChk").text("Required Non PMT Student GPA-5 2014");
+			}else if (parseInt(nonpmt_stu_pass_ssc_exam_14)<parseInt(nonpmt_stu_gpa_14)){
+				$(".errorChk").text("Less than Non PMT Students Pass SSC or Equivalent Exam 2014");
+				
+			}else if (pmt_stu_app_ssc_exam_15==""){
+				$(".errorChk").text("Required PMT Students Appeared SSC or Equivalent Exam 2015");	
+			}else if (pmt_stu_pass_ssc_exam_15==""){
+				$(".errorChk").text("Required PMT Students Pass SSC or Equivalent Exam 2015");
+			}else if (parseInt(pmt_stu_app_ssc_exam_15)<parseInt(pmt_stu_pass_ssc_exam_15)){
+				$(".errorChk").text("Less than PMT Students Appeared SSC or Equivalent Exam 2015");		
+			}else if (pmt_stu_gpa_15==""){
+				$(".errorChk").text("Required PMT Student GPA-5 2015");	
+			}else if (parseInt(pmt_stu_pass_ssc_exam_15)<parseInt(pmt_stu_gpa_15)){
+				$(".errorChk").text("Less than PMT Students Pass SSC or Equivalent Exam 2015");	
+				
+			}else if (nonpmt_stu_app_ssc_exam_15==""){
+				$(".errorChk").text("Required Non PMT Students Appeared SSC or Equivalent Exam 2015");	
+			}else if (nonpmt_stu_pass_ssc_exam_15==""){
+				$(".errorChk").text("Required Non PMT Students Pass SSC or Equivalent Exam 2015");	
+			}else if (parseInt(nonpmt_stu_app_ssc_exam_15)<parseInt(nonpmt_stu_pass_ssc_exam_15)){
+				$(".errorChk").text("Less than Non PMT Students Appeared SSC or Equivalent Exam 2015");
+			}else if (nonpmt_stu_gpa_15==""){
+				$(".errorChk").text("Required Non PMT Student GPA-5 2015");
+			}else if (parseInt(nonpmt_stu_pass_ssc_exam_15)<parseInt(nonpmt_stu_gpa_15)){
+				$(".errorChk").text("Less than Non PMT Students Pass SSC or Equivalent Exam 2015");
+				
+			}else if (total_stu_rec_stipend==""){
+				$(".errorChk").text("Required Students Grade 10 PMT Stipend ");	
+			}else if (pmt_stu_app_ssc_exam==""){
+				$(".errorChk").text("Required PMT students Grade 10 Appeared SSC exam");
+			}else if (parseInt(total_stu_rec_stipend)<parseInt(pmt_stu_app_ssc_exam)){
+				$(".errorChk").text("Less than Students Grade 10 PMT Stipend");
+			}else if (pmt_stu_pass_ssc==""){
+				$(".errorChk").text("Required PMT Students Passed SSC or Equivalent");	
+			}else if (parseInt(pmt_stu_app_ssc_exam)<parseInt(pmt_stu_pass_ssc)){
+				$(".errorChk").text("Less than PMT students Grade 10 Appeared SSC exam");
+			}else if (pmt_stu_coll_ssc_award==""){
+				$(".errorChk").text("Required PMT Students Pass Award");	
+			}else if (parseInt(pmt_stu_pass_ssc)<parseInt(pmt_stu_coll_ssc_award)){
+				$(".errorChk").text("Less than PMT Students Passed SSC or Equivalent");
+			}else if (pmt_stu_higher_study==""){
+				$(".errorChk").text("Required PMT Students Higher Study");
+			}else if (parseInt(pmt_stu_coll_ssc_award)<parseInt(pmt_stu_higher_study)){
+				$(".errorChk").text("Less than PMT Students Pass Award");	
+			}else if (pass_award_dis==""||pass_award_dis==0){
+				$(".errorChk").text("Required Award Distributed ");	
+			}else if (stu_award_ref_period_sem==""||stu_award_ref_period_sem==0){
+				$(".errorChk").text("Required Reference period semester");
+			}else if (stu_award_ref_period_year==""||stu_award_ref_period_year==0){
+				$(".errorChk").text("Required Reference period year");
+				
+			}else if (per_mark_ann_exam_boys_7==""){
+				$(".errorChk").text("Required Percentage of marks obtained annual exam boys VII");	
+			}else if (per_mark_ann_exam_boys_7>999){
+				$(".errorChk").text("Required 3 digit boys VII");
+			}else if (per_mark_ann_exam_boys_8==""){
+				$(".errorChk").text("Required Percentage of marks obtained annual exam boys VIII");	
+			}else if (per_mark_ann_exam_boys_8>999){
+				$(".errorChk").text("Required 3 digit boys VIII");
+			}else if (per_mark_ann_exam_boys_10==""){
+				$(".errorChk").text("Required Percentage of marks obtained annual exam boys X");
+			}else if (per_mark_ann_exam_boys_10>999){
+				$(".errorChk").text("Required 3 digit boys X");
+					
+			}else if (per_mark_ann_exam_girls_7==""){
+				$(".errorChk").text("Required Percentage of marks obtained annual exam girls VII");	
+			}else if (per_mark_ann_exam_girls_7>999){
+				$(".errorChk").text("Required 3 digit girls VII");
+			}else if (per_mark_ann_exam_girls_8==""){
+				$(".errorChk").text("Required Percentage of marks obtained annual exam girls VIII");
+			}else if (per_mark_ann_exam_girls_8>999){
+				$(".errorChk").text("Required 3 digit girls VIII");	
+			}else if (per_mark_ann_exam_girls_10==""){
+				$(".errorChk").text("Required Percentage of marks obtained annual exam girls X");
+			}else if (per_mark_ann_exam_girls_10>999){
+				$(".errorChk").text("Required 3 digit girls X");			
+							
+			}else if (award_dis==""||award_dis==0){
+				$(".errorChk").text("Required Award Distributed");		
+			}else{
 			banbeisComData7="&ins_receive_tk="+ins_receive_tk+"&receive_amount_iaa="+receive_amount_iaa+"&amount_dis_manual="+amount_dis_manual+"&smc_awared_dis="+smc_awared_dis+"&reason="+reason+"&smc_meet_dis="+smc_meet_dis+"&pta_aware_dis="+pta_aware_dis+"&pmt_stu_app_ssc_exam_13="+pmt_stu_app_ssc_exam_13+"&pmt_stu_pass_ssc_exam_13="+pmt_stu_pass_ssc_exam_13+"&pmt_stu_gpa_13="+pmt_stu_gpa_13+"&nonpmt_stu_app_ssc_exam_13="+nonpmt_stu_app_ssc_exam_13+"&nonpmt_stu_pass_ssc_exam_13="+nonpmt_stu_pass_ssc_exam_13+"&nonpmt_stu_gpa_13="+nonpmt_stu_gpa_13+"&pmt_stu_app_ssc_exam_14="+pmt_stu_app_ssc_exam_14+"&pmt_stu_pass_ssc_exam_14="+pmt_stu_pass_ssc_exam_14+"&pmt_stu_gpa_14="+pmt_stu_gpa_14+"&nonpmt_stu_app_ssc_exam_14="+nonpmt_stu_app_ssc_exam_14+"&nonpmt_stu_pass_ssc_exam_14="+nonpmt_stu_pass_ssc_exam_14+"&nonpmt_stu_gpa_14="+nonpmt_stu_gpa_14+"&pmt_stu_app_ssc_exam_15="+pmt_stu_app_ssc_exam_15+"&pmt_stu_pass_ssc_exam_15="+pmt_stu_pass_ssc_exam_15+"&pmt_stu_gpa_15="+pmt_stu_gpa_15+"&nonpmt_stu_app_ssc_exam_15="+nonpmt_stu_app_ssc_exam_15+"&nonpmt_stu_pass_ssc_exam_15="+nonpmt_stu_pass_ssc_exam_15+"&nonpmt_stu_gpa_15="+nonpmt_stu_gpa_15+"&total_stu_rec_stipend="+total_stu_rec_stipend+"&pmt_stu_app_ssc_exam="+pmt_stu_app_ssc_exam+"&pmt_stu_pass_ssc="+pmt_stu_pass_ssc+"&pmt_stu_coll_ssc_award="+pmt_stu_coll_ssc_award+"&pmt_stu_higher_study="+pmt_stu_higher_study+"&pass_award_dis="+pass_award_dis+"&stu_award_ref_period_sem="+stu_award_ref_period_sem+"&stu_award_ref_period_year="+stu_award_ref_period_year+"&rece_award_boys_7="+rece_award_boys_7+"&rece_pmt_stipen_boys_7="+rece_pmt_stipen_boys_7+"&per_mark_ann_exam_boys_7="+per_mark_ann_exam_boys_7+"&pre_day_visit_boys_7="+pre_day_visit_boys_7+"&about_award_amo_tell_boys_7="+about_award_amo_tell_boys_7+"&rece_award_girls_7="+rece_award_girls_7+"&rece_pmt_stipen_girls_7="+rece_pmt_stipen_girls_7+"&per_mark_ann_exam_girls_7="+per_mark_ann_exam_girls_7+"&pre_day_visit_girls_7="+pre_day_visit_girls_7+"&about_award_amo_tell_girls_7="+about_award_amo_tell_girls_7+"&rece_award_boys_8="+rece_award_boys_8+"&rece_pmt_stipen_boys_8="+rece_pmt_stipen_boys_8+"&per_mark_ann_exam_boys_8="+per_mark_ann_exam_boys_8+"&pre_day_visit_boys_8="+pre_day_visit_boys_8+"&about_award_amo_tell_boys_8="+about_award_amo_tell_boys_8+"&rece_award_girls_8="+rece_award_girls_8+"&rece_pmt_stipen_girls_8="+rece_pmt_stipen_girls_8+"&per_mark_ann_exam_girls_8="+per_mark_ann_exam_girls_8+"&pre_day_visit_girls_8="+pre_day_visit_girls_8+"&about_award_amo_tell_girls_8="+about_award_amo_tell_girls_8+"&rece_award_boys_10="+rece_award_boys_10+"&rece_pmt_stipen_boys_10="+rece_pmt_stipen_boys_10+"&per_mark_ann_exam_boys_10="+per_mark_ann_exam_boys_10+"&pre_day_visit_boys_10="+pre_day_visit_boys_10+"&about_award_amo_tell_boys_10="+about_award_amo_tell_boys_10+"&rece_award_girls_10="+rece_award_girls_10+"&rece_pmt_stipen_girls_10="+rece_pmt_stipen_girls_10+"&per_mark_ann_exam_girls_10="+per_mark_ann_exam_girls_10+"&pre_day_visit_girls_10="+pre_day_visit_girls_10+"&about_award_amo_tell_girls_10="+about_award_amo_tell_girls_10+"&award_dis="+award_dis	
                                                                                                      		
 		$(".errorChk").text("");	
 		url="#compliancePage8";					
 		$.mobile.navigate(url);	
 		
-		//}
+		}
 		
 		}else{		
 		
@@ -3069,20 +3266,56 @@ function complianceData7Next(){
 		}else if (total_stu_rec_stipend==""){
 			$(".errorChk").text("Required Students Grade 10 PMT Stipend ");	
 		}else if (pmt_stu_app_ssc_exam==""){
-			$(".errorChk").text("Required PMT students Grade 10 Appeared SSC exam");	
+			$(".errorChk").text("Required PMT students Grade 10 Appeared SSC exam");
+		}else if (parseInt(total_stu_rec_stipend)<parseInt(pmt_stu_app_ssc_exam)){
+			$(".errorChk").text("Less than Students Grade 10 PMT Stipend");
 		}else if (pmt_stu_pass_ssc==""){
 			$(".errorChk").text("Required PMT Students Passed SSC or Equivalent");	
+		}else if (parseInt(pmt_stu_app_ssc_exam)<parseInt(pmt_stu_pass_ssc)){
+			$(".errorChk").text("Less than PMT students Grade 10 Appeared SSC exam");
 		}else if (pmt_stu_coll_ssc_award==""){
 			$(".errorChk").text("Required PMT Students Pass Award");	
+		}else if (parseInt(pmt_stu_pass_ssc)<parseInt(pmt_stu_coll_ssc_award)){
+			$(".errorChk").text("Less than PMT Students Passed SSC or Equivalent");
 		}else if (pmt_stu_higher_study==""){
-			$(".errorChk").text("Required PMT Students Higher Study");	
-		}else if (pass_award_dis==""){
+			$(".errorChk").text("Required PMT Students Higher Study");
+		}else if (parseInt(pmt_stu_coll_ssc_award)<parseInt(pmt_stu_higher_study)){
+			$(".errorChk").text("Less than PMT Students Pass Award");
+				
+		}else if (pass_award_dis==""||pass_award_dis==0){
 			$(".errorChk").text("Required Award Distributed ");	
 		}else if (stu_award_ref_period_sem==""||stu_award_ref_period_sem==0){
 			$(".errorChk").text("Required Reference period semester");
 		}else if (stu_award_ref_period_year==""||stu_award_ref_period_year==0){
-			$(".errorChk").text("Required Reference period year");			
-		}else if (award_dis==""){
+			$(".errorChk").text("Required Reference period year");
+			
+		}else if (per_mark_ann_exam_boys_7==""){
+			$(".errorChk").text("Required Percentage of marks obtained annual exam boys VII");	
+		}else if (per_mark_ann_exam_boys_7>999){
+			$(".errorChk").text("Required 3 digit boys VII");
+		}else if (per_mark_ann_exam_boys_8==""){
+			$(".errorChk").text("Required Percentage of marks obtained annual exam boys VIII");	
+		}else if (per_mark_ann_exam_boys_8>999){
+			$(".errorChk").text("Required 3 digit boys VIII");
+		}else if (per_mark_ann_exam_boys_10==""){
+			$(".errorChk").text("Required Percentage of marks obtained annual exam boys X");
+		}else if (per_mark_ann_exam_boys_10>999){
+			$(".errorChk").text("Required 3 digit boys X");
+				
+		}else if (per_mark_ann_exam_girls_7==""){
+			$(".errorChk").text("Required Percentage of marks obtained annual exam girls VII");	
+		}else if (per_mark_ann_exam_girls_7>999){
+			$(".errorChk").text("Required 3 digit girls VII");
+		}else if (per_mark_ann_exam_girls_8==""){
+			$(".errorChk").text("Required Percentage of marks obtained annual exam girls VIII");
+		}else if (per_mark_ann_exam_girls_8>999){
+			$(".errorChk").text("Required 3 digit girls VIII");	
+		}else if (per_mark_ann_exam_girls_10==""){
+			$(".errorChk").text("Required Percentage of marks obtained annual exam girls X");
+		}else if (per_mark_ann_exam_girls_10>999){
+			$(".errorChk").text("Required 3 digit girls X");				
+						
+		}else if (award_dis==""||award_dis==0){
 			$(".errorChk").text("Required Award Distributed");	
 			
 		}else{
@@ -3100,7 +3333,7 @@ function complianceData7Next(){
 function ins_ach_award(){
 	var ins_receive_tk=$("input[name='ins_receive_tk']:checked").val();
 	//alert(ins_receive_tk);
-	if(ins_receive_tk=="2"){
+	if(ins_receive_tk=="1"){
 		$("#iaa").show();
 	}else{
 	 	$("#iaa").hide();
@@ -3111,7 +3344,7 @@ function ins_ach_award(){
 function award_dis(){
 	var smc_awared_dis=$("input[name='smc_awared_dis']:checked").val();
 	//alert(smc_awared_dis);
-	if(smc_awared_dis=="2"){
+	if(smc_awared_dis=="1"){
 		$("#award_dist").hide();
 	}else{
 	 	$("#award_dist").show();
@@ -3253,44 +3486,68 @@ function complianceData8Next(){
 			$(".errorChk").text("Required program books received VI ");	
 		}else if (stu_per_eva_6==""){
 			$(".errorChk").text("Required students participated in evaluation VI");	
+		}else if (parseInt(stu_inc_drh_6)<parseInt(stu_per_eva_6)){
+			$(".errorChk").text("Less than DRH program VI");
 		}else if (stu_pass_eval_test_6==""){
 			$(".errorChk").text("Required students passed evaluation VI");	
+		}else if (parseInt(stu_per_eva_6)<parseInt(stu_pass_eval_test_6)){
+			$(".errorChk").text("Less students participated in evaluation VI");
 		}else if (no_award_6==""){
-			$(".errorChk").text("Required awardees VI ");	
+			$(".errorChk").text("Required awardees VI ");
+		}else if (parseInt(stu_pass_eval_test_6)<parseInt(no_award_6)){
+			$(".errorChk").text("Less students passed evaluation VI");	
 		}else if (only_drh_book_6==""){
 			$(".errorChk").text("Required Only DRH Books VI ");	
 		}else if (inc_drh_book_6==""){
 			$(".errorChk").text("Required Including DRH Books VI");
+		}else if (parseInt(only_drh_book_6)>parseInt(inc_drh_book_6)){
+			$(".errorChk").text("Less Only DRH books VI");	
 			
 		}else if (stu_inc_drh_7==""){
 			$(".errorChk").text("Required DRH program VII ");	
 		}else if (pro_book_rec_7==""){
 			$(".errorChk").text("Required program books received VII ");	
 		}else if (stu_per_eva_7==""){
-			$(".errorChk").text("Required students participated in evaluation VII");	
+			$(".errorChk").text("Required students participated in evaluation VII");
+		}else if (parseInt(stu_inc_drh_7)<parseInt(stu_per_eva_7)){
+			$(".errorChk").text("Less than DRH program VII");	
 		}else if (stu_pass_eval_test_7==""){
 			$(".errorChk").text("Required students passed evaluation VII");	
+		}else if (parseInt(stu_per_eva_7)<parseInt(stu_pass_eval_test_7)){
+			$(".errorChk").text("Less students participated in evaluation VII");
 		}else if (no_award_7==""){
 			$(".errorChk").text("Required awardees VII ");	
+		}else if (parseInt(stu_pass_eval_test_7)<parseInt(no_award_7)){
+			$(".errorChk").text("Less students passed evaluation VII");	
 		}else if (only_drh_book_7==""){
 			$(".errorChk").text("Required Only DRH Books VII ");	
 		}else if (inc_drh_book_7==""){
 			$(".errorChk").text("Required Including DRH Books VII");	
+		}else if (parseInt(only_drh_book_7)>parseInt(inc_drh_book_7)){
+			$(".errorChk").text("Less than Only DRH books VII");	
 			
 		}else if (stu_inc_drh_8==""){
 			$(".errorChk").text("Required DRH program VIII ");	
 		}else if (pro_book_rec_8==""){
 			$(".errorChk").text("Required program books received VIII ");	
 		}else if (stu_per_eva_8==""){
-			$(".errorChk").text("Required students participated in evaluation VIII");	
+			$(".errorChk").text("Required students participated in evaluation VIII");
+		}else if (parseInt(stu_inc_drh_8)<parseInt(stu_per_eva_8)){
+			$(".errorChk").text("Less than DRH program VIII");		
 		}else if (stu_pass_eval_test_8==""){
-			$(".errorChk").text("Required students passed evaluation VIII");	
+			$(".errorChk").text("Required students passed evaluation VIII");
+		}else if (parseInt(stu_per_eva_8)<parseInt(stu_pass_eval_test_8)){
+			$(".errorChk").text("Less students participated in evaluation VIII");	
 		}else if (no_award_8==""){
 			$(".errorChk").text("Required awardees VIII ");	
+		}else if (parseInt(stu_pass_eval_test_8)<parseInt(no_award_8)){
+			$(".errorChk").text("Less students passed evaluation VIII")
 		}else if (only_drh_book_8==""){
 			$(".errorChk").text("Required Only DRH Books VIII ");	
 		}else if (inc_drh_book_8==""){
 			$(".errorChk").text("Required Including DRH Books VIII");	
+		}else if (parseInt(only_drh_book_8)>parseInt(inc_drh_book_8)){
+			$(".errorChk").text("Less than Only DRH books VIII");	
 			
 		}else if (stu_inc_drh_9==""){
 			$(".errorChk").text("Required DRH program IX ");	
@@ -3298,29 +3555,45 @@ function complianceData8Next(){
 			$(".errorChk").text("Required program books received IX ");	
 		}else if (stu_per_eva_9==""){
 			$(".errorChk").text("Required students participated in evaluation IX");	
+		}else if (parseInt(stu_inc_drh_9)<parseInt(stu_per_eva_9)){
+			$(".errorChk").text("Less than DRH program IX");	
 		}else if (stu_pass_eval_test_9==""){
 			$(".errorChk").text("Required students passed evaluation IX");	
+		}else if (parseInt(stu_per_eva_9)<parseInt(stu_pass_eval_test_9)){
+			$(".errorChk").text("Less students participated in evaluation IX");
 		}else if (no_award_9==""){
 			$(".errorChk").text("Required awardees IX ");	
+		}else if (parseInt(stu_pass_eval_test_9)<parseInt(no_award_9)){
+			$(".errorChk").text("Less students passed evaluation IX")
 		}else if (only_drh_book_9==""){
 			$(".errorChk").text("Required Only DRH Books IX ");	
 		}else if (inc_drh_book_9==""){
 			$(".errorChk").text("Required Including DRH Books IX");	
+		}else if (parseInt(only_drh_book_9)>parseInt(inc_drh_book_9)){
+			$(".errorChk").text("Less than Only DRH books IX");
 			
 		}else if (stu_inc_drh_10==""){
 			$(".errorChk").text("Required DRH program X ");	
 		}else if (pro_book_rec_10==""){
 			$(".errorChk").text("Required program books received X ");	
 		}else if (stu_per_eva_10==""){
-			$(".errorChk").text("Required students participated in evaluation X");	
+			$(".errorChk").text("Required students participated in evaluation X");
+		}else if (parseInt(stu_inc_drh_10)<parseInt(stu_per_eva_10)){
+			$(".errorChk").text("Less than DRH program X");		
 		}else if (stu_pass_eval_test_10==""){
-			$(".errorChk").text("Required students passed evaluation X");	
+			$(".errorChk").text("Required students passed evaluation X");
+		}else if (parseInt(stu_per_eva_10)<parseInt(stu_pass_eval_test_10)){
+			$(".errorChk").text("Less students participated in evaluation X");	
 		}else if (no_award_10==""){
-			$(".errorChk").text("Required awardees X ");	
+			$(".errorChk").text("Required awardees X ");
+		}else if (parseInt(stu_pass_eval_test_10)<parseInt(no_award_10)){
+			$(".errorChk").text("Less students passed evaluation X")	
 		}else if (only_drh_book_10==""){
 			$(".errorChk").text("Required Only DRH Books X ");	
 		}else if (inc_drh_book_10==""){
-			$(".errorChk").text("Required Including DRH Books X");	
+			$(".errorChk").text("Required Including DRH Books X");
+		}else if (parseInt(only_drh_book_10)>parseInt(inc_drh_book_10)){
+			$(".errorChk").text("Less than Only DRH books X");		
 			
 		}else if (ver_rec_qty_pro_book==""||ver_rec_qty_pro_book==0){
 			$(".errorChk").text("Required Verify Program Books ");		
@@ -3348,13 +3621,14 @@ function complianceData8Next(){
 function drh_pro_ins(){
 	var ins_drh_pro=$("input[name='ins_drh_pro']:checked").val();
 	//alert(pta_exist);
-	if(ins_drh_pro=="2"){
+	if(ins_drh_pro=="1"){
 		$("#drh").show();
 	}else{
 	 	$("#drh").hide();
 	}
 	
 }
+
 
 
 function complianceDataSubmit(){
@@ -3396,10 +3670,12 @@ function complianceDataSubmit(){
 						uploadPhotoAch(imagePathA, imageName);						
 					}
 										
-				/*}*/ //-end check location
+				//} //-end check location
 				
 			}//Photo 2
 		}//chk photo
+		
+		//syncDataCom()
 		
 	}
 
@@ -3438,7 +3714,7 @@ function uploadPhotoAch(imageURI, imageName) {
     options.params = params;
 
     var ft = new FileTransfer();
-	ft.upload(imageURI, encodeURI("http://i01.businesssolutionapps.com/que_image/quem_image_sync/fileUploader/"),winAchInfo,onfail,options);
+	ft.upload(imageURI, encodeURI("http://e4.businesssolutionapps.com/mrepimage/banbeis_upload/fileUploader/"),winAchInfo,onfail,options);
 	
 }
 
@@ -3509,7 +3785,7 @@ function uploadPhoto2Ach(imageURI, imageName2) {
     options.params = params;
 
     var ft = new FileTransfer();
-	ft.upload(imageURI, encodeURI("http://i01.businesssolutionapps.com/que_image/quem_image_sync/fileUploader/"),winComInfo2,onfail,options);
+	ft.upload(imageURI, encodeURI("http://e4.businesssolutionapps.com/mrepimage/banbeis_upload/fileUploader/"),winComInfo2,onfail,options);
 	
 }
 
@@ -3525,9 +3801,8 @@ function onfail(r) {
 
 
 
-function syncDataCom(){
-	
-	
+function syncDataCom(){	
+			
 	//alert(apipath_compliance+"submitData_compliance?cid=BANBEIS&mobile_no="+localStorage.mobile_no+"&syncCode="+localStorage.sync_code+banbeisComData+banbeisComData2+banbeisComData3+banbeisComData4+banbeisComData5+banbeisComData6+banbeisComData7+banbeisComData8+'&com_achPhoto='+imageName+'&com_achPhoto2='+imageName2+'&latitude='+com_latitude+'&longitude='+com_longitude);
 			$.ajax({
 					type: 'POST',
@@ -3536,6 +3811,487 @@ function syncDataCom(){
 					   success: function(result) {
 						
 						if(result=='Success'){							
+							
+							//--------------
+							
+							$("#institute_name").val("");
+							$("#com_union").val("");
+							$("#com_upzila").val("");
+							$("#com_district").val("");
+							$("#com_eiin").val("");
+							$("#com_phoneno").val("");
+							$("#com_ict_email").val("");
+							$("#com_other_email").val("");
+							$("#com_web_address").val("");
+							$("#com_institute_category").val("");
+							$("#com_type_institute").val("");
+							$("input[name='agr_seqaep']:checked").val("");
+							$("input[name='agr_type']:checked").val("");
+							
+							$("#pmt_boys_6").val("");
+							$("#not_pmt_boys_6").val("");
+							$("#pmt_girls_6").val("");
+							$("#not_pmt_girls_6").val("");
+							
+							$("#pmt_boys_7").val("");
+							$("#not_pmt_boys_7").val("");
+							$("#pmt_girls_7").val("");
+							$("#not_pmt_girls_7").val("");
+							
+							$("#pmt_boys_8").val("");
+							$("#not_pmt_boys_8").val("");
+							$("#pmt_girls_8").val("");
+							$("#not_pmt_girls_8").val("");
+							
+							$("#pmt_boys_9").val("");
+							$("#not_pmt_boys_9").val("");
+							$("#pmt_girls_9").val("");
+							$("#not_pmt_girls_9").val("");
+							
+							$("#pmt_boys_10").val("");
+							$("#not_pmt_boys_10").val("");
+							$("#pmt_girls_10").val("");
+							$("#not_pmt_girls_10").val("");
+							
+							/**********PMT Based Stipend Program**********/				
+							$("#stip_pro_semister").val("");
+							$("#stip_pro_year").val("");
+							$("#disbursement_date").val("");
+							
+							$("#stu_rec_stipend_6").val("");
+							$("#stu_attendance_6").val("");
+							$("#stu_pass_annual_exam_6").val("");
+							$("#stu_got_married_6").val("");
+							$("#stu_present_visit_6").val("");
+							
+							$("#stu_rec_stipend_7").val("");
+							$("#stu_attendance_7").val("");
+							$("#stu_pass_annual_exam_7").val("");
+							$("#stu_got_married_7").val("");
+							$("#stu_present_visit_7").val("");
+							
+							$("#stu_rec_stipend_8").val("");
+							$("#stu_attendance_8").val("");
+							$("#stu_pass_annual_exam_8").val("");
+							$("#stu_got_married_8").val("");
+							$("#stu_present_visit_8").val("");
+							
+							$("#stu_rec_stipend_9").val("");
+							$("#stu_attendance_9").val("");
+							$("#stu_pass_annual_exam_9").val("");
+							$("#stu_got_married_9").val("");
+							$("#stu_present_visit_9").val("");
+							
+							$("#stu_rec_stipend_10").val("");
+							$("#stu_attendance_10").val("");
+							$("#stu_pass_annual_exam_10").val("");
+							$("#stu_got_married_10").val("");
+							$("#stu_present_visit_10").val("");
+							
+							$("#pmt_st_1_name").val("");
+							//pmt_st_1_grade=$("#pmt_st_1_grade").val()
+							$("#pmt_st_1_id").val("");
+							$("#pmt_st_1_attendance").val("");
+							$("#pmt_st_1_final_exam_mark").val("");
+							$("input[name='current_school_1']:checked").val("");
+							$("input[name='status_married_1']:checked").val("");
+							
+							$("#pmt_st_2_name").val("");
+							//pmt_st_2_grade=$("#pmt_st_2_grade").val()
+							$("#pmt_st_2_id").val("");
+							$("#pmt_st_2_attendance").val("");
+							$("#pmt_st_2_final_exam_mark").val("");
+							$("input[name='current_school_2']:checked").val("");
+							$("input[name='status_married_2']:checked").val("");
+							
+							$("#pmt_st_3_name").val("");
+							//pmt_st_3_grade=$("#pmt_st_3_grade").val()
+							$("#pmt_st_3_id").val("");
+							$("#pmt_st_3_attendance").val("");
+							$("#pmt_st_3_final_exam_mark").val("");
+							$("input[name='current_school_3']:checked").val("");
+							$("input[name='status_married_3']:checked").val("");
+							
+							$("#pmt_st_4_name").val("");
+							//pmt_st_4_grade=$("#pmt_st_4_grade").val()
+							$("#pmt_st_4_id").val("");
+							$("#pmt_st_4_attendance").val("");
+							$("#pmt_st_4_final_exam_mark").val("");
+							$("input[name='current_school_4']:checked").val("");
+							$("input[name='status_married_4']:checked").val("");
+							
+							$("#pmt_st_5_name").val("");
+							//pmt_st_5_grade=$("#pmt_st_5_grade").val()
+							$("#pmt_st_5_id").val("");
+							$("#pmt_st_5_attendance").val("");
+							$("#pmt_st_5_final_exam_mark").val("");
+							$("input[name='current_school_5']:checked").val("");
+							$("input[name='status_married_5']:checked").val("");
+							
+							$("input[name='add_cls_seqaep']:checked").val("");
+		
+							$("#add_class_semister").val("");
+							$("#add_class_year").val("");
+										
+							$("#act_1_dis_date").val("");
+							$("#act_1_ag_date").val("");
+							$("#act_1_total_work").val("");
+							$("input[name='sub_add_cls']:checked").val("");
+							
+							$("#act_1_name").val("");	
+							$("#act_1_ag_inst").val("");
+							$("#act_1_sub").val("");
+							$("#act_1_last_academic_cft").val("");
+							$("input[name='receive_mark_1']:checked").val("");
+							$("#act_1_cft_verify").val("");
+							$("#act_1_leave").val("");
+							$("#act_1_absent").val("");
+							$("#act_1_total_class").val("");
+							
+							$("#act_2_name").val("");
+							$("#act_2_ag_inst").val("");
+							$("#act_2_sub").val("");
+							$("#act_2_last_academic_cft").val("");
+							$("input[name='receive_mark_2']:checked").val("");
+							$("#act_2_cft_verify").val("");
+							$("#act_2_leave").val("");
+							$("#act_2_absent").val("");
+							$("#act_2_total_class").val("");
+							
+							$("#act_3_name").val("");	
+							$("#act_3_ag_inst").val("");
+							$("#act_3_sub").val("");
+							$("#act_3_last_academic_cft").val("");
+							$("input[name='receive_mark_3']:checked").val("");
+							$("#act_3_cft_verify").val("");
+							$("#act_3_leave").val("");
+							$("#act_3_absent").val("");
+							$("#act_3_total_class").val("");
+							
+							$("#eng_enro_add_cls_6").val("");	
+							$("#math_enro_add_cls_6").val("");
+							$("#sci_enro_add_cls_6").val("");
+							$("#eng_reg_cls_6").val("");
+							$("#math_reg_cls_6").val("");
+							$("#sci_reg_cls_6").val("");
+							$("#eng_add_cls_6").val("");
+							$("#math_add_cls_6").val("");
+							$("#sci_add_cls_6").val("");
+							$("#eng_ave_cls_6").val("");
+							$("#math_ave_cls_6").val("");
+							$("#sci_ave_cls_6").val("");
+							
+							$("#eng_enro_add_cls_7").val("");	
+							$("#math_enro_add_cls_7").val("");
+							$("#sci_enro_add_cls_7").val("");
+							$("#eng_reg_cls_7").val("");
+							$("#math_reg_cls_7").val("");
+							$("#sci_reg_cls_7").val("");
+							$("#eng_add_cls_7").val("");
+							$("#math_add_cls_7").val("");
+							$("#sci_add_cls_7").val("");
+							$("#eng_ave_cls_7").val("");
+							$("#math_ave_cls_7").val("");
+							$("#sci_ave_cls_7").val("");
+							
+							$("#eng_enro_add_cls_8").val("");	
+							$("#math_enro_add_cls_8").val("");
+							$("#sci_enro_add_cls_8").val("");
+							$("#eng_reg_cls_8").val("");
+							$("#math_reg_cls_8").val("");
+							$("#sci_reg_cls_8").val("");
+							$("#eng_add_cls_8").val("");
+							$("#math_add_cls_8").val("");
+							$("#sci_add_cls_8").val("");
+							$("#eng_ave_cls_8").val("");
+							$("#math_ave_cls_8").val("");
+							$("#sci_ave_cls_8").val("");
+							
+							$("#eng_enro_add_cls_9").val("");	
+							$("#math_enro_add_cls_9").val("");
+							$("#sci_enro_add_cls_9").val("");
+							$("#eng_reg_cls_9").val("");
+							$("#math_reg_cls_9").val("");
+							$("#sci_reg_cls_9").val("");
+							$("#eng_add_cls_9").val("");
+							$("#math_add_cls_9").val("");
+							$("#sci_add_cls_9").val("");
+							$("#eng_ave_cls_9").val("");
+							$("#math_ave_cls_9").val("");
+							$("#sci_ave_cls_9").val("");
+							
+							$("#eng_enro_add_cls_10").val("");
+							$("#math_enro_add_cls_10").val("");
+							$("#sci_enro_add_cls_10").val("");
+							$("#eng_reg_cls_10").val("");
+							$("#math_reg_cls_10").val("");
+							$("#sci_reg_cls_10").val("");
+							$("#eng_add_cls_10").val("");
+							$("#math_add_cls_10").val("");
+							$("#sci_add_cls_10").val("");
+							$("#eng_ave_cls_10").val("");
+							$("#math_ave_cls_10").val("");
+							$("#sci_ave_cls_10").val("");
+							
+							$("#inst_type_manag").val("");
+							$("#smc_type").val("");		
+							$("#smc_member").val("");	
+							$("#smc_tran_seqaep").val("");
+							$("input[name='cha_att_seqaep']:checked").val("");		
+							$("#smc_meeting").val("");
+							$("input[name='smc_meet_chec_min']:checked").val("");
+							$("input[name='ins_annu_sch_dev_plan']:checked").val("");
+							
+							$("input[name='pta_exist_ins']:checked").val("");
+							$("#pta_reformed_ins").val("");			
+							$("#pta_ins_rec_taka").val("");		
+							$("#ins_grant_rec_date").val("");
+							$("input[name='why_not_pta_formed']:checked").val("");
+							$("input[name='overall_com_mda']:checked").val("");
+							$("#pta_meet").val("");		
+							$("input[name='pta_meet_chec_min']:checked").val("");
+							$("input[name='pta_meet_min_seqaep']:checked").val("");
+							$("#ref_period_sem").val("");
+							$("#ref_period_year").val("");
+							$("input[name='ins_rec_grant_eacm']:checked").val("");
+							$("#acti_with_eacm_grant").val("");
+							
+							$("#topic_dis_eacm_pro").val("");
+							$("input[name='chai_aware_eacm_expe']:checked").val("");
+							$("#soci_ref_period_sem").val("");
+							$("#soci_ref_period_year").val("");
+							
+							$("input[name='ins_rec_grant_sa']:checked").val("");
+							$("input[name='report_pre_annu_exam']:checked").val("");
+							$("#give_report_prepa").val("");
+							$("#last_soc_rep_dis").val("");
+							
+							$("#ict_ref_period_sem").val("");
+							$("#ict_ref_period_year").val("");
+							
+							$("input[name='ins_internet_con']:checked").val("");
+							$("input[name='ins_assi_ict_grant']:checked").val("");
+							$("#how_sec_email").val("");
+							$("#email_sent_seqaep").val("");
+							$("input[name='ict_grant_rec']:checked").val("");
+							$("input[name='sch_one_mail_seqaep']:checked").val("");
+							$("input[name='ins_rec_isf']:checked").val("");
+							
+							$("#work_status_isf_1").val("");
+							$("input[name='use_group_com_1']:checked").val("");
+							$("#total_taka_seqaep_1").val("");
+							$("#total_taka_commu_1").val("");
+							$("#money_stil_spent_1").val("");
+							$("#pre_condi_work_1").val("");
+							
+							$("#work_status_isf_2").val("");
+							$("input[name='use_group_com_2']:checked").val("");
+							$("#total_taka_seqaep_2").val("");
+							$("#total_taka_commu_2").val("");
+							$("#money_stil_spent_2").val("");
+							$("#pre_condi_work_2").val("");
+							
+							$("#work_status_isf_3").val("")
+							$("input[name='use_group_com_3']:checked").val("");
+							$("#total_taka_seqaep_3").val("")
+							$("#total_taka_commu_3").val("")
+							$("#money_stil_spent_3").val("")
+							$("#pre_condi_work_3").val("")
+							
+							$("#work_status_isf_4").val("");
+							$("input[name='use_group_com_4']:checked").val("");
+							$("#total_taka_seqaep_4").val("");
+							$("#total_taka_commu_4").val("");
+							$("#money_stil_spent_4").val("");
+							$("#pre_condi_work_4").val("");
+							
+							$("#work_status_isf_5").val("");
+							$("input[name='use_group_com_5']:checked").val("");
+							$("#total_taka_seqaep_5").val("");
+							$("#total_taka_commu_5").val("");
+							$("#money_stil_spent_5").val("");
+							$("#pre_condi_work_5").val("");
+							
+							$("#work_status_isf_6").val("");
+							$("input[name='use_group_com_6']:checked").val("");
+							$("#total_taka_seqaep_6").val("");
+							$("#total_taka_commu_6").val("");
+							$("#money_stil_spent_6").val("");
+							$("#pre_condi_work_6").val("");
+							
+							$("#work_status_isf_7").val("");
+							$("input[name='use_group_com_7']:checked").val("");
+							$("#total_taka_seqaep_7").val("");
+							$("#total_taka_commu_7").val("");
+							$("#money_stil_spent_7").val("");
+							$("#pre_condi_work_7").val("");
+							
+							$("#work_status_isf_8").val("");
+							$("input[name='use_group_com_8']:checked").val("");
+							$("#total_taka_seqaep_8").val("");
+							$("#total_taka_commu_8").val("");
+							$("#money_stil_spent_8").val("");
+							$("#pre_condi_work_8").val("");
+							
+							$("#work_status_isf_9").val("");
+							$("input[name='use_group_com_9']:checked").val("");
+							$("#total_taka_seqaep_9").val("");
+							$("#total_taka_commu_9").val("");
+							$("#money_stil_spent_9").val("");
+							$("#pre_condi_work_9").val("");		
+							
+							//var name_work_isf_grant=$("input[name='name_work_isf_grant']:checked").val();
+							//var work_status=$("#work_status").val()
+							$("#ins_total_tub").val("");
+							//$("#test_tubewell").val("");
+							$("#test_arsenic").val("");
+							$("#tested_manganese").val("");
+							$("#tubewell_arsenic_free").val("");
+							$("#tub_ars_cont").val("");
+							$("#tub_manga_free").val("");
+							$("#tub_manga_conta").val("");
+							$("input[name='ins_per_dphe_water']:checked").val("");
+							$("input[name='arsenic']:checked").val("");
+							$("input[name='manganese']:checked").val("");
+							$("input[name='tube_setup_ins']:checked").val("");
+							$("#how_tub_install").val("")
+							
+							$("input[name='ins_receive_tk']:checked").val("");
+							$("input[name='receive_amount_iaa']:checked").val("");
+							$("input[name='amount_dis_manual']:checked").val("");
+							$("input[name='smc_awared_dis']:checked").val("");	
+							$("#reason").val("");
+							$("input[name='smc_meet_dis']:checked").val("");	
+							$("input[name='pta_aware_dis']:checked").val("");
+							
+							$("#pmt_stu_app_ssc_exam_13").val("");
+							$("#pmt_stu_pass_ssc_exam_13").val("");
+							$("#pmt_stu_gpa_13").val("");
+							$("#nonpmt_stu_app_ssc_exam_13").val("");
+							$("#nonpmt_stu_pass_ssc_exam_13").val("");
+							$("#nonpmt_stu_gpa_13").val("");
+							
+							$("#pmt_stu_app_ssc_exam_14").val("");
+							$("#pmt_stu_pass_ssc_exam_14").val("");
+							$("#pmt_stu_gpa_14").val("");
+							$("#nonpmt_stu_app_ssc_exam_14").val("");
+							$("#nonpmt_stu_pass_ssc_exam_14").val("");
+							$("#nonpmt_stu_gpa_14").val("");
+							
+							$("#pmt_stu_app_ssc_exam_15").val("");
+							$("#pmt_stu_pass_ssc_exam_15").val("");
+							$("#pmt_stu_gpa_15").val("");
+							$("#nonpmt_stu_app_ssc_exam_15").val("");
+							$("#nonpmt_stu_pass_ssc_exam_15").val("");
+							$("#nonpmt_stu_gpa_15").val("");	
+							
+							/*************************/
+							$("#total_stu_rec_stipend").val("");
+							$("#pmt_stu_app_ssc_exam").val("");
+							$("#pmt_stu_pass_ssc").val("");	
+							$("#pmt_stu_coll_ssc_award").val("");
+							$("#pmt_stu_higher_study").val("");
+							$("#pass_award_dis").val("");
+							$("#stu_award_ref_period_sem").val("");
+							$("#stu_award_ref_period_year").val("");
+							
+							$("input[name='rece_award_boys_7']:checked").val("");
+							$("input[name='rece_pmt_stipen_boys_7']:checked").val("");
+							$("#per_mark_ann_exam_boys_7").val("");
+							
+							$("input[name='pre_day_visit_boys_7']:checked").val("");
+							$("input[name='about_award_amo_tell_boys_7']:checked").val("");
+							$("input[name='rece_award_girls_7']:checked").val("");
+							$("input[name='rece_pmt_stipen_girls_7']:checked").val("");
+							$("#per_mark_ann_exam_girls_7").val("");
+							
+							$("input[name='pre_day_visit_girls_7']:checked").val("");
+							$("input[name='about_award_amo_tell_girls_7']:checked").val("");
+							
+							$("input[name='rece_award_boys_8']:checked").val("");
+							$("input[name='rece_pmt_stipen_boys_8']:checked").val("");
+							$("#per_mark_ann_exam_boys_8").val("");
+							
+							$("input[name='pre_day_visit_boys_8']:checked").val("");
+							$("input[name='about_award_amo_tell_boys_8']:checked").val("");
+							$("input[name='rece_award_girls_8']:checked").val("");
+							$("input[name='rece_pmt_stipen_girls_8']:checked").val("");
+							$("#per_mark_ann_exam_girls_8").val("");
+							
+							$("input[name='pre_day_visit_girls_8']:checked").val("");
+							$("input[name='about_award_amo_tell_girls_8']:checked").val("");
+							
+							$("input[name='rece_award_boys_10']:checked").val("");
+							$("input[name='rece_pmt_stipen_boys_10']:checked").val("");
+							$("#per_mark_ann_exam_boys_10").val("");
+							
+							$("input[name='pre_day_visit_boys_10']:checked").val("");
+							$("input[name='about_award_amo_tell_boys_10']:checked").val("");
+							$("input[name='rece_award_girls_10']:checked").val("");
+							$("input[name='rece_pmt_stipen_girls_10']:checked").val("");
+							$("#per_mark_ann_exam_girls_10").val("");
+							
+							$("input[name='pre_day_visit_girls_10']:checked").val("");
+							$("input[name='about_award_amo_tell_girls_10']:checked").val("");
+							
+							$("#award_dis").val("");
+							
+							
+							$("#dev_ref_period_sem").val("");
+							$("#dev_ref_period_year").val("");
+							
+							$("input[name='ins_drh_pro']:checked").val("");		
+							$("#org_drh_pro").val("");
+							$("input[name='rec_org_ref_per']:checked").val("");
+							
+							$("#stu_inc_drh_6").val("");
+							$("#pro_book_rec_6").val("");
+							$("#stu_per_eva_6").val("");
+							$("#stu_pass_eval_test_6").val("");
+							$("#no_award_6").val("");
+							$("#only_drh_book_6").val("");
+							$("#inc_drh_book_6").val("");
+							
+							$("#stu_inc_drh_7").val("");
+							$("#pro_book_rec_7").val("");
+							$("#stu_per_eva_7").val("");
+							$("#stu_pass_eval_test_7").val("");
+							$("#no_award_7").val("");
+							$("#only_drh_book_7").val("");
+							$("#inc_drh_book_7").val("");
+							
+							$("#stu_inc_drh_8").val("");
+							$("#pro_book_rec_8").val("");
+							$("#stu_per_eva_8").val("");
+							$("#stu_pass_eval_test_8").val("");
+							$("#no_award_8").val("");
+							$("#only_drh_book_8").val("");
+							$("#inc_drh_book_8").val("");
+							
+							$("#stu_inc_drh_9").val("");
+							$("#pro_book_rec_9").val("");
+							$("#stu_per_eva_9").val("");
+							$("#stu_pass_eval_test_9").val("");
+							$("#no_award_9").val("");
+							$("#only_drh_book_9").val("");
+							$("#inc_drh_book_9").val("");
+							
+							$("#stu_inc_drh_10").val("");
+							$("#pro_book_rec_10").val("");
+							$("#stu_per_eva_10").val("");
+							$("#stu_pass_eval_test_10").val("");
+							$("#no_award_10").val("");
+							$("#only_drh_book_10").val("");
+							$("#inc_drh_book_10").val("");
+							
+							$("#ver_rec_qty_pro_book").val("");
+							$("#total_drh_book").val("");
+							$("#rec_book_ins").val("");
+							$("#ins_book_drh").val("");
+							$("#ins_book_drh_ref").val("");		
+														
+							
+							//--------------
 							
 							$("#com_ach_lat").val("");
 							$("#com_ach_long").val("");
