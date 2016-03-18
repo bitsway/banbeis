@@ -3067,46 +3067,31 @@ function total_incdrh_books(){
                     8.2 If PTA exists in the Institution, how much PTA grants has the institution received in the last 6 months? Taka 
                     <input type="number" name="pta_ins_rec_taka" id="pta_ins_rec_taka" />
                </li>
-               <li class="ui-field-contain auto_break">    
-                    8.3 Institute PTA grant received date 
-                    <input type="date" name="ins_grant_rec_date" id="ins_grant_rec_date" placeholder="dd-mm-yyyy" />
+               <li class="ui-field-contain auto_break">   
+                   <!-- 8.3 Institute PTA grant received date--> <!-- aaa need to hide this and exclude from validation--> 
+                   <!--<input type="date" name="ins_grant_rec_date" id="ins_grant_rec_date" placeholder="dd-mm-yyyy" />-->
                </li>
            </div>
                <li class="ui-field-contain auto_break">    
-                    8.4 If PTA is not yet formed, why not 
+                    8.3 If PTA is not yet formed, why not  <!-- old 8.4-->
                         <fieldset data-role="controlgroup">
-                            <input name="why_not_pta_formed" id="checkbox-v-2a" value="1" type="checkbox">
+                            <input name="why_not_pta_formed1" id="checkbox-v-2a" value="1" type="checkbox">
                             <label for="checkbox-v-2a">1-The institution has Judicial litigation</label>
-                            <input name="why_not_pta_formed" id="checkbox-v-2b" value="2" type="checkbox">
+                            <input name="why_not_pta_formed2" id="checkbox-v-2b" value="1" type="checkbox">
                             <label for="checkbox-v-2b">2-Regular SMC/MMC has not yet from</label>
-                            <input name="why_not_pta_formed" id="checkbox-v-2c" value="3" type="checkbox">
+                            <input name="why_not_pta_formed3" id="checkbox-v-2c" value="1" type="checkbox">
                             <label for="checkbox-v-2c">3-Regular SMC/MMC has already been expired</label>
-                            <input name="why_not_pta_formed" id="checkbox-v-2d" value="4" type="checkbox">
+                            <input name="why_not_pta_formed4" id="checkbox-v-2d" value="1" type="checkbox">
                             <label for="checkbox-v-2d">4-Lack of awareness PTA formation</label>
-                            <input name="why_not_pta_formed" id="checkbox-v-2e" value="5" type="checkbox">
+                            <input name="why_not_pta_formed5" id="checkbox-v-2e" value="1" type="checkbox">
                             <label for="checkbox-v-2e">5-Lack of awareness PTA formation</label>
-                            <input name="why_not_pta_formed" id="checkbox-v-2f" value="6" type="checkbox">
+                            <input name="why_not_pta_formed6" id="checkbox-v-2f" value="1" type="checkbox">
                             <label for="checkbox-v-2f">6-Conflict between the Institute and SMC</label>
-                            <input name="why_not_pta_formed" id="checkbox-v-2g" value="7" type="checkbox">
+                            <input name="why_not_pta_formed7" id="checkbox-v-2g" value="1" type="checkbox">
                             <label for="checkbox-v-2g">7-Other</label>
                         </fieldset>
                </li>
-               <li class="ui-field-contain auto_break">    
-                  8.5 Overall comments by MDA    
-                        <fieldset data-role="controlgroup">
-                            <input name="overall_com_mda" id="checkbox-v-2a" value="1" type="checkbox">
-                            <label for="checkbox-v-2a">1-Did not get proper cooperation from Institution
-Head</label>
-                            <input name="overall_com_mda" id="checkbox-v-2b" value="2" type="checkbox">
-                            <label for="checkbox-v-2b">2-Poor/No network coverage in school premises</label>
-                            <input name="overall_com_mda" id="checkbox-v-2c" value="3" type="checkbox">
-                            <label for="checkbox-v-2c">3-Communication with the institution is not good</label>
-                            <input name="overall_com_mda" id="checkbox-v-2d" value="4" type="checkbox">
-                            <label for="checkbox-v-2d">4-Time limitation for the survey</label>
-                            <input name="overall_com_mda" id="checkbox-v-2e" value="5" type="checkbox">
-                            <label for="checkbox-v-2e">5-Other</label>
-                        </fieldset>
-               </li>
+
                
                <li class="ui-field-contain auto_break">    
                     9. How many PTA meetings were held between July-December, 2015 
@@ -3169,7 +3154,7 @@ Head</label>
                         <option value="3">3-Rallies 4 Other </option>						 												
                     </select>
                </li>
-               <li class="ui-field-contain auto_break">    
+              <!-- <li class="ui-field-contain auto_break">    
                     4. Which topicswere discussed in the EACM programme? (it may be more than one) 
                     <select name="topic_dis_eacm_pro" id="topic_dis_eacm_pro" data-native-menu="false" >
                     	<option value="0">Select </option>
@@ -3179,7 +3164,22 @@ Head</label>
                         <option value="4">4-Awareness against Drug addiction </option>	
                         <option value="5">5-Other </option>					 												
                     </select>
+               </li>-->
+               
+               <li class="ui-field-contain auto_break">    
+                   4. Which topicswere discussed in the EACM programme? (it may be more than one)
+                        <fieldset data-role="controlgroup">
+                            <input name="topic_dis_eacm_pro1" id="checkbox-v-2a" value="1" type="checkbox">
+                            <label for="checkbox-v-2a">1-Prevention of  Early marriag</label>
+                            <input name="topic_dis_eacm_pro2" id="checkbox-v-2b" value="1" type="checkbox">
+                            <label for="checkbox-v-2b">2-Eve teasing</label>
+                            <input name="topic_dis_eacm_pro3" id="checkbox-v-2c" value="1" type="checkbox">
+                            <label for="checkbox-v-2c">3-Prevention of  student Drop-out</label>
+                            <input name="topic_dis_eacm_pro4" id="checkbox-v-2d" value="1" type="checkbox">
+                            <label for="checkbox-v-2d">4-Awareness against Drug addiction</label>
+                        </fieldset>
                </li>
+               
                 <li class="ui-field-contain auto_break">    
                     5. Is PTA chairperson aware of the EACM grant and breakdown of expenditures 
                       <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
@@ -3703,6 +3703,7 @@ Head</label>
                     </fieldset>
                </li>-->
         <div id="arsenic">
+        		5. If yes ,does the Institution have arsenic and Manganese Report Card
                <li class="ui-field-contain auto_break">    
                     5.1 Arsenic 
                     <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
@@ -4389,6 +4390,22 @@ Head</label>
                         <option value="1">1-In an open shelf </option>
                         <option value="2">2-In an almirah </option>					 												
                     </select>
+               </li>
+               
+               <li class="ui-field-contain auto_break">    
+                   Overall comments by MDA    <!-- old 8.5-->
+                        <fieldset data-role="controlgroup">
+                            <input name="overall_com_mda1" id="checkbox-v-2a" value="1" type="checkbox">
+                            <label for="checkbox-v-2a">1-Did not get proper cooperation from Institution Head</label>
+                            <input name="overall_com_mda2" id="checkbox-v-2b" value="1" type="checkbox">
+                            <label for="checkbox-v-2b">2-Poor/No network coverage in school premises</label>
+                            <input name="overall_com_mda3" id="checkbox-v-2c" value="1" type="checkbox">
+                            <label for="checkbox-v-2c">3-Communication with the institution is not good</label>
+                            <input name="overall_com_mda4" id="checkbox-v-2d" value="1" type="checkbox">
+                            <label for="checkbox-v-2d">4-Time limitation for the survey</label>
+                            <input name="overall_com_mda5" id="checkbox-v-2e" value="1" type="checkbox">
+                            <label for="checkbox-v-2e">5-Other</label>
+                        </fieldset>
                </li>
                               
             </ul>        

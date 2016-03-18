@@ -2421,9 +2421,21 @@ function complianceData5Next(){
 		var pta_exist_ins=$("input[name='pta_exist_ins']:checked").val();
 		var pta_reformed_ins=$("#pta_reformed_ins").val();			
 		var pta_ins_rec_taka=$("#pta_ins_rec_taka").val();		
-		var ins_grant_rec_date=$("#ins_grant_rec_date").val();
-		var why_not_pta_formed=$("input[name='why_not_pta_formed']:checked").val();
-		var overall_com_mda=$("input[name='overall_com_mda']:checked").val();
+		//var ins_grant_rec_date=$("#ins_grant_rec_date").val();
+		//var why_not_pta_formed=$("input[name='why_not_pta_formed']:checked").val();
+		var why_not_pta_formed="";
+		if ($("input[name='why_not_pta_formed1']:checked").val()=="1"){why_not_pta_formed = "1"} else {why_not_pta_formed="0"}
+		if ($("input[name='why_not_pta_formed2']:checked").val()=="1"){why_not_pta_formed = why_not_pta_formed + "1"} else {why_not_pta_formed=why_not_pta_formed +"0"}
+		if ($("input[name='why_not_pta_formed3']:checked").val()=="1"){why_not_pta_formed = why_not_pta_formed + "1"} else {why_not_pta_formed=why_not_pta_formed +"0"}
+		if ($("input[name='why_not_pta_formed4']:checked").val()=="1"){why_not_pta_formed = why_not_pta_formed + "1"} else {why_not_pta_formed=why_not_pta_formed +"0"}
+		if ($("input[name='why_not_pta_formed5']:checked").val()=="1"){why_not_pta_formed = why_not_pta_formed + "1"} else {why_not_pta_formed=why_not_pta_formed +"0"}
+		if ($("input[name='why_not_pta_formed6']:checked").val()=="1"){why_not_pta_formed = why_not_pta_formed + "1"} else {why_not_pta_formed=why_not_pta_formed +"0"}
+		if ($("input[name='why_not_pta_formed7']:checked").val()=="1"){why_not_pta_formed = why_not_pta_formed + "1"} else {why_not_pta_formed=why_not_pta_formed +"0"}
+		
+		why_not_pta_formed="1"+why_not_pta_formed
+		
+		//alert(why_not_pta_formed);
+		
 		var pta_meet=$("#pta_meet").val();		
 		var pta_meet_chec_min=$("input[name='pta_meet_chec_min']:checked").val();
 		var pta_meet_min_seqaep=$("input[name='pta_meet_min_seqaep']:checked").val();
@@ -2432,7 +2444,17 @@ function complianceData5Next(){
 		var ins_rec_grant_eacm=$("input[name='ins_rec_grant_eacm']:checked").val();
 		var acti_with_eacm_grant=$("#acti_with_eacm_grant").val();
 		
-		var topic_dis_eacm_pro=$("#topic_dis_eacm_pro").val();
+		//var topic_dis_eacm_pro=$("input[name='topic_dis_eacm_pro1']:checked").val()+$("input[name='topic_dis_eacm_pro2']:checked").val()+$("input[name='topic_dis_eacm_pro3']:checked").val()+$("input[name='topic_dis_eacm_pro4']:checked").val();
+		var topic_dis_eacm_pro ="";
+		if ($("input[name='topic_dis_eacm_pro1']:checked").val()=="1"){topic_dis_eacm_pro = "1"} else {topic_dis_eacm_pro="0"}
+		if ($("input[name='topic_dis_eacm_pro2']:checked").val()=="1"){topic_dis_eacm_pro = topic_dis_eacm_pro + "1"} else {topic_dis_eacm_pro=topic_dis_eacm_pro +"0"}
+		if ($("input[name='topic_dis_eacm_pro3']:checked").val()=="1"){topic_dis_eacm_pro = topic_dis_eacm_pro + "1"} else {topic_dis_eacm_pro=topic_dis_eacm_pro +"0"}
+		if ($("input[name='topic_dis_eacm_pro4']:checked").val()=="1"){topic_dis_eacm_pro = topic_dis_eacm_pro + "1"} else {topic_dis_eacm_pro=topic_dis_eacm_pro +"0"}
+		topic_dis_eacm_pro="1"+topic_dis_eacm_pro;
+		
+		
+		
+		//alert(topic_dis_eacm_pro);
 		var chai_aware_eacm_expe=$("input[name='chai_aware_eacm_expe']:checked").val();
 		var soci_ref_period_sem=$("#soci_ref_period_sem").val();
 		var soci_ref_period_year=$("#soci_ref_period_year").val();
@@ -2447,7 +2469,7 @@ function complianceData5Next(){
 		
 		pta_reformed_ins='';
 		pta_ins_rec_taka=0;
-		ins_grant_rec_date='';
+		//ins_grant_rec_date='';
 			
 		if (inst_type_manag==""||inst_type_manag==0){
 			$(".errorChk").text("Required Management Type");
@@ -2499,7 +2521,7 @@ function complianceData5Next(){
 			$(".errorChk").text("Required Social Audit Report Discussed");*/	
 		}else{
 			
-			banbeisComData5="&inst_type_manag="+inst_type_manag+"&smc_type="+smc_type+"&smc_member="+smc_member+"&smc_tran_seqaep="+smc_tran_seqaep+"&cha_att_seqaep="+cha_att_seqaep+"&smc_meeting="+smc_meeting+"&smc_meet_chec_min="+smc_meet_chec_min+"&ins_annu_sch_dev_plan="+ins_annu_sch_dev_plan+"&pta_exist_ins="+pta_exist_ins+"&pta_reformed_ins="+pta_reformed_ins+"&pta_ins_rec_taka="+pta_ins_rec_taka+"&ins_grant_rec_date="+ins_grant_rec_date+"&why_not_pta_formed="+why_not_pta_formed+"&overall_com_mda="+overall_com_mda+"&pta_meet="+pta_meet+"&pta_meet_chec_min="+pta_meet_chec_min+"&pta_meet_min_seqaep="+pta_meet_min_seqaep+"&ref_period_sem="+ref_period_sem+"&ref_period_year="+ref_period_year+"&ins_rec_grant_eacm="+ins_rec_grant_eacm+"&acti_with_eacm_grant="+acti_with_eacm_grant+"&topic_dis_eacm_pro="+topic_dis_eacm_pro+"&chai_aware_eacm_expe="+chai_aware_eacm_expe+"&soci_ref_period_sem="+soci_ref_period_sem+"&soci_ref_period_year="+soci_ref_period_year+"&ins_rec_grant_sa="+ins_rec_grant_sa+"&report_pre_annu_exam="+report_pre_annu_exam+"&give_report_prepa="+give_report_prepa+"&last_soc_rep_dis="+last_soc_rep_dis
+			banbeisComData5="&inst_type_manag="+inst_type_manag+"&smc_type="+smc_type+"&smc_member="+smc_member+"&smc_tran_seqaep="+smc_tran_seqaep+"&cha_att_seqaep="+cha_att_seqaep+"&smc_meeting="+smc_meeting+"&smc_meet_chec_min="+smc_meet_chec_min+"&ins_annu_sch_dev_plan="+ins_annu_sch_dev_plan+"&pta_exist_ins="+pta_exist_ins+"&pta_reformed_ins="+pta_reformed_ins+"&pta_ins_rec_taka="+pta_ins_rec_taka+"&why_not_pta_formed="+why_not_pta_formed+"&pta_meet="+pta_meet+"&pta_meet_chec_min="+pta_meet_chec_min+"&pta_meet_min_seqaep="+pta_meet_min_seqaep+"&ref_period_sem="+ref_period_sem+"&ref_period_year="+ref_period_year+"&ins_rec_grant_eacm="+ins_rec_grant_eacm+"&acti_with_eacm_grant="+acti_with_eacm_grant+"&topic_dis_eacm_pro="+topic_dis_eacm_pro+"&chai_aware_eacm_expe="+chai_aware_eacm_expe+"&soci_ref_period_sem="+soci_ref_period_sem+"&soci_ref_period_year="+soci_ref_period_year+"&ins_rec_grant_sa="+ins_rec_grant_sa+"&report_pre_annu_exam="+report_pre_annu_exam+"&give_report_prepa="+give_report_prepa+"&last_soc_rep_dis="+last_soc_rep_dis
 			
 			$(".errorChk").text("");
 			url="#compliancePage6";					
@@ -2529,11 +2551,14 @@ function complianceData5Next(){
 		
 		}else if (pta_reformed_ins==""){
 			$(".errorChk").text("Required PTA formed or reformed institution");
-		}else if (ins_grant_rec_date==""){
-			$(".errorChk").text("Required PTA Grant received date");
-		}else if (pta_reformed_ins>ins_grant_rec_date){
-			$(".errorChk").text("PTA grant received date greater than PTA formed or reformed in the institution");			
-		}else if (pta_ins_rec_taka==""){
+		}
+		//else if (ins_grant_rec_date==""){ /* aaa need to comment out this*/
+		//	$(".errorChk").text("Required PTA Grant received date");
+		//}
+		//else if (pta_reformed_ins>ins_grant_rec_date){
+		//	$(".errorChk").text("PTA grant received date greater than PTA formed or reformed in the institution");			
+		//}
+		else if (pta_ins_rec_taka==""){
 			$(".errorChk").text("Required PTA grants Receive Taka");				
 		}else if (why_not_pta_formed==""){
 			$(".errorChk").text("Required PTA not yet formed");	
@@ -2568,7 +2593,7 @@ function complianceData5Next(){
 			
 		}else{			
 		
-		banbeisComData5="&inst_type_manag="+inst_type_manag+"&smc_type="+smc_type+"&smc_member="+smc_member+"&smc_tran_seqaep="+smc_tran_seqaep+"&cha_att_seqaep="+cha_att_seqaep+"&smc_meeting="+smc_meeting+"&smc_meet_chec_min="+smc_meet_chec_min+"&ins_annu_sch_dev_plan="+ins_annu_sch_dev_plan+"&pta_exist_ins="+pta_exist_ins+"&pta_reformed_ins="+pta_reformed_ins+"&pta_ins_rec_taka="+pta_ins_rec_taka+"&ins_grant_rec_date="+ins_grant_rec_date+"&why_not_pta_formed="+why_not_pta_formed+"&overall_com_mda="+overall_com_mda+"&pta_meet="+pta_meet+"&pta_meet_chec_min="+pta_meet_chec_min+"&pta_meet_min_seqaep="+pta_meet_min_seqaep+"&ref_period_sem="+ref_period_sem+"&ref_period_year="+ref_period_year+"&ins_rec_grant_eacm="+ins_rec_grant_eacm+"&acti_with_eacm_grant="+acti_with_eacm_grant+"&topic_dis_eacm_pro="+topic_dis_eacm_pro+"&chai_aware_eacm_expe="+chai_aware_eacm_expe+"&soci_ref_period_sem="+soci_ref_period_sem+"&soci_ref_period_year="+soci_ref_period_year+"&ins_rec_grant_sa="+ins_rec_grant_sa+"&report_pre_annu_exam="+report_pre_annu_exam+"&give_report_prepa="+give_report_prepa+"&last_soc_rep_dis="+last_soc_rep_dis
+		banbeisComData5="&inst_type_manag="+inst_type_manag+"&smc_type="+smc_type+"&smc_member="+smc_member+"&smc_tran_seqaep="+smc_tran_seqaep+"&cha_att_seqaep="+cha_att_seqaep+"&smc_meeting="+smc_meeting+"&smc_meet_chec_min="+smc_meet_chec_min+"&ins_annu_sch_dev_plan="+ins_annu_sch_dev_plan+"&pta_exist_ins="+pta_exist_ins+"&pta_reformed_ins="+pta_reformed_ins+"&pta_ins_rec_taka="+pta_ins_rec_taka+"&why_not_pta_formed="+why_not_pta_formed+"&pta_meet="+pta_meet+"&pta_meet_chec_min="+pta_meet_chec_min+"&pta_meet_min_seqaep="+pta_meet_min_seqaep+"&ref_period_sem="+ref_period_sem+"&ref_period_year="+ref_period_year+"&ins_rec_grant_eacm="+ins_rec_grant_eacm+"&acti_with_eacm_grant="+acti_with_eacm_grant+"&topic_dis_eacm_pro="+topic_dis_eacm_pro+"&chai_aware_eacm_expe="+chai_aware_eacm_expe+"&soci_ref_period_sem="+soci_ref_period_sem+"&soci_ref_period_year="+soci_ref_period_year+"&ins_rec_grant_sa="+ins_rec_grant_sa+"&report_pre_annu_exam="+report_pre_annu_exam+"&give_report_prepa="+give_report_prepa+"&last_soc_rep_dis="+last_soc_rep_dis
 				
 		//alert(banbeisComData5);
 		$(".errorChk").text("");
@@ -2822,8 +2847,9 @@ function complianceData6Next(){
 			$(".errorChk").text("Required Presence of MDA");	
 			
 		}else if (ins_rec_isf==""){
-			$(".errorChk").text("Required ISF Grant ");		
-		}else if (work_status_isf_1==""||work_status_isf_1==0){
+			$(".errorChk").text("Required ISF Grant ");	
+				
+		/*}else if (work_status_isf_1==""||work_status_isf_1==0){
 			$(".errorChk").text("Required Work Status");
 		}else if (use_group_com_1==""){
 			$(".errorChk").text("Required Group component");	
@@ -2938,7 +2964,7 @@ function complianceData6Next(){
 		}else if (money_stil_spent_9==""){
 			$(".errorChk").text("Required spent Money");	
 		}else if (pre_condi_work_9==""||pre_condi_work_9==0){
-			$(".errorChk").text("Required Present condition Work");			
+			$(".errorChk").text("Required Present condition Work");	*/		
 			
 		}else if (ins_total_tub==""){
 			$(".errorChk").text("Required Total tubewells institution ");
@@ -2974,8 +3000,71 @@ function complianceData6Next(){
 			$(".errorChk").text("Required manganese");	
 		}else if (tube_setup_ins==""){
 			$(".errorChk").text("Required tubewell set up ");				
-						
+		
 		}else{
+			
+			work_status_isf_1=0;
+			use_group_com_1=0;
+			total_taka_seqaep_1=0;
+			total_taka_commu_1=0;
+			money_stil_spent_1=0;
+			pre_condi_work_1=0;
+			
+			work_status_isf_2=0;
+			use_group_com_2=0;
+			total_taka_seqaep_2=0;
+			total_taka_commu_2=0;
+			money_stil_spent_2=0;
+			pre_condi_work_2=0;
+			
+			work_status_isf_3=0;
+			use_group_com_3=0;
+			total_taka_seqaep_3=0;
+			total_taka_commu_3=0;
+			money_stil_spent_3=0;
+			pre_condi_work_3=0;
+			
+			work_status_isf_4=0;
+			use_group_com_4=0;
+			total_taka_seqaep_4=0;
+			total_taka_commu_4=0;
+			money_stil_spent_4=0;
+			pre_condi_work_4=0;
+			
+			work_status_isf_5=0;
+			use_group_com_5=0;
+			total_taka_seqaep_5=0;
+			total_taka_commu_5=0;
+			money_stil_spent_5=0;
+			pre_condi_work_5=0;
+			
+			work_status_isf_6=0;
+			use_group_com_6=0;
+			total_taka_seqaep_6=0;
+			total_taka_commu_6=0;
+			money_stil_spent_6=0;
+			pre_condi_work_6=0;
+			
+			work_status_isf_7=0;
+			use_group_com_7=0;
+			total_taka_seqaep_7=0;
+			total_taka_commu_7=0;
+			money_stil_spent_7=0;
+			pre_condi_work_7=0;
+			
+			work_status_isf_8=0;
+			use_group_com_8=0;
+			total_taka_seqaep_8=0;
+			total_taka_commu_8=0;
+			money_stil_spent_8=0;
+			pre_condi_work_8=0;			
+			
+			work_status_isf_9=0;
+			use_group_com_9=0;
+			total_taka_seqaep_9=0;
+			total_taka_commu_9=0;
+			money_stil_spent_9=0;
+			pre_condi_work_9=0;	
 		
 		banbeisComData6="&ict_ref_period_sem="+ict_ref_period_sem+"&ict_ref_period_year="+ict_ref_period_year+"&ins_internet_con="+ins_internet_con+"&ins_assi_ict_grant="+ins_assi_ict_grant+"&how_sec_email="+how_sec_email+"&email_sent_seqaep="+email_sent_seqaep+"&ict_grant_rec="+ict_grant_rec+"&sch_one_mail_seqaep="+sch_one_mail_seqaep+"&ins_rec_isf="+ins_rec_isf+"&work_status_isf_1="+work_status_isf_1+"&use_group_com_1="+use_group_com_1+"&total_taka_seqaep_1="+total_taka_seqaep_1+"&total_taka_commu_1="+total_taka_commu_1+"&money_stil_spent_1="+money_stil_spent_1+"&pre_condi_work_1="+pre_condi_work_1+"&work_status_isf_2="+work_status_isf_2+"&use_group_com_2="+use_group_com_2+"&total_taka_seqaep_2="+total_taka_seqaep_2+"&total_taka_commu_2="+total_taka_commu_2+"&money_stil_spent_2="+money_stil_spent_2+"&pre_condi_work_2="+pre_condi_work_2+"&work_status_isf_3="+work_status_isf_3+"&use_group_com_3="+use_group_com_3+"&total_taka_seqaep_3="+total_taka_seqaep_3+"&total_taka_commu_3="+total_taka_commu_3+"&money_stil_spent_3="+money_stil_spent_3+"&pre_condi_work_3="+pre_condi_work_3+"&work_status_isf_4="+work_status_isf_4+"&use_group_com_4="+use_group_com_4+"&total_taka_seqaep_4="+total_taka_seqaep_4+"&total_taka_commu_4="+total_taka_commu_4+"&money_stil_spent_4="+money_stil_spent_4+"&pre_condi_work_4="+pre_condi_work_4+"&work_status_isf_5="+work_status_isf_5+"&use_group_com_5="+use_group_com_5+"&total_taka_seqaep_5="+total_taka_seqaep_5+"&total_taka_commu_5="+total_taka_commu_5+"&money_stil_spent_5="+money_stil_spent_5+"&pre_condi_work_5="+pre_condi_work_5+"&work_status_isf_6="+work_status_isf_6+"&use_group_com_6="+use_group_com_6+"&total_taka_seqaep_6="+total_taka_seqaep_6+"&total_taka_commu_6="+total_taka_commu_6+"&money_stil_spent_6="+money_stil_spent_6+"&pre_condi_work_6="+pre_condi_work_6+"&work_status_isf_7="+work_status_isf_7+"&use_group_com_7="+use_group_com_7+"&total_taka_seqaep_7="+total_taka_seqaep_7+"&total_taka_commu_7="+total_taka_commu_7+"&money_stil_spent_7="+money_stil_spent_7+"&pre_condi_work_7="+pre_condi_work_7+"&work_status_isf_8="+work_status_isf_8+"&use_group_com_8="+use_group_com_8+"&total_taka_seqaep_8="+total_taka_seqaep_8+"&total_taka_commu_8="+total_taka_commu_8+"&money_stil_spent_8="+money_stil_spent_8+"&pre_condi_work_8="+pre_condi_work_8+"&work_status_isf_9="+work_status_isf_9+"&use_group_com_9="+use_group_com_9+"&total_taka_seqaep_9="+total_taka_seqaep_9+"&total_taka_commu_9="+total_taka_commu_9+"&money_stil_spent_9="+money_stil_spent_9+"&pre_condi_work_9="+pre_condi_work_9+"&ins_total_tub="+ins_total_tub+"&test_arsenic="+test_arsenic+"&tested_manganese="+tested_manganese+"&tubewell_arsenic_free="+tubewell_arsenic_free+"&tub_ars_cont="+tub_ars_cont+"&tub_manga_free="+tub_manga_free+"&tub_manga_conta="+tub_manga_conta+"&ins_per_dphe_water="+ins_per_dphe_water+"&arsenic="+arsenic+"&manganese="+manganese+"&tube_setup_ins="+tube_setup_ins+"&how_tub_install="+how_tub_install
 		
@@ -3434,7 +3523,19 @@ function complianceData8Next(){
 		var total_drh_book=$("#total_drh_book").val();
 		var rec_book_ins=$("#rec_book_ins").val();
 		var ins_book_drh=$("#ins_book_drh").val();
-		var ins_book_drh_ref=$("#ins_book_drh_ref").val();		
+		var ins_book_drh_ref=$("#ins_book_drh_ref").val();
+		//var overall_com_mda=$("input[name='overall_com_mda']:checked").val(); /* overall comment fron D section to last */		
+		
+		var overall_com_mda ="";
+		if ($("input[name='overall_com_mda1']:checked").val()=="1"){overall_com_mda = "1"} else {overall_com_mda="0"}
+		if ($("input[name='overall_com_mda2']:checked").val()=="1"){overall_com_mda = overall_com_mda + "1"} else {overall_com_mda=overall_com_mda +"0"}
+		if ($("input[name='overall_com_mda3']:checked").val()=="1"){overall_com_mda = overall_com_mda + "1"} else {overall_com_mda=overall_com_mda +"0"}
+		if ($("input[name='overall_com_mda4']:checked").val()=="1"){overall_com_mda = overall_com_mda + "1"} else {overall_com_mda=overall_com_mda +"0"}
+		if ($("input[name='overall_com_mda5']:checked").val()=="1"){overall_com_mda = overall_com_mda + "1"} else {overall_com_mda=overall_com_mda +"0"}
+		
+		overall_com_mda="1"+overall_com_mda;
+		
+		//alert(overall_com_mda);
 		
 		if(ins_drh_pro==2){
 			org_drh_pro=0;
@@ -3637,7 +3738,7 @@ function complianceData8Next(){
 					
 		}else{
 		
-		banbeisComData8="&dev_ref_period_sem="+dev_ref_period_sem+"&dev_ref_period_year="+dev_ref_period_year+"&ins_drh_pro="+ins_drh_pro+"&org_drh_pro="+org_drh_pro+"&rec_org_ref_per="+rec_org_ref_per+"&stu_inc_drh_6="+stu_inc_drh_6+"&pro_book_rec_6="+pro_book_rec_6+"&stu_per_eva_6="+stu_per_eva_6+"&stu_pass_eval_test_6="+stu_pass_eval_test_6+"&no_award_6="+no_award_6+"&only_drh_book_6="+only_drh_book_6+"&inc_drh_book_6="+inc_drh_book_6+"&stu_inc_drh_7="+stu_inc_drh_7+"&pro_book_rec_7="+pro_book_rec_7+"&stu_per_eva_7="+stu_per_eva_7+"&stu_pass_eval_test_7="+stu_pass_eval_test_7+"&no_award_7="+no_award_7+"&only_drh_book_7="+only_drh_book_7+"&inc_drh_book_7="+inc_drh_book_7+"&stu_inc_drh_8="+stu_inc_drh_8+"&pro_book_rec_8="+pro_book_rec_8+"&stu_per_eva_8="+stu_per_eva_8+"&stu_pass_eval_test_8="+stu_pass_eval_test_8+"&no_award_8="+no_award_8+"&only_drh_book_8="+only_drh_book_8+"&inc_drh_book_8="+inc_drh_book_8+"&stu_inc_drh_9="+stu_inc_drh_9+"&pro_book_rec_9="+pro_book_rec_9+"&stu_per_eva_9="+stu_per_eva_9+"&stu_pass_eval_test_9="+stu_pass_eval_test_9+"&no_award_9="+no_award_9+"&only_drh_book_9="+only_drh_book_9+"&inc_drh_book_9="+inc_drh_book_9+"&stu_inc_drh_10="+stu_inc_drh_10+"&pro_book_rec_10="+pro_book_rec_10+"&stu_per_eva_10="+stu_per_eva_10+"&stu_pass_eval_test_10="+stu_pass_eval_test_10+"&no_award_10="+no_award_10+"&only_drh_book_10="+only_drh_book_10+"&inc_drh_book_10="+inc_drh_book_10+"&ver_rec_qty_pro_book="+ver_rec_qty_pro_book+"&total_drh_book="+total_drh_book+"&rec_book_ins="+rec_book_ins+"&ins_book_drh="+ins_book_drh+"&ins_book_drh_ref="+ins_book_drh_ref
+		banbeisComData8="&dev_ref_period_sem="+dev_ref_period_sem+"&dev_ref_period_year="+dev_ref_period_year+"&ins_drh_pro="+ins_drh_pro+"&org_drh_pro="+org_drh_pro+"&rec_org_ref_per="+rec_org_ref_per+"&stu_inc_drh_6="+stu_inc_drh_6+"&pro_book_rec_6="+pro_book_rec_6+"&stu_per_eva_6="+stu_per_eva_6+"&stu_pass_eval_test_6="+stu_pass_eval_test_6+"&no_award_6="+no_award_6+"&only_drh_book_6="+only_drh_book_6+"&inc_drh_book_6="+inc_drh_book_6+"&stu_inc_drh_7="+stu_inc_drh_7+"&pro_book_rec_7="+pro_book_rec_7+"&stu_per_eva_7="+stu_per_eva_7+"&stu_pass_eval_test_7="+stu_pass_eval_test_7+"&no_award_7="+no_award_7+"&only_drh_book_7="+only_drh_book_7+"&inc_drh_book_7="+inc_drh_book_7+"&stu_inc_drh_8="+stu_inc_drh_8+"&pro_book_rec_8="+pro_book_rec_8+"&stu_per_eva_8="+stu_per_eva_8+"&stu_pass_eval_test_8="+stu_pass_eval_test_8+"&no_award_8="+no_award_8+"&only_drh_book_8="+only_drh_book_8+"&inc_drh_book_8="+inc_drh_book_8+"&stu_inc_drh_9="+stu_inc_drh_9+"&pro_book_rec_9="+pro_book_rec_9+"&stu_per_eva_9="+stu_per_eva_9+"&stu_pass_eval_test_9="+stu_pass_eval_test_9+"&no_award_9="+no_award_9+"&only_drh_book_9="+only_drh_book_9+"&inc_drh_book_9="+inc_drh_book_9+"&stu_inc_drh_10="+stu_inc_drh_10+"&pro_book_rec_10="+pro_book_rec_10+"&stu_per_eva_10="+stu_per_eva_10+"&stu_pass_eval_test_10="+stu_pass_eval_test_10+"&no_award_10="+no_award_10+"&only_drh_book_10="+only_drh_book_10+"&inc_drh_book_10="+inc_drh_book_10+"&ver_rec_qty_pro_book="+ver_rec_qty_pro_book+"&total_drh_book="+total_drh_book+"&rec_book_ins="+rec_book_ins+"&ins_book_drh="+ins_book_drh+"&ins_book_drh_ref="+ins_book_drh_ref+"&overall_com_mda="+overall_com_mda
 		
 		//alert(banbeisComData8);
 		$(".errorChk").text("");	
@@ -3748,7 +3849,7 @@ function uploadPhotoAch(imageURI, imageName) {
 }
 
 function winAchInfo(r) {	
-	$("#err_truck_info").text('File upload Successful. Syncing Data...');
+	$("#err_truck_info").text('Image 1 upload Successful. Syncing image 2...');
 	
 	var d = new Date();	
 	var get_time=d.getTime();
@@ -3765,17 +3866,17 @@ function winAchInfo(r) {
 }
 
 function onfail(r) {
-	$("#err_truck_info").text('File upload Failed. Syncing Data...');
+	$("#errorChk").text('File upload Failed. Please check internet connection.');
 	
-	var d = new Date();	
-	var get_time=d.getTime();
+	//var d = new Date();	
+	//var get_time=d.getTime();
 	
 	//imagePath2A="test2"
-	if (imagePath2A!=""){							
-		$(".errorChk").text("Syncing photo 2..");
-		imageName2 = localStorage.mobile_no+"_"+get_time+".jpg";		
-		uploadPhoto2Ach(imagePath2A, imageName2);		
-	}
+	//if (imagePath2A!=""){							
+	//	$(".errorChk").text("Syncing photo 2..");
+	//	imageName2 = localStorage.mobile_no+"_"+get_time+".jpg";		
+	//	uploadPhoto2Ach(imagePath2A, imageName2);		
+	//}
 }
 
 //-----------------------image 2
@@ -3819,13 +3920,13 @@ function uploadPhoto2Ach(imageURI, imageName2) {
 }
 
 function winComInfo2(r) {
-	$("#err_truck_info").text('File upload Successful. Syncing Data 2...');
+	$("#errorChk").text('Image 2 upload successfull. Syncing Data ...');
 	syncDataCom();
 }
 
 function onfail(r) {
-	$("#err_truck_info").text('File upload Failed. Syncing Data 2...');
-	syncDataCom();
+	$("#errorChk").text('File upload Failed. Please check internet connection. ');
+	//syncDataCom();
 }
 
 
@@ -4077,7 +4178,7 @@ function syncDataCom(){
 							$("input[name='pta_exist_ins']:checked").val("");
 							$("#pta_reformed_ins").val("");			
 							$("#pta_ins_rec_taka").val("");		
-							$("#ins_grant_rec_date").val("");
+							//$("#ins_grant_rec_date").val("");
 							$("input[name='why_not_pta_formed']:checked").val("");
 							$("input[name='overall_com_mda']:checked").val("");
 							$("#pta_meet").val("");		
