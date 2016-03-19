@@ -1549,12 +1549,12 @@ function complianceData2Next(){
 			$(".errorChk").text("Less than Number of students who received PMT stipend VI");
 		}else if (parseInt(stu_rec_stipend_6)<parseInt(stu_got_married_6)){             //3 col check cls 6
 			$(".errorChk").text("Less than Number of students who received PMT stipend VI");
-		}else if (parseInt(stu_rec_stipend_6)<parseInt(stu_present_visit_6)){             //3 col check cls 6
-			$(".errorChk").text("Less than Number of students who received PMT stipend VI");				
+		/*}else if (parseInt(stu_rec_stipend_6)<parseInt(stu_present_visit_6)){             //3 col check cls 6
+			$(".errorChk").text("Less than Number of students who received PMT stipend VI");	*/			
 		}else if (stu_present_visit_6=="" ){
 			$(".errorChk").text("Required Numeric VI");	
-		}else if (stu_present_visit_6>999){
-			$(".errorChk").text("Required 3 digit VI");
+		/*}else if (stu_present_visit_6>999){
+			$(".errorChk").text("Required 3 digit VI");*/
 				
 		}else if (stu_rec_stipend_7=="" ){
 			$(".errorChk").text("Required Numeric VII");
@@ -1578,12 +1578,12 @@ function complianceData2Next(){
 			$(".errorChk").text("Less than Number of students who received PMT stipend VII");
 		}else if (parseInt(stu_rec_stipend_7)<parseInt(stu_got_married_7)){             //3 col check cls 7
 			$(".errorChk").text("Less than Number of students who received PMT stipend VII");
-		}else if (parseInt(stu_rec_stipend_7)<parseInt(stu_present_visit_7)){             //3 col check cls 7
-			$(".errorChk").text("Less than Number of students who received PMT stipend VII");			
+	/*	}else if (parseInt(stu_rec_stipend_7)<parseInt(stu_present_visit_7)){             //3 col check cls 7
+			$(".errorChk").text("Less than Number of students who received PMT stipend VII");	*/		
 		}else if (stu_present_visit_7=="" ){
 			$(".errorChk").text("Required Numeric VII");
-		}else if (stu_present_visit_7>999){
-			$(".errorChk").text("Required 3 digit VII");
+		/*}else if (stu_present_visit_7>999){
+			$(".errorChk").text("Required 3 digit VII");*/
 				
 		}else if (stu_rec_stipend_8=="" ){
 			$(".errorChk").text("Required Numeric VIII");
@@ -1607,12 +1607,12 @@ function complianceData2Next(){
 			$(".errorChk").text("Less than Number of students who received PMT stipend VIII");
 		}else if (parseInt(stu_rec_stipend_8)<parseInt(stu_got_married_8)){             //3 col check cls 8
 			$(".errorChk").text("Less than Number of students who received PMT stipend VIII");	
-		}else if (parseInt(stu_rec_stipend_8)<parseInt(stu_present_visit_8)){             //3 col check cls 8
-			$(".errorChk").text("Less than Number of students who received PMT stipend VIII");		
+		/*}else if (parseInt(stu_rec_stipend_8)<parseInt(stu_present_visit_8)){             //3 col check cls 8
+			$(".errorChk").text("Less than Number of students who received PMT stipend VIII");	*/	
 		}else if (stu_present_visit_8=="" ){
 			$(".errorChk").text("Required Numeric VIII");
-		}else if (stu_present_visit_8>999){
-			$(".errorChk").text("Required 3 digit VIII");
+		/*}else if (stu_present_visit_8>999){
+			$(".errorChk").text("Required 3 digit VIII");*/
 				
 		}else if (stu_rec_stipend_9=="" && parseInt(com_institute_category)!=1){
 			$(".errorChk").text("Required Numeric IX");
@@ -1636,12 +1636,12 @@ function complianceData2Next(){
 			$(".errorChk").text("Less than Number of students who received PMT stipend IX");
 		}else if (parseInt(stu_rec_stipend_9)<parseInt(stu_got_married_9)){             //3 col check cls 9
 			$(".errorChk").text("Less than Number of students who received PMT stipend IX");	
-		}else if (parseInt(stu_rec_stipend_9)<parseInt(stu_present_visit_9)){             //3 col check cls 9
-			$(".errorChk").text("Less than Number of students who received PMT stipend IX");	
+		/*}else if (parseInt(stu_rec_stipend_9)<parseInt(stu_present_visit_9)){             //3 col check cls 9
+			$(".errorChk").text("Less than Number of students who received PMT stipend IX");	*/
 		}else if (stu_present_visit_9=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Numeric IX");	
-		}else if (stu_present_visit_9>999){
-			$(".errorChk").text("Required 3 digit IX");
+		/*}else if (stu_present_visit_9>999){
+			$(".errorChk").text("Required 3 digit IX");*/
 			
 		}else if (stu_rec_stipend_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Numeric X");
@@ -1665,12 +1665,12 @@ function complianceData2Next(){
 			$(".errorChk").text("Less than Number of students who received PMT stipend X");
 		}else if (parseInt(stu_rec_stipend_10)<parseInt(stu_got_married_10)){             //3 col check cls 10
 			$(".errorChk").text("Less than Number of students who received PMT stipend X");	
-		}else if (parseInt(stu_rec_stipend_10)<parseInt(stu_present_visit_10)){             //3 col check cls 10
-			$(".errorChk").text("Less than Number of students who received PMT stipend X");	
+		/*}else if (parseInt(stu_rec_stipend_10)<parseInt(stu_present_visit_10)){             //3 col check cls 10
+			$(".errorChk").text("Less than Number of students who received PMT stipend X");	*/
 		}else if (stu_present_visit_10=="" && parseInt(com_institute_category)!=1 ){
 			$(".errorChk").text("Required Numeric X");
-		}else if (stu_present_visit_10>999){
-			$(".errorChk").text("Required 3 digit X");		
+		/*}else if (stu_present_visit_10>999){
+			$(".errorChk").text("Required 3 digit X");*/		
 									
 		}else{ 
 				
@@ -2974,8 +2974,8 @@ function complianceData6Next(){
 			$(".errorChk").text("Required Maximum 6 Total tubewells institution");		
 		/*}else if (parseInt(ins_total_tub)<parseInt(test_tubewell)){
 			$(".errorChk").text("Less than total tuebwells ");*/
-		}else if (parseInt(ins_total_tub)<parseInt(total_test_ars_man) ){
-			$(".errorChk").text("tested arsenic + tested manganese less than total tuebwells ");
+		/*}else if (parseInt(ins_total_tub)<parseInt(total_test_ars_man) ){
+			$(".errorChk").text("tested arsenic + tested manganese less than total tuebwells ");*/
 		}else if (parseInt(test_arsenic)<parseInt(test_ars) ){
 			$(".errorChk").text("arsenic free + arsenic contaminated less than tested arsenic tuebwells ");	
 		}else if (parseInt(tested_manganese)<parseInt(test_mang) ){
@@ -3534,6 +3534,8 @@ function complianceData8Next(){
 		if ($("input[name='overall_com_mda3']:checked").val()=="1"){overall_com_mda = overall_com_mda + "1"} else {overall_com_mda=overall_com_mda +"0"}
 		if ($("input[name='overall_com_mda4']:checked").val()=="1"){overall_com_mda = overall_com_mda + "1"} else {overall_com_mda=overall_com_mda +"0"}
 		if ($("input[name='overall_com_mda5']:checked").val()=="1"){overall_com_mda = overall_com_mda + "1"} else {overall_com_mda=overall_com_mda +"0"}
+		if ($("input[name='overall_com_mda6']:checked").val()=="1"){overall_com_mda = overall_com_mda + "1"} else {overall_com_mda=overall_com_mda +"0"}
+		
 		
 		overall_com_mda="1"+overall_com_mda;
 		
@@ -3764,7 +3766,7 @@ function drh_pro_ins(){
 
 
 function complianceDataSubmit(){
-		//$("#btn_com_submit").hide();
+		$("#btn_com_submit").hide();
 		
 		var d = new Date();	
 		var get_time=d.getTime();		
@@ -3799,7 +3801,8 @@ function complianceDataSubmit(){
 					if (imagePathA!=""){							
 						$(".errorChk").text("Syncing photo 1..");
 						imageName = localStorage.mobile_no+"_"+get_time+".jpg";										
-						uploadPhotoAch(imagePathA, imageName);						
+						uploadPhotoAch(imagePathA, imageName);	
+						$("#btn_com_submit").show();					
 					}
 										
 				//} //-end check location
@@ -3851,7 +3854,7 @@ function uploadPhotoAch(imageURI, imageName) {
 }
 
 function winAchInfo(r) {	
-	$("#err_truck_info").text('Image 1 upload Successful. Syncing image 2...');
+	$(".errorChk").text('Image 1 upload Successful. Syncing image 2...');
 	
 	var d = new Date();	
 	var get_time=d.getTime();
@@ -3861,15 +3864,16 @@ function winAchInfo(r) {
 		$(".errorChk").text("Syncing photo 2..");
 		imageName2 = localStorage.mobile_no+"_"+get_time+".jpg";
 				
-		uploadPhoto2Ach(imagePath2A, imageName2);		
+		uploadPhoto2Ach(imagePath2A, imageName2);
+		$("#btn_com_submit").show();		
 	}
 	
 	
 }
 
 function onfail(r) {
-	$("#errorChk").text('File upload Failed. Please check internet connection.');
-	
+	$(".errorChk").text('File upload Failed. Please check internet connection.');
+	$("#btn_com_submit").show();
 	//var d = new Date();	
 	//var get_time=d.getTime();
 	
@@ -3922,12 +3926,13 @@ function uploadPhoto2Ach(imageURI, imageName2) {
 }
 
 function winComInfo2(r) {
-	$("#errorChk").text('Image 2 upload successfull. Syncing Data ...');
+	$(".errorChk").text('Image 2 upload successfull. Syncing Data ...');
 	syncDataCom();
 }
 
 function onfail(r) {
-	$("#errorChk").text('File upload Failed. Please check internet connection. ');
+	$(".errorChk").text('File upload Failed. Please check internet connection. ');
+	
 	//syncDataCom();
 }
 
@@ -4474,7 +4479,8 @@ function syncDataCom(){
 							//$("#btn_1_take_pic").hide();
 							//$("#btn_2_take_pic").hide();
 							//$("#btn_com_ach_lat_long").hide();
-							//$("#btn_com_submit").hide();						
+							//$("#btn_com_submit").hide();
+							$("#btn_com_submit").show();						
 						}else{
 							$(".errorChk").text('Unauthorized Access');																	
 							$("#btn_com_submit").show();
