@@ -31,6 +31,11 @@
 				
 				
 				$('#loader').hide();
+				
+				
+				$("#act_1").hide();
+				$("#act_2").hide();
+				$("#act_3").hide();
 						
 				//$("#disbursement_date").datepicker();	
 				
@@ -418,15 +423,15 @@ function total_married_stu(){
 	} 
 	
 function total_present_stu(){
-	var stu_present_visit_6=$("#stu_present_visit_6").val();
+	//var stu_present_visit_6=$("#stu_present_visit_6").val();
 	var stu_present_visit_7=$("#stu_present_visit_7").val();
 	var stu_present_visit_8=$("#stu_present_visit_8").val();
 	var stu_present_visit_9=$("#stu_present_visit_9").val();
 	var stu_present_visit_10=$("#stu_present_visit_10").val();
 	
-	if(stu_present_visit_6==''){
+	/*if(stu_present_visit_6==''){
 			stu_present_visit_6=0;
-			}
+			}*/
 	if(stu_present_visit_7==''){
 			stu_present_visit_7=0;
 			}
@@ -440,7 +445,7 @@ function total_present_stu(){
 			stu_present_visit_10=0;
 			}		
 		
-	var total_prese_stu=eval(stu_present_visit_6)+eval(stu_present_visit_7)+eval(stu_present_visit_8)+eval(stu_present_visit_9)+eval(stu_present_visit_10);
+	var total_prese_stu=eval(stu_present_visit_7)+eval(stu_present_visit_8)+eval(stu_present_visit_9)+eval(stu_present_visit_10);
 		
 	$("#stu_present_visit_total").val(total_prese_stu);
 	
@@ -994,7 +999,9 @@ function total_drh_books(){
 	
 	}	
 	
-function total_incdrh_books(){
+	
+	
+/*function total_incdrh_books(){
 	
 	var inc_drh_book_6=$("#inc_drh_book_6").val();
 	var inc_drh_book_7=$("#inc_drh_book_7").val();
@@ -1022,7 +1029,7 @@ function total_incdrh_books(){
 		
 	$("#inc_drh_book_total").val(total_incDrhBooks);
 	
-	}				
+	}	*/			
 	
 	
 	
@@ -1036,7 +1043,27 @@ function total_incdrh_books(){
 }
 	*/
 	
+function act_teachers(){
+	var act=$("#act").val();
 	
+	if(act==1){
+		$("#act_1").show();
+		$("#act_2").hide();
+		$("#act_3").hide();		
+	}else if(act==2){
+		$("#act_1").show();	
+		$("#act_2").show();
+		$("#act_3").hide();	
+	}else if(act==3){
+		$("#act_1").show();	
+		$("#act_2").show();
+		$("#act_3").show();
+	}else{
+		$("#act_1").hide();
+		$("#act_2").hide();
+		$("#act_3").hide();
+	}
+}	
 	
 	
 	
@@ -1077,7 +1104,7 @@ function total_incdrh_books(){
             </ul>
     </div>
     
-    <div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting 20160319</div><!------/footer 20150401-20150309 -->
+    <div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting 20160322</div><!------/footer 20150401-20150309 -->
     
     <div data-role="panel" id="leftpanel" data-position="left" data-display="overlay" data-theme="c">
         <div align="center"></div>
@@ -2339,7 +2366,7 @@ function total_incdrh_books(){
                         <input type="number" name="stu_got_married_6" id="stu_got_married_6" onblur="total_married_stu()"/>
                     </td>
                     <td  class="tbl_bro_color" width="100">
-                        <input type="number" name="stu_present_visit_6" id="stu_present_visit_6" onblur="total_present_stu()"/>
+                        <input type="number" name="stu_present_visit_6" id="stu_present_visit_6" onblur="total_present_stu()"  style="background-color:#E8E8E8;" readonly="readonly" />
                     </td>
                   </tr>
                   <tr>
@@ -2468,7 +2495,7 @@ function total_incdrh_books(){
                       </tr>
                     	<tr>
                     	  <td class="tbl_bro_color"><input type="text" name="pmt_st_1_name" id="pmt_st_1_name" style="width:160px;" /></td>
-                    	  <td align="center" class="tbl_bro_color">VI</td>
+                    	  <td align="center" class="tbl_bro_color">VII</td>
                     	  <td class="tbl_bro_color" ><input type="number" name="pmt_st_1_id" id="pmt_st_1_id" maxlength="14" style="width:160px;" /></td>
                     	  <td class="tbl_bro_color"><input type="number" name="pmt_st_1_attendance" id="pmt_st_1_attendance" /></td>
                     	  <td class="tbl_bro_color"><input type="number" name="pmt_st_1_final_exam_mark" id="pmt_st_1_final_exam_mark" /></td>
@@ -2512,7 +2539,7 @@ function total_incdrh_books(){
                             </fieldset>
                           </td>
                   	  </tr>
-                      <tr>
+                      <tr id="stipend_pro_criteria_VIII">
                     	  <td class="tbl_bro_color"><input type="text" name="pmt_st_3_name" id="pmt_st_3_name" style="width:150px;" /></td>
                     	  <td align="center" class="tbl_bro_color">IX</td>
                    	    <td class="tbl_bro_color"><input type="number" name="pmt_st_3_id" id="pmt_st_3_id" maxlength="14" /></td>
@@ -2652,8 +2679,17 @@ function total_incdrh_books(){
                         </fieldset>
                 </li>
                 
-               <li style="background-color:#e2e2e2;" class="auto_break">7. Details on ACT</li> 
+               <li style="background-color:#e2e2e2;" class="auto_break">7. How many teachers as ACT. (As per dropdown number table show only that times)</li> 
+               <li class="ui-field-contain">  
+                    <select name="act" id="act" data-native-menu="false" onchange="act_teachers()">
+                        <option value="0">Select</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>	
+                        <option value="3">3</option>							 												
+                    </select>
+               </li>
                <!-----row 1-------->
+        <div id="act_1">
                <li class="ui-field-contain">    
                     1.1 Name
                     <input type="text" name="act_1_name" id="act_1_name" />
@@ -2679,10 +2715,13 @@ function total_incdrh_books(){
                         <option value="2">2-MPhil</option>
                         <option value="3">3-MSc</option>
                         <option value="4">4-MA</option>
-                        <option value="5">5-BSc</option>
-                        <option value="6">6-BA</option>
-                        <option value="7">7-Fazil</option>
-                        <option value="8">8-Kamil</option>							 												
+                        <option value="5">5-MSS</option>	
+                        <option value="6">6-MBA</option>
+                        <option value="7">7-BSC</option>
+                        <option value="8">8-BSS</option>
+                        <option value="9">9-BA</option>
+                        <option value="10">10-Fazil</option>
+                        <option value="11">11-Kamil</option>                        						 												
                     </select>                    
                </li>
                <li class="ui-field-contain auto_break">    
@@ -2715,9 +2754,11 @@ function total_incdrh_books(){
                     1.9 Total No. of classes taken 
                     <input type="number" name="act_1_total_class" id="act_1_total_class" />
                </li> 
-               <!---->
-               
-               <!-----row 2-------->
+         </div>
+         <!---->
+         
+         <!-----row 2-------->
+         <div id="act_2">   
                <li class="ui-field-contain">    
                     2.1 Name
                     <input type="text" name="act_2_name" id="act_2_name" />
@@ -2743,10 +2784,13 @@ function total_incdrh_books(){
                         <option value="2">2-MPhil</option>
                         <option value="3">3-MSc</option>
                         <option value="4">4-MA</option>
-                        <option value="5">5-BSc</option>
-                        <option value="6">6-BA</option>
-                        <option value="7">7-Fazil</option>
-                        <option value="8">8-Kamil</option>							 												
+                        <option value="5">5-MSS</option>	
+                        <option value="6">6-MBA</option>
+                        <option value="7">7-BSC</option>
+                        <option value="8">8-BSS</option>
+                        <option value="9">9-BA</option>
+                        <option value="10">10-Fazil</option>
+                        <option value="11">11-Kamil</option>  						 												
                     </select>                    
                </li>
                <li class="ui-field-contain auto_break">    
@@ -2764,7 +2808,7 @@ function total_incdrh_books(){
                         <option value="0">Select</option>
                         <option value="1">1-Yes </option>
                         <option value="2">2-Not as claimed</option>	
-                        <option value="2">3-Not checked</option>					 												
+                        <option value="3">3-Not checked</option>					 												
                     </select>
                </li>
                <li class="ui-field-contain">    
@@ -2779,8 +2823,9 @@ function total_incdrh_books(){
                     2.9 Total No. of classes taken 
                     <input type="number" name="act_2_total_class" id="act_2_total_class" />
                </li> 
-               
-               <!-----row 3-------->
+           </div>
+           <!-----row 3-------->
+           <div id="act_3">                
                <li class="ui-field-contain">    
                    3.1 Name
                     <input type="text" name="act_3_name" id="act_3_name" />
@@ -2806,10 +2851,13 @@ function total_incdrh_books(){
                         <option value="2">2-MPhil</option>
                         <option value="3">3-MSc</option>
                         <option value="4">4-MA</option>
-                        <option value="5">5-BSc</option>
-                        <option value="6">6-BA</option>
-                        <option value="7">7-Fazil</option>
-                        <option value="8">8-Kamil</option>							 												
+                        <option value="5">5-MSS</option>	
+                        <option value="6">6-MBA</option>
+                        <option value="7">7-BSC</option>
+                        <option value="8">8-BSS</option>
+                        <option value="9">9-BA</option>
+                        <option value="10">10-Fazil</option>
+                        <option value="11">11-Kamil</option>  					 												
                     </select>                    
                </li>
                <li class="ui-field-contain auto_break">    
@@ -2827,7 +2875,7 @@ function total_incdrh_books(){
                         <option value="0">Select</option>
                         <option value="1">1-Yes </option>
                         <option value="2">2-Not as claimed</option>	
-                        <option value="2">3-Not checked</option>					 												
+                        <option value="3">3-Not checked</option>					 												
                     </select>
                </li>
                <li class="ui-field-contain">    
@@ -2842,7 +2890,7 @@ function total_incdrh_books(){
                     3.9 Total No. of classes taken 
                     <input type="number" name="act_3_total_class" id="act_3_total_class" />
                </li> 
-               
+           </div>    
                
                <li style="background-color:#F2F2F2;" class="auto_break">8. Description of Additional Classes and Regular Classes in reference Semester (July-December, 2015)</li>
                 <li class="ui-field-contain" style="overflow:scroll;">  
@@ -3006,7 +3054,8 @@ function total_incdrh_books(){
                             <option value="1">1-Regular </option>
                             <option value="2">2-Ad-hoc </option>	
                             <option value="3">3-Special </option>
-                            <option value="4">4-None </option>
+                            <option value="4">4-Under Processing </option>
+                            <option value="5">5-None </option>
                        </select>
                 </li>
                <li class="ui-field-contain auto_break">    
@@ -3067,10 +3116,10 @@ function total_incdrh_books(){
                     8.2 If PTA exists in the Institution, how much PTA grants has the institution received in the last 6 months? Taka 
                     <input type="number" name="pta_ins_rec_taka" id="pta_ins_rec_taka" />
                </li>
-               <li class="ui-field-contain auto_break">   
-                   <!-- 8.3 Institute PTA grant received date--> <!-- aaa need to hide this and exclude from validation--> 
-                   <!--<input type="date" name="ins_grant_rec_date" id="ins_grant_rec_date" placeholder="dd-mm-yyyy" />-->
-               </li>
+              <!-- <li class="ui-field-contain auto_break">   
+                    8.3 Institute PTA grant received date  aaa need to hide this and exclude from validation 
+                   <input type="date" name="ins_grant_rec_date" id="ins_grant_rec_date" placeholder="dd-mm-yyyy" />
+               </li>-->
            </div>
                <li class="ui-field-contain auto_break">    
                     8.3 If PTA is not yet formed, why not  <!-- old 8.4-->
@@ -3147,13 +3196,16 @@ function total_incdrh_books(){
          <div id="eacm">
                <li class="ui-field-contain auto_break">    
                     3. What type of activities was held with the EACM Grant
-                     <select name="acti_with_eacm_grant" id="acti_with_eacm_grant" data-native-menu="false" >
-                     	<option value="0">Select </option>
-                        <option value="1">1-Parent Gathering  </option>
-                        <option value="2">2-Workshop/Orientation </option>	
-                        <option value="3">3-Rallies  </option>	
-                        <option value="4">4-Other  </option>						 												
-                    </select>
+                    <fieldset data-role="controlgroup">
+                        <input name="acti_with_eacm_grant1" id="checkbox-v-2a" value="1" type="checkbox">
+                        <label for="checkbox-v-2a">1-Parent Gathering</label>
+                        <input name="acti_with_eacm_grant2" id="checkbox-v-2b" value="1" type="checkbox">
+                        <label for="checkbox-v-2b">2-Workshop/Orientation</label>
+                        <input name="acti_with_eacm_grant3" id="checkbox-v-2c" value="1" type="checkbox">
+                        <label for="checkbox-v-2c">3-Rallies</label>
+                        <input name="acti_with_eacm_grant4" id="checkbox-v-2d" value="1" type="checkbox">
+                        <label for="checkbox-v-2d">4-Other</label>
+                    </fieldset>
                </li>
               <!-- <li class="ui-field-contain auto_break">    
                     4. Which topicswere discussed in the EACM programme? (it may be more than one) 
@@ -3297,14 +3349,15 @@ function total_incdrh_books(){
                     How many-mails were sent to SEQAEP during July-December, 2015
                     <select name="how_sec_email" id="how_sec_email" data-native-menu="false" >
                     	<option value="0">Select</option>
-                        <option value="1">Less than 6</option>
-                        <option value="2">6</option>
-                        <option value="3">7</option>
-                        <option value="4">8</option>
-                        <option value="5">9</option>	
-                        <option value="6">10  </option>
-                        <option value="7">11</option>	
-                        <option value="8">12</option>						
+                        <option value="1">1-0</option>
+                        <option value="2">2-Less than 6</option>
+                        <option value="3">3-6</option>
+                        <option value="4">4-7</option>
+                        <option value="5">5-8</option>
+                        <option value="6">6-9</option>	
+                        <option value="7">7-10  </option>
+                        <option value="8">8-11</option>	
+                        <option value="9">9-12</option>						
                     </select>
                </li>
                <li class="ui-field-contain auto_break">    
@@ -3316,7 +3369,8 @@ function total_incdrh_books(){
                         <option value="3">3-USEO office</option>
                         <option value="4">4-Union Information Centre</option>
                         <option value="5">5-Cyber cafe</option>	
-                        <option value="6">6-Others</option>				
+                        <option value="6">6-Others</option>
+                        <option value="7">7-None</option>				
                     </select>
                </li> 
                <li class="ui-field-contain auto_break">    
@@ -3653,7 +3707,7 @@ function total_incdrh_books(){
                
                <li style="background-color:#e2e2e2;" class="auto_break">Tubewells</li>
                <li class="ui-field-contain auto_break">    
-                    2. Total number of tubewells in the institution  
+                    2. Total number of tubewells/water pumps in the institution  
                     <input type="number" name="ins_total_tub" id="ins_total_tub" />
                </li>
                <!--<li class="ui-field-contain auto_break">    
@@ -3669,19 +3723,19 @@ function total_incdrh_books(){
                     <input type="number" name="tested_manganese" id="tested_manganese" />
                </li>
                <li class="ui-field-contain auto_break">    
-                    3.1 Number of tubewells that are arsenic free 
+                    3.1 Number of tubewells/water pumps that are arsenic free 
                     <input type="number" name="tubewell_arsenic_free" id="tubewell_arsenic_free" />
                </li>
                <li class="ui-field-contain auto_break">    
-                   3.2 Number of tubewells that are arsenic contaminated 
+                   3.2 Number of tubewells/water pumps that are arsenic contaminated 
                     <input type="number" name="tub_ars_cont" id="tub_ars_cont" />
                </li>
                <li class="ui-field-contain auto_break">    
-                    3.3 Number of tubewells that are manganese free 
+                    3.3 Number of tubewells/water pumps that are manganese free 
                     <input type="number" name="tub_manga_free" id="tub_manga_free" />
                </li>
                <li class="ui-field-contain auto_break">    
-                    3.4 Number of tubewells that are manganese contaminated 
+                    3.4 Number of tubewells/water pumps that are manganese contaminated 
                     <input type="number" name="tub_manga_conta" id="tub_manga_conta" />
                </li>
                
@@ -3849,7 +3903,7 @@ function total_incdrh_books(){
                	   <td class="tbl_bro_color" align="center">Non-PMT</td>
                	   <td class="tbl_bro_color" align="center"><input type="number" id="nonpmt_stu_app_ssc_exam_13" name="pmt_stu_app_ssc_exam_13" /></td>
                	   <td class="tbl_bro_color" align="center"><input type="number" id="nonpmt_stu_pass_ssc_exam_13" name="pmt_stu_pass_ssc_exam_13" /></td>
-               	   <td class="tbl_bro_color" align="center"><input type="number" id="nonpmt_stu_gpa_13" name="pmt_stu_gpa_13" /></td>
+               	   <td class="tbl_bro_color" align="center"><input type="number" id="nonpmt_stu_gpa_13" name="nonpmt_stu_gpa_13" /></td>
            	     </tr>
                	 <tr>
                	   <td class="tbl_bro_color" rowspan="2" align="center">2014</td>
@@ -3862,7 +3916,7 @@ function total_incdrh_books(){
                	   <td class="tbl_bro_color" align="center">Non-PMT</td>
                	   <td class="tbl_bro_color" align="center"><input type="number" id="nonpmt_stu_app_ssc_exam_14" name="pmt_stu_app_ssc_exam_14" /></td>
                	   <td class="tbl_bro_color" align="center"><input type="number" id="nonpmt_stu_pass_ssc_exam_14" name="pmt_stu_pass_ssc_exam_14" /></td>
-               	   <td class="tbl_bro_color" align="center"><input type="number" id="nonpmt_stu_gpa_14" name="pmt_stu_gpa_14" /></td>
+               	   <td class="tbl_bro_color" align="center"><input type="number" id="nonpmt_stu_gpa_14" name="nonpmt_stu_gpa_14" /></td>
            	     </tr>
                  <tr>
                	   <td class="tbl_bro_color" rowspan="2" align="center">2015</td>
@@ -3875,7 +3929,7 @@ function total_incdrh_books(){
                	   <td class="tbl_bro_color" align="center">Non-PMT</td>
                	   <td class="tbl_bro_color" align="center"><input type="number" id="nonpmt_stu_app_ssc_exam_15" name="pmt_stu_app_ssc_exam_15" /></td>
                	   <td class="tbl_bro_color" align="center"><input type="number" id="nonpmt_stu_pass_ssc_exam_15" name="pmt_stu_pass_ssc_exam_15" /></td>
-               	   <td class="tbl_bro_color" align="center"><input type="number" id="nonpmt_stu_gpa_15" name="pmt_stu_gpa_15" /></td>
+               	   <td class="tbl_bro_color" align="center"><input type="number" id="nonpmt_stu_gpa_15" name="nonpmt_stu_gpa_15" /></td>
            	     </tr>
                </table>
                
@@ -4269,17 +4323,13 @@ function total_incdrh_books(){
                     
                     <table width="100%" border="1" class="tbl_bro_color" cellspacing="0" cellpadding="0">
                     <tr>
-                    	<td rowspan="2" align="center" class="tbl_bro_color auto_break">Grades</td>
-                        <td rowspan="2" align="center" class="tbl_bro_color auto_break">Number of students included in the DRH program during  July- Dec 2015 </td>
-                        <td rowspan="2" align="center" class="tbl_bro_color auto_break">Number of program books received as per ACF during July- Dec 2015 </td>
-                        <td rowspan="2" align="center" class="tbl_bro_color auto_break">Number of students who participated in evaluation test held during July- Dec 2015</td>
-                        <td rowspan="2" align="center" class="tbl_bro_color auto_break">Number of students who passed the evaluation test during July-Dec 2015</td>
-                        <td rowspan="2" align="center" class="tbl_bro_color auto_break">Number of awardees </td>
-                        <td colspan="2" align="center" class="tbl_bro_color auto_break">Total number of books available in the school library</td>
-                    </tr>
-                    <tr>
-                      <td align="center" class="tbl_bro_color">Only DRH books</td>
-                      <td align="center" class="tbl_bro_color">All books including DRH books</td>
+                    	<td align="center" class="tbl_bro_color auto_break">Grades</td>
+                        <td align="center" class="tbl_bro_color auto_break">Number of students included in the DRH program during  July- Dec 2015 </td>
+                        <td align="center" class="tbl_bro_color auto_break">Number of program books received as per ACF during July- Dec 2015 </td>
+                        <td align="center" class="tbl_bro_color auto_break">Number of students who participated in evaluation test held during July- Dec 2015</td>
+                        <td align="center" class="tbl_bro_color auto_break">Number of students who passed the evaluation test during July-Dec 2015</td>
+                        <td align="center" class="tbl_bro_color auto_break">Number of awardees </td>
+                        <td colspan="2" align="center" class="tbl_bro_color auto_break">Only DRH books</td>
                     </tr>
                     <tr>
                       <td align="center" class="tbl_bro_color" >VI</td>
@@ -4289,7 +4339,7 @@ function total_incdrh_books(){
                       <td align="center" class="tbl_bro_color"><input type="number" name="stu_pass_eval_test_6" id="stu_pass_eval_test_6" onblur="total_pass_eval_stu()"/></td>
                       <td align="center" class="tbl_bro_color"><input type="number" name="no_award_6" id="no_award_6" onblur="total_awardness_stu()"/></td>
                       <td align="center" class="tbl_bro_color"><input type="number" name="only_drh_book_6" id="only_drh_book_6" onblur="total_drh_books()"/></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="inc_drh_book_6" id="inc_drh_book_6" onblur="total_incdrh_books()"/></td>
+                      <!--<td align="center" class="tbl_bro_color"><input type="number" name="inc_drh_book_6" id="inc_drh_book_6" onblur="total_incdrh_books()"/></td>-->
                     </tr>
                     <tr>
                       <td align="center" class="tbl_bro_color">VII</td>
@@ -4299,7 +4349,7 @@ function total_incdrh_books(){
                       <td align="center" class="tbl_bro_color"><input type="number" name="stu_pass_eval_test_7" id="stu_pass_eval_test_7" onblur="total_pass_eval_stu()"/></td>
                       <td align="center" class="tbl_bro_color"><input type="number" name="no_award_7" id="no_award_7" onblur="total_awardness_stu()"/></td>
                       <td align="center" class="tbl_bro_color"><input type="number" name="only_drh_book_7" id="only_drh_book_7" onblur="total_drh_books()"/></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="inc_drh_book_7" id="inc_drh_book_7" onblur="total_incdrh_books()"/></td>
+                      <!--<td align="center" class="tbl_bro_color"><input type="number" name="inc_drh_book_7" id="inc_drh_book_7" onblur="total_incdrh_books()"/></td>-->
                     </tr>
                     <tr>
                       <td align="center" class="tbl_bro_color">VIII</td>
@@ -4309,7 +4359,7 @@ function total_incdrh_books(){
                       <td align="center" class="tbl_bro_color"><input type="number" name="stu_pass_eval_test_8" id="stu_pass_eval_test_8" onblur="total_pass_eval_stu()"/></td>
                       <td align="center" class="tbl_bro_color"><input type="number" name="no_award_8" id="no_award_8" onblur="total_awardness_stu()"/></td>
                       <td align="center" class="tbl_bro_color"><input type="number" name="only_drh_book_8" id="only_drh_book_8" onblur="total_drh_books()"/></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="inc_drh_book_8" id="inc_drh_book_8" onblur="total_incdrh_books()"/></td>
+                     <!-- <td align="center" class="tbl_bro_color"><input type="number" name="inc_drh_book_8" id="inc_drh_book_8" onblur="total_incdrh_books()"/></td>-->
                     </tr>
                     <tr id="drh_ix">
                       <td align="center" class="tbl_bro_color">IX</td>
@@ -4319,7 +4369,7 @@ function total_incdrh_books(){
                       <td align="center" class="tbl_bro_color"><input type="number" name="stu_pass_eval_test_9" id="stu_pass_eval_test_9" onblur="total_pass_eval_stu()"/></td>
                       <td align="center" class="tbl_bro_color"><input type="number" name="no_award_9" id="no_award_9" onblur="total_awardness_stu()"/></td>
                       <td align="center" class="tbl_bro_color"><input type="number" name="only_drh_book_9" id="only_drh_book_9" onblur="total_drh_books()"/></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="inc_drh_book_9" id="inc_drh_book_9" onblur="total_incdrh_books()"/></td>
+                      <!--<td align="center" class="tbl_bro_color"><input type="number" name="inc_drh_book_9" id="inc_drh_book_9" onblur="total_incdrh_books()"/></td>-->
                     </tr>
                     <tr id="drh_x">
                       <td align="center" class="tbl_bro_color">X</td>
@@ -4329,7 +4379,7 @@ function total_incdrh_books(){
                       <td align="center" class="tbl_bro_color"><input type="number" name="stu_pass_eval_test_10" id="stu_pass_eval_test_10" onblur="total_pass_eval_stu()"/></td>
                       <td align="center" class="tbl_bro_color"><input type="number" name="no_award_10" id="no_award_10" onblur="total_awardness_stu()"/></td>
                       <td align="center" class="tbl_bro_color"><input type="number" name="only_drh_book_10" id="only_drh_book_10" onblur="total_drh_books()" /></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="inc_drh_book_10" id="inc_drh_book_10" onblur="total_incdrh_books()"/></td>
+                      <!--<td align="center" class="tbl_bro_color"><input type="number" name="inc_drh_book_10" id="inc_drh_book_10" onblur="total_incdrh_books()"/></td>-->
                     </tr>
                     <tr>
                       <td align="center" class="tbl_bro_color">Total</td>
@@ -4339,12 +4389,12 @@ function total_incdrh_books(){
                       <td align="center" class="tbl_bro_color"><input type="number" name="stu_pass_eval_test_total" id="stu_pass_eval_test_total" readonly="readonly" style="background-color:#E8E8E8;"/></td>
                       <td align="center" class="tbl_bro_color"><input type="number" name="no_award_total" id="no_award_total" readonly="readonly" style="background-color:#E8E8E8;"/></td>
                       <td align="center" class="tbl_bro_color"><input type="number" name="only_drh_book_total" id="only_drh_book_total" readonly="readonly" style="background-color:#E8E8E8;"/></td>
-                      <td align="center" class="tbl_bro_color"><input type="number" name="inc_drh_book_total" id="inc_drh_book_total" readonly="readonly" style="background-color:#E8E8E8;"/></td>
+                      <!--<td align="center" class="tbl_bro_color"><input type="number" name="inc_drh_book_total" id="inc_drh_book_total" readonly="readonly" style="background-color:#E8E8E8;"/></td>-->
                     </tr>
                     </table>
                     <br /><br />
                     
-               </li>
+             </li>
                <li class="ui-field-contain auto_break">    
                     6. Verify the received quantity of program books and number of awardees by grade during July- Dec2015 from the register
                       <select name="ver_rec_qty_pro_book" id="ver_rec_qty_pro_book" data-native-menu="false" >
@@ -4385,27 +4435,30 @@ function total_incdrh_books(){
                         <option value="3">3-In the library </option>					 												
                     </select>
                </li>
-               <li class="ui-field-contain auto_break">    
+               <li class="ui-field-contain auto_break">  
                     <select name="ins_book_drh_ref" id="ins_book_drh_ref" data-native-menu="false" >
                         <option value="0">Select </option>
                         <option value="1">1-In an open shelf </option>
                         <option value="2">2-In an almirah </option>					 												
                     </select>
                </li>
-               
+               <li class="ui-field-contain auto_break">  
+                 10. All book including DRH books?
+                    <input type="number" id="all_drh_books" name="all_drh_books" />
+               </li>
                <li class="ui-field-contain auto_break">    
                    Overall comments by MDA    <!-- old 8.5-->
                         <fieldset data-role="controlgroup">
                             <input name="overall_com_mda1" id="checkbox-v-2a" value="1" type="checkbox">
-                            <label for="checkbox-v-2a">1-Did not get proper cooperation from Institution Head</label>
+                            <label for="checkbox-v-2a">1-Cooperation is well </label>
                             <input name="overall_com_mda2" id="checkbox-v-2b" value="1" type="checkbox">
-                            <label for="checkbox-v-2b">2-Poor/No network coverage in school premises</label>
+                            <label for="checkbox-v-2b">2-Did not get proper cooperation from Institution Head </label>
                             <input name="overall_com_mda3" id="checkbox-v-2c" value="1" type="checkbox">
-                            <label for="checkbox-v-2c">3-Communication with the institution is not good</label>
+                            <label for="checkbox-v-2c">3-Poor/No network coverage in school premises </label>
                             <input name="overall_com_mda4" id="checkbox-v-2d" value="1" type="checkbox">
-                            <label for="checkbox-v-2d">4-Time limitation for the survey</label>
+                            <label for="checkbox-v-2d">4-Communication with the institution is not good </label>
                             <input name="overall_com_mda5" id="checkbox-v-2e" value="1" type="checkbox">
-                            <label for="checkbox-v-2e">5-Other</label>
+                            <label for="checkbox-v-2e">5-Time limitation for the survey</label>
                             <input name="overall_com_mda6" id="checkbox-v-2f" value="1" type="checkbox">
                             <label for="checkbox-v-2f">6-No comment</label>
                         </fieldset>
