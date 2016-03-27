@@ -52,8 +52,8 @@ function onErrorComp(error) {
 
 
 //---- online 
-var apipath="http://c003.cloudapp.net/banbeis/syncmobile/";
-var apipath_compliance="http://c003.cloudapp.net/banbeis/syncmobile_compliance/";
+//var apipath="http://c003.cloudapp.net/banbeis/syncmobile/";
+//var apipath_compliance="http://c003.cloudapp.net/banbeis/syncmobile_compliance/";
 
 //--- local
 //var apipath="http://127.0.0.1:8000/banbeis/syncmobile/";
@@ -4034,7 +4034,7 @@ function syncDataCom_1(sl){
 							$("#pmt_girls_10").val("");
 							$("#not_pmt_girls_10").val("");
 							
-							/**********PMT Based Stipend Program*********	*/			
+							<!--*********PMT Based Stipend Program*********			-->	
 							$("#stip_pro_semister").val("");
 							$("#stip_pro_year").val("");
 							$("#disbursement_date").val("");
@@ -4070,7 +4070,7 @@ function syncDataCom_1(sl){
 							$("#stu_present_visit_10").val("");
 							
 							$("#pmt_st_1_name").val("");
-							//pmt_st_1_grade=$("#pmt_st_1_grade").val()
+							//$("#pmt_st_1_grade").val()
 							$("#pmt_st_1_id").val("");
 							$("#pmt_st_1_attendance").val("");
 							$("#pmt_st_1_final_exam_mark").val("");
@@ -4078,7 +4078,7 @@ function syncDataCom_1(sl){
 							$("input[name='status_married_1']:checked").val("");
 							
 							$("#pmt_st_2_name").val("");
-							//pmt_st_2_grade=$("#pmt_st_2_grade").val()
+							//$("#pmt_st_2_grade").val()
 							$("#pmt_st_2_id").val("");
 							$("#pmt_st_2_attendance").val("");
 							$("#pmt_st_2_final_exam_mark").val("");
@@ -4086,7 +4086,7 @@ function syncDataCom_1(sl){
 							$("input[name='status_married_2']:checked").val("");
 							
 							$("#pmt_st_3_name").val("");
-							//pmt_st_3_grade=$("#pmt_st_3_grade").val()
+							//$("#pmt_st_3_grade").val()
 							$("#pmt_st_3_id").val("");
 							$("#pmt_st_3_attendance").val("");
 							$("#pmt_st_3_final_exam_mark").val("");
@@ -4094,7 +4094,7 @@ function syncDataCom_1(sl){
 							$("input[name='status_married_3']:checked").val("");
 							
 							$("#pmt_st_4_name").val("");
-							//pmt_st_4_grade=$("#pmt_st_4_grade").val()
+							//$("#pmt_st_4_grade").val()
 							$("#pmt_st_4_id").val("");
 							$("#pmt_st_4_attendance").val("");
 							$("#pmt_st_4_final_exam_mark").val("");
@@ -4102,7 +4102,7 @@ function syncDataCom_1(sl){
 							$("input[name='status_married_4']:checked").val("");
 							
 							$("#pmt_st_5_name").val("");
-							//pmt_st_5_grade=$("#pmt_st_5_grade").val()
+							//$("#pmt_st_5_grade").val()
 							$("#pmt_st_5_id").val("");
 							$("#pmt_st_5_attendance").val("");
 							$("#pmt_st_5_final_exam_mark").val("");
@@ -4323,8 +4323,8 @@ function syncDataCom_1(sl){
 							$("#money_stil_spent_9").val("");
 							$("#pre_condi_work_9").val("");		
 							
-							var name_work_isf_grant=$("input[name='name_work_isf_grant']:checked").val();
-							var work_status=$("#work_status").val()
+							$("input[name='name_work_isf_grant']:checked").val("");
+							$("#work_status").val("")
 							$("#ins_total_tub").val("");
 							$("#test_tubewell").val("");
 							$("#test_arsenic").val("");
@@ -4367,7 +4367,7 @@ function syncDataCom_1(sl){
 							$("#nonpmt_stu_app_ssc_exam_15").val("");
 							$("#nonpmt_stu_pass_ssc_exam_15").val("");
 							$("#nonpmt_stu_gpa_15").val("");	
-							
+//							
 //							************************/
 							$("#total_stu_rec_stipend").val("");
 							$("#pmt_stu_app_ssc_exam").val("");
@@ -4473,7 +4473,7 @@ function syncDataCom_1(sl){
 							$("#ins_book_drh").val("");
 							$("#ins_book_drh_ref").val("");
 							
-//							<!-----------total---------->
+							<!-----------total---------->
 							$("#pmt_boys_total").val("");
 							$("#not_pmt_boys_total").val("");
 							$("#pmt_girls_total").val("");
@@ -5109,7 +5109,7 @@ banbeisComData6="&ict_ref_period_sem=0&ict_ref_period_year=0&ins_internet_con=0&
 
 banbeisComData7="&ins_receive_tk=0&receive_amount_iaa=0&amount_dis_manual=0&smc_awared_dis=0&reason=0&smc_meet_dis=0&pta_aware_dis=0&pmt_stu_app_ssc_exam_13=0&pmt_stu_pass_ssc_exam_13=0&pmt_stu_gpa_13=0&nonpmt_stu_app_ssc_exam_13=0&nonpmt_stu_pass_ssc_exam_13=0&nonpmt_stu_gpa_13=0&pmt_stu_app_ssc_exam_14=0&pmt_stu_pass_ssc_exam_14=0&pmt_stu_gpa_14=0&nonpmt_stu_app_ssc_exam_14=0&nonpmt_stu_pass_ssc_exam_14=0&nonpmt_stu_gpa_14=0&pmt_stu_app_ssc_exam_15=0&pmt_stu_pass_ssc_exam_15=0&pmt_stu_gpa_15=0&nonpmt_stu_app_ssc_exam_15=0&nonpmt_stu_pass_ssc_exam_15=0&nonpmt_stu_gpa_15=0&total_stu_rec_stipend=0&pmt_stu_app_ssc_exam=0&pmt_stu_pass_ssc=0&pmt_stu_coll_ssc_award=0&pmt_stu_higher_study=0&pass_award_dis=0&stu_award_ref_period_sem=0&stu_award_ref_period_year=0&rece_award_boys_7=0&rece_pmt_stipen_boys_7=0&per_mark_ann_exam_boys_7=0&pre_day_visit_boys_7=0&about_award_amo_tell_boys_7=0&rece_award_girls_7=0&rece_pmt_stipen_girls_7=0&per_mark_ann_exam_girls_7=0&pre_day_visit_girls_7=0&about_award_amo_tell_girls_7=0&rece_award_boys_8=0&rece_pmt_stipen_boys_8=0&per_mark_ann_exam_boys_8=0&pre_day_visit_boys_8=0&about_award_amo_tell_boys_8=0&rece_award_girls_8=0&rece_pmt_stipen_girls_8=0&per_mark_ann_exam_girls_8=0&pre_day_visit_girls_8=0&about_award_amo_tell_girls_8=0&rece_award_boys_10=0&rece_pmt_stipen_boys_10=0&per_mark_ann_exam_boys_10=0&pre_day_visit_boys_10=0&about_award_amo_tell_boys_10=0&rece_award_girls_10=0&rece_pmt_stipen_girls_10=0&per_mark_ann_exam_girls_10=0&pre_day_visit_girls_10=0&about_award_amo_tell_girls_10=0&award_dis=0";	
 
-banbeisComData8="&dev_ref_period_sem=0&dev_ref_period_year=0&ins_drh_pro=0&org_drh_pro=0&rec_org_ref_per=0&stu_inc_drh_6=0&pro_book_rec_6=0&stu_per_eva_6=0&stu_pass_eval_test_6=0&no_award_6=0&only_drh_book_6=0&inc_drh_book_6=0&stu_inc_drh_7=0&pro_book_rec_7=0&stu_per_eva_7=0&stu_pass_eval_test_7=0&no_award_7=0&only_drh_book_7=0&inc_drh_book_7=0&stu_inc_drh_8=0&pro_book_rec_8=0&stu_per_eva_8=0&stu_pass_eval_test_8=0&no_award_8=0&only_drh_book_8=0&inc_drh_book_8=0&stu_inc_drh_9=0&pro_book_rec_9=0&stu_per_eva_9=0&stu_pass_eval_test_9=0&no_award_9=0&only_drh_book_9=0&inc_drh_book_9=0&stu_inc_drh_10=0&pro_book_rec_10=0&stu_per_eva_10=0&stu_pass_eval_test_10=0&no_award_10=0&only_drh_book_10=0&inc_drh_book_10=0&ver_rec_qty_pro_book=0&total_drh_book=0&rec_book_ins=0&ins_book_drh=0&ins_book_drh_ref=0";
+banbeisComData8="&dev_ref_period_sem=0&dev_ref_period_year=0&ins_drh_pro=0&org_drh_pro=0&rec_org_ref_per=0&stu_inc_drh_6=0&pro_book_rec_6=0&stu_per_eva_6=0&stu_pass_eval_test_6=0&no_award_6=0&only_drh_book_6=0&inc_drh_book_6=0&stu_inc_drh_7=0&pro_book_rec_7=0&stu_per_eva_7=0&stu_pass_eval_test_7=0&no_award_7=0&only_drh_book_7=0&inc_drh_book_7=0&stu_inc_drh_8=0&pro_book_rec_8=0&stu_per_eva_8=0&stu_pass_eval_test_8=0&no_award_8=0&only_drh_book_8=0&inc_drh_book_8=0&stu_inc_drh_9=0&pro_book_rec_9=0&stu_per_eva_9=0&stu_pass_eval_test_9=0&no_award_9=0&only_drh_book_9=0&inc_drh_book_9=0&stu_inc_drh_10=0&pro_book_rec_10=0&stu_per_eva_10=0&stu_pass_eval_test_10=0&no_award_10=0&only_drh_book_10=0&inc_drh_book_10=0&ver_rec_qty_pro_book=0&total_drh_book=0&rec_book_ins=0&ins_book_drh=0&ins_book_drh_ref=0&all_drh_books=0&overall_com_mda=0";
 
 
 }
