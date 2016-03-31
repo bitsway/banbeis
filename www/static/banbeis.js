@@ -1054,6 +1054,8 @@ function syncData(){
 //============================compliance Verification============================
 
 function complianceVerification(){
+	$("#s_quick_school").val("");
+	
 	
 	if(localStorage.sync_code==undefined || localStorage.sync_code==""){
 			$(".errorChk").text("Required Sync");
