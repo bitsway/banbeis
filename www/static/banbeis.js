@@ -53,7 +53,7 @@ function onErrorComp(error) {
 
 //---- online 
 var apipath="http://c003.cloudapp.net/banbeis/syncmobile/";
-var apipath_compliance="http://c003.cloudapp.net/banbeis/syncmobile_compliance/";
+var apipath_compliance="http://c003.cloudapp.net/banbeis/syncmobile_compliance_new/";
 
 //--- local
 //var apipath="http://127.0.0.1:8000/banbeis/syncmobile/";
@@ -1222,7 +1222,7 @@ function banbeisFirstDataNext(){
 						 //$("#c_selected").show();
 						 
 					}else if (resultStr[0]=="Failed"){
-						$(".comp_error").text("Invalid School");
+						$(".comp_error").text("Audit report already submitted for this school or wrong EIIN. Please contact with admin if you think this school in incorrectly flagged.");
 											
 					} 
 				
@@ -3311,11 +3311,11 @@ function complianceData7Next(){
 			}else if (pmt_stu_coll_ssc_award==""){
 				$(".errorChk").text("Required PMT Students Pass Award");	
 			}else if (parseInt(pmt_stu_pass_ssc)<parseInt(pmt_stu_coll_ssc_award)){
-				$(".errorChk").text("Less than PMT Students Passed SSC or Equivalent");
+				$(".errorChk").text("Award can not be more than passed students");
 			}else if (pmt_stu_higher_study==""){
 				$(".errorChk").text("Required PMT Students Higher Study");
-			}else if (parseInt(pmt_stu_coll_ssc_award)<parseInt(pmt_stu_higher_study)){
-				$(".errorChk").text("Less than PMT Students Pass Award");	
+			}else if (parseInt(pmt_stu_pass_ssc)<parseInt(pmt_stu_higher_study)){
+				$(".errorChk").text("Higher study can not be more than passed students");	
 			}else if (pass_award_dis==""||pass_award_dis==0){
 				$(".errorChk").text("Required Award Distributed ");	
 			}else if (stu_award_ref_period_sem==""||stu_award_ref_period_sem==0){
@@ -3829,7 +3829,7 @@ function complianceDataSubmit(){
 						$(".errorChk").text("Syncing photo 1..");
 						imageName = localStorage.mobile_no+"_"+get_time+".jpg";										
 						uploadPhotoAch(imagePathA, imageName);	
-						$("#btn_com_submit").show();					
+						//$("#btn_com_submit").show();					
 					}
 										
 				//} //-end check location
@@ -3861,7 +3861,10 @@ function onFailA(message) {
     alert('Failed because: ' + message);
 }
 
-function uploadPhotoAch(imageURI, imageName) {
+
+
+
+function uploadPhotoAch(imageURI, imageName) { // First Step of compliance submission
 		
 	//winAchInfo();
 	var options = new FileUploadOptions();
@@ -3892,7 +3895,7 @@ function winAchInfo(r) {
 		imageName2 = localStorage.mobile_no+"_"+get_time+".jpg";
 				
 		uploadPhoto2Ach(imagePath2A, imageName2);
-		$("#btn_com_submit").show();		
+		//$("#btn_com_submit").show();		
 	}
 	
 	
@@ -3901,26 +3904,17 @@ function winAchInfo(r) {
 function onfail(r) {
 	$(".errorChk").text('File upload Failed. Please check internet connection.');
 	$("#btn_com_submit").show();
-	//var d = new Date();	
-	//var get_time=d.getTime();
-	
-	//imagePath2A="test2"
-	//if (imagePath2A!=""){							
-	//	$(".errorChk").text("Syncing photo 2..");
-	//	imageName2 = localStorage.mobile_no+"_"+get_time+".jpg";		
-	//	uploadPhoto2Ach(imagePath2A, imageName2);		
-	//}
 }
 
 //-----------------------image 2
 
-function getAchivementImage2Com() {
+function getAchivementImage2Com() { //unused
 	navigator.camera.getPicture(onSuccess2A, onFail2A, { quality: 50,
 	targetWidth: 300,
 	destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true });		
 }
 
-function onSuccess2A(imageURI) {		
+function onSuccess2A(imageURI) {	//unused	
     var image = document.getElementById('com_myImage2A');
     image.src = imageURI;
 	imagePath2A = imageURI;	
@@ -3928,13 +3922,13 @@ function onSuccess2A(imageURI) {
 	
 }
 
-function onFail2A(message) {
+function onFail2A(message) { //unused
 	imagePath2A="";
     alert('Failed because: ' + message);
 }
 
 
-function uploadPhoto2Ach(imageURI, imageName2) {
+function uploadPhoto2Ach(imageURI, imageName2) { // second step
 	//winComInfo2();
 	var options = new FileUploadOptions();
     options.fileKey="upload";
@@ -3957,11 +3951,11 @@ function winComInfo2(r) {
 	syncDataCom();
 }
 
-function onfail(r) {
+/*function onfail(r) {
 	$(".errorChk").text('File upload Failed. Please check internet connection. ');
 	
 	//syncDataCom();
-}
+}*/
 
 function syncDataCom(){	
 			var com_eiin=$("#com_eiin").val();
