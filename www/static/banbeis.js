@@ -56,8 +56,8 @@ var apipath="http://c003.cloudapp.net/banbeis/syncmobile/";
 var apipath_compliance="http://c003.cloudapp.net/banbeis/syncmobile_compliance_new/";
 
 //--- local
-//var apipath="http://127.0.0.1:8000/banbeis/syncmobile/";
-//var apipath_compliance="http://127.0.0.1:8000/banbeis/syncmobile_compliance/";
+//var apipath_pmt="http://127.0.0.1:8000/banbeis/syncmobile/";
+//var apipath_compliance="http://127.0.0.1:8000/banbeis/syncmobile_compliance_new/";
 
  url ="";
 
@@ -127,7 +127,7 @@ function syncBasic() {
 		
 		 	//alert(apipath+'passwordCheck?cid=BANBEIS&mobile='+mobile+'&password='+encodeURIComponent(password)+'&sync_code='+localStorage.sync_code);
 			$.ajax({
-			  url:apipath+'passwordCheck?cid=BANBEIS&mobile='+mobile+'&password='+encodeURIComponent(password)+'&sync_code='+localStorage.sync_code,
+			  url:apipath_pmt+'passwordCheck?cid=BANBEIS&mobile='+mobile+'&password='+encodeURIComponent(password)+'&sync_code='+localStorage.sync_code,
 			  success: function(result) {
 				syncResult=result
 				//alert(syncResult);
@@ -240,7 +240,7 @@ function pmthhVerification(){
 		}else{
 			//alert(apipath+'get_div_list?cid=BANBEIS&sync_code='+localStorage.sync_code);
 			$.ajax({
-			  url:apipath+'get_div_list?cid=BANBEIS&sync_code='+localStorage.sync_code,
+			  url:apipath_pmt+'get_div_list?cid=BANBEIS&sync_code='+localStorage.sync_code,
 			  success: function(divStr) {
 					  divNameList=divStr.split("<fd>");
 					  divCmbo="";
@@ -272,9 +272,9 @@ function pmthhVerification(){
 			
 	localStorage.student_id=student_id	
 		
-		///alert(apipath+'studentInfoCheck?cid=BANBEIS&sync_code='+localStorage.sync_code+'&student_id='+student_id);
+		//alert(apipath_pmt+'studentInfoCheck?cid=BANBEIS&sync_code='+localStorage.sync_code+'&student_id='+student_id);
 		$.ajax({
-			  url:apipath+'studentInfoCheck?cid=BANBEIS&sync_code='+localStorage.sync_code+'&student_id='+student_id,
+			  url:apipath_pmt+'studentInfoCheck?cid=BANBEIS&sync_code='+localStorage.sync_code+'&student_id='+encodeURIComponent(student_id),
 			  success: function(result) {
 				  resultStr=result.split("<fd>");
 				  	//alert(resultStr);			  	
@@ -282,10 +282,11 @@ function pmthhVerification(){
 						  studentStr=resultStr[1].split("fdfd");
 					  	  //alert(studentStr);
 						 
-						  union_name=studentStr[0]; 
-						  union_ward_no=studentStr[1];
-						  pourashava_name=studentStr[2];
-						  pourashava_ward_no=studentStr[3];
+						  
+						  current_school_name=studentStr[0];
+						  current_eiin=studentStr[1];
+						  union_name=studentStr[2]; 
+						  pourashava_name=studentStr[3];
 						  upazila_thana=studentStr[4];
 						  dist_name=studentStr[5];
 						  div_name=studentStr[6];
@@ -294,40 +295,26 @@ function pmthhVerification(){
 						  dob=studentStr[9];
 						  fathers_name=studentStr[10];
 						  mothers_name=studentStr[11];
-						  gender=studentStr[12];
-						  current_eiin=studentStr[13];
-						  current_school_name=studentStr[14];
-						  current_class=studentStr[15];
-						  previous_school_name=studentStr[16];
-						  previous_eiin=studentStr[17];
-						  previous_class=studentStr[18];
-						  guardian_name=studentStr[19];
-						  parents_village=studentStr[20];
-						  parents_post=studentStr[21];
-						  parents_union=studentStr[22];
-						  parents_upazila=studentStr[23];						  
+						  gender=studentStr[12];		
+						  parents_village=studentStr[13];
+						  parents_post=studentStr[14];
+						  parents_union=studentStr[15];
+						  parents_upazila=studentStr[16];						  
 						
 						  //alert(parents_village);
-						 
+						 $("#insName").val(current_school_name);
+						 $("#eiinNo").val(current_eiin);
 						 $("#union_name").val(union_name);
-						 $("#ward_no").val(union_ward_no);
-						 $("#pourashave").val(pourashava_name);
-						 $("#wardno_pourashave").val(pourashava_ward_no);
-						 $("#upazila").val(upazila_thana);
-						 $("#zila").val(dist_name);
-						 $("#division").val(div_name);
-						 $("#name_of_applicant").val(student_name);	 
-						 $("#stu_id").val(student_id);
+						 $("#pourashava_name").val(pourashava_name);
+						 $("#upazila_name").val(upazila_thana);
+						 $("#zila_name").val(dist_name);
+						 $("#division_name").val(div_name);
+						 $("#student_name").val(student_name);	 
+						 $("#student_id").val(student_id);
 						 $("#dob").val(dob);
 						 $("#fathers_name").val(fathers_name);	
 						 $("#mothers_name").val(mothers_name);	
-						 $("#gender").val(gender);
-						 $("#insName").val(current_school_name);
-						 $("#eiinNo").val(current_eiin);
-						 $("#present_school").val(current_school_name);
-						 $("#class_studied_present").val(current_class);
-						 $("#dropped_school_name_enrolled").val(previous_school_name);
-						 $("#dropped_class_studied_past").val(previous_class); 
+						 $("#gen_der").val(gender);
 						 $("#parents_village").val(parents_village); 
 						 $("#parents_post").val(parents_post); 
 						 $("#parents_union").val(parents_union); 
@@ -337,7 +324,7 @@ function pmthhVerification(){
 						 $.mobile.navigate(url);
 						 
 					}else if (resultStr[0]=="Failed"){
-						$("#comp_error").text(resultStr[1]);						
+						$(".pmt_error").text("Audit report already submitted for this Student or wrong Student ID. Please contact with admin if you think this Student in incorrectly flagged.");					
 					}	
 									
 			  }
@@ -346,7 +333,6 @@ function pmthhVerification(){
 			 
 }
 
-
 function getDist(){	
 	
 	div_name=$("#s_div").val();
@@ -354,12 +340,12 @@ function getDist(){
 	//localStorage.sDivName=div_name		
 	//alert(apipath+'get_div_dist_list?cid=BANBEIS&sync_code='+localStorage.sync_code+'&div_name='+div_name);
 	$.ajax({
-		  url:apipath+'get_div_dist_list?cid=BANBEIS&sync_code='+localStorage.sync_code+'&div_name='+div_name,
+		  url:apipath_pmt+'get_div_dist_list?cid=BANBEIS&sync_code='+localStorage.sync_code+'&div_name='+div_name,
 		  success: function(distStr) {
 				  distNameList=distStr.split("<fd>");
 				  distCmbo="";
 				  for (i=0;i<distNameList.length;i++){					 
-					  distCmbo+="<option value="+distNameList[i]+">"+distNameList[i]+"</option>";					  
+					  distCmbo+="<option value="+encodeURIComponent(distNameList[i])+">"+distNameList[i]+"</option>";					  
 				  }	
 				 
 				  var rpt_rep_ob=$("#s_dist");
@@ -382,12 +368,12 @@ function getUp(){
 	dist_name=$("#s_dist").val();	
 	//alert(apipath+'get_dist_up_list?cid=BANBEIS&sync_code='+localStorage.sync_code+'&div_name='+div_name+'&dist_name='+dist_name);
 	$.ajax({
-		  url:apipath+'get_dist_up_list?cid=BANBEIS&sync_code='+localStorage.sync_code+'&div_name='+div_name+'&dist_name='+dist_name,
+		  url:apipath_pmt+'get_dist_up_list?cid=BANBEIS&sync_code='+localStorage.sync_code+'&div_name='+encodeURIComponent(div_name)+'&dist_name='+encodeURIComponent(dist_name),
 		  success: function(upStr) {
 				  upNameList=upStr.split("<fd>");
 				  upCmbo="";
 				  for (i=0;i<upNameList.length;i++){					 
-					  upCmbo+="<option value="+upNameList[i]+">"+upNameList[i]+"</option>";					  
+					  upCmbo+="<option value="+encodeURIComponent(upNameList[i])+">"+upNameList[i]+"</option>";					  
 				  }			  
 				  //$("#s_up").html(upCmbo);
 				  var rpt_rep_ob=$("#s_up");
@@ -409,12 +395,12 @@ function getUpSchool(){
 	up_name=$("#s_up").val();	
 	//alert(apipath+'get_up_school_list?cid=BANBEIS&sync_code='+localStorage.sync_code+'&div_name='+div_name+'&dist_name='+dist_name+'&up_name='+up_name);
 	$.ajax({
-		  url:apipath+'get_up_school_list?cid=BANBEIS&sync_code='+localStorage.sync_code+'&div_name='+div_name+'&dist_name='+dist_name+'&up_name='+up_name,
+		  url:apipath_pmt+'get_up_school_list?cid=BANBEIS&sync_code='+localStorage.sync_code+'&div_name='+encodeURIComponent(div_name)+'&dist_name='+encodeURIComponent(dist_name)+'&up_name='+encodeURIComponent(up_name),
 		  success: function(schoolStr) {
 				  schIdNameList=schoolStr.split("<fd>");
 				  schoolCmbo="";
 				  for (i=0;i<schIdNameList.length;i++){					  
-						 schoolCmbo+="<option value="+schIdNameList[i]+">"+schIdNameList[i]+"</option>";						  				  		
+						 schoolCmbo+="<option value="+encodeURIComponent(schIdNameList[i])+">"+schIdNameList[i]+"</option>";						  				  		
 				  }			
 				  	  
 				  //$("#s_school").html(schoolCmbo);
@@ -443,15 +429,15 @@ function getStudent(){
 	if (schIdName.length>=1){
 		schoolId=schIdName[0];
 		}
-	//alert(apipath+'get_school_stuid_list?cid=BANBEIS&sync_code='+localStorage.sync_code+'&div_name='+div_name+'&dist_name='+dist_name+'&up_name='+up_name+'&schoolId='+schoolId);
+	//alert(apipath_pmt+'get_school_stuid_list?cid=BANBEIS&sync_code='+localStorage.sync_code+'&div_name='+encodeURIComponent(div_name)+'&dist_name='+encodeURIComponent(dist_name)+'&up_name='+encodeURIComponent(up_name)+'&schoolId='+encodeURIComponent(schoolId));
 	var scStIdListStr="";
 		$.ajax({
-			  url:apipath+'get_school_stuid_list?cid=BANBEIS&sync_code='+localStorage.sync_code+'&div_name='+div_name+'&dist_name='+dist_name+'&up_name='+up_name+'&schoolId='+schoolId,
+			  url:apipath_pmt+'get_school_stuid_list?cid=BANBEIS&sync_code='+localStorage.sync_code+'&div_name='+encodeURIComponent(div_name)+'&dist_name='+encodeURIComponent(dist_name)+'&up_name='+encodeURIComponent(up_name)+'&schoolId='+encodeURIComponent(schoolId),
 			  success: function(resStr) {				  
 				  scStIdListStr=resStr.split("<fd>");
 				  schoolStuCmbo="";
 				  for (i=0;i<scStIdListStr.length;i++){					  
-						 schoolStuCmbo+="<option value="+scStIdListStr[i]+">"+scStIdListStr[i]+"</option>";						  				  
+						 schoolStuCmbo+="<option value="+encodeURIComponent(scStIdListStr[i])+">"+scStIdListStr[i]+"</option>";						  				  
 				  }				  
 				  //$("#studentID").html(schoolStuCmbo);
 				  var rpt_rep_ob=$("#studentID");
@@ -470,43 +456,92 @@ function getStudent(){
 	
 //===================		
 function banbeisDataNext(){
-		insName=$("#insName").val();
-		eiinNo=$("#eiinNo").val();
-		union_name=$("#union_name").val();
-		//new_union_name=$("#new_union_name").val();
-		ward_no=$("#ward_no").val();
-		//new_ward_no=$("#new_ward_no").val();
-		pourashave=$("#pourashave").val();
-		//new_pourashave=$("#new_pourashave").val();
-		wardno_pourashave=$("#wardno_pourashave").val();
-		//new_wardno_pourashave=$("#new_wardno_pourashave").val();
-		upazila=$("#upazila").val();
-		zila=$("#zila").val();
-		division=$("#division").val();
-
-		if (upazila=="" ){
-			$(".errorChk").text("Required Data [7]");	
-		}else if (zila=="" ){
-			$(".errorChk").text("Required Data [8]");	
-		}else if (division=="" ){
-			$(".errorChk").text("Required Data [9]");	
+		var edu_year=$("#edu_year").val();
+		var insName=$("#insName").val();
+		var eiinNo=$("#eiinNo").val();
+		var union_name=$("#union_name").val();
+		var pourashava_name=$("#pourashava_name").val();
+		var upazila_name=$("#upazila_name").val();
+		var zila_name=$("#zila_name").val();
+		var division_name=$("#division_name").val();
+		
+		var student_name=$("#student_name").val();
+		var student_id=$("#student_id").val();
+		var dob=$("#dob").val();
+		var fathers_name=$("#fathers_name").val();
+		var fathers_nid=$("#fathers_nid").val();
+		var mothers_name=$("#mothers_name").val();
+		var mothers_nid=$("#mothers_nid").val();
+		var gen_der=$("#gen_der").val();
+		var pre_stu_located=$("#pre_stu_located").val();
+		var guardian_absence_of_parents=$("#guardian_absence_of_parents").val();
+		var relation_student_with_guardian=$("#relation_student_with_guardian").val();
+		
+		var parents_village=$("#parents_village").val();
+		var parents_post=$("#parents_post").val();
+		var parents_union=$("#parents_union").val();
+		var parents_upazila=$("#parents_upazila").val();
+		
+		var student_village=$("#student_village").val();
+		var student_post=$("#student_post").val();
+		var student_union=$("#student_union").val();
+		var student_upazila=$("#student_upazila").val();
+		
+		if (edu_year=="" || edu_year==0 ){
+			$(".errorChk").text("Required Education Year");
+		}else if (insName=="" ){
+			$(".errorChk").text("Required Institution Name");	
+		}else if (eiinNo=="" ){
+			$(".errorChk").text("Required EIIN No");	
+		/*}else if (union_name=="" ){
+			$(".errorChk").text("Required Union Name");	
+		}else if (pourashava_name=="" ){
+			$(".errorChk").text("Required Pourashava Name");	*/
+		}else if (upazila_name=="" ){
+			$(".errorChk").text("Required Upazila Name");	
+		}else if (zila_name=="" ){
+			$(".errorChk").text("Required Zila Name");	
+		}else if (division_name=="" ){
+			$(".errorChk").text("Required Division Name");	
+		}else if (student_name=="" ){
+			$(".errorChk").text("Required Student Name");	
+		}else if (student_id=="" ){
+			$(".errorChk").text("Required Student ID");	
+		}else if (dob=="" ){
+			$(".errorChk").text("Required Date of Birth");		
+		}else if (fathers_name=="" ){
+			$(".errorChk").text("Required Fathers Name");	
+		}else if (mothers_name=="" ){
+			$(".errorChk").text("Required Mothers Name");	
+		}else if (gen_der=="" ){
+			$(".errorChk").text("Required Gender");	
+		}else if (pre_stu_located=="" ){
+			$(".errorChk").text("Required Present Student Located at");	
+		}else if (relation_student_with_guardian=="" ){
+			$(".errorChk").text("Required Relation Student With Guardian");	
+			
+		}else if (parents_village=="" ){
+			$(".errorChk").text("Required Parents Village");		
+		}else if (parents_post=="" ){
+			$(".errorChk").text("Required Parents Post");	
+		}else if (parents_union=="" ){
+			$(".errorChk").text("Required Parents Union");	
+		}else if (parents_upazila=="" ){
+			$(".errorChk").text("Required Parents Upazila");
+		
+		
+		}else if (student_village=="" ){
+			$(".errorChk").text("Required Student Village");		
+		}else if (student_post=="" ){
+			$(".errorChk").text("Required Student Post");	
+		}else if (student_union=="" ){
+			$(".errorChk").text("Required Student Union");	
+		}else if (student_upazila=="" ){
+			$(".errorChk").text("Required Student Upazila");
+		
 		}else{
-				insName=insName
-				eiinNo=eiinNo
-				union_name=union_name
-				//new_union_name=new_union_name
-				ward_no=ward_no
-				//new_ward_no=new_ward_no
-				pourashave=pourashave
-				//new_pourashave=new_pourashave
-				wardno_pourashave=wardno_pourashave
-				//new_wardno_pourashave=new_wardno_pourashave
-				upazila=upazila
-				zila=zila
-				division=division
-				//&new_union_name="+new_union_name+"&new_ward_no="+new_ward_no+"&new_pourashave="+new_pourashave+"&new_wardno_pourashave="+new_wardno_pourashave+"
-				banbeisData="&insName="+insName+"&eiinNo="+eiinNo+"&union_name="+union_name+"&ward_no="+ward_no+"&pourashave="+pourashave+"&wardno_pourashave="+wardno_pourashave+"&upazila="+upazila+"&zila="+zila+"&division="+division
 				
+				banbeisData="&edu_year="+edu_year+"&insName="+insName+"&eiinNo="+eiinNo+"&union_name="+union_name+"&pourashava_name="+pourashava_name+"&upazila_name="+upazila_name+"&zila_name="+zila_name+"&division_name="+division_name+"&student_name="+student_name+"&student_id="+student_id+"&dob="+dob+"&fathers_name="+fathers_name+"&fathers_nid="+fathers_nid+"&mothers_name="+mothers_name+"&mothers_nid="+mothers_nid+"&gen_der="+gen_der+"&pre_stu_located="+pre_stu_located+"&guardian_absence_of_parents="+guardian_absence_of_parents+"&relation_student_with_guardian="+relation_student_with_guardian+"&parents_village="+parents_village+"&parents_post="+parents_post+"&parents_union="+parents_union+"&parents_upazila="+parents_upazila+"&student_village="+student_village+"&student_post="+student_post+"&student_union="+student_union+"&student_upazila="+student_upazila				
 							/*banbeisData=student_serial_no+'fdfd'+booth_no+'fdfd'+union_name+'fdfd'+ward_no+'fdfd'+pourashave+'fdfd'+wardno_pourashave+'fdfd'+upazila+'fdfd'+zila+'fdfd'+division*/
 				
 				//alert(banbeisData);
@@ -515,160 +550,77 @@ function banbeisDataNext(){
 				$("input[name='checkConfirmAddress']").attr('checked',false);
 				
 				url="#page2"
-				//url="#inPhoto"
 				$.mobile.navigate(url);				
 				
 			}
 	
 	};	
 
-//---------------------------Banbeis data page 2  
+
+
+//-----------Banbeis data page 2
+
 function banbeisData2Next(){
-		name_of_applicant=$("#name_of_applicant").val();
-		//new_name_of_applicant=$("#new_name_of_applicant").val();
-		stu_id=$("#stu_id").val();
-		dob=$("#dob").val();
-		//new_dob=$("#new_dob").val();
-		fathers_name=$("#fathers_name").val();
-		//new_fathers_name=$("#new_fathers_name").val();
-		fathers_nid=$("#fathers_nid").val();
-		mothers_name=$("#mothers_name").val();
-		//new_mothers_name=$("#new_mothers_name").val();
-		mothers_nid=$("#mothers_nid").val();
-		gender=$("#gender").val();
-		//new_gender=$("#new_gender").val();
-		present_school=$("#present_school").val();
-		//new_present_school=$("#new_present_school").val();
-		class_studied_present=$("#class_studied_present").val();
-		dropped_school_name_enrolled=$("#dropped_school_name_enrolled").val();
-		dropped_class_studied_past=$("#dropped_class_studied_past").val();
-		guardian_absence_of_parents=$("#guardian_absence_of_parents").val();
-		relation_student_with_guardian=$("#relation_student_with_guardian").val();
-		parents_village=$("#parents_village").val();
-		parents_post=$("#parents_post").val();
-		parents_union=$("#parents_union").val();
-		parents_upazila=$("#parents_upazila").val();
-		//----------
-		student_village=$("#student_village").val();
-		student_post=$("#student_post").val();
-		student_union=$("#student_union").val();
-		student_upazila=$("#student_upazila").val();
-		//
-//		var tempVdate=/^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
-//		}else if(!dob.match(tempVdate)){
-//			$(".errorChk").text("Invalid Data [2]");
-		if (class_studied_present=="" ){
-			$(".errorChk").text("Required Data [10]");
-		}else if (class_studied_present<=4 || class_studied_present>9 ){
-			$(".errorChk").text("Required Data [10] class 5-9");
-		}else if (relation_student_with_guardian=="" ){
-			$(".errorChk").text("Required Data [13] ");
-		}else if (parents_village=="" ){
-			$(".errorChk").text("Required Data [14] (ক)");
-		}else if (parents_post=="" ){
-			$(".errorChk").text("Required Data [14] (ক)");	
-		}else if (parents_union=="" ){
-			$(".errorChk").text("Required Data [14] (ক)");
-		//}else if (parents_upazila=="" ){
-			//$(".errorChk").text("Required Data [14] (ক)");		
-		}else{
-			
-			name_of_applicant=name_of_applicant
-			//new_name_of_applicant=new_name_of_applicant
-			stu_id=stu_id
-			dob=dob
-			//new_dob=new_dob
-			fathers_name=fathers_name
-			//new_fathers_name=new_fathers_name
-			fathers_nid=fathers_nid
-			mothers_name=mothers_name
-			//new_mothers_name=new_mothers_name
-			mothers_nid=mothers_nid
-			gender=gender
-			//new_gender=new_gender		
-			present_school=present_school
-			//new_present_school=new_present_school
-			class_studied_present=class_studied_present
-			dropped_school_name_enrolled=dropped_school_name_enrolled
-			dropped_class_studied_past=dropped_class_studied_past
-			guardian_absence_of_parents=guardian_absence_of_parents
-			relation_student_with_guardian=relation_student_with_guardian
-			parents_village=parents_village
-			parents_post=parents_post
-			parents_union=parents_union
-			parents_upazila=parents_upazila
-			//----------
-			student_village=student_village
-			student_post=student_post
-			student_union=student_union
-			student_upazila=student_upazila
-			//&new_name_of_applicant="+new_name_of_applicant+"&new_dob="+new_dob+"&new_fathers_name="+new_fathers_name+"&new_mothers_name="+new_mothers_name+"&new_gender="+new_gender+"&new_present_school="+new_present_school+"
-			banbeisDataPage2="&name_of_applicant="+name_of_applicant+"&stu_id="+stu_id+"&dob="+dob+"&fathers_name="+fathers_name+"&fathers_nid="+fathers_nid+"&mothers_name="+mothers_name+"&mothers_nid="+mothers_nid+"&gender="+gender+"&present_school="+present_school+"&class_studied_present="+class_studied_present+"&dropped_school_name_enrolled="+dropped_school_name_enrolled+"&dropped_class_studied_past="+dropped_class_studied_past+"&guardian_absence_of_parents="+guardian_absence_of_parents+"&relation_student_with_guardian="+relation_student_with_guardian+"&parents_village="+parents_village+"&parents_post="+parents_post+"&parents_union="+parents_union+"&parents_upazila="+parents_upazila+"&student_village="+student_village+"&student_post="+student_post+"&student_union="+student_union+"&student_upazila="+student_upazila
-			//alert(banbeisDataPage2);
-			
-			<!--banbeisDataPage2=name_of_applicant+'fdfd'+dob+'fdfd'+fathers_name+'fdfd'+fathers_nid+'fdfd'+mothers_name+'fdfd'+mothers_nid+'fdfd'+present_school+'fdfd'+class_studied_present+'fdfd'+dropped_school_name_enrolled+'fdfd'+dropped_class_studied_past+'fdfd'+guardian_absence_of_parents+'fdfd'+relation_student_with_guardian+'fdfd'+parents_village+'fdfd'+parents_post+'fdfd'+parents_union+'fdfd'+parents_upazila-->
-			
-			 $(".errorChk").text("");
-			 			 
-			 url="#page3";
-			 //url="#inPhoto"
-			
-			$.mobile.navigate(url);
-			//$(location).attr('href',url);
-		}
-	
-	};	
-
-
-//---------------------------Banbeis data page 3
-
-function banbeisData3Next(){
 		
-		q1_a=$("#q1_a").val();
-		q2_a=$("#q2_a").val();
-		q3_a=$("#q3_a").val();
-		q4_a=$("#q4_a").val();
-		q5_a=$("#q5_a").val();
-		q6_a=$("#q6_a").val();
-		q7_a=$("#q7_a").val();
-		q8_a=$("#q8_a").val();
+		var q1_a=$("#q1_a").val();
+		var q2_a=$("#q2_a").val();
+		var q3_a=$("#q3_a").val();
+		var q4_a=$("#q4_a").val();
+		var q5_a=$("#q5_a").val();
+		var q6_a=$("#q6_a").val();
+		var q7_a=$("#q7_a").val();
+		var q8_a=$("#q8_a").val();
+		var q9_a=$("#q9_a").val();
+		var q10_a=$("#q10_a").val();
+		var q11_a=$("#q11_a").val();
+		var q12_a=$("#q12_a").val();
+		var q13_a=$("#q13_a").val();
+		var q14_a=$("#q14_a").val();
+		var q15_a=$("#q15_a").val();
+		
 			
 		if (q1_a=="" ){
-			$(".errorChk").text("Required Q1 প্রকৃত তথ্য ");
+			$(".errorChk").text("Required Q1");
 		}else if (q2_a=="" ){
-			$(".errorChk").text("Required Q2 প্রকৃত তথ্য ");	
+			$(".errorChk").text("Required Q2");	
 		}else if (q3_a=="" ){
-			$(".errorChk").text("Required Q3 প্রকৃত তথ্য ");		
+			$(".errorChk").text("Required Q3");		
 		}else if (q4_a=="" ){
-			$(".errorChk").text("Required Q4 প্রকৃত তথ্য ");		
+			$(".errorChk").text("Required Q4");		
 		}else if (q5_a=="" ){
-			$(".errorChk").text("Required Q5 প্রকৃত তথ্য ");	
+			$(".errorChk").text("Required Q5");	
 		}else if (q6_a=="" ){
-			$(".errorChk").text("Required Q6 প্রকৃত তথ্য ");		
+			$(".errorChk").text("Required Q6");		
 		}else if (q7_a=="" ){
-			$(".errorChk").text("Required Q7 প্রকৃত তথ্য ");		
+			$(".errorChk").text("Required Q7");		
 		}else if (q8_a=="" ){
-			$(".errorChk").text("Required Q8 প্রকৃত তথ্য ");		
-		
+			$(".errorChk").text("Required Q8");		
+		}else if (q9_a=="" ){
+			$(".errorChk").text("Required Q9");		
+		}else if (q10_a=="" ){
+			$(".errorChk").text("Required Q10");		
+		}else if (q11_a=="" ){
+			$(".errorChk").text("Required Q11");		
+		}else if (q12_a=="" ){
+			$(".errorChk").text("Required Q12");		
+		}else if (q13_a=="" ){
+			$(".errorChk").text("Required Q13");		
+		}else if (q14_a=="" ){
+			$(".errorChk").text("Required Q14");
+		}else if (q15_a=="" ){
+			$(".errorChk").text("Required Q15");	
+					
 		}else{
 			
-			q1_a=q1_a
-			q2_a=q2_a
-			q3_a=q3_a
-			q4_a=q4_a
-			q5_a=q5_a
-			q6_a=q6_a
-			q7_a=q7_a
-			q8_a=q8_a
+			banbeisDataPage2="&q1_a="+q1_a+"&q2_a="+q2_a+"&q3_a="+q3_a+"&q4_a="+q4_a+"&q5_a="+q5_a+"&q6_a="+q6_a+"&q7_a="+q7_a+"&q8_a="+q8_a+"&q9_a="+q9_a+"&q10_a="+q10_a+"&q11_a="+q11_a+"&q12_a="+q12_a+"&q13_a="+q13_a+"&q14_a="+q14_a+"&q15_a="+q15_a
 			
-			banbeisDataPage3="&q1_a="+q1_a+"&q2_a="+q2_a+"&q3_a="+q3_a+"&q4_a="+q4_a+"&q5_a="+q5_a+"&q6_a="+q6_a+"&q7_a="+q7_a+"&q8_a="+q8_a
-			//alert(banbeisDataPage3);
+			
+			//alert(banbeisDataPage2);
 							
 			 	
 			$(".errorChk").text("");
 						 
-			url="#page4";
-			//url="#inPhoto"
+			url="#page3";
 			
 			$.mobile.navigate(url);
 			//$(location).attr('href',url);
@@ -678,192 +630,94 @@ function banbeisData3Next(){
 	};	
 
 
-//---------------------------Banbeis data page 4
+//------------Banbeis data page 3
 
-function banbeisData4Next(){
+function banbeisData3Next(){
 		
-		q9_a=$("#q9_a").val();
-		q10_a=$("#q10_a").val();
-		q11_a=$("#q11_a").val();
-		q12_a=$("#q12_a").val();
-		q13_a=$("#q13_a").val();
-		q14_a=$("#q14_a").val();	
-		q15_a=$("#q15_a").val();
-		q16_a=$("#q16_a").val();
+		var q16_a=$("#q16_a").val();
+		var q17_a=$("#q17_a").val();
+		var q18_a=$("#q18_a").val();
+		var q19_a=$("#q19_a").val();
+		var q20_a=$("#q20_a").val();
+		var q21_a=$("#q21_a").val();	
+		var q22_a=$("#q22_a").val();
+		var q23_a=$("#q23_a").val();
+		var q24_a=$("#q24_a").val();
+		var q25_a=$("#q25_a").val();
+		var q26_a=$("#q26_a").val();
+		var q27_a=$("#q27_a").val();
 		
-		if (q9_a=="" ){
-			$(".errorChk").text("Required Q9 প্রকৃত তথ্য ");
-		}else if (q10_a=="" ){
-			$(".errorChk").text("Required Q10 প্রকৃত তথ্য ");	
-		}else if (q11_a=="" ){
-			$(".errorChk").text("Required Q11 প্রকৃত তথ্য ");		
-		}else if (q12_a=="" ){
-			$(".errorChk").text("Required Q12 প্রকৃত তথ্য ");		
-		}else if (q13_a=="" ){
-			$(".errorChk").text("Required Q13 প্রকৃত তথ্য ");	
-		}else if (q14_a=="" ){
-			$(".errorChk").text("Required Q14 প্রকৃত তথ্য ");		
-		}else if (q15_a=="" ){
-			$(".errorChk").text("Required Q15 প্রকৃত তথ্য ");		
-		}else if (q16_a=="" ){
-			$(".errorChk").text("Required Q16 প্রকৃত তথ্য ");		
-			
-		}else{
-						
-			q9_a=q9_a
-			q10_a=q10_a
-			q11_a=q11_a
-			q12_a=q12_a
-			q13_a=q13_a
-			q14_a=q14_a
-			q15_a=q15_a
-			q16_a=q16_a
-			
-			banbeisDataPage4="&q9_a="+q9_a+"&q10_a="+q10_a+"&q11_a="+q11_a+"&q12_a="+q12_a+"&q13_a="+q13_a+"&q14_a="+q14_a+"&q15_a="+q15_a+"&q16_a="+q16_a
-			
-			//alert(banbeisDataPage4);
-						
-			
-			$(".errorChk").text("");
-			
-							
-			 url="#page5";	
-			//url="#inPhoto"
-			
-			$.mobile.navigate(url);
-			//$(location).attr('href',url);
-			
-		  } 
-	
-	};	
-
-
-//---------------------------Banbeis data page 5
-
-function banbeisData5Next(){
-		
-		q17_a=$("#q17_a").val();
-		q18_a=$("#q18_a").val();
-		q19_a=$("#q19_a").val();
-		q20_a=$("#q20_a").val();
-		q21_a=$("#q21_a").val();
-		q22_a=$("#q22_a").val();
-		q23_a=$("#q23_a").val();
-		q24_a=$("#q24_a").val();
-		
-		if (q17_a=="" ){
-			$(".errorChk").text("Required Q17 প্রকৃত তথ্য ");		
+		if (q16_a=="" ){
+			$(".errorChk").text("Required Q16");
+		}else if (q17_a=="" ){
+			$(".errorChk").text("Required Q17");	
 		}else if (q18_a=="" ){
-			$(".errorChk").text("Required Q18 প্রকৃত তথ্য ");		
+			$(".errorChk").text("Required Q18");		
 		}else if (q19_a=="" ){
-			$(".errorChk").text("Required Q19 প্রকৃত তথ্য ");
+			$(".errorChk").text("Required Q19");		
 		}else if (q20_a=="" ){
-			$(".errorChk").text("Required Q20 প্রকৃত তথ্য ");	
+			$(".errorChk").text("Required Q20");	
 		}else if (q21_a=="" ){
-			$(".errorChk").text("Required Q21 প্রকৃত তথ্য ");		
+			$(".errorChk").text("Required Q21");		
 		}else if (q22_a=="" ){
-			$(".errorChk").text("Required Q22 প্রকৃত তথ্য ");		
+			$(".errorChk").text("Required Q22");		
 		}else if (q23_a=="" ){
-			$(".errorChk").text("Required Q23 প্রকৃত তথ্য ");	
+			$(".errorChk").text("Required Q23");	
 		}else if (q24_a=="" ){
-			$(".errorChk").text("Required Q24 প্রকৃত তথ্য ");		
-		
-		}else{
-			
-			q17_a=q17_a
-			q18_a=q18_a
-			q19_a=q19_a
-			q20_a=q20_a
-			q21_a=q21_a
-			q22_a=q22_a
-			q23_a=q23_a
-			q24_a=q24_a
-			
-			banbeisDataPage5="&q17_a="+q17_a+"&q18_a="+q18_a+"&q19_a="+q19_a+"&q20_a="+q20_a+"&q21_a="+q21_a+"&q22_a="+q22_a+"&q23_a="+q23_a+"&q24_a="+q24_a
-			
-			//alert(banbeisDataPage5);
-			
-			$(".errorChk").text("");
-						
-							
-			 url="#page6";	
-			 //url="#inPhoto"
-			
-			$.mobile.navigate(url);
-			//$(location).attr('href',url);
-			
-		  } 
-	
-	};
-
-
-//---------------------------Banbeis data page 6
-
-function banbeisData6Next(){
-		
-		q25_a=$("#q25_a").val();
-		q26_a=$("#q26_a").val();
-		q27_a=$("#q27_a").val();
-		comments=$("#comments").val();
-		overall_comments=$("#overall_comments").val();
-		
-		if (q25_a=="" ){
-			$(".errorChk").text("Required Q25 প্রকৃত তথ্য ");		
+			$(".errorChk").text("Required Q24");	
+		}else if (q25_a=="" ){
+			$(".errorChk").text("Required Q25");	
 		}else if (q26_a=="" ){
-			$(".errorChk").text("Required Q26 প্রকৃত তথ্য ");	
+			$(".errorChk").text("Required Q26");		
 		}else if (q27_a=="" ){
-			$(".errorChk").text("Required Q27 প্রকৃত তথ্য ");	
-			
+			$(".errorChk").text("Required Q27");
+				
 		}else{
 			
-			q25_a=q25_a
-			q26_a=q26_a
-			q27_a=q27_a
-			comments=comments
-			overall_comments=overall_comments			
-						
-			banbeisDataPage6="&q25_a="+q25_a+"&q26_a="+q26_a+"&q27_a="+q27_a+"&comments="+comments+"&overall_comments="+overall_comments
+			banbeisDataPage3="&q16_a="+q16_a+"&q17_a="+q17_a+"&q18_a="+q18_a+"&q19_a="+q19_a+"&q20_a="+q20_a+"&q21_a="+q21_a+"&q22_a="+q22_a+"&q23_a="+q23_a+"&q24_a="+q24_a+"&q25_a="+q25_a+"&q26_a="+q26_a+"&q27_a="+q27_a
 			
-			//alert(banbeisDataPage6);
+			//alert(banbeisDataPage3);
 			
 			$(".errorChk").text("");
 							
-			url="#inPhoto";	
+			 url="#inPhoto";	
 			
 			$.mobile.navigate(url);
 			//$(location).attr('href',url);
 			
 		  } 
 	
-	};
+	};	
 
 
-function banbeisDataSubmit(){
-		$("#btn_ach_submit").hide();
+//========= pmt data submit
+function pmtDataSubmit(){
+		$("#btn_pmt_submit").hide();
 		
 		var d = new Date();	
 		var get_time=d.getTime();		
 
 		
-		latitude=$("#ach_lat").val();
-		longitude=$("#ach_long").val();
+		var latitude=$("#ach_lat").val();
+		var longitude=$("#ach_long").val();
 		
-		achPhoto=$("#achPhoto").val();
-
+		var achPhoto1=$("#achPhoto1").val();
+		//var achPhoto2=$("#achPhoto2").val();
+		
 		if (latitude==undefined || latitude==''){
 			latitude=0;
 			}
 		if (longitude==undefined || longitude==''){
 			longitude=0;
 			}
-		
-		if (achPhoto=='' || achPhoto==undefined){
+		//---------------
+		if (achPhoto1=='' || achPhoto1==undefined){
 			$(".errorChk").text("Please confirm Photo ");
-			$("#btn_ach_submit").show();
+			$("#btn_pmt_submit").show();
 		}else{		
 			if(latitude==0 || longitude==0){
 				$(".errorChk").text("Please confirm your location ");
-				$("#btn_ach_submit").show();
+				$("#btn_pmt_submit").show();
 			}else{				
 				imagePathA="test"
 				if (imagePathA!=""){							
@@ -872,25 +726,28 @@ function banbeisDataSubmit(){
 					uploadPhotoAch(imagePathA, imageName);
 					
 				}
-					
+										
+				//} //-end check location
 				
-			}//end check location
+			}//Photo 2
 		}//chk photo
+		
+		//syncDataPmt()
 		
 	}
 
-
-function getAchivementImage() {
+//------------------------------------image 1
+function getAchivementImage1() {
 	navigator.camera.getPicture(onSuccessA, onFailA, { quality: 50,
 	targetWidth: 300,
 	destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true });		
 }
 
 function onSuccessA(imageURI) {		
-    var image = document.getElementById('myImageA');
+    var image = document.getElementById('myImagePtaA');
     image.src = imageURI;
 	imagePathA = imageURI;	
-	$("#achPhoto").val(imagePathA);
+	$("#achPhoto1").val(imagePathA);
 	
 }
 
@@ -926,118 +783,95 @@ function winAchInfo(r) {
 //    console.log("Code = " + r.responseCode);
 //    console.log("Response = " + r.response);
 //    console.log("Sent = " + r.bytesSent);
-	$("#err_truck_info").text('File upload Successful. Syncing Data...');
+	$(".errorChk").text('File upload Successful. Syncing Data...');
 	syncData();
 }
 
 function onfail(r) {
-	$("#err_truck_info").text('File upload Failed. Syncing Data...');
+	$(".errorChk").text('File upload Failed. Syncing Data...');
 	syncData();
 }
 
 
-
-function syncData(){	
-			//alert(apipath+"submitData?cid=BANBEIS&mobile_no="+localStorage.mobile_no+"&syncCode="+localStorage.sync_code+banbeisData+banbeisDataPage2+banbeisDataPage3+banbeisDataPage4+banbeisDataPage5+banbeisDataPage6+'&st_photo='+imageName+'&latitude='+latitude+'&longitude='+longitude);
+function syncDataPmt(){	
+			var student_id=$("#student_id").val();
+			//alert(apipath_pmt+"submitData_pmt?cid=BANBEIS&mobile_no="+localStorage.mobile_no+"&syncCode="+localStorage.sync_code+'&achPhoto1='+imageName+'&latitude='+latitude+'&longitude='+longitude+"&student_id="+student_id+'&tempText='+ encodeURIComponent(banbeisData)+encodeURIComponent(banbeisDataPage2)+encodeURIComponent(banbeisDataPage3));
 			$.ajax({
 					type: 'POST',
-					url:apipath+"submitData?cid=BANBEIS&mobile_no="+localStorage.mobile_no+"&syncCode="+localStorage.sync_code+banbeisData+banbeisDataPage2+banbeisDataPage3+banbeisDataPage4+banbeisDataPage5+banbeisDataPage6+'&st_photo='+imageName+'&latitude='+latitude+'&longitude='+longitude,
+					url:apipath_pmt+"submitData_pmt?cid=BANBEIS&mobile_no="+localStorage.mobile_no+"&syncCode="+localStorage.sync_code+'&achPhoto1='+imageName+'&latitude='+latitude+'&longitude='+longitude+"&student_id="+student_id+'&tempText='+ encodeURIComponent(banbeisData)+encodeURIComponent(banbeisDataPage2)+encodeURIComponent(banbeisDataPage3),
 					   
 					   success: function(result) {
-							//alert(result);
-						if(result=='Success'){							
-							//------------------------	
-							$("#studentID").val("");
+						   if(result=='Success'){							
+							//alert(result)
+							//--------------
+							 edu_year=$("#edu_year").val("");
+							 insName=$("#insName").val("");
+							 eiinNo=$("#eiinNo").val("");
+							 union_name=$("#union_name").val("");
+							 pourashava_name=$("#pourashava_name").val("");
+							 upazila_name=$("#upazila_name").val("");
+							 zila_name=$("#zila_name").val("");
+							 division_name=$("#division_name").val("");
 							
-							$("#insName").val("");
-							$("#eiinNo").val("");		
-												 		
-							$("#union_name").val("");
-							//$("#new_union_name").val("");
-							$("#ward_no").val("");
-							//$("#new_ward_no").val("");
-							$("#pourashave").val("");
-							//$("#new_pourashave").val("");
-							$("#wardno_pourashave").val("");
-							//$("#new_wardno_pourashave").val("");
-							$("#upazila").val("");
-							$("#zila").val("");
-							$("#division").val("");
+							 student_name=$("#student_name").val("");
+							 student_id=$("#student_id").val("");
+							 dob=$("#dob").val("");
+							 fathers_name=$("#fathers_name").val("");
+							 fathers_nid=$("#fathers_nid").val("");
+							 mothers_name=$("#mothers_name").val("");
+							 mothers_nid=$("#mothers_nid").val("");
+							 gen_der=$("#gen_der").val("");
+							 pre_stu_located=$("#pre_stu_located").val("");
+							 guardian_absence_of_parents=$("#guardian_absence_of_parents").val("");
+							 relation_student_with_guardian=$("#relation_student_with_guardian").val("");
 							
-							$("#name_of_applicant").val("");
-							//$("#new_name_of_applicant").val("");
-							$("#stu_id").val(""); 
-							$("#dob").val("");
-							//$("#new_dob").val("");
-							$("#fathers_name").val("");
-							//$("#new_fathers_name").val("");
-							$("#fathers_nid").val("");
-							$("#mothers_name").val("");
-							//$("#new_mothers_name").val("");
-							$("#mothers_nid").val("");
-							$("#gender").val("");
-							//$("#new_gender").val("");
-							$("#present_school").val("");
-							//$("#new_present_school").val("");
-							$("#class_studied_present").val("");
-							$("#dropped_school_name_enrolled").val("");
-							$("#dropped_class_studied_past").val("");
-							$("#guardian_absence_of_parents").val("");
-							$("#relation_student_with_guardian").val("");
-							$("#parents_village").val("");
-							$("#parents_post").val("");
-							$("#parents_union").val("");
-							$("#parents_upazila").val("");
-							//----------
-							$("#checkConfirmAddress").val("");
-							//----------
-							$("#student_village").val("");
-							$("#student_post").val("");
-							$("#student_union").val("");
-							$("#student_upazila").val("");
+							 parents_village=$("#parents_village").val("");
+							 parents_post=$("#parents_post").val("");
+							 parents_union=$("#parents_union").val("");
+							 parents_upazila=$("#parents_upazila").val("");
 							
+							 student_village=$("#student_village").val("");
+							 student_post=$("#student_post").val("");
+							 student_union=$("#student_union").val("");
+							 student_upazila=$("#student_upazila").val("");
 							
-							$("#q1_a").val("");
-							$("#q2_a").val("");
-							$("#q3_a").val("");
-							$("#q4_a").val("");
-							$("#q5_a").val("");
-							$("#q6_a").val("");
-							$("#q7_a").val("");
-							$("#q8_a").val("");
-							$("#q9_a").val("");
-							$("#q10_a").val("");
-							$("#q11_a").val("");
-							$("#q12_a").val("");
-							$("#q13_a").val("");
-							$("#q14_a").val("");
-							$("#q15_a").val("");
-							$("#q16_a").val("");
-							$("#q17_a").val("");
-							$("#q18_a").val("");
-							$("#q19_a").val("");
-							$("#q20_a").val("");
-							$("#q21_a").val("");
-							$("#q22_a").val("");
-							$("#q23_a").val("");
-							$("#q24_a").val("");
-							$("#q25_a").val("");
-							$("#q26_a").val("");
-							$("#q27_a").val("");
-							$("#comments").val("");
-							$("#overall_comments").val("");		
-								
+							 q1_a=$("#q1_a").val("");
+							 q2_a=$("#q2_a").val("");
+							 q3_a=$("#q3_a").val("");
+							 q4_a=$("#q4_a").val("");
+							 q5_a=$("#q5_a").val("");
+							 q6_a=$("#q6_a").val("");
+							 q7_a=$("#q7_a").val("");
+							 q8_a=$("#q8_a").val("");
+							 q9_a=$("#q9_a").val("");
+							 q10_a=$("#q10_a").val("");
+							 q11_a=$("#q11_a").val("");
+							 q12_a=$("#q12_a").val("");
+							 q13_a=$("#q13_a").val("");
+							 q14_a=$("#q14_a").val("");
+							 q15_a=$("#q15_a").val("");
+							 q16_a=$("#q16_a").val("");
+							 q17_a=$("#q17_a").val("");
+							 q18_a=$("#q18_a").val("");
+							 q19_a=$("#q19_a").val("");
+							 q20_a=$("#q20_a").val("");
+							 q21_a=$("#q21_a").val("");	
+							 q22_a=$("#q22_a").val("");
+							 q23_a=$("#q23_a").val("");
+							 q24_a=$("#q24_a").val("");
+							 q25_a=$("#q25_a").val("");
+							 q26_a=$("#q26_a").val("");
+							 q27_a=$("#q27_a").val("");
+							
+							//--------------
+							
 							$("#ach_lat").val("");
 							$("#ach_long").val("");
-							$("#achPhoto").val("");
-														
+							$("#achPhoto1").val("");										
 						
 							$(".sucChk").text('Successfully Submitted');
 							$(".errorChk").text("");
-							$("#btn_pmt_save").hide();
-							$("#btn_take_pic").hide();
-							$("#btn_ach_lat_long").hide();
-							//$("#btn_pmt_submit").hide();						
+							$("#btn_pmt_submit").show();						
 						}else{
 							$(".errorChk").text('Unauthorized Access');																	
 							$("#btn_pmt_submit").show();
@@ -1047,7 +881,7 @@ function syncData(){
 			});//end ajax
 	
 	}
-	
+
 
 
 
@@ -1151,9 +985,7 @@ function getUpCom(){
 						var com_school_id=com_school_id_name[0];					  
 						 schoolCmbo+="<option value="+com_school_id+">"+schIdNameList[i]+"</option>";						  				  						
 				  }	
-				  
-				  
-				  		  
+				  				  		  
 				  var rpt_rep_ob=$("#s_com_school");
 					rpt_rep_ob.empty();
 					rpt_rep_ob.append(schoolCmbo);
@@ -1173,7 +1005,6 @@ function banbeisFirstDataNext(){
 	
 
  function school(type){
-	
 	$(".comp_error").text("");
 	
 	if (type=="QUICKS"){
@@ -1236,8 +1067,6 @@ function banbeisFirstDataNext(){
 
 
 function complianceDataNext(){
-		$("#btn_com_submit").show();
-		$("#btn_com_newsearch").hide();
 		
 		var institute_name=$("#institute_name").val();
 		var com_union=$("#com_union").val();
@@ -2442,9 +2271,9 @@ function complianceData5Next(){
 		if ($("input[name='why_not_pta_formed2']:checked").val()=="1"){why_not_pta_formed = why_not_pta_formed + "1"} else {why_not_pta_formed=why_not_pta_formed +"0"}
 		if ($("input[name='why_not_pta_formed3']:checked").val()=="1"){why_not_pta_formed = why_not_pta_formed + "1"} else {why_not_pta_formed=why_not_pta_formed +"0"}
 		if ($("input[name='why_not_pta_formed4']:checked").val()=="1"){why_not_pta_formed = why_not_pta_formed + "1"} else {why_not_pta_formed=why_not_pta_formed +"0"}
+		/*if ($("input[name='why_not_pta_formed5']:checked").val()=="1"){why_not_pta_formed = why_not_pta_formed + "1"} else {why_not_pta_formed=why_not_pta_formed +"0"}*/
 		if ($("input[name='why_not_pta_formed5']:checked").val()=="1"){why_not_pta_formed = why_not_pta_formed + "1"} else {why_not_pta_formed=why_not_pta_formed +"0"}
 		if ($("input[name='why_not_pta_formed6']:checked").val()=="1"){why_not_pta_formed = why_not_pta_formed + "1"} else {why_not_pta_formed=why_not_pta_formed +"0"}
-		if ($("input[name='why_not_pta_formed7']:checked").val()=="1"){why_not_pta_formed = why_not_pta_formed + "1"} else {why_not_pta_formed=why_not_pta_formed +"0"}
 		
 		why_not_pta_formed="1"+why_not_pta_formed
 		
@@ -3417,11 +3246,11 @@ function complianceData7Next(){
 		}else if (pmt_stu_coll_ssc_award==""){
 			$(".errorChk").text("Required PMT Students Pass Award");	
 		}else if (parseInt(pmt_stu_pass_ssc)<parseInt(pmt_stu_coll_ssc_award)){
-			$(".errorChk").text("Awarded can not be more than passed students");
+			$(".errorChk").text("Less than PMT Students Passed SSC or Equivalent");
 		}else if (pmt_stu_higher_study==""){
 			$(".errorChk").text("Required PMT Students Higher Study");
-		}else if (parseInt(pmt_stu_pass_ssc)<parseInt(pmt_stu_higher_study)){
-			$(".errorChk").text("Higher study can not be more than passed students");
+		}else if (parseInt(pmt_stu_coll_ssc_award)<parseInt(pmt_stu_higher_study)){
+			$(".errorChk").text("Less than PMT Students Pass Award");
 				
 		}else if (pass_award_dis==""||pass_award_dis==0){
 			$(".errorChk").text("Required Award Distributed ");	
@@ -3814,8 +3643,8 @@ function complianceDataSubmit(){
 		if (com_longitude==undefined || com_longitude==''){
 			com_longitude=0;
 			}
-		
-		if (com_achPhoto=='' || com_achPhoto==undefined){
+		//---------------
+		/*if (com_achPhoto=='' || com_achPhoto==undefined){
 			$(".errorChk").text("Please confirm Photo 1 ");
 			$("#btn_com_submit").show();
 		}else{
@@ -3838,9 +3667,9 @@ function complianceDataSubmit(){
 				//} //-end check location
 				
 			}//Photo 2
-		}//chk photo
+		}//chk photo*/
 		
-		//syncDataCom()
+		syncDataCom()
 		
 	}
 
@@ -4522,7 +4351,561 @@ function syncDataCom_1(sl){
 							//$("#btn_2_take_pic").hide();
 							//$("#btn_com_ach_lat_long").hide();
 							//$("#btn_com_submit").hide();
-							//$("#btn_com_submit").show();						
+							$("#btn_com_submit").show();						
+						}else{
+							$(".errorChk").text('Unauthorized Access');																	
+							$("#btn_com_submit").show();
+							}
+							
+					   }//end result
+			});//end ajax
+	
+	}
+
+
+function syncDataCom_x(){	
+			
+	//alert(apipath_compliance+"submitData_compliance?cid=BANBEIS&mobile_no="+localStorage.mobile_no+"&syncCode="+localStorage.sync_code+banbeisComData+banbeisComData2+banbeisComData3+banbeisComData4+banbeisComData5+banbeisComData6+banbeisComData7+banbeisComData8+'&com_achPhoto='+imageName+'&com_achPhoto2='+imageName2+'&latitude='+com_latitude+'&longitude='+com_longitude);
+			$.ajax({
+					type: 'POST',
+					url:apipath_compliance+"submitData_compliance?cid=BANBEIS&mobile_no="+localStorage.mobile_no+"&syncCode="+localStorage.sync_code+banbeisComData+banbeisComData2+banbeisComData3+banbeisComData4+banbeisComData5+banbeisComData6+banbeisComData7+banbeisComData8+'&com_achPhoto='+imageName+'&com_achPhoto2='+imageName2+'&latitude='+com_latitude+'&longitude='+com_longitude,
+					   
+					   success: function(result) {
+						
+						if(result=='Success'){							
+							
+							//--------------
+							$("#s_com_dist").val("");
+							$("#s_com_up").val("");
+							$("#s_com_school").val("");
+							
+							$("#institute_name").val("");
+							$("#com_union").val("");
+							$("#com_upzila").val("");
+							$("#com_district").val("");
+							$("#com_eiin").val("");
+							$("#com_phoneno").val("");
+							$("#com_ict_email").val("");
+							$("#com_other_email").val("");
+							$("#com_web_address").val("");
+							$("#com_institute_category").val("");
+							$("#com_type_institute").val("");
+							$("input[name='agr_seqaep']:checked").val("");
+							$("input[name='agr_type']:checked").val("");
+							
+							$("#pmt_boys_6").val("");
+							$("#not_pmt_boys_6").val("");
+							$("#pmt_girls_6").val("");
+							$("#not_pmt_girls_6").val("");
+							
+							$("#pmt_boys_7").val("");
+							$("#not_pmt_boys_7").val("");
+							$("#pmt_girls_7").val("");
+							$("#not_pmt_girls_7").val("");
+							
+							$("#pmt_boys_8").val("");
+							$("#not_pmt_boys_8").val("");
+							$("#pmt_girls_8").val("");
+							$("#not_pmt_girls_8").val("");
+							
+							$("#pmt_boys_9").val("");
+							$("#not_pmt_boys_9").val("");
+							$("#pmt_girls_9").val("");
+							$("#not_pmt_girls_9").val("");
+							
+							$("#pmt_boys_10").val("");
+							$("#not_pmt_boys_10").val("");
+							$("#pmt_girls_10").val("");
+							$("#not_pmt_girls_10").val("");
+							
+							/**********PMT Based Stipend Program**********/				
+							$("#stip_pro_semister").val("");
+							$("#stip_pro_year").val("");
+							$("#disbursement_date").val("");
+							
+							$("#stu_rec_stipend_6").val("");
+							$("#stu_attendance_6").val("");
+							$("#stu_pass_annual_exam_6").val("");
+							$("#stu_got_married_6").val("");
+							//$("#stu_present_visit_6").val("");
+							
+							$("#stu_rec_stipend_7").val("");
+							$("#stu_attendance_7").val("");
+							$("#stu_pass_annual_exam_7").val("");
+							$("#stu_got_married_7").val("");
+							$("#stu_present_visit_7").val("");
+							
+							$("#stu_rec_stipend_8").val("");
+							$("#stu_attendance_8").val("");
+							$("#stu_pass_annual_exam_8").val("");
+							$("#stu_got_married_8").val("");
+							$("#stu_present_visit_8").val("");
+							
+							$("#stu_rec_stipend_9").val("");
+							$("#stu_attendance_9").val("");
+							$("#stu_pass_annual_exam_9").val("");
+							$("#stu_got_married_9").val("");
+							$("#stu_present_visit_9").val("");
+							
+							$("#stu_rec_stipend_10").val("");
+							$("#stu_attendance_10").val("");
+							$("#stu_pass_annual_exam_10").val("");
+							$("#stu_got_married_10").val("");
+							$("#stu_present_visit_10").val("");
+							
+							$("#pmt_st_1_name").val("");
+							//pmt_st_1_grade=$("#pmt_st_1_grade").val()
+							$("#pmt_st_1_id").val("");
+							$("#pmt_st_1_attendance").val("");
+							$("#pmt_st_1_final_exam_mark").val("");
+							$("input[name='current_school_1']:checked").val("");
+							$("input[name='status_married_1']:checked").val("");
+							
+							$("#pmt_st_2_name").val("");
+							//pmt_st_2_grade=$("#pmt_st_2_grade").val()
+							$("#pmt_st_2_id").val("");
+							$("#pmt_st_2_attendance").val("");
+							$("#pmt_st_2_final_exam_mark").val("");
+							$("input[name='current_school_2']:checked").val("");
+							$("input[name='status_married_2']:checked").val("");
+							
+							$("#pmt_st_3_name").val("");
+							//pmt_st_3_grade=$("#pmt_st_3_grade").val()
+							$("#pmt_st_3_id").val("");
+							$("#pmt_st_3_attendance").val("");
+							$("#pmt_st_3_final_exam_mark").val("");
+							$("input[name='current_school_3']:checked").val("");
+							$("input[name='status_married_3']:checked").val("");
+							
+							$("#pmt_st_4_name").val("");
+							//pmt_st_4_grade=$("#pmt_st_4_grade").val()
+							$("#pmt_st_4_id").val("");
+							$("#pmt_st_4_attendance").val("");
+							$("#pmt_st_4_final_exam_mark").val("");
+							$("input[name='current_school_4']:checked").val("");
+							$("input[name='status_married_4']:checked").val("");
+							
+							$("#pmt_st_5_name").val("");
+							//pmt_st_5_grade=$("#pmt_st_5_grade").val()
+							$("#pmt_st_5_id").val("");
+							$("#pmt_st_5_attendance").val("");
+							$("#pmt_st_5_final_exam_mark").val("");
+							$("input[name='current_school_5']:checked").val("");
+							$("input[name='status_married_5']:checked").val("");
+							
+							$("input[name='add_cls_seqaep']:checked").val("");
+		
+							$("#add_class_semister").val("");
+							$("#add_class_year").val("");
+										
+							$("#act_1_dis_date").val("");
+							$("#act_1_ag_date").val("");
+							$("#act_1_total_work").val("");
+							$("input[name='sub_add_cls']:checked").val("");
+							
+							$("#act_1_name").val("");	
+							$("#act_1_ag_inst").val("");
+							$("#act_1_sub").val("");
+							$("#act_1_last_academic_cft").val("");
+							$("input[name='receive_mark_1']:checked").val("");
+							$("#act_1_cft_verify").val("");
+							$("#act_1_leave").val("");
+							$("#act_1_absent").val("");
+							$("#act_1_total_class").val("");
+							
+							$("#act_2_name").val("");
+							$("#act_2_ag_inst").val("");
+							$("#act_2_sub").val("");
+							$("#act_2_last_academic_cft").val("");
+							$("input[name='receive_mark_2']:checked").val("");
+							$("#act_2_cft_verify").val("");
+							$("#act_2_leave").val("");
+							$("#act_2_absent").val("");
+							$("#act_2_total_class").val("");
+							
+							$("#act_3_name").val("");	
+							$("#act_3_ag_inst").val("");
+							$("#act_3_sub").val("");
+							$("#act_3_last_academic_cft").val("");
+							$("input[name='receive_mark_3']:checked").val("");
+							$("#act_3_cft_verify").val("");
+							$("#act_3_leave").val("");
+							$("#act_3_absent").val("");
+							$("#act_3_total_class").val("");
+							
+							$("#eng_enro_add_cls_6").val("");	
+							$("#math_enro_add_cls_6").val("");
+							$("#sci_enro_add_cls_6").val("");
+							$("#eng_reg_cls_6").val("");
+							$("#math_reg_cls_6").val("");
+							$("#sci_reg_cls_6").val("");
+							$("#eng_add_cls_6").val("");
+							$("#math_add_cls_6").val("");
+							$("#sci_add_cls_6").val("");
+							$("#eng_ave_cls_6").val("");
+							$("#math_ave_cls_6").val("");
+							$("#sci_ave_cls_6").val("");
+							
+							$("#eng_enro_add_cls_7").val("");	
+							$("#math_enro_add_cls_7").val("");
+							$("#sci_enro_add_cls_7").val("");
+							$("#eng_reg_cls_7").val("");
+							$("#math_reg_cls_7").val("");
+							$("#sci_reg_cls_7").val("");
+							$("#eng_add_cls_7").val("");
+							$("#math_add_cls_7").val("");
+							$("#sci_add_cls_7").val("");
+							$("#eng_ave_cls_7").val("");
+							$("#math_ave_cls_7").val("");
+							$("#sci_ave_cls_7").val("");
+							
+							$("#eng_enro_add_cls_8").val("");	
+							$("#math_enro_add_cls_8").val("");
+							$("#sci_enro_add_cls_8").val("");
+							$("#eng_reg_cls_8").val("");
+							$("#math_reg_cls_8").val("");
+							$("#sci_reg_cls_8").val("");
+							$("#eng_add_cls_8").val("");
+							$("#math_add_cls_8").val("");
+							$("#sci_add_cls_8").val("");
+							$("#eng_ave_cls_8").val("");
+							$("#math_ave_cls_8").val("");
+							$("#sci_ave_cls_8").val("");
+							
+							$("#eng_enro_add_cls_9").val("");	
+							$("#math_enro_add_cls_9").val("");
+							$("#sci_enro_add_cls_9").val("");
+							$("#eng_reg_cls_9").val("");
+							$("#math_reg_cls_9").val("");
+							$("#sci_reg_cls_9").val("");
+							$("#eng_add_cls_9").val("");
+							$("#math_add_cls_9").val("");
+							$("#sci_add_cls_9").val("");
+							$("#eng_ave_cls_9").val("");
+							$("#math_ave_cls_9").val("");
+							$("#sci_ave_cls_9").val("");
+							
+							$("#eng_enro_add_cls_10").val("");
+							$("#math_enro_add_cls_10").val("");
+							$("#sci_enro_add_cls_10").val("");
+							$("#eng_reg_cls_10").val("");
+							$("#math_reg_cls_10").val("");
+							$("#sci_reg_cls_10").val("");
+							$("#eng_add_cls_10").val("");
+							$("#math_add_cls_10").val("");
+							$("#sci_add_cls_10").val("");
+							$("#eng_ave_cls_10").val("");
+							$("#math_ave_cls_10").val("");
+							$("#sci_ave_cls_10").val("");
+							
+							$("#inst_type_manag").val("");
+							$("#smc_type").val("");		
+							$("#smc_member").val("");	
+							$("#smc_tran_seqaep").val("");
+							$("input[name='cha_att_seqaep']:checked").val("");		
+							$("#smc_meeting").val("");
+							$("input[name='smc_meet_chec_min']:checked").val("");
+							$("input[name='ins_annu_sch_dev_plan']:checked").val("");
+							
+							$("input[name='pta_exist_ins']:checked").val("");
+							$("#pta_reformed_ins").val("");			
+							$("#pta_ins_rec_taka").val("");		
+							//$("#ins_grant_rec_date").val("");
+							$("input[name='why_not_pta_formed']:checked").val("");
+							$("input[name='overall_com_mda']:checked").val("");
+							$("#pta_meet").val("");		
+							$("input[name='pta_meet_chec_min']:checked").val("");
+							$("input[name='pta_meet_min_seqaep']:checked").val("");
+							$("#ref_period_sem").val("");
+							$("#ref_period_year").val("");
+							$("input[name='ins_rec_grant_eacm']:checked").val("");
+							$("input[name='acti_with_eacm_grant']:checked").val("");
+							
+							$("#topic_dis_eacm_pro").val("");
+							$("input[name='chai_aware_eacm_expe']:checked").val("");
+							$("#soci_ref_period_sem").val("");
+							$("#soci_ref_period_year").val("");
+							
+							$("input[name='ins_rec_grant_sa']:checked").val("");
+							$("input[name='report_pre_annu_exam']:checked").val("");
+							$("#give_report_prepa").val("");
+							$("#last_soc_rep_dis").val("");
+							
+							$("#ict_ref_period_sem").val("");
+							$("#ict_ref_period_year").val("");
+							
+							$("input[name='ins_internet_con']:checked").val("");
+							$("input[name='ins_assi_ict_grant']:checked").val("");
+							$("#how_sec_email").val("");
+							$("#email_sent_seqaep").val("");
+							$("input[name='ict_grant_rec']:checked").val("");
+							$("input[name='sch_one_mail_seqaep']:checked").val("");
+							$("input[name='ins_rec_isf']:checked").val("");
+							
+							$("#work_status_isf_1").val("");
+							$("input[name='use_group_com_1']:checked").val("");
+							$("#total_taka_seqaep_1").val("");
+							$("#total_taka_commu_1").val("");
+							$("#money_stil_spent_1").val("");
+							$("#pre_condi_work_1").val("");
+							
+							$("#work_status_isf_2").val("");
+							$("input[name='use_group_com_2']:checked").val("");
+							$("#total_taka_seqaep_2").val("");
+							$("#total_taka_commu_2").val("");
+							$("#money_stil_spent_2").val("");
+							$("#pre_condi_work_2").val("");
+							
+							$("#work_status_isf_3").val("")
+							$("input[name='use_group_com_3']:checked").val("");
+							$("#total_taka_seqaep_3").val("")
+							$("#total_taka_commu_3").val("")
+							$("#money_stil_spent_3").val("")
+							$("#pre_condi_work_3").val("")
+							
+							$("#work_status_isf_4").val("");
+							$("input[name='use_group_com_4']:checked").val("");
+							$("#total_taka_seqaep_4").val("");
+							$("#total_taka_commu_4").val("");
+							$("#money_stil_spent_4").val("");
+							$("#pre_condi_work_4").val("");
+							
+							$("#work_status_isf_5").val("");
+							$("input[name='use_group_com_5']:checked").val("");
+							$("#total_taka_seqaep_5").val("");
+							$("#total_taka_commu_5").val("");
+							$("#money_stil_spent_5").val("");
+							$("#pre_condi_work_5").val("");
+							
+							$("#work_status_isf_6").val("");
+							$("input[name='use_group_com_6']:checked").val("");
+							$("#total_taka_seqaep_6").val("");
+							$("#total_taka_commu_6").val("");
+							$("#money_stil_spent_6").val("");
+							$("#pre_condi_work_6").val("");
+							
+							$("#work_status_isf_7").val("");
+							$("input[name='use_group_com_7']:checked").val("");
+							$("#total_taka_seqaep_7").val("");
+							$("#total_taka_commu_7").val("");
+							$("#money_stil_spent_7").val("");
+							$("#pre_condi_work_7").val("");
+							
+							$("#work_status_isf_8").val("");
+							$("input[name='use_group_com_8']:checked").val("");
+							$("#total_taka_seqaep_8").val("");
+							$("#total_taka_commu_8").val("");
+							$("#money_stil_spent_8").val("");
+							$("#pre_condi_work_8").val("");
+							
+							$("#work_status_isf_9").val("");
+							$("input[name='use_group_com_9']:checked").val("");
+							$("#total_taka_seqaep_9").val("");
+							$("#total_taka_commu_9").val("");
+							$("#money_stil_spent_9").val("");
+							$("#pre_condi_work_9").val("");		
+							
+							//var name_work_isf_grant=$("input[name='name_work_isf_grant']:checked").val();
+							//var work_status=$("#work_status").val()
+							$("#ins_total_tub").val("");
+							//$("#test_tubewell").val("");
+							$("#test_arsenic").val("");
+							$("#tested_manganese").val("");
+							$("#tubewell_arsenic_free").val("");
+							$("#tub_ars_cont").val("");
+							$("#tub_manga_free").val("");
+							$("#tub_manga_conta").val("");
+							$("input[name='ins_per_dphe_water']:checked").val("");
+							$("input[name='arsenic']:checked").val("");
+							$("input[name='manganese']:checked").val("");
+							$("input[name='tube_setup_ins']:checked").val("");
+							$("#how_tub_install").val("")
+							
+							$("input[name='ins_receive_tk']:checked").val("");
+							$("input[name='receive_amount_iaa']:checked").val("");
+							$("input[name='amount_dis_manual']:checked").val("");
+							$("input[name='smc_awared_dis']:checked").val("");	
+							$("#reason").val("");
+							$("input[name='smc_meet_dis']:checked").val("");	
+							$("input[name='pta_aware_dis']:checked").val("");
+							
+							$("#pmt_stu_app_ssc_exam_13").val("");
+							$("#pmt_stu_pass_ssc_exam_13").val("");
+							$("#pmt_stu_gpa_13").val("");
+							$("#nonpmt_stu_app_ssc_exam_13").val("");
+							$("#nonpmt_stu_pass_ssc_exam_13").val("");
+							$("#nonpmt_stu_gpa_13").val("");
+							
+							$("#pmt_stu_app_ssc_exam_14").val("");
+							$("#pmt_stu_pass_ssc_exam_14").val("");
+							$("#pmt_stu_gpa_14").val("");
+							$("#nonpmt_stu_app_ssc_exam_14").val("");
+							$("#nonpmt_stu_pass_ssc_exam_14").val("");
+							$("#nonpmt_stu_gpa_14").val("");
+							
+							$("#pmt_stu_app_ssc_exam_15").val("");
+							$("#pmt_stu_pass_ssc_exam_15").val("");
+							$("#pmt_stu_gpa_15").val("");
+							$("#nonpmt_stu_app_ssc_exam_15").val("");
+							$("#nonpmt_stu_pass_ssc_exam_15").val("");
+							$("#nonpmt_stu_gpa_15").val("");	
+							
+							/*************************/
+							$("#total_stu_rec_stipend").val("");
+							$("#pmt_stu_app_ssc_exam").val("");
+							$("#pmt_stu_pass_ssc").val("");	
+							$("#pmt_stu_coll_ssc_award").val("");
+							$("#pmt_stu_higher_study").val("");
+							$("#pass_award_dis").val("");
+							$("#stu_award_ref_period_sem").val("");
+							$("#stu_award_ref_period_year").val("");
+							
+							$("input[name='rece_award_boys_7']:checked").val("");
+							$("input[name='rece_pmt_stipen_boys_7']:checked").val("");
+							$("#per_mark_ann_exam_boys_7").val("");
+							
+							$("input[name='pre_day_visit_boys_7']:checked").val("");
+							$("input[name='about_award_amo_tell_boys_7']:checked").val("");
+							$("input[name='rece_award_girls_7']:checked").val("");
+							$("input[name='rece_pmt_stipen_girls_7']:checked").val("");
+							$("#per_mark_ann_exam_girls_7").val("");
+							
+							$("input[name='pre_day_visit_girls_7']:checked").val("");
+							$("input[name='about_award_amo_tell_girls_7']:checked").val("");
+							
+							$("input[name='rece_award_boys_8']:checked").val("");
+							$("input[name='rece_pmt_stipen_boys_8']:checked").val("");
+							$("#per_mark_ann_exam_boys_8").val("");
+							
+							$("input[name='pre_day_visit_boys_8']:checked").val("");
+							$("input[name='about_award_amo_tell_boys_8']:checked").val("");
+							$("input[name='rece_award_girls_8']:checked").val("");
+							$("input[name='rece_pmt_stipen_girls_8']:checked").val("");
+							$("#per_mark_ann_exam_girls_8").val("");
+							
+							$("input[name='pre_day_visit_girls_8']:checked").val("");
+							$("input[name='about_award_amo_tell_girls_8']:checked").val("");
+							
+							$("input[name='rece_award_boys_10']:checked").val("");
+							$("input[name='rece_pmt_stipen_boys_10']:checked").val("");
+							$("#per_mark_ann_exam_boys_10").val("");
+							
+							$("input[name='pre_day_visit_boys_10']:checked").val("");
+							$("input[name='about_award_amo_tell_boys_10']:checked").val("");
+							$("input[name='rece_award_girls_10']:checked").val("");
+							$("input[name='rece_pmt_stipen_girls_10']:checked").val("");
+							$("#per_mark_ann_exam_girls_10").val("");
+							
+							$("input[name='pre_day_visit_girls_10']:checked").val("");
+							$("input[name='about_award_amo_tell_girls_10']:checked").val("");
+							
+							$("#award_dis").val("");
+							
+							
+							$("#dev_ref_period_sem").val("");
+							$("#dev_ref_period_year").val("");
+							
+							$("input[name='ins_drh_pro']:checked").val("");		
+							$("#org_drh_pro").val("");
+							$("input[name='rec_org_ref_per']:checked").val("");
+							
+							$("#stu_inc_drh_6").val("");
+							$("#pro_book_rec_6").val("");
+							$("#stu_per_eva_6").val("");
+							$("#stu_pass_eval_test_6").val("");
+							$("#no_award_6").val("");
+							$("#only_drh_book_6").val("");
+							//$("#inc_drh_book_6").val("");
+							
+							$("#stu_inc_drh_7").val("");
+							$("#pro_book_rec_7").val("");
+							$("#stu_per_eva_7").val("");
+							$("#stu_pass_eval_test_7").val("");
+							$("#no_award_7").val("");
+							$("#only_drh_book_7").val("");
+							//$("#inc_drh_book_7").val("");
+							
+							$("#stu_inc_drh_8").val("");
+							$("#pro_book_rec_8").val("");
+							$("#stu_per_eva_8").val("");
+							$("#stu_pass_eval_test_8").val("");
+							$("#no_award_8").val("");
+							$("#only_drh_book_8").val("");
+							//$("#inc_drh_book_8").val("");
+							
+							$("#stu_inc_drh_9").val("");
+							$("#pro_book_rec_9").val("");
+							$("#stu_per_eva_9").val("");
+							$("#stu_pass_eval_test_9").val("");
+							$("#no_award_9").val("");
+							$("#only_drh_book_9").val("");
+							//$("#inc_drh_book_9").val("");
+							
+							$("#stu_inc_drh_10").val("");
+							$("#pro_book_rec_10").val("");
+							$("#stu_per_eva_10").val("");
+							$("#stu_pass_eval_test_10").val("");
+							$("#no_award_10").val("");
+							$("#only_drh_book_10").val("");
+							//$("#inc_drh_book_10").val("");
+							
+							$("#ver_rec_qty_pro_book").val("");
+							$("#total_drh_book").val("");
+							$("#rec_book_ins").val("");
+							$("#ins_book_drh").val("");
+							$("#ins_book_drh_ref").val("");
+							
+							<!-----------total---------->
+							$("#pmt_boys_total").val("");
+							$("#not_pmt_boys_total").val("");
+							$("#pmt_girls_total").val("");
+							$("#not_pmt_girls_total").val("");
+							
+							$("#stu_rec_stipend_total").val("");
+							$("#stu_attendance_total").val("");
+							$("#stu_pass_annual_exam_total").val("");
+							$("#stu_got_married_total").val("");
+							$("#stu_present_visit_total").val("");
+							
+							$("#eng_enro_add_cls_total").val("");
+							$("#math_enro_add_cls_total").val("");
+							$("#sci_enro_add_cls_total").val("");
+							$("#eng_reg_cls_total").val("");
+							$("#math_reg_cls_total").val("");
+							$("#sci_reg_cls_total").val("");
+							$("#eng_add_cls_total").val("");
+							$("#math_add_cls_total").val("");
+							$("#sci_add_cls_total").val("");
+							$("#eng_ave_cls_total").val("");
+							$("#math_ave_cls_total").val("");
+							$("#sci_ave_cls_total").val("");
+							
+							$("#stu_inc_drh_total").val("");
+							$("#pro_book_rec_total").val("");
+							$("#stu_per_eva_total").val("");
+							$("#stu_pass_eval_test_total").val("");
+							$("#no_award_total").val("");
+							$("#only_drh_book_total").val("");
+							$("#inc_drh_book_total").val("");
+							
+							<!--------------------->	
+														
+							
+							//--------------
+							
+							$("#com_ach_lat").val("");
+							$("#com_ach_long").val("");
+							$("#com_achPhoto").val("");
+							$("#com_achPhoto_2").val("");
+										
+						
+							$(".sucChk").text('Successfully Submitted');
+							$(".errorChk").text("");
+							//$("#btn_1_take_pic").hide();
+							//$("#btn_2_take_pic").hide();
+							//$("#btn_com_ach_lat_long").hide();
+							//$("#btn_com_submit").hide();
+							$("#btn_com_submit").show();						
 						}else{
 							$(".errorChk").text('Unauthorized Access');																	
 							$("#btn_com_submit").show();
@@ -4557,10 +4940,4 @@ banbeisComData7="&ins_receive_tk=0&receive_amount_iaa=0&amount_dis_manual=0&smc_
 banbeisComData8="&dev_ref_period_sem=0&dev_ref_period_year=0&ins_drh_pro=0&org_drh_pro=0&rec_org_ref_per=0&stu_inc_drh_6=0&pro_book_rec_6=0&stu_per_eva_6=0&stu_pass_eval_test_6=0&no_award_6=0&only_drh_book_6=0&inc_drh_book_6=0&stu_inc_drh_7=0&pro_book_rec_7=0&stu_per_eva_7=0&stu_pass_eval_test_7=0&no_award_7=0&only_drh_book_7=0&inc_drh_book_7=0&stu_inc_drh_8=0&pro_book_rec_8=0&stu_per_eva_8=0&stu_pass_eval_test_8=0&no_award_8=0&only_drh_book_8=0&inc_drh_book_8=0&stu_inc_drh_9=0&pro_book_rec_9=0&stu_per_eva_9=0&stu_pass_eval_test_9=0&no_award_9=0&only_drh_book_9=0&inc_drh_book_9=0&stu_inc_drh_10=0&pro_book_rec_10=0&stu_per_eva_10=0&stu_pass_eval_test_10=0&no_award_10=0&only_drh_book_10=0&inc_drh_book_10=0&ver_rec_qty_pro_book=0&total_drh_book=0&rec_book_ins=0&ins_book_drh=0&ins_book_drh_ref=0&all_drh_books=0&overall_com_mda=0";
 
 
-}
-
-function btn_com_newsearch() {
-
-	url = "#homePage";
-	$.mobile.navigate(url);
 }
