@@ -52,7 +52,7 @@ function onErrorComp(error) {
 
 
 //---- online 
-var apipath="http://c003.cloudapp.net/banbeis/syncmobile/";
+var apipath_pmt="http://c003.cloudapp.net/banbeis/syncmobile/";
 var apipath_compliance="http://c003.cloudapp.net/banbeis/syncmobile_compliance_new/";
 
 //--- local
