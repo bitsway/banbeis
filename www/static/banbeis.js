@@ -836,11 +836,11 @@ function pmtDataSubmit(){
 				$(".errorChk").text("Please confirm your location ");
 				$("#btn_pmt_submit").show();
 			}else{				
-				imagePathA="test"
+				//imagePathA="test"
 				if (imagePathA!=""){							
 					$(".errorChk").text("Syncing photo..");
 					imageName = localStorage.mobile_no+"_"+get_time+".jpg";
-					uploadPhotoAch(imagePathA, imageName);
+					uploadPhotoAch_pmt(imagePathA, imageName);
 					
 				}
 										
@@ -854,27 +854,27 @@ function pmtDataSubmit(){
 	}
 
 //------------------------------------image 1
-function getAchivementImage1() {
-	navigator.camera.getPicture(onSuccessA, onFailA, { quality: 50,
+function getAchivementImagePmt() {
+	navigator.camera.getPicture(onSuccessB, onFailB, { quality: 50,
 	targetWidth: 300,
 	destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true });		
 }
 
-function onSuccessA(imageURI) {		
-    var image = document.getElementById('myImagePtaA');
+function onSuccessB(imageURI) {		
+    var image = document.getElementById('myImagePmtA');
     image.src = imageURI;
 	imagePathA = imageURI;	
 	$("#achPhoto1").val(imagePathA);
 	
 }
 
-function onFailA(message) {
+function onFailB(message) {
 	imagePathA="";
     alert('Failed because: ' + message);
 }
 
 
-function uploadPhotoAch(imageURI, imageName) {
+function uploadPhotoAch_pmt(imageURI, imageName) {
 	
 	//winAchInfo();
 	
@@ -890,23 +890,23 @@ function uploadPhotoAch(imageURI, imageName) {
     options.params = params;
 
     var ft = new FileTransfer();
-	ft.upload(imageURI, encodeURI("http://i01.businesssolutionapps.com/que_image/quem_image_sync/fileUploader/"),winAchInfo,onfail,options);
+	ft.upload(imageURI, encodeURI("http://i01.businesssolutionapps.com/que_image/quem_image_sync/fileUploader/"),winAchInfo1,onfail1,options);
 	
 }
 
 
 
-function winAchInfo(r) {
+function winAchInfo1(r) {
 //    console.log("Code = " + r.responseCode);
 //    console.log("Response = " + r.response);
 //    console.log("Sent = " + r.bytesSent);
 	$(".errorChk").text('File upload Successful. Syncing Data...');
-	syncData();
+	syncDataPmt();
 }
 
-function onfail(r) {
+function onfail1(r) {
 	$(".errorChk").text('File upload Failed. Syncing Data...');
-	syncData();
+	syncDataPmt();
 }
 
 
