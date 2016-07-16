@@ -424,7 +424,7 @@ function getUp(){
 		
 }
  
-function getUpSchool(){	
+/*function getUpSchool(){	
 	div_name=$("#s_div").val();
 	dist_name=$("#s_dist").val();
 	up_name=$("#s_up").val();	
@@ -488,21 +488,23 @@ function getStudent(){
 			});
 	
 }
-
+*/
 	
 //===================		
 function banbeisDataNext(){
 		var edu_year=$("#edu_year").val();
-		var insName=$("#insName").val();
-		var eiinNo=$("#eiinNo").val();
+		var boothNo=$("#boothNo").val();
+		var appSerialNo=$("#appSerialNo").val();
+		//var insName=$("#insName").val();
+		//var eiinNo=$("#eiinNo").val();
 		var union_name=$("#union_name").val();
 		var pourashava_name=$("#pourashava_name").val();
-		var upazila_name=$("#upazila_name").val();
-		var zila_name=$("#zila_name").val();
-		var division_name=$("#division_name").val();
+		var upazila_name=$("#s_up").val();
+		var zila_name=$("#s_dist").val();
+		var division_name=$("#s_div").val();
 		
 		var student_name=$("#student_name").val();
-		var student_id=$("#student_id").val();
+		//var student_id=$("#student_id").val();
 		var dob=$("#dob").val();
 		var fathers_name=$("#fathers_name").val();
 		var fathers_nid=$("#fathers_nid").val();
@@ -545,13 +547,21 @@ function banbeisDataNext(){
 			validMotherNid=false
 		}
 		
-		
+				
 		if (edu_year=="" || edu_year==0 ){
 			$(".errorChk").text("Required Education Year");
-		}else if (insName=="" ){
+		}else if(boothNo==""){
+			$(".errorChk").text("Required Booth No");
+		}else if(parseInt(boothNo.length)>2){
+			$(".errorChk").text("Booth no maximum 2 digit");
+		}else if(appSerialNo==""){
+			$(".errorChk").text("Required Application Serial No");
+		}else if(parseInt(appSerialNo.length)>4){
+			$(".errorChk").text("Application Serial no maximum 4 digit");
+		/*}else if (insName=="" ){
 			$(".errorChk").text("Required Institution Name");	
 		}else if (eiinNo=="" ){
-			$(".errorChk").text("Required EIIN No");	
+			$(".errorChk").text("Required EIIN No");	*/
 		/*}else if (union_name=="" ){
 			$(".errorChk").text("Required Union Name");	
 		}else if (pourashava_name=="" ){
@@ -564,8 +574,8 @@ function banbeisDataNext(){
 			$(".errorChk").text("Required Division Name");	
 		}else if (student_name=="" ){
 			$(".errorChk").text("Required Student Name");	
-		}else if (student_id=="" ){
-			$(".errorChk").text("Required Student ID");	
+		/*}else if (student_id=="" ){
+			$(".errorChk").text("Required Student ID");	*/
 		}else if (dob=="" ){
 			$(".errorChk").text("Required Date of Birth");		
 		}else if (fathers_name=="" ){
@@ -606,8 +616,8 @@ function banbeisDataNext(){
 		
 		}else{
 				
-				banbeisData="&edu_year="+edu_year+"&insName="+insName+"&eiinNo="+eiinNo+"&union_name="+union_name+"&pourashava_name="+pourashava_name+"&upazila_name="+upazila_name+"&zila_name="+zila_name+"&division_name="+division_name+"&student_name="+student_name+"&student_id="+student_id+"&dob="+dob+"&fathers_name="+fathers_name+"&fathers_nid="+fathers_nid+"&mothers_name="+mothers_name+"&mothers_nid="+mothers_nid+"&gen_der="+gen_der+"&pre_stu_located="+pre_stu_located+"&guardian_absence_of_parents="+guardian_absence_of_parents+"&relation_student_with_guardian="+relation_student_with_guardian+"&parents_village="+parents_village+"&parents_post="+parents_post+"&parents_union="+parents_union+"&parents_upazila="+parents_upazila+"&student_village="+student_village+"&student_post="+student_post+"&student_union="+student_union+"&student_upazila="+student_upazila				
-							/*banbeisData=student_serial_no+'fdfd'+booth_no+'fdfd'+union_name+'fdfd'+ward_no+'fdfd'+pourashave+'fdfd'+wardno_pourashave+'fdfd'+upazila+'fdfd'+zila+'fdfd'+division*/
+				banbeisData="&edu_year="+edu_year+"&boothNo="+boothNo+"&appSerialNo="+appSerialNo+"&union_name="+union_name+"&pourashava_name="+pourashava_name+"&upazila_name="+upazila_name+"&zila_name="+zila_name+"&division_name="+division_name+"&student_name="+student_name+"&dob="+dob+"&fathers_name="+fathers_name+"&fathers_nid="+fathers_nid+"&mothers_name="+mothers_name+"&mothers_nid="+mothers_nid+"&gen_der="+gen_der+"&pre_stu_located="+pre_stu_located+"&guardian_absence_of_parents="+guardian_absence_of_parents+"&relation_student_with_guardian="+relation_student_with_guardian+"&parents_village="+parents_village+"&parents_post="+parents_post+"&parents_union="+parents_union+"&parents_upazila="+parents_upazila+"&student_village="+student_village+"&student_post="+student_post+"&student_union="+student_union+"&student_upazila="+student_upazila				
+							
 				
 				//alert(banbeisData);
 						
@@ -828,7 +838,7 @@ function pmtDataSubmit(){
 			longitude=0;
 			}
 		//---------------
-		if (achPhoto1=='' || achPhoto1==undefined){
+		/*if (achPhoto1=='' || achPhoto1==undefined){
 			$(".errorChk").text("Please confirm Photo ");
 			$("#btn_pmt_submit").show();
 		}else{		
@@ -836,7 +846,7 @@ function pmtDataSubmit(){
 				$(".errorChk").text("Please confirm your location ");
 				$("#btn_pmt_submit").show();
 			}else{				
-				//imagePathA="test"
+				imagePathA="test"
 				if (imagePathA!=""){							
 					$(".errorChk").text("Syncing photo..");
 					imageName = localStorage.mobile_no+"_"+get_time+".jpg";
@@ -847,9 +857,9 @@ function pmtDataSubmit(){
 				//} //-end check location
 				
 			}//Photo 2
-		}//chk photo
+		}//chk photo*/
 		
-		//syncDataPmt()
+		syncDataPmt()
 		
 	}
 
@@ -911,27 +921,33 @@ function onfail1(r) {
 
 
 function syncDataPmt(){	
-			var student_id=$("#student_id").val();
-			//alert(apipath_pmt+"submitData_pmt?cid=BANBEIS&mobile_no="+localStorage.mobile_no+"&syncCode="+localStorage.sync_code+'&achPhoto1='+imageName+'&latitude='+latitude+'&longitude='+longitude+"&student_id="+student_id+'&tempText='+ encodeURIComponent(banbeisData)+encodeURIComponent(banbeisDataPage2)+encodeURIComponent(banbeisDataPage3));
+			var app_serial_no=$("#appSerialNo").val();
+			var upazila_name=$("#s_up").val();
+			var zila_name=$("#s_dist").val();
+			var division_name=$("#s_div").val();
+			
+			//alert(apipath_pmt+"submitData_pmt?cid=BANBEIS&mobile_no="+localStorage.mobile_no+"&syncCode="+localStorage.sync_code+'&achPhoto1='+imageName+'&latitude='+latitude+'&longitude='+longitude+"&app_serial_no="+app_serial_no+"&division_name="+division_name+"&zila_name="+zila_name+"&upazila_name="+upazila_name+'&tempText='+ encodeURIComponent(banbeisData)+encodeURIComponent(banbeisDataPage2)+encodeURIComponent(banbeisDataPage3));
 			$.ajax({
 					type: 'POST',
-					url:apipath_pmt+"submitData_pmt?cid=BANBEIS&mobile_no="+localStorage.mobile_no+"&syncCode="+localStorage.sync_code+'&achPhoto1='+imageName+'&latitude='+latitude+'&longitude='+longitude+"&student_id="+student_id+'&tempText='+ encodeURIComponent(banbeisData)+encodeURIComponent(banbeisDataPage2)+encodeURIComponent(banbeisDataPage3),
+					url:apipath_pmt+"submitData_pmt?cid=BANBEIS&mobile_no="+localStorage.mobile_no+"&syncCode="+localStorage.sync_code+'&achPhoto1='+imageName+'&latitude='+latitude+'&longitude='+longitude+"&app_serial_no="+app_serial_no+"&division_name="+division_name+"&zila_name="+zila_name+"&upazila_name="+upazila_name+'&tempText='+ encodeURIComponent(banbeisData)+encodeURIComponent(banbeisDataPage2)+encodeURIComponent(banbeisDataPage3),
 					   
 					   success: function(result) {
 						   if(result=='Success'){							
 							//alert(result)
 							//--------------
 							 edu_year=$("#edu_year").val("");
-							 insName=$("#insName").val("");
-							 eiinNo=$("#eiinNo").val("");
+							 //insName=$("#insName").val("");
+							 //eiinNo=$("#eiinNo").val("");
+							 boothNo=$("#boothNo").val("");
+							 appSerialNo=$("#appSerialNo").val("");
 							 union_name=$("#union_name").val("");
 							 pourashava_name=$("#pourashava_name").val("");
-							 upazila_name=$("#upazila_name").val("");
-							 zila_name=$("#zila_name").val("");
-							 division_name=$("#division_name").val("");
+							 upazila_name=$("#s_up").val("");
+							 zila_name=$("#s_dist").val("");
+							 division_name=$("#s_div").val("");
 							
 							 student_name=$("#student_name").val("");
-							 student_id=$("#student_id").val("");
+							 //student_id=$("#student_id").val("");
 							 dob=$("#dob").val("");
 							 fathers_name=$("#fathers_name").val("");
 							 fathers_nid=$("#fathers_nid").val("");
@@ -3761,7 +3777,7 @@ function complianceDataSubmit(){
 			com_longitude=0;
 			}
 		//---------------
-		if (com_achPhoto=='' || com_achPhoto==undefined){
+		/*if (com_achPhoto=='' || com_achPhoto==undefined){
 			$(".errorChk").text("Please confirm Photo 1 ");
 			$("#btn_com_submit").show();
 		}else{
@@ -3784,9 +3800,9 @@ function complianceDataSubmit(){
 				//} //-end check location
 				
 			}//Photo 2
-		}//chk photo
+		}//chk photo*/
 		
-		//syncDataCom()
+		syncDataCom()
 		
 	}
 

@@ -1157,7 +1157,7 @@ function act_teachers(){
 
 
 <!-- --------------------banbeis page0------------------------------------------------- -->
-<div data-role="page" data-theme="c" id="first_page" style="overflow:scroll;">
+<!--<div data-role="page" data-theme="c" id="first_page" style="overflow:scroll;">
     <div data-theme="c" data-role="header" data-position="fixed" >
         <a data-role="button" onClick="menuClick();" data-icon="bullets" data-iconpos="left" class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="menu.png" /></a>
         <a data-role="button" onclick="backClick();" data-rel="back" class="ui-btn-right" data-transition="slide"><img src="back.png" /></a>
@@ -1204,9 +1204,6 @@ function act_teachers(){
                         <option value="">Select Student ID</option>                   
                     </select>
                  </li>	
-                <!-- <li class="ui-field-contain" > 
-                    <input type="button" name="btnSearch" id="btnSearch" class="btn" value="Search" onclick="student()" />
-                 </li>-->
             </ul>
             
         <a data-role="button" onclick="banbeisFirstDataNextPMt()" href="#" data-theme="c" data-transition="slide" >Search</a>
@@ -1214,12 +1211,11 @@ function act_teachers(){
             <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     </div>
     
-   <!-- <div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting</div>-->
 
-</div>
-
+</div>-->
 
 
+<!--
 <div data-role="page" data-theme="c" id="pmt_first_next_page" style="overflow:scroll;">
     <div data-theme="c" data-role="header" data-position="fixed" >
         <a data-role="button" onClick="menuClick();" data-icon="bullets" data-iconpos="left" class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="menu.png" /></a>
@@ -1237,11 +1233,11 @@ function act_teachers(){
     </div>
     
 
-</div>
+</div>-->
 
 
 
-<div data-theme="c" data-role="page" id="selectionConfirmed" >
+<!--<div data-theme="c" data-role="page" id="selectionConfirmed" >
     <div data-theme="c" data-role="header" data-position="fixed" >
         <a data-role="button" onClick="menuClick();"  data-icon="bullets" data-iconpos="left" class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="planbd-logo-small.jpg" /></a>
         <a data-role="button" onclick="backClick();" data-rel="back"  data-icon="arrow-l" data-iconpos="left" class="ui-btn-right" data-transition="slide">Back</a>
@@ -1256,11 +1252,11 @@ function act_teachers(){
         <a data-role="button" onClick="achDataNext2();"   data-transition="slide" >Next</a>
         
     </div>
-</div>
+</div>-->
 
 
 <!-- --------------------banbeis page1------------------------------------------------- -->
-<div data-role="page" data-theme="c" id="page1" style="overflow:scroll;">
+<div data-role="page" data-theme="c" id="first_page" style="overflow:scroll;">
     <div data-theme="c" data-role="header" data-position="fixed" >
         <a data-role="button" onClick="menuClick();" data-icon="bullets" data-iconpos="left" class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="menu.png" /></a>
         <a data-role="button" onclick="backClick();" data-rel="back" class="ui-btn-right" data-transition="slide"><img src="back.png" /></a>
@@ -1275,83 +1271,113 @@ function act_teachers(){
                     <label for="edu_year"> শিক্ষা বছর</label>               
                     <select name="edu_year" id="edu_year" data-native-menu="false">
                     		<option value="0">Select</option>
-                    		<option value="1">2014</option>
-                            <option value="2">2015</option>
-                            <option value="3">2016</option>
-                            <option value="4">2017</option>  
+                            <option value="1">2016</option>
+                            <option value="2">2017</option>  
+                            <option value="3">2018</option> 
                       </select>	
                 </li>
+                <li class="ui-field-contain" >
+                    <label for="s_div">1. Division </label>
+                       <select name="s_div" id="s_div" data-native-menu="false" onchange="getDist()">
+                            <option value="">Select Division</option>							 												
+                        </select>
+                </li>
+                <li class="ui-field-contain" >
+                 <label for="s_dist">2. District </label>
+                   <select name="s_dist" id="s_dist" data-native-menu="false" onchange="getUp()">
+                        <option value="">Select District</option>							 												
+                    </select>
+                </li>
+                <li class="ui-field-contain" >  
+                 <label for="s_up">3. Upazila </label>
+                   <select name="s_up" id="s_up" data-native-menu="false">
+                        <option value="">Select Upazila</option>							 												
+                    </select>
+                </li>
                 <li class="ui-field-contain">
-                    <label for="insName">1. Name of Institution</label>
-                    <input type="text" name="insName" maxlength="150" id="insName" readonly="readonly" style="background-color:#E8E8E8;"/>
-                 </li>
-                  <li class="ui-field-contain">
-                    <label for="eiinNo">2. EIIN NO</label>
-                    <input type="text" name="eiinNo" maxlength="20" id="eiinNo" readonly="readonly" style="background-color:#E8E8E8;"/>
-                 </li>
-                <li class="ui-field-contain">
-                    <label for="union_name">3. Name of Union </label>
-                    <input type="text" name="union_name" maxlength="150" id="union_name" readonly="readonly" style="background-color:#E8E8E8;"/>
+                    <label for="union_name">4. Name of Union </label>
+                    <input type="text" name="union_name" maxlength="150" id="union_name" />
                  </li>
                  
                 <li class="ui-field-contain"> 
-                 	<label for="pourashava_name">4. Name of Pourashava</label>
-                    <input type="text" name="pourashava_name" maxlength="100" id="pourashava_name" readonly="readonly" style="background-color:#E8E8E8;"/>
+                 	<label for="pourashava_name">5. Name of Pourashava</label>
+                    <input type="text" name="pourashava_name" maxlength="100" id="pourashava_name" />
                  </li>
+                 <li class="ui-field-contain">
+                    <label for="insName">6. Booth No</label>
+                    <input type="number" name="boothNo" maxlength="150" id="boothNo" />
+                 </li>
+                  <li class="ui-field-contain">
+                    <label for="eiinNo">7. Application Serial No </label>
+                    <input type="number" name="appSerialNo" maxlength="20" id="appSerialNo" />
+                 </li>
+                 
+                 
+                 
+                <!--<li class="ui-field-contain">
+                    <label for="insName">1. Name of Institution</label>
+                    <input type="text" name="insName" maxlength="150" id="insName" />
+                 </li>
+                  <li class="ui-field-contain">
+                    <label for="eiinNo">2. EIIN NO</label>
+                    <input type="text" name="eiinNo" maxlength="20" id="eiinNo" />
+                 </li>
+                
                  
                  <li class="ui-field-contain"> 
                  	<label for="upazila_name">5. Upazila</label>
-                    <input type="text" name="upazila_name" maxlength="100" id="upazila_name" readonly="readonly" style="background-color:#E8E8E8;"/>
+                    <input type="text" name="upazila_name" maxlength="100" id="upazila_name" />
                  </li>
                  
                  <li class="ui-field-contain"> 
                  	<label for="zila_name">6. Zila</label>
-                    <input type="text" name="zila_name" maxlength="100" id="zila_name" readonly="readonly" style="background-color:#E8E8E8;"/>
+                    <input type="text" name="zila_name" maxlength="100" id="zila_name" />
                  </li>
                  <li class="ui-field-contain"> 
                  	<label for="division_name">6. Division</label>
-                    <input type="text" name="division_name" maxlength="100" id="division_name" readonly="readonly" style="background-color:#E8E8E8;"/>
-                 </li>
+                    <input type="text" name="division_name" maxlength="100" id="division_name" />
+                 </li>-->
                  
                 <li style="background-color:#F2F2F2;" class="auto_break"><strong>খ) শিক্ষার্থীর তথ্যঃ(ইংরেজিতে পূরণ করতে হবে): </strong> </li>
                 
                 <li class="ui-field-contain auto_break">
                 <label for="student_name">1. Name of the Student (তালিকা হতে শুদ্ধভাবে লিখতে হবে):</label>
-                <input type="text" name="student_name" maxlength="150" id="student_name" readonly="readonly" style="background-color:#E8E8E8;"/>
+                <input type="text" name="student_name" maxlength="150" id="student_name" />
                 </li>            
-                <li class="ui-field-contain">
+                <!--<li class="ui-field-contain">
                     <label for="student_id">2. Student ID </label>
-                    <input type="text" name="student_id" maxlength="20" id="student_id" readonly="readonly" style="background-color:#E8E8E8;"/>
-                </li>
+                    <input type="text" name="student_id" maxlength="20" id="student_id" />
+                </li>-->
+                
                 <li class="ui-field-contain">
-                    <label for="dob">3. Date of Birth </label>
-                    <input type="text" name="dob" id="dob" placeholder="dd-mm-yyyy" readonly="readonly" style="background-color:#E8E8E8;"/>
-                </li>
-                <li class="ui-field-contain">
-                    <label for="fathers_name">4. Father's name in English </label>
-                    <input type="text" name="fathers_name" maxlength="150" id="fathers_name" readonly="readonly" style="background-color:#E8E8E8;"/>
+                    <label for="fathers_name">2. Father's name in English </label>
+                    <input type="text" name="fathers_name" maxlength="150" id="fathers_name" />
                 </li>  
                 <li class="ui-field-contain auto_break">
-                    <label for="fathers_nid">5. Father's National ID no (if any)</label>
+                    <label for="fathers_nid">3. Father's National ID no (if any)</label>
                     <input type="number" name="fathers_nid" id="fathers_nid"/>
                 </li>
                 <li class="ui-field-contain">
-                    <label for="mothers_name">6. Mother's name in English </label>
-                    <input type="text" name="mothers_name" maxlength="150" id="mothers_name" readonly="readonly" style="background-color:#E8E8E8;"/>
+                    <label for="mothers_name">4. Mother's name in English </label>
+                    <input type="text" name="mothers_name" maxlength="150" id="mothers_name" />
                 </li>
                 <li class="ui-field-contain auto_break">
-                    <label for="mothers_nid">7. Mother's National ID no (if any) </label>
+                    <label for="mothers_nid">5. Mother's National ID no (if any) </label>
                     <input type="number" name="mothers_nid" id="mothers_nid"/>
                 </li>
                 <li class="ui-field-contain">
-                    <label for="gen_der">8. Gender</label>
+                    <label for="dob">6. Date of Birth </label>
+                    <input type="date" name="dob" id="dob" placeholder="dd-mm-yyyy" />
+                </li>
+                <li class="ui-field-contain">
+                    <label for="gen_der">7. Gender</label>
                     <select name="gen_der" id="gen_der" data-native-menu="false">
                         <option value="BOY">Boy</option> 
                         <option value="GIRL">Girl</option>				
                     </select>
                 </li>
                 <li class="ui-field-contain auto_break">
-                    <label for="pre_stu_located">9. বর্তমানে শিক্ষার্থীর অধ্যয়ন/ড্রপ আউট -এর অবস্থান বিষয়ক তথ্য: </label>
+                    <label for="pre_stu_located">8. বর্তমানে শিক্ষার্থীর অধ্যয়ন/ড্রপ আউট -এর অবস্থান বিষয়ক তথ্য: </label>
                     <select name="pre_stu_located" id="pre_stu_located" data-native-menu="false" >
                         <option value="1">১-বর্তমানে অধ্যয়নরত</option>
                         <option value="2">২-বিবাহিত</option>
@@ -1360,15 +1386,15 @@ function act_teachers(){
                         <option value="5">৫-প্রদত্ত ঠিকানা পরিবর্তন হয়েছে</option>
                         <option value="6">৬-নদী ভাঙ্গনের কারণে স্থানান্তর</option>
                         <option value="7">৭-আশ্রিত</option>
-                        <option value="8">৮-অন্যান্য</option>				
+                        <!--<option value="8">৮-অন্যান্য</option>	-->			
                     </select>
                 </li>
                 <li class="ui-field-contain auto_break">
-                    <label for="guardian_absence_of_parents">10. Name of guardian in absence of parents (যদি পিতা বা মাতা জীবিত না থাকেন) </label>
+                    <label for="guardian_absence_of_parents">9. Name of guardian in absence of parents (যদি পিতা বা মাতা জীবিত না থাকেন) </label>
                     <input type="text" name="guardian_absence_of_parents" id="guardian_absence_of_parents" />
                 </li>
                 <li class="ui-field-contain auto_break">
-                    <label for="relation_student_with_guardian">11. Relation of students with guardian (ছাত্র/ছাত্রীর সংগে অভিভাবকের সর্ম্পক)  </label>
+                    <label for="relation_student_with_guardian">10. Relation of students with guardian (ছাত্র/ছাত্রীর সংগে অভিভাবকের সর্ম্পক)  </label>
                     <select name="relation_student_with_guardian" id="relation_student_with_guardian" data-native-menu="false" >
                         <option value="1">১-দাদা/নানা </option>
                         <option value="2">২-দাদী/ নানী</option>
@@ -1382,25 +1408,25 @@ function act_teachers(){
               </ul>
               
            <ul data-role="listview" data-inset="true">     
-           <li class="ui-field-contain auto_break" style="background-color:#F2F2F2;font-weight:bold; ">12.(ক) Address of parents or guardiant </li>
+           <li class="ui-field-contain auto_break" style="background-color:#F2F2F2;font-weight:bold; ">11.(ক) Address of parents or guardiant </li>
 			<li class="ui-field-contain">    
                 <label for="parents_village">Village </label>
-                	<input type="text" name="parents_village" maxlength="100" id="parents_village" readonly="readonly" style="background-color:#E8E8E8;"/>
+                	<input type="text" name="parents_village" maxlength="100" id="parents_village" />
             </li>
             <li class="ui-field-contain">
                 <label for="parents_post">Post </label>
-                	<input type="text" name="parents_post" maxlength="100" id="parents_post" readonly="readonly" style="background-color:#E8E8E8;"/>
+                	<input type="text" name="parents_post" maxlength="100" id="parents_post" />
             </li>
             <li class="ui-field-contain">
                 <label for="parents_union">Union/Pourashava </label>
-                	<input type="text" name="parents_union" maxlength="100" id="parents_union" readonly="readonly" style="background-color:#E8E8E8;"/>
+                	<input type="text" name="parents_union" maxlength="100" id="parents_union" />
             </li>
             <li class="ui-field-contain">
                 <label for="parents_upazila">Upazila </label>
-                	<input type="text" name="parents_upazila" maxlength="100" id="parents_upazila" readonly="readonly" style="background-color:#E8E8E8;"/>
+                	<input type="text" name="parents_upazila" maxlength="100" id="parents_upazila" />
             </li>
             
-            <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;"><div style="width:2%; float:left; margin-bottom:20px;"><input type="checkbox" name="checkConfirmAddress" id="checkConfirmAddress" value="Yes" onclick="checkboxConfirm()"  /></div><div style="float:right; width:95%; margin-left:10px;">12.(খ) Present Address of student : (যদি ১২ক) এর ঠিকানা থেকে ভিন্ন হয়) </div></li>
+            <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;"><div style="width:2%; float:left; margin-bottom:20px;"><input type="checkbox" name="checkConfirmAddress" id="checkConfirmAddress" value="Yes" onclick="checkboxConfirm()"  /></div><div style="float:right; width:95%; margin-left:10px;">11.(খ) Present Address of student : (যদি ১২ক) এর ঠিকানা থেকে ভিন্ন হয়) </div></li>
             
 			<li class="ui-field-contain">
                 <label for="student_village">Village</label>
@@ -1441,8 +1467,7 @@ function act_teachers(){
     <div data-role="content" >
             <ul data-role="listview" data-inset="true">
                 <li style="background-color:#F2F2F2;" class="auto_break"><strong>গ) শিক্ষার্থীর আর্থ-সামাজিক অবস্থা সম্পর্কিত প্রশ্নের উত্তর :</strong></li>
-            </ul>
-            <ul data-role="listview" data-inset="true">
+            
                 <li class="ui-field-contain auto_break">
                     <label for="q1_a">1. শিক্ষার্থীর অভিভাবকের নাম ( ইংরেজিতে) :</label>
                         <input type="text" name="q1_a" id="q1_a" />
@@ -1928,7 +1953,7 @@ function act_teachers(){
                         <label for="radio-choice-h-2b">No</label>
                         <input name="agr_seqaep" id="radio-choice-h-2b" value="2" checked="checked" type="radio" onclick="agrementSeq()">               
                     </fieldset>
-                 </li>
+                 </li>                 
                 <li class="ui-field-contain auto_break" id="agr_type_con">
                      9.1. If yes, what is the type of agreement? 
                     <fieldset data-role="controlgroup" data-type="horizontal" >
