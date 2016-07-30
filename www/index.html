@@ -423,15 +423,15 @@ function total_married_stu(){
 	} 
 	
 function total_present_stu(){
-	//var stu_present_visit_6=$("#stu_present_visit_6").val();
+	var stu_present_visit_6=$("#stu_present_visit_6").val();
 	var stu_present_visit_7=$("#stu_present_visit_7").val();
 	var stu_present_visit_8=$("#stu_present_visit_8").val();
 	var stu_present_visit_9=$("#stu_present_visit_9").val();
 	var stu_present_visit_10=$("#stu_present_visit_10").val();
 	
-	/*if(stu_present_visit_6==''){
+	if(stu_present_visit_6==''){
 			stu_present_visit_6=0;
-			}*/
+			}
 	if(stu_present_visit_7==''){
 			stu_present_visit_7=0;
 			}
@@ -445,7 +445,7 @@ function total_present_stu(){
 			stu_present_visit_10=0;
 			}		
 		
-	var total_prese_stu=eval(stu_present_visit_7)+eval(stu_present_visit_8)+eval(stu_present_visit_9)+eval(stu_present_visit_10);
+	var total_prese_stu=eval(stu_present_visit_6)+eval(stu_present_visit_7)+eval(stu_present_visit_8)+eval(stu_present_visit_9)+eval(stu_present_visit_10);
 		
 	$("#stu_present_visit_total").val(total_prese_stu);
 	
@@ -1100,11 +1100,11 @@ function act_teachers(){
                 <li><a href="#" onClick="pmthhVerification();" data-transition="slide">PMT HH Verification</a></li>
             </ul>
             <ul data-role="listview" data-inset="true">
-                <li><a href="#" onClick="complianceVerification()" data-transition="slide">Compliance verification</a></li>
+                <li><a href="#" onClick="complianceVerification()" data-transition="slide">Compliance verification </a></li>
             </ul>
     </div>
     
-    <div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting 20160525</div><!------/footer 20150401-20150309 -->
+    <div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting 20160730</div><!------/footer 20150401-20150309 -->
     
     <div data-role="panel" id="leftpanel" data-position="left" data-display="overlay" data-theme="c">
         <div align="center"></div>
@@ -2078,16 +2078,16 @@ function act_teachers(){
                   <tr>
                     <td  class="tbl_bro_color" align="center">Grade</td>
                     <td  class="tbl_bro_color auto_break" width="100" >
-                        Number of students who received PMT stipend during Jul-Dec 2015 semester 
+                        Number of students who received PMT stipend during Jan-June, 2016 semester 
                     </td>
                     <td  class="tbl_bro_color auto_break" width="100" >
-                        Number of students who met 75%  attendance criteria July- December 2015
+                        Number of students who met 75%  attendance criteria Jan-June, 2016
                     </td>
                     <td  class="tbl_bro_color auto_break" width="100" >
-                        Number of students who met the academic criteria with 33% pass mark in all subjects in annual Exam of 2015
+                        Number of students who met the academic criteria with 33% pass mark in all subjects in annual Exam of 2016
                     </td>
                     <td  class="tbl_bro_color auto_break" width="100" >
-                       Number of students who got married in 2015
+                       Number of students who got married in Jan-June, 2016
                     </td>
                     <td  class="tbl_bro_color auto_break" width="100" >
                        Number of students found enrolled as per register(at the time of the survey)
@@ -2108,7 +2108,7 @@ function act_teachers(){
                         <input type="number" name="stu_got_married_6" id="stu_got_married_6" onblur="total_married_stu()"/>
                     </td>
                     <td  class="tbl_bro_color" width="100">
-                        <input type="number" name="stu_present_visit_6" id="stu_present_visit_6" onblur="total_present_stu()"  style="background-color:#E8E8E8;" readonly="readonly" />
+                        <input type="number" name="stu_present_visit_6" id="stu_present_visit_6" onblur="total_present_stu()"  />
                     </td>
                   </tr>
                   <tr>
@@ -2222,7 +2222,7 @@ function act_teachers(){
     </div>
     <div data-role="content" >
             <ul data-role="listview" data-inset="true">
-               <li style="background-color:#e2e2e2;" class="auto_break">4. Among students who met all criteria above (attendance rate is at least 75% in 2015, received at least 33% pass mark in all subjects in 2015, and was unmarried in 2015), randomly select five students and fill the following table (at least one from each grade)</li> 
+               <li style="background-color:#e2e2e2;" class="auto_break">4. Among students who met all criteria above (attendance rate is at least 75% in Jan-June, 2016, and was unmarried in Jan-June, 2016), randomly select five students and fill the following table (at least one from each grade)</li> 
                
                 <li class="ui-field-contain" style="overflow:scroll;"> 
                	  <table border="1" class="tbl_bro_color" cellspacing="0" cellpadding="0">
@@ -2230,10 +2230,10 @@ function act_teachers(){
                         	<td class="tbl_bro_color auto_break" style="width:150px;" >Name of the student </td>
                             <td align="center" class="tbl_bro_color auto_break">Grade</td>
                             <td class="tbl_bro_color auto_break" style="width:150px;">PMT ID</td>
-                            <td class="tbl_bro_color auto_break" >Attendance % in July- December 2015</td>
+                            <td class="tbl_bro_color auto_break" >Attendance % in Jan-June, 2016</td>
                             <td class="tbl_bro_color auto_break" >Marks in the final exam of 2015 </td>
                             <td class="tbl_bro_color auto_break" >Currently  in School? </td>
-                            <td class="tbl_bro_color auto_break" >Married or unmarried during Jul-Dec 2015 </td>
+                            <td class="tbl_bro_color auto_break" >Married or unmarried during Jan-June, 2016 </td>
                       </tr>
                     	<tr>
                     	  <td class="tbl_bro_color"><input type="text" name="pmt_st_1_name" id="pmt_st_1_name" style="width:160px;" /></td>
@@ -2408,7 +2408,7 @@ function act_teachers(){
                     <input type="date" name="act_1_ag_date" id="act_1_ag_date"  placeholder="dd-mm-yyyy"/>
                </li>
                <li class="ui-field-contain auto_break">    
-                    5. Total Number Working days in July- December 2015.. 
+                    5. Total Number Working days in Jan-June, 2016.. 
                     <input type="number" name="act_1_total_work" id="act_1_total_work" />
                </li>
                 <li class="ui-field-contain auto_break">            	
@@ -2634,7 +2634,7 @@ function act_teachers(){
                </li> 
            </div>    
                
-               <li style="background-color:#F2F2F2;" class="auto_break">8. Description of Additional Classes and Regular Classes in reference Semester (July-December, 2015)</li>
+               <li style="background-color:#F2F2F2;" class="auto_break">8. Description of Additional Classes and Regular Classes in reference Semester (Jan-June, 2016)</li>
                 <li class="ui-field-contain" style="overflow:scroll;">  
                 
                 <table width="100%" class="tbl_bro_color"  cellspacing="0" cellpadding="0" >  
@@ -2819,7 +2819,7 @@ function act_teachers(){
                         </fieldset>
                </li>
                 <li class="ui-field-contain auto_break">    
-                    6. How many SMC meetings were held in the last six months (July-December, 2015)
+                    6. How many SMC meetings were held in the last six months (Jan-June, 2016)
                     <input type="number" name="smc_meeting" id="smc_meeting" />
                </li>
                <li class="ui-field-contain auto_break">    
@@ -2855,7 +2855,7 @@ function act_teachers(){
                     <input type="date" name="pta_reformed_ins" id="pta_reformed_ins" placeholder="dd-mm-yyyy" />
                </li>
                <li class="ui-field-contain auto_break">    
-                    8.2 If PTA exists in the Institution, how much PTA grants has the institution received in the last 6 months? Taka 
+                    8.2 Amount of grants (EACM and/or SA) disburses to institution PTA account in the last 6 months. Taka  
                     <input type="number" name="pta_ins_rec_taka" id="pta_ins_rec_taka" />
                </li>
               <!-- <li class="ui-field-contain auto_break">   
@@ -2885,7 +2885,7 @@ function act_teachers(){
 
                
                <li class="ui-field-contain auto_break">    
-                    9. How many PTA meetings were held between July-December, 2015 
+                    9. How many PTA meetings were held between Jan-June, 2016 
                     <input type="number" name="pta_meet" id="pta_meet" />
                </li>
                 <li class="ui-field-contain auto_break">    
@@ -3004,7 +3004,7 @@ function act_teachers(){
                     </select>   
                </li>
                <li class="ui-field-contain auto_break">    
-                 2. Did the institution receive any Grant for SA in the 2nd Instalment of 2015
+                 2. Did the institution receive any Grant for SA in the 1st Instalment of 2016
                       <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
                         <input name="ins_rec_grant_sa" id="radio-choice-h-2a" value="1"  type="radio" onclick="rec_sec_instal()" >
                         <label for="radio-choice-h-2a">Yes</label>
@@ -3088,7 +3088,7 @@ function act_teachers(){
                     </fieldset>
                </li>
                <li class="ui-field-contain auto_break">    
-                    How many-mails were sent to SEQAEP during July-December, 2015
+                    How many-mails were sent to SEQAEP during Jan-June, 2016
                     <select name="how_sec_email" id="how_sec_email" data-native-menu="false" >
                     	<option value="0">Select</option>
                         <option value="1">0</option>
@@ -3116,7 +3116,7 @@ function act_teachers(){
                     </select>
                </li> 
                <li class="ui-field-contain auto_break">    
-                   ICT Grant received during July-December, 2015  
+                   ICT Grant received during Jan-June, 2016  
                      <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
                         <input name="ict_grant_rec" id="radio-choice-h-2a" value="1" checked="checked" type="radio" >
                         <label for="radio-choice-h-2a">Yes</label>
@@ -3521,7 +3521,7 @@ function act_teachers(){
                </li>
         </div>
                 <li class="ui-field-contain auto_break" >    
-                    6. Was there any tubewell set up in the Institution by SEQAEP during FY 2015 
+                    6. Was there any tubewell set up in the Institution by SEQAEP during FY 2016 
                     <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
                         <input name="tube_setup_ins" id="radio-choice-h-2a" value="1"  type="radio" onclick="tube_setup()">
                         <label for="radio-choice-h-2a">Yes</label>
@@ -3635,7 +3635,7 @@ function act_teachers(){
                     <td class="tbl_bro_color" align="center">No. of GPA-5</td>
                  </tr>
                	 <tr>
-               	   <td class="tbl_bro_color" rowspan="2" align="center">2013</td>
+               	   <td class="tbl_bro_color" rowspan="2" align="center">2014</td>
                	   <td class="tbl_bro_color" align="center">PMT</td>
                	   <td class="tbl_bro_color" align="center"><input type="number" id="pmt_stu_app_ssc_exam_13" name="pmt_stu_app_ssc_exam_13" /></td>
                	   <td class="tbl_bro_color" align="center"><input type="number" id="pmt_stu_pass_ssc_exam_13" name="pmt_stu_pass_ssc_exam_13" /></td>
@@ -3648,7 +3648,7 @@ function act_teachers(){
                	   <td class="tbl_bro_color" align="center"><input type="number" id="nonpmt_stu_gpa_13" name="nonpmt_stu_gpa_13" /></td>
            	     </tr>
                	 <tr>
-               	   <td class="tbl_bro_color" rowspan="2" align="center">2014</td>
+               	   <td class="tbl_bro_color" rowspan="2" align="center">2015</td>
                	   <td class="tbl_bro_color" align="center">PMT</td>
                	   <td class="tbl_bro_color" align="center"><input type="number" id="pmt_stu_app_ssc_exam_14" name="pmt_stu_app_ssc_exam_14" /></td>
                	   <td class="tbl_bro_color" align="center"><input type="number" id="pmt_stu_pass_ssc_exam_14" name="pmt_stu_pass_ssc_exam_14" /></td>
@@ -3661,7 +3661,7 @@ function act_teachers(){
                	   <td class="tbl_bro_color" align="center"><input type="number" id="nonpmt_stu_gpa_14" name="nonpmt_stu_gpa_14" /></td>
            	     </tr>
                  <tr>
-               	   <td class="tbl_bro_color" rowspan="2" align="center">2015</td>
+               	   <td class="tbl_bro_color" rowspan="2" align="center">2016</td>
                	   <td class="tbl_bro_color" align="center">PMT</td>
                	   <td class="tbl_bro_color" align="center"><input type="number" id="pmt_stu_app_ssc_exam_15" name="pmt_stu_app_ssc_exam_15" /></td>
                	   <td class="tbl_bro_color" align="center"><input type="number" id="pmt_stu_pass_ssc_exam_15" name="pmt_stu_pass_ssc_exam_15" /></td>
@@ -3681,12 +3681,13 @@ function act_teachers(){
              <ul data-role="listview" data-inset="true">
              
                <li style="background-color:#e2e2e2;" class="auto_break">J. PMT SSC (or equivalent) Pass Award</li>
-               <li class="ui-field-contain auto_break" style="overflow:scroll;"> 
+               <li class="ui-field-contain auto_break" style="overflow:scroll;">
+                1. PMT Students who appeared in SSC or Equivalent examination in 2016 
                <table width="100%" border="1" class="tbl_bro_color" cellspacing="0" cellpadding="0">
                	 <tr>
-                 	<td class="tbl_bro_color" align="center" >Total students in grade 10 to receive PMT stipend in 2014</td>
-                    <td class="tbl_bro_color" align="center">Total PMT students in grade 10 who appeared in the SSC exam in 2015</td>
-                    <td class="tbl_bro_color" align="center">Number of PMTstudents who passed SSC or equivalent in 2015</td>
+                 	<td class="tbl_bro_color" align="center" >Total students in grade 10 to receive PMT stipend in 2015</td>
+                    <td class="tbl_bro_color" align="center">Total PMT students in grade 10 who appeared in the SSC exam in 2016</td>
+                    <td class="tbl_bro_color" align="center">Number of PMTstudents who passed SSC or equivalent in 2016</td>
                     <td class="tbl_bro_color" align="center">Number of PMT students who collected PMT SSC or equivalent Pass award</td>
                     <td class="tbl_bro_color" align="center">How many of these PMT students who passed SSC or equivalent went for higher secondary school study? (approximate number)</td>
                  </tr>
@@ -4066,10 +4067,10 @@ function act_teachers(){
                     <table width="100%" border="1" class="tbl_bro_color" cellspacing="0" cellpadding="0">
                     <tr>
                     	<td align="center" class="tbl_bro_color auto_break">Grades</td>
-                        <td align="center" class="tbl_bro_color auto_break">Number of students included in the DRH program during  July- Dec 2015 </td>
-                        <td align="center" class="tbl_bro_color auto_break">Number of program books received as per ACF during July- Dec 2015 </td>
-                        <td align="center" class="tbl_bro_color auto_break">Number of students who participated in evaluation test held during July- Dec 2015</td>
-                        <td align="center" class="tbl_bro_color auto_break">Number of students who passed the evaluation test during July-Dec 2015</td>
+                        <td align="center" class="tbl_bro_color auto_break">Number of students included in the DRH program during   2015 </td>
+                        <td align="center" class="tbl_bro_color auto_break">Number of program books received as per ACF during  2015 </td>
+                        <td align="center" class="tbl_bro_color auto_break">Number of students who participated in evaluation test held during 2015</td>
+                        <td align="center" class="tbl_bro_color auto_break">Number of students who passed the evaluation test during 2015</td>
                         <td align="center" class="tbl_bro_color auto_break">Number of awardees </td>
                         <td colspan="2" align="center" class="tbl_bro_color auto_break">Only DRH books</td>
                     </tr>
@@ -4138,7 +4139,7 @@ function act_teachers(){
                     
              </li>
                <li class="ui-field-contain auto_break">    
-                    6. Verify the received quantity of program books and number of awardees by grade during July- Dec2015 from the register
+                    6. Verify the received quantity of program books and number of awardees by grade during July- Dec 2015 from the register
                       <select name="ver_rec_qty_pro_book" id="ver_rec_qty_pro_book" data-native-menu="false" >
                       	<option value="0">Select </option>
                         <option value="1">1-Verified </option>

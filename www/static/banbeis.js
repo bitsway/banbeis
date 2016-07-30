@@ -838,7 +838,7 @@ function pmtDataSubmit(){
 			longitude=0;
 			}
 		//---------------
-		/*if (achPhoto1=='' || achPhoto1==undefined){
+		if (achPhoto1=='' || achPhoto1==undefined){
 			$(".errorChk").text("Please confirm Photo ");
 			$("#btn_pmt_submit").show();
 		}else{		
@@ -857,9 +857,9 @@ function pmtDataSubmit(){
 				//} //-end check location
 				
 			}//Photo 2
-		}//chk photo*/
+		}//chk photo
 		
-		syncDataPmt()
+		//syncDataPmt()
 		
 	}
 
@@ -935,7 +935,7 @@ function syncDataPmt(){
 						   if(result=='Success'){							
 							//alert(result)
 							//--------------
-							 edu_year=$("#edu_year").val("");
+							 /*edu_year=$("#edu_year").val("");
 							 //insName=$("#insName").val("");
 							 //eiinNo=$("#eiinNo").val("");
 							 boothNo=$("#boothNo").val("");
@@ -994,7 +994,7 @@ function syncDataPmt(){
 							 q24_a=$("#q24_a").val("");
 							 q25_a=$("#q25_a").val("");
 							 q26_a=$("#q26_a").val("");
-							 q27_a=$("#q27_a").val("");
+							 q27_a=$("#q27_a").val("");*/
 							
 							//--------------
 							
@@ -1520,7 +1520,7 @@ function complianceData2Next(){
 		}else if (parseInt(stu_rec_stipend_6)<parseInt(stu_got_married_6)){             //3 col check cls 6
 			$(".errorChk").text("Less than Number of students who received PMT stipend VI");
 		/*}else if (parseInt(stu_rec_stipend_6)<parseInt(stu_present_visit_6)){             //3 col check cls 6
-			$(".errorChk").text("Less than Number of students who received PMT stipend VI");	*/			
+			$(".errorChk").text("Less than Number of students who received PMT stipend VI");*/				
 		/*}else if (stu_present_visit_6=="" ){
 			$(".errorChk").text("Required Numeric VI");	*/
 		/*}else if (stu_present_visit_6>999){
@@ -1644,7 +1644,7 @@ function complianceData2Next(){
 									
 		}else{ 
 				
-		banbeisComData2="&pmt_boys_6="+pmt_boys_6+"&not_pmt_boys_6="+not_pmt_boys_6+"&pmt_girls_6="+pmt_girls_6+"&not_pmt_girls_6="+not_pmt_girls_6+"&pmt_boys_7="+pmt_boys_7+"&not_pmt_boys_7="+not_pmt_boys_7+"&pmt_girls_7="+pmt_girls_7+"&not_pmt_girls_7="+not_pmt_girls_7+"&pmt_boys_8="+pmt_boys_8+"&not_pmt_boys_8="+not_pmt_boys_8+"&pmt_girls_8="+pmt_girls_8+"&not_pmt_girls_8="+not_pmt_girls_8+"&pmt_boys_9="+pmt_boys_9+"&not_pmt_boys_9="+not_pmt_boys_9+"&pmt_girls_9="+pmt_girls_9+"&not_pmt_girls_9="+not_pmt_girls_9+"&pmt_boys_10="+pmt_boys_10+"&not_pmt_boys_10="+not_pmt_boys_10+"&pmt_girls_10="+pmt_girls_10+"&not_pmt_girls_10="+not_pmt_girls_10+"&stip_pro_semister="+stip_pro_semister+"&stip_pro_year="+stip_pro_year+"&disbursement_date="+disbursement_date+"&stu_rec_stipend_6="+stu_rec_stipend_6+"&stu_attendance_6="+stu_attendance_6+"&stu_pass_annual_exam_6="+stu_pass_annual_exam_6+"&stu_got_married_6="+stu_got_married_6+"&stu_present_visit_6=0&stu_rec_stipend_7="+stu_rec_stipend_7+"&stu_attendance_7="+stu_attendance_7+"&stu_pass_annual_exam_7="+stu_pass_annual_exam_7+"&stu_got_married_7="+stu_got_married_7+"&stu_present_visit_7="+stu_present_visit_7+"&stu_rec_stipend_8="+stu_rec_stipend_8+"&stu_attendance_8="+stu_attendance_8+"&stu_pass_annual_exam_8="+stu_pass_annual_exam_8+"&stu_got_married_8="+stu_got_married_8+"&stu_present_visit_8="+stu_present_visit_8+"&stu_rec_stipend_9="+stu_rec_stipend_9+"&stu_attendance_9="+stu_attendance_9+"&stu_pass_annual_exam_9="+stu_pass_annual_exam_9+"&stu_got_married_9="+stu_got_married_9+"&stu_present_visit_9="+stu_present_visit_9+"&stu_rec_stipend_10="+stu_rec_stipend_10+"&stu_attendance_10="+stu_attendance_10+"&stu_pass_annual_exam_10="+stu_pass_annual_exam_10+"&stu_got_married_10="+stu_got_married_10+"&stu_present_visit_10="+stu_present_visit_10;
+		banbeisComData2="&pmt_boys_6="+pmt_boys_6+"&not_pmt_boys_6="+not_pmt_boys_6+"&pmt_girls_6="+pmt_girls_6+"&not_pmt_girls_6="+not_pmt_girls_6+"&pmt_boys_7="+pmt_boys_7+"&not_pmt_boys_7="+not_pmt_boys_7+"&pmt_girls_7="+pmt_girls_7+"&not_pmt_girls_7="+not_pmt_girls_7+"&pmt_boys_8="+pmt_boys_8+"&not_pmt_boys_8="+not_pmt_boys_8+"&pmt_girls_8="+pmt_girls_8+"&not_pmt_girls_8="+not_pmt_girls_8+"&pmt_boys_9="+pmt_boys_9+"&not_pmt_boys_9="+not_pmt_boys_9+"&pmt_girls_9="+pmt_girls_9+"&not_pmt_girls_9="+not_pmt_girls_9+"&pmt_boys_10="+pmt_boys_10+"&not_pmt_boys_10="+not_pmt_boys_10+"&pmt_girls_10="+pmt_girls_10+"&not_pmt_girls_10="+not_pmt_girls_10+"&stip_pro_semister="+stip_pro_semister+"&stip_pro_year="+stip_pro_year+"&disbursement_date="+disbursement_date+"&stu_rec_stipend_6="+stu_rec_stipend_6+"&stu_attendance_6="+stu_attendance_6+"&stu_pass_annual_exam_6="+stu_pass_annual_exam_6+"&stu_got_married_6="+stu_got_married_6+"&stu_present_visit_6="+stu_present_visit_6+"&stu_rec_stipend_7="+stu_rec_stipend_7+"&stu_attendance_7="+stu_attendance_7+"&stu_pass_annual_exam_7="+stu_pass_annual_exam_7+"&stu_got_married_7="+stu_got_married_7+"&stu_present_visit_7="+stu_present_visit_7+"&stu_rec_stipend_8="+stu_rec_stipend_8+"&stu_attendance_8="+stu_attendance_8+"&stu_pass_annual_exam_8="+stu_pass_annual_exam_8+"&stu_got_married_8="+stu_got_married_8+"&stu_present_visit_8="+stu_present_visit_8+"&stu_rec_stipend_9="+stu_rec_stipend_9+"&stu_attendance_9="+stu_attendance_9+"&stu_pass_annual_exam_9="+stu_pass_annual_exam_9+"&stu_got_married_9="+stu_got_married_9+"&stu_present_visit_9="+stu_present_visit_9+"&stu_rec_stipend_10="+stu_rec_stipend_10+"&stu_attendance_10="+stu_attendance_10+"&stu_pass_annual_exam_10="+stu_pass_annual_exam_10+"&stu_got_married_10="+stu_got_married_10+"&stu_present_visit_10="+stu_present_visit_10;
 				
 				
 		//alert(banbeisComData2);
@@ -3777,7 +3777,7 @@ function complianceDataSubmit(){
 			com_longitude=0;
 			}
 		//---------------
-		/*if (com_achPhoto=='' || com_achPhoto==undefined){
+		if (com_achPhoto=='' || com_achPhoto==undefined){
 			$(".errorChk").text("Please confirm Photo 1 ");
 			$("#btn_com_submit").show();
 		}else{
@@ -3800,9 +3800,9 @@ function complianceDataSubmit(){
 				//} //-end check location
 				
 			}//Photo 2
-		}//chk photo*/
+		}//chk photo
 		
-		syncDataCom()
+		//syncDataCom()
 		
 	}
 
@@ -4560,7 +4560,7 @@ function syncDataCom_x(){
 							$("#stu_attendance_6").val("");
 							$("#stu_pass_annual_exam_6").val("");
 							$("#stu_got_married_6").val("");
-							//$("#stu_present_visit_6").val("");
+							$("#stu_present_visit_6").val("");
 							
 							$("#stu_rec_stipend_7").val("");
 							$("#stu_attendance_7").val("");
