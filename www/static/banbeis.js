@@ -942,8 +942,13 @@ function pmtDataSubmit(){
 			pmt_longitude=0;
 			}
 		//---------------
+<<<<<<< HEAD
 		if (pmt_achPhoto=='' || pmt_achPhoto==undefined){
 			$(".errorChk").text("Please confirm Photo 1 ");
+=======
+		if (achPhoto1=='' || achPhoto1==undefined){
+			$(".errorChk").text("Please confirm Photo ");
+>>>>>>> origin/master
 			$("#btn_pmt_submit").show();
 		}else{
 			if (pmt_achPhoto_2=='' || pmt_achPhoto_2==undefined){
@@ -1104,6 +1109,7 @@ function syncDataPmt(){
 						   if(result=='Success'){							
 							//alert(result)
 							//--------------
+<<<<<<< HEAD
 							 $("#edu_year").val("");
 							 $("#s_div").val("");
 							 $("#s_dist").val("");
@@ -1166,6 +1172,68 @@ function syncDataPmt(){
 							 $("#q25_a").val("");
 							 $("#q26_a").val("");
 							 $("#q27_a").val("");
+=======
+							 /*edu_year=$("#edu_year").val("");
+							 //insName=$("#insName").val("");
+							 //eiinNo=$("#eiinNo").val("");
+							 boothNo=$("#boothNo").val("");
+							 appSerialNo=$("#appSerialNo").val("");
+							 union_name=$("#union_name").val("");
+							 pourashava_name=$("#pourashava_name").val("");
+							 upazila_name=$("#s_up").val("");
+							 zila_name=$("#s_dist").val("");
+							 division_name=$("#s_div").val("");
+							
+							 student_name=$("#student_name").val("");
+							 //student_id=$("#student_id").val("");
+							 dob=$("#dob").val("");
+							 fathers_name=$("#fathers_name").val("");
+							 fathers_nid=$("#fathers_nid").val("");
+							 mothers_name=$("#mothers_name").val("");
+							 mothers_nid=$("#mothers_nid").val("");
+							 gen_der=$("#gen_der").val("");
+							 pre_stu_located=$("#pre_stu_located").val("");
+							 guardian_absence_of_parents=$("#guardian_absence_of_parents").val("");
+							 relation_student_with_guardian=$("#relation_student_with_guardian").val("");
+							
+							 parents_village=$("#parents_village").val("");
+							 parents_post=$("#parents_post").val("");
+							 parents_union=$("#parents_union").val("");
+							 parents_upazila=$("#parents_upazila").val("");
+							
+							 student_village=$("#student_village").val("");
+							 student_post=$("#student_post").val("");
+							 student_union=$("#student_union").val("");
+							 student_upazila=$("#student_upazila").val("");
+							
+							 q1_a=$("#q1_a").val("");
+							 q2_a=$("#q2_a").val("");
+							 q3_a=$("#q3_a").val("");
+							 q4_a=$("#q4_a").val("");
+							 q5_a=$("#q5_a").val("");
+							 q6_a=$("#q6_a").val("");
+							 q7_a=$("#q7_a").val("");
+							 q8_a=$("#q8_a").val("");
+							 q9_a=$("#q9_a").val("");
+							 q10_a=$("#q10_a").val("");
+							 q11_a=$("#q11_a").val("");
+							 q12_a=$("#q12_a").val("");
+							 q13_a=$("#q13_a").val("");
+							 q14_a=$("#q14_a").val("");
+							 q15_a=$("#q15_a").val("");
+							 q16_a=$("#q16_a").val("");
+							 q17_a=$("#q17_a").val("");
+							 q18_a=$("#q18_a").val("");
+							 q19_a=$("#q19_a").val("");
+							 q20_a=$("#q20_a").val("");
+							 q21_a=$("#q21_a").val("");	
+							 q22_a=$("#q22_a").val("");
+							 q23_a=$("#q23_a").val("");
+							 q24_a=$("#q24_a").val("");
+							 q25_a=$("#q25_a").val("");
+							 q26_a=$("#q26_a").val("");
+							 q27_a=$("#q27_a").val("");*/
+>>>>>>> origin/master
 							
 							//--------------
 							
@@ -4450,6 +4518,7 @@ function syncDataCom_1(sl){
 	}
 
 
+<<<<<<< HEAD
 //function syncDataCom_x(){	
 //			
 //	//alert(apipath_compliance+"submitData_compliance?cid=BANBEIS&mobile_no="+localStorage.mobile_no+"&syncCode="+localStorage.sync_code+banbeisComData+banbeisComData2+banbeisComData3+banbeisComData4+banbeisComData5+banbeisComData6+banbeisComData7+banbeisComData8+'&com_achPhoto='+imageName+'&com_achPhoto2='+imageName2+'&latitude='+com_latitude+'&longitude='+com_longitude);
@@ -5002,6 +5071,560 @@ function syncDataCom_1(sl){
 //			});//end ajax
 //	
 //	}
+=======
+function syncDataCom_x(){	
+			
+	//alert(apipath_compliance+"submitData_compliance?cid=BANBEIS&mobile_no="+localStorage.mobile_no+"&syncCode="+localStorage.sync_code+banbeisComData+banbeisComData2+banbeisComData3+banbeisComData4+banbeisComData5+banbeisComData6+banbeisComData7+banbeisComData8+'&com_achPhoto='+imageName+'&com_achPhoto2='+imageName2+'&latitude='+com_latitude+'&longitude='+com_longitude);
+			$.ajax({
+					type: 'POST',
+					url:apipath_compliance+"submitData_compliance?cid=BANBEIS&mobile_no="+localStorage.mobile_no+"&syncCode="+localStorage.sync_code+banbeisComData+banbeisComData2+banbeisComData3+banbeisComData4+banbeisComData5+banbeisComData6+banbeisComData7+banbeisComData8+'&com_achPhoto='+imageName+'&com_achPhoto2='+imageName2+'&latitude='+com_latitude+'&longitude='+com_longitude,
+					   
+					   success: function(result) {
+						
+						if(result=='Success'){							
+							
+							//--------------
+							$("#s_com_dist").val("");
+							$("#s_com_up").val("");
+							$("#s_com_school").val("");
+							
+							$("#institute_name").val("");
+							$("#com_union").val("");
+							$("#com_upzila").val("");
+							$("#com_district").val("");
+							$("#com_eiin").val("");
+							$("#com_phoneno").val("");
+							$("#com_ict_email").val("");
+							$("#com_other_email").val("");
+							$("#com_web_address").val("");
+							$("#com_institute_category").val("");
+							$("#com_type_institute").val("");
+							$("input[name='agr_seqaep']:checked").val("");
+							$("input[name='agr_type']:checked").val("");
+							
+							$("#pmt_boys_6").val("");
+							$("#not_pmt_boys_6").val("");
+							$("#pmt_girls_6").val("");
+							$("#not_pmt_girls_6").val("");
+							
+							$("#pmt_boys_7").val("");
+							$("#not_pmt_boys_7").val("");
+							$("#pmt_girls_7").val("");
+							$("#not_pmt_girls_7").val("");
+							
+							$("#pmt_boys_8").val("");
+							$("#not_pmt_boys_8").val("");
+							$("#pmt_girls_8").val("");
+							$("#not_pmt_girls_8").val("");
+							
+							$("#pmt_boys_9").val("");
+							$("#not_pmt_boys_9").val("");
+							$("#pmt_girls_9").val("");
+							$("#not_pmt_girls_9").val("");
+							
+							$("#pmt_boys_10").val("");
+							$("#not_pmt_boys_10").val("");
+							$("#pmt_girls_10").val("");
+							$("#not_pmt_girls_10").val("");
+							
+							/**********PMT Based Stipend Program**********/				
+							$("#stip_pro_semister").val("");
+							$("#stip_pro_year").val("");
+							$("#disbursement_date").val("");
+							
+							$("#stu_rec_stipend_6").val("");
+							$("#stu_attendance_6").val("");
+							$("#stu_pass_annual_exam_6").val("");
+							$("#stu_got_married_6").val("");
+							$("#stu_present_visit_6").val("");
+							
+							$("#stu_rec_stipend_7").val("");
+							$("#stu_attendance_7").val("");
+							$("#stu_pass_annual_exam_7").val("");
+							$("#stu_got_married_7").val("");
+							$("#stu_present_visit_7").val("");
+							
+							$("#stu_rec_stipend_8").val("");
+							$("#stu_attendance_8").val("");
+							$("#stu_pass_annual_exam_8").val("");
+							$("#stu_got_married_8").val("");
+							$("#stu_present_visit_8").val("");
+							
+							$("#stu_rec_stipend_9").val("");
+							$("#stu_attendance_9").val("");
+							$("#stu_pass_annual_exam_9").val("");
+							$("#stu_got_married_9").val("");
+							$("#stu_present_visit_9").val("");
+							
+							$("#stu_rec_stipend_10").val("");
+							$("#stu_attendance_10").val("");
+							$("#stu_pass_annual_exam_10").val("");
+							$("#stu_got_married_10").val("");
+							$("#stu_present_visit_10").val("");
+							
+							$("#pmt_st_1_name").val("");
+							//pmt_st_1_grade=$("#pmt_st_1_grade").val()
+							$("#pmt_st_1_id").val("");
+							$("#pmt_st_1_attendance").val("");
+							$("#pmt_st_1_final_exam_mark").val("");
+							$("input[name='current_school_1']:checked").val("");
+							$("input[name='status_married_1']:checked").val("");
+							
+							$("#pmt_st_2_name").val("");
+							//pmt_st_2_grade=$("#pmt_st_2_grade").val()
+							$("#pmt_st_2_id").val("");
+							$("#pmt_st_2_attendance").val("");
+							$("#pmt_st_2_final_exam_mark").val("");
+							$("input[name='current_school_2']:checked").val("");
+							$("input[name='status_married_2']:checked").val("");
+							
+							$("#pmt_st_3_name").val("");
+							//pmt_st_3_grade=$("#pmt_st_3_grade").val()
+							$("#pmt_st_3_id").val("");
+							$("#pmt_st_3_attendance").val("");
+							$("#pmt_st_3_final_exam_mark").val("");
+							$("input[name='current_school_3']:checked").val("");
+							$("input[name='status_married_3']:checked").val("");
+							
+							$("#pmt_st_4_name").val("");
+							//pmt_st_4_grade=$("#pmt_st_4_grade").val()
+							$("#pmt_st_4_id").val("");
+							$("#pmt_st_4_attendance").val("");
+							$("#pmt_st_4_final_exam_mark").val("");
+							$("input[name='current_school_4']:checked").val("");
+							$("input[name='status_married_4']:checked").val("");
+							
+							$("#pmt_st_5_name").val("");
+							//pmt_st_5_grade=$("#pmt_st_5_grade").val()
+							$("#pmt_st_5_id").val("");
+							$("#pmt_st_5_attendance").val("");
+							$("#pmt_st_5_final_exam_mark").val("");
+							$("input[name='current_school_5']:checked").val("");
+							$("input[name='status_married_5']:checked").val("");
+							
+							$("input[name='add_cls_seqaep']:checked").val("");
+		
+							$("#add_class_semister").val("");
+							$("#add_class_year").val("");
+										
+							$("#act_1_dis_date").val("");
+							$("#act_1_ag_date").val("");
+							$("#act_1_total_work").val("");
+							$("input[name='sub_add_cls']:checked").val("");
+							
+							$("#act_1_name").val("");	
+							$("#act_1_ag_inst").val("");
+							$("#act_1_sub").val("");
+							$("#act_1_last_academic_cft").val("");
+							$("input[name='receive_mark_1']:checked").val("");
+							$("#act_1_cft_verify").val("");
+							$("#act_1_leave").val("");
+							$("#act_1_absent").val("");
+							$("#act_1_total_class").val("");
+							
+							$("#act_2_name").val("");
+							$("#act_2_ag_inst").val("");
+							$("#act_2_sub").val("");
+							$("#act_2_last_academic_cft").val("");
+							$("input[name='receive_mark_2']:checked").val("");
+							$("#act_2_cft_verify").val("");
+							$("#act_2_leave").val("");
+							$("#act_2_absent").val("");
+							$("#act_2_total_class").val("");
+							
+							$("#act_3_name").val("");	
+							$("#act_3_ag_inst").val("");
+							$("#act_3_sub").val("");
+							$("#act_3_last_academic_cft").val("");
+							$("input[name='receive_mark_3']:checked").val("");
+							$("#act_3_cft_verify").val("");
+							$("#act_3_leave").val("");
+							$("#act_3_absent").val("");
+							$("#act_3_total_class").val("");
+							
+							$("#eng_enro_add_cls_6").val("");	
+							$("#math_enro_add_cls_6").val("");
+							$("#sci_enro_add_cls_6").val("");
+							$("#eng_reg_cls_6").val("");
+							$("#math_reg_cls_6").val("");
+							$("#sci_reg_cls_6").val("");
+							$("#eng_add_cls_6").val("");
+							$("#math_add_cls_6").val("");
+							$("#sci_add_cls_6").val("");
+							$("#eng_ave_cls_6").val("");
+							$("#math_ave_cls_6").val("");
+							$("#sci_ave_cls_6").val("");
+							
+							$("#eng_enro_add_cls_7").val("");	
+							$("#math_enro_add_cls_7").val("");
+							$("#sci_enro_add_cls_7").val("");
+							$("#eng_reg_cls_7").val("");
+							$("#math_reg_cls_7").val("");
+							$("#sci_reg_cls_7").val("");
+							$("#eng_add_cls_7").val("");
+							$("#math_add_cls_7").val("");
+							$("#sci_add_cls_7").val("");
+							$("#eng_ave_cls_7").val("");
+							$("#math_ave_cls_7").val("");
+							$("#sci_ave_cls_7").val("");
+							
+							$("#eng_enro_add_cls_8").val("");	
+							$("#math_enro_add_cls_8").val("");
+							$("#sci_enro_add_cls_8").val("");
+							$("#eng_reg_cls_8").val("");
+							$("#math_reg_cls_8").val("");
+							$("#sci_reg_cls_8").val("");
+							$("#eng_add_cls_8").val("");
+							$("#math_add_cls_8").val("");
+							$("#sci_add_cls_8").val("");
+							$("#eng_ave_cls_8").val("");
+							$("#math_ave_cls_8").val("");
+							$("#sci_ave_cls_8").val("");
+							
+							$("#eng_enro_add_cls_9").val("");	
+							$("#math_enro_add_cls_9").val("");
+							$("#sci_enro_add_cls_9").val("");
+							$("#eng_reg_cls_9").val("");
+							$("#math_reg_cls_9").val("");
+							$("#sci_reg_cls_9").val("");
+							$("#eng_add_cls_9").val("");
+							$("#math_add_cls_9").val("");
+							$("#sci_add_cls_9").val("");
+							$("#eng_ave_cls_9").val("");
+							$("#math_ave_cls_9").val("");
+							$("#sci_ave_cls_9").val("");
+							
+							$("#eng_enro_add_cls_10").val("");
+							$("#math_enro_add_cls_10").val("");
+							$("#sci_enro_add_cls_10").val("");
+							$("#eng_reg_cls_10").val("");
+							$("#math_reg_cls_10").val("");
+							$("#sci_reg_cls_10").val("");
+							$("#eng_add_cls_10").val("");
+							$("#math_add_cls_10").val("");
+							$("#sci_add_cls_10").val("");
+							$("#eng_ave_cls_10").val("");
+							$("#math_ave_cls_10").val("");
+							$("#sci_ave_cls_10").val("");
+							
+							$("#inst_type_manag").val("");
+							$("#smc_type").val("");		
+							$("#smc_member").val("");	
+							$("#smc_tran_seqaep").val("");
+							$("input[name='cha_att_seqaep']:checked").val("");		
+							$("#smc_meeting").val("");
+							$("input[name='smc_meet_chec_min']:checked").val("");
+							$("input[name='ins_annu_sch_dev_plan']:checked").val("");
+							
+							$("input[name='pta_exist_ins']:checked").val("");
+							$("#pta_reformed_ins").val("");			
+							$("#pta_ins_rec_taka").val("");		
+							//$("#ins_grant_rec_date").val("");
+							$("input[name='why_not_pta_formed']:checked").val("");
+							$("input[name='overall_com_mda']:checked").val("");
+							$("#pta_meet").val("");		
+							$("input[name='pta_meet_chec_min']:checked").val("");
+							$("input[name='pta_meet_min_seqaep']:checked").val("");
+							$("#ref_period_sem").val("");
+							$("#ref_period_year").val("");
+							$("input[name='ins_rec_grant_eacm']:checked").val("");
+							$("input[name='acti_with_eacm_grant']:checked").val("");
+							
+							$("#topic_dis_eacm_pro").val("");
+							$("input[name='chai_aware_eacm_expe']:checked").val("");
+							$("#soci_ref_period_sem").val("");
+							$("#soci_ref_period_year").val("");
+							
+							$("input[name='ins_rec_grant_sa']:checked").val("");
+							$("input[name='report_pre_annu_exam']:checked").val("");
+							$("#give_report_prepa").val("");
+							$("#last_soc_rep_dis").val("");
+							
+							$("#ict_ref_period_sem").val("");
+							$("#ict_ref_period_year").val("");
+							
+							$("input[name='ins_internet_con']:checked").val("");
+							$("input[name='ins_assi_ict_grant']:checked").val("");
+							$("#how_sec_email").val("");
+							$("#email_sent_seqaep").val("");
+							$("input[name='ict_grant_rec']:checked").val("");
+							$("input[name='sch_one_mail_seqaep']:checked").val("");
+							$("input[name='ins_rec_isf']:checked").val("");
+							
+							$("#work_status_isf_1").val("");
+							$("input[name='use_group_com_1']:checked").val("");
+							$("#total_taka_seqaep_1").val("");
+							$("#total_taka_commu_1").val("");
+							$("#money_stil_spent_1").val("");
+							$("#pre_condi_work_1").val("");
+							
+							$("#work_status_isf_2").val("");
+							$("input[name='use_group_com_2']:checked").val("");
+							$("#total_taka_seqaep_2").val("");
+							$("#total_taka_commu_2").val("");
+							$("#money_stil_spent_2").val("");
+							$("#pre_condi_work_2").val("");
+							
+							$("#work_status_isf_3").val("")
+							$("input[name='use_group_com_3']:checked").val("");
+							$("#total_taka_seqaep_3").val("")
+							$("#total_taka_commu_3").val("")
+							$("#money_stil_spent_3").val("")
+							$("#pre_condi_work_3").val("")
+							
+							$("#work_status_isf_4").val("");
+							$("input[name='use_group_com_4']:checked").val("");
+							$("#total_taka_seqaep_4").val("");
+							$("#total_taka_commu_4").val("");
+							$("#money_stil_spent_4").val("");
+							$("#pre_condi_work_4").val("");
+							
+							$("#work_status_isf_5").val("");
+							$("input[name='use_group_com_5']:checked").val("");
+							$("#total_taka_seqaep_5").val("");
+							$("#total_taka_commu_5").val("");
+							$("#money_stil_spent_5").val("");
+							$("#pre_condi_work_5").val("");
+							
+							$("#work_status_isf_6").val("");
+							$("input[name='use_group_com_6']:checked").val("");
+							$("#total_taka_seqaep_6").val("");
+							$("#total_taka_commu_6").val("");
+							$("#money_stil_spent_6").val("");
+							$("#pre_condi_work_6").val("");
+							
+							$("#work_status_isf_7").val("");
+							$("input[name='use_group_com_7']:checked").val("");
+							$("#total_taka_seqaep_7").val("");
+							$("#total_taka_commu_7").val("");
+							$("#money_stil_spent_7").val("");
+							$("#pre_condi_work_7").val("");
+							
+							$("#work_status_isf_8").val("");
+							$("input[name='use_group_com_8']:checked").val("");
+							$("#total_taka_seqaep_8").val("");
+							$("#total_taka_commu_8").val("");
+							$("#money_stil_spent_8").val("");
+							$("#pre_condi_work_8").val("");
+							
+							$("#work_status_isf_9").val("");
+							$("input[name='use_group_com_9']:checked").val("");
+							$("#total_taka_seqaep_9").val("");
+							$("#total_taka_commu_9").val("");
+							$("#money_stil_spent_9").val("");
+							$("#pre_condi_work_9").val("");		
+							
+							//var name_work_isf_grant=$("input[name='name_work_isf_grant']:checked").val();
+							//var work_status=$("#work_status").val()
+							$("#ins_total_tub").val("");
+							//$("#test_tubewell").val("");
+							$("#test_arsenic").val("");
+							$("#tested_manganese").val("");
+							$("#tubewell_arsenic_free").val("");
+							$("#tub_ars_cont").val("");
+							$("#tub_manga_free").val("");
+							$("#tub_manga_conta").val("");
+							$("input[name='ins_per_dphe_water']:checked").val("");
+							$("input[name='arsenic']:checked").val("");
+							$("input[name='manganese']:checked").val("");
+							$("input[name='tube_setup_ins']:checked").val("");
+							$("#how_tub_install").val("")
+							
+							$("input[name='ins_receive_tk']:checked").val("");
+							$("input[name='receive_amount_iaa']:checked").val("");
+							$("input[name='amount_dis_manual']:checked").val("");
+							$("input[name='smc_awared_dis']:checked").val("");	
+							$("#reason").val("");
+							$("input[name='smc_meet_dis']:checked").val("");	
+							$("input[name='pta_aware_dis']:checked").val("");
+							
+							$("#pmt_stu_app_ssc_exam_13").val("");
+							$("#pmt_stu_pass_ssc_exam_13").val("");
+							$("#pmt_stu_gpa_13").val("");
+							$("#nonpmt_stu_app_ssc_exam_13").val("");
+							$("#nonpmt_stu_pass_ssc_exam_13").val("");
+							$("#nonpmt_stu_gpa_13").val("");
+							
+							$("#pmt_stu_app_ssc_exam_14").val("");
+							$("#pmt_stu_pass_ssc_exam_14").val("");
+							$("#pmt_stu_gpa_14").val("");
+							$("#nonpmt_stu_app_ssc_exam_14").val("");
+							$("#nonpmt_stu_pass_ssc_exam_14").val("");
+							$("#nonpmt_stu_gpa_14").val("");
+							
+							$("#pmt_stu_app_ssc_exam_15").val("");
+							$("#pmt_stu_pass_ssc_exam_15").val("");
+							$("#pmt_stu_gpa_15").val("");
+							$("#nonpmt_stu_app_ssc_exam_15").val("");
+							$("#nonpmt_stu_pass_ssc_exam_15").val("");
+							$("#nonpmt_stu_gpa_15").val("");	
+							
+							/*************************/
+							$("#total_stu_rec_stipend").val("");
+							$("#pmt_stu_app_ssc_exam").val("");
+							$("#pmt_stu_pass_ssc").val("");	
+							$("#pmt_stu_coll_ssc_award").val("");
+							$("#pmt_stu_higher_study").val("");
+							$("#pass_award_dis").val("");
+							$("#stu_award_ref_period_sem").val("");
+							$("#stu_award_ref_period_year").val("");
+							
+							$("input[name='rece_award_boys_7']:checked").val("");
+							$("input[name='rece_pmt_stipen_boys_7']:checked").val("");
+							$("#per_mark_ann_exam_boys_7").val("");
+							
+							$("input[name='pre_day_visit_boys_7']:checked").val("");
+							$("input[name='about_award_amo_tell_boys_7']:checked").val("");
+							$("input[name='rece_award_girls_7']:checked").val("");
+							$("input[name='rece_pmt_stipen_girls_7']:checked").val("");
+							$("#per_mark_ann_exam_girls_7").val("");
+							
+							$("input[name='pre_day_visit_girls_7']:checked").val("");
+							$("input[name='about_award_amo_tell_girls_7']:checked").val("");
+							
+							$("input[name='rece_award_boys_8']:checked").val("");
+							$("input[name='rece_pmt_stipen_boys_8']:checked").val("");
+							$("#per_mark_ann_exam_boys_8").val("");
+							
+							$("input[name='pre_day_visit_boys_8']:checked").val("");
+							$("input[name='about_award_amo_tell_boys_8']:checked").val("");
+							$("input[name='rece_award_girls_8']:checked").val("");
+							$("input[name='rece_pmt_stipen_girls_8']:checked").val("");
+							$("#per_mark_ann_exam_girls_8").val("");
+							
+							$("input[name='pre_day_visit_girls_8']:checked").val("");
+							$("input[name='about_award_amo_tell_girls_8']:checked").val("");
+							
+							$("input[name='rece_award_boys_10']:checked").val("");
+							$("input[name='rece_pmt_stipen_boys_10']:checked").val("");
+							$("#per_mark_ann_exam_boys_10").val("");
+							
+							$("input[name='pre_day_visit_boys_10']:checked").val("");
+							$("input[name='about_award_amo_tell_boys_10']:checked").val("");
+							$("input[name='rece_award_girls_10']:checked").val("");
+							$("input[name='rece_pmt_stipen_girls_10']:checked").val("");
+							$("#per_mark_ann_exam_girls_10").val("");
+							
+							$("input[name='pre_day_visit_girls_10']:checked").val("");
+							$("input[name='about_award_amo_tell_girls_10']:checked").val("");
+							
+							$("#award_dis").val("");
+							
+							
+							$("#dev_ref_period_sem").val("");
+							$("#dev_ref_period_year").val("");
+							
+							$("input[name='ins_drh_pro']:checked").val("");		
+							$("#org_drh_pro").val("");
+							$("input[name='rec_org_ref_per']:checked").val("");
+							
+							$("#stu_inc_drh_6").val("");
+							$("#pro_book_rec_6").val("");
+							$("#stu_per_eva_6").val("");
+							$("#stu_pass_eval_test_6").val("");
+							$("#no_award_6").val("");
+							$("#only_drh_book_6").val("");
+							//$("#inc_drh_book_6").val("");
+							
+							$("#stu_inc_drh_7").val("");
+							$("#pro_book_rec_7").val("");
+							$("#stu_per_eva_7").val("");
+							$("#stu_pass_eval_test_7").val("");
+							$("#no_award_7").val("");
+							$("#only_drh_book_7").val("");
+							//$("#inc_drh_book_7").val("");
+							
+							$("#stu_inc_drh_8").val("");
+							$("#pro_book_rec_8").val("");
+							$("#stu_per_eva_8").val("");
+							$("#stu_pass_eval_test_8").val("");
+							$("#no_award_8").val("");
+							$("#only_drh_book_8").val("");
+							//$("#inc_drh_book_8").val("");
+							
+							$("#stu_inc_drh_9").val("");
+							$("#pro_book_rec_9").val("");
+							$("#stu_per_eva_9").val("");
+							$("#stu_pass_eval_test_9").val("");
+							$("#no_award_9").val("");
+							$("#only_drh_book_9").val("");
+							//$("#inc_drh_book_9").val("");
+							
+							$("#stu_inc_drh_10").val("");
+							$("#pro_book_rec_10").val("");
+							$("#stu_per_eva_10").val("");
+							$("#stu_pass_eval_test_10").val("");
+							$("#no_award_10").val("");
+							$("#only_drh_book_10").val("");
+							//$("#inc_drh_book_10").val("");
+							
+							$("#ver_rec_qty_pro_book").val("");
+							$("#total_drh_book").val("");
+							$("#rec_book_ins").val("");
+							$("#ins_book_drh").val("");
+							$("#ins_book_drh_ref").val("");
+							
+							<!-----------total---------->
+							$("#pmt_boys_total").val("");
+							$("#not_pmt_boys_total").val("");
+							$("#pmt_girls_total").val("");
+							$("#not_pmt_girls_total").val("");
+							
+							$("#stu_rec_stipend_total").val("");
+							$("#stu_attendance_total").val("");
+							$("#stu_pass_annual_exam_total").val("");
+							$("#stu_got_married_total").val("");
+							$("#stu_present_visit_total").val("");
+							
+							$("#eng_enro_add_cls_total").val("");
+							$("#math_enro_add_cls_total").val("");
+							$("#sci_enro_add_cls_total").val("");
+							$("#eng_reg_cls_total").val("");
+							$("#math_reg_cls_total").val("");
+							$("#sci_reg_cls_total").val("");
+							$("#eng_add_cls_total").val("");
+							$("#math_add_cls_total").val("");
+							$("#sci_add_cls_total").val("");
+							$("#eng_ave_cls_total").val("");
+							$("#math_ave_cls_total").val("");
+							$("#sci_ave_cls_total").val("");
+							
+							$("#stu_inc_drh_total").val("");
+							$("#pro_book_rec_total").val("");
+							$("#stu_per_eva_total").val("");
+							$("#stu_pass_eval_test_total").val("");
+							$("#no_award_total").val("");
+							$("#only_drh_book_total").val("");
+							$("#inc_drh_book_total").val("");
+							
+							<!--------------------->	
+														
+							
+							//--------------
+							
+							$("#com_ach_lat").val("");
+							$("#com_ach_long").val("");
+							$("#com_achPhoto").val("");
+							$("#com_achPhoto_2").val("");
+										
+						
+							$(".sucChk").text('Successfully Submitted');
+							$(".errorChk").text("");
+							//$("#btn_1_take_pic").hide();
+							//$("#btn_2_take_pic").hide();
+							//$("#btn_com_ach_lat_long").hide();
+							//$("#btn_com_submit").hide();
+							$("#btn_com_submit").show();						
+						}else{
+							$(".errorChk").text('Unauthorized Access');																	
+							$("#btn_com_submit").show();
+							}
+							
+					   }//end result
+			});//end ajax
+	
+	}
+>>>>>>> origin/master
 
 
 
