@@ -959,7 +959,7 @@ function pmtDataSubmit(){
 					//imagePathA="test"					
 					if (imagePathPmtA!=""){							
 						$(".errorChk").text("Syncing photo 1..");
-						imageName = localStorage.mobile_no+"_"+get_time+".jpg";										
+						imageNamePmt = localStorage.mobile_no+"_"+get_time+".jpg";										
 						uploadPhotoAchPmt(imagePathPmtA, imageNamePmt);	
 						//$("#btn_pmt_submit").show();					
 					}
