@@ -1,4 +1,9 @@
 
+var imageNamePmt = "";
+var imageName2Pmt = "";
+var imagePathPmtA="";
+var imagePath2PmtA="";
+
 var achPhoto="";
 var achPhoto2="";
 var imageName = "";
@@ -952,10 +957,10 @@ function pmtDataSubmit(){
 				//	$("#btn_pmt_submit").show();
 				//}else{				
 					//imagePathA="test"					
-					if (imagePathA!=""){							
+					if (imagePathPmtA!=""){							
 						$(".errorChk").text("Syncing photo 1..");
 						imageName = localStorage.mobile_no+"_"+get_time+".jpg";										
-						uploadPhotoAch(imagePathA, imageName);	
+						uploadPhotoAchPmt(imagePathPmtA, imageNamePmt);	
 						//$("#btn_pmt_submit").show();					
 					}
 										
@@ -970,33 +975,33 @@ function pmtDataSubmit(){
 
 //------------------------------------image 1
 function getAchivementImage1Pmt() {
-	navigator.camera.getPicture(onSuccessA, onFailA, { quality: 50,
+	navigator.camera.getPicture(onSuccessPmtA, onFailPmtA, { quality: 50,
 	targetWidth: 300,
 	destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true});		
 }
 
-function onSuccessA(imageURI) {		
+function onSuccessPmtA(imageURI) {		
     var image = document.getElementById('pmt_myImageA');
     image.src = imageURI;
-	imagePathA = imageURI;	
-	$("#pmt_achPhoto").val(imagePathA);
+	imagePathPmtA = imageURI;	
+	$("#pmt_achPhoto").val(imagePathPmtA);
 	
 }
 
-function onFailA(message) {
-	imagePathA="";
+function onFailPmtA(message) {
+	imagePathPmtA="";
     alert('Failed because: ' + message);
 }
 
 
 
 
-function uploadPhotoAch(imageURI, imageName) { // First Step of compliance submission
+function uploadPhotoAchPmt(imageURI, imageNamePmt) { // First Step of compliance submission
 		
 	//winAchInfo();
 	var options = new FileUploadOptions();
     options.fileKey="upload";
-    options.fileName=imageName;
+    options.fileName=imageNamePmt;
     options.mimeType="image/jpeg";
 
     var params = {};
@@ -1006,29 +1011,29 @@ function uploadPhotoAch(imageURI, imageName) { // First Step of compliance submi
     options.params = params;
 
     var ft = new FileTransfer();
-	ft.upload(imageURI, encodeURI("http://e4.businesssolutionapps.com/mrepimage/banbeis_upload/fileUploader/"),winAchInfo,onfail,options);
+	ft.upload(imageURI, encodeURI("http://e4.businesssolutionapps.com/mrepimage/banbeis_upload/fileUploader/"),winAchInfoPmt,onfailPmt,options);
 	
 }
 
-function winAchInfo(r) {	
+function winAchInfoPmt(r) {	
 	$(".errorChk").text('Image 1 upload Successful. Syncing image 2...');
 	
 	var d = new Date();	
 	var get_time=d.getTime();
 		
 	//imagePath2A="test2"
-	if (imagePath2A!=""){							
+	if (imagePath2PmtA!=""){							
 		$(".errorChk").text("Syncing photo 2..");
-		imageName2 = localStorage.mobile_no+"_"+get_time+".jpg";
+		imageName2Pmt = localStorage.mobile_no+"_"+get_time+".jpg";
 				
-		uploadPhoto2Ach(imagePath2A, imageName2);
+		uploadPhoto2AchPmt(imagePath2PmtA, imageName2Pmt);
 		//$("#btn_com_submit").show();		
 	}
 	
 	
 }
 
-function onfail(r) {
+function onfailPmt(r) {
 	$(".errorChk").text('File upload Failed. Please check internet connection.');
 	$("#btn_pmt_submit").show();
 }
@@ -1036,30 +1041,30 @@ function onfail(r) {
 //-----------------------image 2
 
 function getAchivementImage2Pmt() { //unused
-	navigator.camera.getPicture(onSuccess2A, onFail2A, { quality: 50,
+	navigator.camera.getPicture(onSuccess2PmtA, onFail2PmtA, { quality: 50,
 	targetWidth: 300,
 	destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true });		
 }
 
-function onSuccess2A(imageURI) {	//unused	
+function onSuccess2PmtA(imageURI) {	//unused	
     var image = document.getElementById('pmt_myImage2A');
     image.src = imageURI;
-	imagePath2A = imageURI;	
-	$("#pmt_achPhoto_2").val(imagePath2A);
+	imagePath2PmtA = imageURI;	
+	$("#pmt_achPhoto_2").val(imagePath2PmtA);
 	
 }
 
-function onFail2A(message) { //unused
-	imagePath2A="";
+function onFail2PmtA(message) { //unused
+	imagePath2PmtA="";
     alert('Failed because: ' + message);
 }
 
 
-function uploadPhoto2Ach(imageURI, imageName2) { // second step
+function uploadPhoto2AchPmt(imageURI, imageName2Pmt) { // second step
 	//winComInfo2();
 	var options = new FileUploadOptions();
     options.fileKey="upload";
-    options.fileName=imageName2;
+    options.fileName=imageName2Pmt;
     options.mimeType="image/jpeg";
 
     var params = {};
@@ -1069,11 +1074,11 @@ function uploadPhoto2Ach(imageURI, imageName2) { // second step
     options.params = params;
 
     var ft = new FileTransfer();
-	ft.upload(imageURI, encodeURI("http://e4.businesssolutionapps.com/mrepimage/banbeis_upload/fileUploader/"),winComInfo2,onfail,options);
+	ft.upload(imageURI, encodeURI("http://e4.businesssolutionapps.com/mrepimage/banbeis_upload/fileUploader/"),winComInfo2Pmt,onfail,options);
 	
 }
 
-function winComInfo2(r) {
+function winComInfo2Pmt(r) {
 	$(".errorChk").text('Image 2 upload successfull. Syncing Data ...');
 	syncDataPmt();
 }
