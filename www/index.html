@@ -15,6 +15,7 @@
 	<script>
 		$(document).ready(function(){
 				//$("#disbursement_date").datepicker();
+		
 				
 				$("#new_union_name").hide();
 				$("#new_ward_no").hide();
@@ -55,11 +56,13 @@ function checkboxConfirm(){
 	parents_post=$("#parents_post").val();
 	parents_union=$("#parents_union").val();
 	parents_upazila=$("#parents_upazila").val();
+	parents_district=$("#parents_district").val();
 	//----------
 	student_village=$("#student_village").val();
 	student_post=$("#student_post").val();
 	student_union=$("#student_union").val();
 	student_upazila=$("#student_upazila").val();
+	student_district=$("#student_district").val();
 	//----------
 	checkConfirm=$("input[name='checkConfirmAddress']:checked").val()
 	
@@ -68,11 +71,13 @@ function checkboxConfirm(){
 		$("#student_post").val(parents_post);
 		$("#student_union").val(parents_union);
 		$("#student_upazila").val(parents_upazila);
+		$("#student_district").val(parents_district);
 	}else {
 		$("#student_village").val('');
 		$("#student_post").val('');
 		$("#student_union").val('');
-		$("#student_upazila").val('');	
+		$("#student_upazila").val('');
+		$("#student_district").val('');	
 	}
 	}
 
@@ -423,15 +428,15 @@ function total_married_stu(){
 	} 
 	
 function total_present_stu(){
-	//var stu_present_visit_6=$("#stu_present_visit_6").val();
+	var stu_present_visit_6=$("#stu_present_visit_6").val();
 	var stu_present_visit_7=$("#stu_present_visit_7").val();
 	var stu_present_visit_8=$("#stu_present_visit_8").val();
 	var stu_present_visit_9=$("#stu_present_visit_9").val();
 	var stu_present_visit_10=$("#stu_present_visit_10").val();
 	
-	/*if(stu_present_visit_6==''){
+	if(stu_present_visit_6==''){
 			stu_present_visit_6=0;
-			}*/
+			}
 	if(stu_present_visit_7==''){
 			stu_present_visit_7=0;
 			}
@@ -445,7 +450,7 @@ function total_present_stu(){
 			stu_present_visit_10=0;
 			}		
 		
-	var total_prese_stu=eval(stu_present_visit_7)+eval(stu_present_visit_8)+eval(stu_present_visit_9)+eval(stu_present_visit_10);
+	var total_prese_stu=eval(stu_present_visit_6)+eval(stu_present_visit_7)+eval(stu_present_visit_8)+eval(stu_present_visit_9)+eval(stu_present_visit_10);
 		
 	$("#stu_present_visit_total").val(total_prese_stu);
 	
@@ -1100,11 +1105,11 @@ function act_teachers(){
                 <li><a href="#" onClick="pmthhVerification();" data-transition="slide">PMT HH Verification</a></li>
             </ul>
             <ul data-role="listview" data-inset="true">
-                <li><a href="#" onClick="complianceVerification()" data-transition="slide">Compliance verification</a></li>
+                <li><a href="#" onClick="complianceVerification()" data-transition="slide">Compliance verification </a></li>
             </ul>
     </div>
     
-    <div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting 20160525</div><!------/footer 20150401-20150309 -->
+    <div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting 20160730</div><!------/footer 20150401-20150309 -->
     
     <div data-role="panel" id="leftpanel" data-position="left" data-display="overlay" data-theme="c">
         <div align="center"></div>
@@ -1156,105 +1161,6 @@ function act_teachers(){
 </div>
 
 
-<!-- --------------------banbeis page0------------------------------------------------- -->
-<!--<div data-role="page" data-theme="c" id="first_page" style="overflow:scroll;">
-    <div data-theme="c" data-role="header" data-position="fixed" >
-        <a data-role="button" onClick="menuClick();" data-icon="bullets" data-iconpos="left" class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="menu.png" /></a>
-        <a data-role="button" onclick="backClick();" data-rel="back" class="ui-btn-right" data-transition="slide"><img src="back.png" /></a>
-        <h3>BANBEIS</h3>
-    </div>
-    <div data-role="content" >  
-    	<div class="pmt_error" style="color:#C00"></div> 
-        		 
-            <ul data-role="listview" data-inset="true">
-                 <li class="ui-field-contain" >
-                    <input name="studentQuickID" type="text" id="studentQuickID" placeholder="Student ID" autocomplete="off" />
-               		<input type="button" name="btnSearch" id="btnSearch" class="btn" value="Quick Search" onclick="student('QUICKS')" />
-                 </li>
-             </ul>
-             
-             <ul data-role="listview" data-inset="true">             
-                 <li class="ui-field-contain" >
-                    <label for="s_div">Division </label>
-                       <select name="s_div" id="s_div" data-native-menu="false" onchange="getDist()">
-                            <option value="">Select Division</option>							 												
-                        </select>
-                  </li>
-                  <li class="ui-field-contain" >
-                     <label for="s_dist">District </label>
-                       <select name="s_dist" id="s_dist" data-native-menu="false" onchange="getUp()">
-                            <option value="">Select District</option>							 												
-                        </select>
-                   </li>
-                   <li class="ui-field-contain" >  
-                     <label for="s_up">Upazila </label>
-                       <select name="s_up" id="s_up" data-native-menu="false" onchange="getUpSchool()">
-                            <option value="">Select Upazila</option>							 												
-                        </select>
-                   </li>
-                   <li class="ui-field-contain" >  
-                     <label for="s_school">School</label>
-                     <select id="s_school" name="s_school" data-native-menu="false" onchange="getStudent()">
-                        <option value="">Select School</option>                   
-                    </select> 
-                   </li>
-                   <li class="ui-field-contain" > 
-                     <label for="studentID">Student ID</label>
-                     <select id="studentID" name="studentID" data-native-menu="false">
-                        <option value="">Select Student ID</option>                   
-                    </select>
-                 </li>	
-            </ul>
-            
-        <a data-role="button" onclick="banbeisFirstDataNextPMt()" href="#" data-theme="c" data-transition="slide" >Search</a>
-        <div class="errorChk"></div>
-            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-    </div>
-    
-
-</div>-->
-
-
-<!--
-<div data-role="page" data-theme="c" id="pmt_first_next_page" style="overflow:scroll;">
-    <div data-theme="c" data-role="header" data-position="fixed" >
-        <a data-role="button" onClick="menuClick();" data-icon="bullets" data-iconpos="left" class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="menu.png" /></a>
-        <a data-role="button" onclick="backClick();" data-rel="back" class="ui-btn-right" data-transition="slide"><img src="back.png" /></a>
-        <h3>BANBEIS</h3>
-    </div>
-    <div data-role="content" > 
-    <div class="comp_error" style="color:#C00"></div> 
-    	
-          Student Selected
-         <br/><br/><br/>           
-        <a data-role="button" onclick="student('BTNS')" href="#" data-theme="c" data-transition="slide" >Next</a>
-       
-            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-    </div>
-    
-
-</div>-->
-
-
-
-<!--<div data-theme="c" data-role="page" id="selectionConfirmed" >
-    <div data-theme="c" data-role="header" data-position="fixed" >
-        <a data-role="button" onClick="menuClick();"  data-icon="bullets" data-iconpos="left" class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="planbd-logo-small.jpg" /></a>
-        <a data-role="button" onclick="backClick();" data-rel="back"  data-icon="arrow-l" data-iconpos="left" class="ui-btn-right" data-transition="slide">Back</a>
-        <h3> Confirm Selection</h3>
-    </div>
-    <div data-role="content">
-    	<div class="activities" style="background-color:#E6E6E6; font-weight:bold; word-wrap: break-word; box-shadow:0px 0px 5px; padding:10px 10px; border-radius:5px; margin-bottom:10px;"></div>
-    	<br/>
-        <div>Selection Confirmed </div>
-        <br/>
-        <br/>
-        <a data-role="button" onClick="achDataNext2();"   data-transition="slide" >Next</a>
-        
-    </div>
-</div>-->
-
-
 <!-- --------------------banbeis page1------------------------------------------------- -->
 <div data-role="page" data-theme="c" id="first_page" style="overflow:scroll;">
     <div data-theme="c" data-role="header" data-position="fixed" >
@@ -1290,22 +1196,26 @@ function act_teachers(){
                 </li>
                 <li class="ui-field-contain" >  
                  <label for="s_up">3. Upazila </label>
-                   <select name="s_up" id="s_up" data-native-menu="false">
+                   <select name="s_up" id="s_up" data-native-menu="false" onchange="getUn()">
                         <option value="">Select Upazila</option>							 												
                     </select>
                 </li>
-                <li class="ui-field-contain">
-                    <label for="union_name">4. Name of Union </label>
-                    <input type="text" name="union_name" maxlength="150" id="union_name" />
-                 </li>
-                 
-                <li class="ui-field-contain"> 
-                 	<label for="pourashava_name">5. Name of Pourashava</label>
-                    <input type="text" name="pourashava_name" maxlength="100" id="pourashava_name" />
-                 </li>
+                 <li class="ui-field-contain" >  
+                 <label for="s_un">4. Name of Union </label>
+                   <select name="s_un" id="s_un" data-native-menu="false" onchange="getpou()">
+                        <option value="">Select Union</option>							 												
+                    </select>
+                </li>
+                 <li class="ui-field-contain" >  
+                 <label for="s_pou">5. Name of Pourashava </label>
+                   <!--<select name="s_pou" id="s_pou" data-native-menu="false">
+                        <option value="">Select pourashava</option>							 												
+                    </select>-->
+                    <input type="text" name="s_pou" id="s_pou" style="background-color:#E8E8E8;" readonly="readonly"/>
+                </li>
                  <li class="ui-field-contain">
-                    <label for="insName">6. Booth No</label>
-                    <input type="number" name="boothNo" maxlength="150" id="boothNo" />
+                    <label for="boothNo">6. Booth No</label>
+                    <input type="number" name="boothNo" maxlength="150" id="boothNo" style="background-color:#E8E8E8;" readonly="readonly"/>
                  </li>
                   <li class="ui-field-contain">
                     <label for="eiinNo">7. Application Serial No </label>
@@ -1313,42 +1223,12 @@ function act_teachers(){
                  </li>
                  
                  
-                 
-                <!--<li class="ui-field-contain">
-                    <label for="insName">1. Name of Institution</label>
-                    <input type="text" name="insName" maxlength="150" id="insName" />
-                 </li>
-                  <li class="ui-field-contain">
-                    <label for="eiinNo">2. EIIN NO</label>
-                    <input type="text" name="eiinNo" maxlength="20" id="eiinNo" />
-                 </li>
-                
-                 
-                 <li class="ui-field-contain"> 
-                 	<label for="upazila_name">5. Upazila</label>
-                    <input type="text" name="upazila_name" maxlength="100" id="upazila_name" />
-                 </li>
-                 
-                 <li class="ui-field-contain"> 
-                 	<label for="zila_name">6. Zila</label>
-                    <input type="text" name="zila_name" maxlength="100" id="zila_name" />
-                 </li>
-                 <li class="ui-field-contain"> 
-                 	<label for="division_name">6. Division</label>
-                    <input type="text" name="division_name" maxlength="100" id="division_name" />
-                 </li>-->
-                 
                 <li style="background-color:#F2F2F2;" class="auto_break"><strong>খ) শিক্ষার্থীর তথ্যঃ(ইংরেজিতে পূরণ করতে হবে): </strong> </li>
                 
                 <li class="ui-field-contain auto_break">
                 <label for="student_name">1. Name of the Student (তালিকা হতে শুদ্ধভাবে লিখতে হবে):</label>
                 <input type="text" name="student_name" maxlength="150" id="student_name" />
-                </li>            
-                <!--<li class="ui-field-contain">
-                    <label for="student_id">2. Student ID </label>
-                    <input type="text" name="student_id" maxlength="20" id="student_id" />
-                </li>-->
-                
+                </li>                     
                 <li class="ui-field-contain">
                     <label for="fathers_name">2. Father's name in English </label>
                     <input type="text" name="fathers_name" maxlength="150" id="fathers_name" />
@@ -1377,25 +1257,22 @@ function act_teachers(){
                     </select>
                 </li>
                 <li class="ui-field-contain auto_break">
-                    <label for="pre_stu_located">8. বর্তমানে শিক্ষার্থীর অধ্যয়ন/ড্রপ আউট -এর অবস্থান বিষয়ক তথ্য: </label>
-                    <select name="pre_stu_located" id="pre_stu_located" data-native-menu="false" >
-                        <option value="1">১-বর্তমানে অধ্যয়নরত</option>
-                        <option value="2">২-বিবাহিত</option>
-                        <option value="3">৩-বিদ্যালয় পরিবর্তন করেছে</option>
-                        <option value="4">৪-ঝরে পড়েছে</option>
-                        <option value="5">৫-প্রদত্ত ঠিকানা পরিবর্তন হয়েছে</option>
-                        <option value="6">৬-নদী ভাঙ্গনের কারণে স্থানান্তর</option>
-                        <option value="7">৭-আশ্রিত</option>
-                        <!--<option value="8">৮-অন্যান্য</option>	-->			
-                    </select>
+                8. In absence of parents have any another guardian
+                    <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                        <input name="parrent_absen_another_guardian" id="radio-choice-h-2a" value="1" checked="checked" type="radio" onclick="parrent_absen_another_guar()">
+                        <label for="radio-choice-h-2a">Yes</label>
+                        <input name="parrent_absen_another_guardian" id="radio-choice-h-2b" value="2" type="radio" onclick="parrent_absen_another_guar()">
+                        <label for="radio-choice-h-2b">No</label>
+                    </fieldset>   
                 </li>
-                <li class="ui-field-contain auto_break">
+                <li class="ui-field-contain auto_break" id="guardian_abs_of_par">
                     <label for="guardian_absence_of_parents">9. Name of guardian in absence of parents (যদি পিতা বা মাতা জীবিত না থাকেন) </label>
                     <input type="text" name="guardian_absence_of_parents" id="guardian_absence_of_parents" />
                 </li>
-                <li class="ui-field-contain auto_break">
+                <li class="ui-field-contain auto_break" id="relation_with_guardian">
                     <label for="relation_student_with_guardian">10. Relation of students with guardian (ছাত্র/ছাত্রীর সংগে অভিভাবকের সর্ম্পক)  </label>
                     <select name="relation_student_with_guardian" id="relation_student_with_guardian" data-native-menu="false" >
+                        <option value=""></option>
                         <option value="1">১-দাদা/নানা </option>
                         <option value="2">২-দাদী/ নানী</option>
                         <option value="3">৩-চাচা/মামা/ফুপা/খালু</option>
@@ -1425,6 +1302,10 @@ function act_teachers(){
                 <label for="parents_upazila">Upazila </label>
                 	<input type="text" name="parents_upazila" maxlength="100" id="parents_upazila" />
             </li>
+            <li class="ui-field-contain">
+                <label for="parents_district">District </label>
+                	<input type="text" name="parents_district" maxlength="100" id="parents_district" />
+            </li>
             
             <li class="ui-field-contain auto_break" style="background-color:#F2F2F2; font-weight:bold;"><div style="width:2%; float:left; margin-bottom:20px;"><input type="checkbox" name="checkConfirmAddress" id="checkConfirmAddress" value="Yes" onclick="checkboxConfirm()"  /></div><div style="float:right; width:95%; margin-left:10px;">11.(খ) Present Address of student : (যদি ১২ক) এর ঠিকানা থেকে ভিন্ন হয়) </div></li>
             
@@ -1443,6 +1324,10 @@ function act_teachers(){
             <li class="ui-field-contain">
                 <label for="student_upazila">Upazila</label>
                 	<input type="text" name="student_upazila" maxlength="100" id="student_upazila" />
+           </li>
+           <li class="ui-field-contain">
+                <label for="student_district">District</label>
+                	<input type="text" name="student_district" maxlength="100" id="student_district" />
            </li>
         </ul>
         
@@ -1507,7 +1392,7 @@ function act_teachers(){
                   </li>
                 
                 <li class="ui-field-contain auto_break">
-                    <label for="q5_a">5. শিক্ষার্থীর অভিভাবকের স্বামী বা স্ত্রীর (Spouse) সর্বোচ্চ শিক্ষাগত যোগ্যতা?</label>
+                    <label for="q5_a">5. শিক্ষার্থীর অভিভাবকের স্বামী বা স্ত্রীর  সর্বোচ্চ শিক্ষাগত যোগ্যতা?</label>
                         <select name="q5_a" id="q5_a" data-native-menu="false" >
                             <option value="1">১-কখনো স্কুলে যায়নি</option>
                             <option value="2">২-প্রাথমিক বিদ্যালয় হতে ঝরে পড়েছে</option>
@@ -1553,32 +1438,39 @@ function act_teachers(){
                 
                 <li class="ui-field-contain auto_break">
                     <label for="q11_a">11. শিক্ষার্থীর অভিভাবকের নিজের বাসগৃহের  প্রধান ঘরের দেয়াল কি দিয়ে তৈরী?</label>
-                        <select name="q11_a" id="q11_a" data-native-menu="false" >
-                            <option value="1">১-বাঁশের চটা বা চাটাই/পাইখড়ি</option>
-                            <option value="2">২-মাটির দেওয়াল</option>
-                            <option value="3">৩-টিন/ কাঠ</option>
+                        <select name="q11_a" id="q11_a" data-native-menu="false" onchange="q11_q12()">
+                            <option value="1" >১-বাঁশের চটা বা চাটাই/পাইখড়ি</option>
+                            <option value="2" >২-মাটির দেওয়াল</option>
+                            <option value="3" >৩-টিন/ কাঠ</option>
                             <option value="4">৪-পাকা</option>				
                         </select>
                 </li>
                 
                 <li class="ui-field-contain auto_break">
                     <label for="q12_a">12. শিক্ষার্থীর অভিভাবকের নিজের বাসগৃহের  প্রধান ঘরের দেয়াল কি দিয়ে তৈরী?</label>
-                        <select name="q12_a" id="q12_a" data-native-menu="false" >
-                            <option value="1">১-ছন/খড়/পাতা</option>
-                            <option value="2">২-টিন/কাঠ/টালি</option>
-                            <option value="3">৩-কংক্রিট </option>
-                            <option value="4">৩-ঢালাই </option>
-                            <option value="5">৫-অন্যান্য</option>						 												
+                        <div id="q12_a_1">
+                        <select name="q12_a" id="q12_a1" data-native-menu="false" >
+                            <option value="1">১-ছন/খড়/পাতা,টিন/কাঠ/টালি</option>
+                            <option value="2" >২-কংক্রিট</option>
+                            <option value="3" >৩-ঢালাই</option>
+                            <option value="4">৪-অন্যান্য</option>					 												
                         </select>
+                    </div>
+                    <div id="q12_a_2">
+                        <select name="q12_a" id="q12_a2" data-native-menu="false" >
+                            <option value="1">১-ছন/খড়/পাতা,টিন/কাঠ/টালি</option>
+                            <option value="4">৪-অন্যান্য</option>					 												
+                        </select>
+                     </div>
                 </li>
                 
                 <li class="ui-field-contain auto_break">
-                    <label for="q13_a">13. শিক্ষার্থীর অভিভাবকের পরিবারের নিজস্ব মোট জমির পরিমাণ কত? </label>
+                    <label for="q13_a">13. শিক্ষার্থীর অভিভাবকের পরিবারের নিজস্ব মোট জমির পরিমাণ কত?(শতাংশ) </label>
                         <input type="number" name="q13_a" id="q13_a" />
                 </li>
                 
                 <li class="ui-field-contain auto_break">
-                    <label for="q14_a">14. আলাদা খাবার ঘর (Dinning) আছে কিনা?</label>
+                    <label for="q14_a">14. আলাদা খাবার ঘর আছে কিনা?</label>
                         <select name="q14_a" id="q14_a" data-native-menu="false" >
                             <option value="1">হ্যাঁ </option>
                             <option value="2">না</option>				
@@ -1586,7 +1478,7 @@ function act_teachers(){
                 </li>
                 
                 <li class="ui-field-contain auto_break">
-                    <label for="q15_a">15. আলাদা রান্নাঘর (Kitchen) আছে কিনা?</label>
+                    <label for="q15_a">15. আলাদা রান্নাঘর আছে কিনা?</label>
                         <select name="q15_a" id="q15_a" data-native-menu="false" >
                             <option value="1">হ্যাঁ </option>
                             <option value="2">না</option>				
@@ -1617,7 +1509,7 @@ function act_teachers(){
             <ul data-role="listview" data-inset="true">
                
                 <li class="ui-field-contain auto_break">
-                    <label for="q16_a">16. টিউবওয়েল (Tube-wel) আছে কিনা?</label>
+                    <label for="q16_a">16. টিউবওয়েল আছে কিনা?</label>
                         <select name="q16_a" id="q16_a" data-native-menu="false" >
                             <option value="1">হ্যাঁ </option>
                             <option value="2">না</option>				
@@ -1625,7 +1517,7 @@ function act_teachers(){
                  </li>
             
                 <li class="ui-field-contain auto_break">
-                    <label for="q17_a">17. বাসগৃহে বিদ্যুৎ (Electricity) আছে কিনা? (পল্লী বিদ্যুৎ/পিডিপি/আইপিএস/সৌর বিদ্যুৎ/ জেনারেটর সংযোগ থাকলে বিদ্যুৎ আছে বলে ধরে নিতে হবে) </label>
+                    <label for="q17_a">17. বাসগৃহে বিদ্যুৎ আছে কিনা? (পল্লী বিদ্যুৎ/পিডিপি/আইপিএস/সৌর বিদ্যুৎ/ জেনারেটর সংযোগ থাকলে বিদ্যুৎ আছে বলে ধরে নিতে হবে) </label>
                         <select name="q17_a" id="q17_a" data-native-menu="false" >
                             <option value="1">হ্যাঁ </option>
                             <option value="2">না</option>				
@@ -1633,7 +1525,7 @@ function act_teachers(){
                 </li>
                
                 <li class="ui-field-contain auto_break">
-                    <label for="q18_a">18. টেলিভিশন (টিভি) আছে কিনা?</label>
+                    <label for="q18_a">18. টেলিভিশন আছে কিনা?</label>
                         <select name="q18_a" id="q18_a" data-native-menu="false" >
                             <option value="1">হ্যাঁ </option>
                             <option value="2">না</option>				
@@ -1641,7 +1533,7 @@ function act_teachers(){
                 </li>
                   
                 <li class="ui-field-contain auto_break">
-                    <label for="q19_a">19. বৈদ্যুতিক পাখা (Fan) আছে কিনা?</label>
+                    <label for="q19_a">19. বৈদ্যুতিক পাখা আছে কিনা?</label>
                         <select name="q19_a" id="q19_a" data-native-menu="false" >
                             <option value="1">হ্যাঁ </option>
                             <option value="2">না</option>			
@@ -1657,7 +1549,7 @@ function act_teachers(){
                  </li>
             
                 <li class="ui-field-contain auto_break">
-                    <label for="q21_a">21. মোবাইল (Mobile) ফোন আছে কিনা?</label>
+                    <label for="q21_a">21. মোবাইল ফোন আছে কিনা?</label>
                         <select name="q21_a" id="q21_a" data-native-menu="false" >
                             <option value="1">হ্যাঁ </option>
                             <option value="2">না</option>						 												
@@ -1665,7 +1557,7 @@ function act_teachers(){
                  </li>
                
                 <li class="ui-field-contain auto_break">
-                    <label for="q22_a">22. ল্যান্ড ফোন (Land Phone) আছে কিনা?</label>
+                    <label for="q22_a">22. ল্যান্ড ফোন আছে কিনা?</label>
                         <select name="q22_a" id="q22_a" data-native-menu="false" >
                             <option value="1">হ্যাঁ </option>
                             <option value="2">না</option>				
@@ -1689,7 +1581,7 @@ function act_teachers(){
                  </li>
                 
                 <li class="ui-field-contain auto_break">
-                    <label for="q25_a">25. শিক্ষার্থী ছাত্র/ছাত্রী কি শারীরিক প্রতিবন্ধী (Disable)? </label>
+                    <label for="q25_a">25. শিক্ষার্থী কি শারীরিক প্রতিবন্ধী ? </label>
                         <select name="q25_a" id="q25_a" data-native-menu="false" >
                             <option value="1">হ্যাঁ </option>
                             <option value="2">না</option>				
@@ -1705,7 +1597,7 @@ function act_teachers(){
                  </li>
                
                 <li class="ui-field-contain auto_break">
-                    <label for="q27_a">27. শিক্ষার্থীর পরিবার কি ভিজিডি অথবা ভিজিএফ (VGD/VGF) কার্ডধারী?</label>
+                    <label for="q27_a">27. শিক্ষার্থীর পরিবার কি ভিজিডি অথবা ভিজিএফ কার্ডধারী?</label>
                         <select name="q27_a" id="q27_a" data-native-menu="false" >
                             <option value="1">হ্যাঁ </option>
                             <option value="2">না</option>			
@@ -1730,17 +1622,29 @@ function act_teachers(){
         <h3>BANBEIS</h3>
   </div>
     <div data-role="content">       
-        <a data-role="button" id="btn_1_take_pic_pmt" onClick="getAchivementImagePmt();" class="ui-btn" >Take Picture</a>       
+       <!-- <a data-role="button" id="btn_1_take_pic_pmt" onClick="getAchivementImagePmt();" class="ui-btn" >Take Picture</a>       
         <img src="" width="128" height="128" alt="Image1" id="myImagePmtA" />        
         <input name="achPhoto1" id="achPhoto1" value=""  type="hidden">
         
-        <!--<a data-role="button" id="btn_2_take_pic_pmt" onClick="getAchivementImage2();" class="ui-btn" >Take Picture 2</a>       
+        <a data-role="button" id="btn_2_take_pic_pmt" onClick="getAchivementImage2();" class="ui-btn" >Take Picture 2</a>       
         <img src="" width="128" height="128" alt="Image2" id="myImagePtaB" />
-        <input name="achPhoto2" id="achPhoto2" value=""  type="hidden">-->
+        <input name="achPhoto2" id="achPhoto2" value=""  type="hidden">
         
         <input name="ach_lat" id="ach_lat" value=""  type="hidden">
         <input name="ach_long" id="ach_long" value=""  type="hidden">
-        <a data-role="button" id="btn_ach_lat_long" onClick="getLocationInfoAch();" class="ui-btn" >Confirm Location</a>
+        <a data-role="button" id="btn_ach_lat_long" onClick="getLocationInfoAch();" class="ui-btn" >Confirm Location</a>-->
+        <a data-role="button" id="btn_1_take_pic_pmt" onClick="getAchivementImage1Pmt();" class="ui-btn" >Take Picture 1</a>       
+        <img src="" width="128" height="128" alt="Image1" id="pmt_myImageA" />        
+        <input name="pmt_achPhoto" id="pmt_achPhoto" value=""  type="hidden">
+        
+        <a data-role="button" id="btn_2_take_pic_pmt" onClick="getAchivementImage2Pmt();" class="ui-btn" >Take Picture 2</a>       
+        <img src="" width="128" height="128" alt="Image2" id="pmt_myImage2A" />
+        <input name="pmt_achPhoto_2" id="pmt_achPhoto_2" value=""  type="hidden">
+        
+        <input name="pmt_ach_lat" id="pmt_ach_lat" value=""  type="hidden">
+        <input name="pmt_ach_long" id="pmt_ach_long" value=""  type="hidden">
+        <a data-role="button" id="btn_pmt_ach_lat_long" onClick="getLocationInfoAchPmt();" class="ui-btn" >Confirm Location</a>
+        
 		<div class="errorChk" style="color:#F00;"></div>
         <div class="sucChk" style="color:#00CA00;"></div>
         <br/><br/>
@@ -2078,16 +1982,16 @@ function act_teachers(){
                   <tr>
                     <td  class="tbl_bro_color" align="center">Grade</td>
                     <td  class="tbl_bro_color auto_break" width="100" >
-                        Number of students who received PMT stipend during Jul-Dec 2015 semester 
+                        Number of students who received PMT stipend during Jan-June, 2016 semester 
                     </td>
                     <td  class="tbl_bro_color auto_break" width="100" >
-                        Number of students who met 75%  attendance criteria July- December 2015
+                        Number of students who met 75%  attendance criteria Jan-June, 2016
                     </td>
                     <td  class="tbl_bro_color auto_break" width="100" >
-                        Number of students who met the academic criteria with 33% pass mark in all subjects in annual Exam of 2015
+                        Number of students who met the academic criteria with 33% pass mark in all subjects in annual Exam of 2016
                     </td>
                     <td  class="tbl_bro_color auto_break" width="100" >
-                       Number of students who got married in 2015
+                       Number of students who got married in Jan-June, 2016
                     </td>
                     <td  class="tbl_bro_color auto_break" width="100" >
                        Number of students found enrolled as per register(at the time of the survey)
@@ -2108,7 +2012,7 @@ function act_teachers(){
                         <input type="number" name="stu_got_married_6" id="stu_got_married_6" onblur="total_married_stu()"/>
                     </td>
                     <td  class="tbl_bro_color" width="100">
-                        <input type="number" name="stu_present_visit_6" id="stu_present_visit_6" onblur="total_present_stu()"  style="background-color:#E8E8E8;" readonly="readonly" />
+                        <input type="number" name="stu_present_visit_6" id="stu_present_visit_6" onblur="total_present_stu()"  />
                     </td>
                   </tr>
                   <tr>
@@ -2222,7 +2126,7 @@ function act_teachers(){
     </div>
     <div data-role="content" >
             <ul data-role="listview" data-inset="true">
-               <li style="background-color:#e2e2e2;" class="auto_break">4. Among students who met all criteria above (attendance rate is at least 75% in 2015, received at least 33% pass mark in all subjects in 2015, and was unmarried in 2015), randomly select five students and fill the following table (at least one from each grade)</li> 
+               <li style="background-color:#e2e2e2;" class="auto_break">4. Among students who met all criteria above (attendance rate is at least 75% in Jan-June, 2016, and was unmarried in Jan-June, 2016), randomly select five students and fill the following table (at least one from each grade)</li> 
                
                 <li class="ui-field-contain" style="overflow:scroll;"> 
                	  <table border="1" class="tbl_bro_color" cellspacing="0" cellpadding="0">
@@ -2230,10 +2134,10 @@ function act_teachers(){
                         	<td class="tbl_bro_color auto_break" style="width:150px;" >Name of the student </td>
                             <td align="center" class="tbl_bro_color auto_break">Grade</td>
                             <td class="tbl_bro_color auto_break" style="width:150px;">PMT ID</td>
-                            <td class="tbl_bro_color auto_break" >Attendance % in July- December 2015</td>
+                            <td class="tbl_bro_color auto_break" >Attendance % in Jan-June, 2016</td>
                             <td class="tbl_bro_color auto_break" >Marks in the final exam of 2015 </td>
                             <td class="tbl_bro_color auto_break" >Currently  in School? </td>
-                            <td class="tbl_bro_color auto_break" >Married or unmarried during Jul-Dec 2015 </td>
+                            <td class="tbl_bro_color auto_break" >Married or unmarried during Jan-June, 2016 </td>
                       </tr>
                     	<tr>
                     	  <td class="tbl_bro_color"><input type="text" name="pmt_st_1_name" id="pmt_st_1_name" style="width:160px;" /></td>
@@ -2408,7 +2312,7 @@ function act_teachers(){
                     <input type="date" name="act_1_ag_date" id="act_1_ag_date"  placeholder="dd-mm-yyyy"/>
                </li>
                <li class="ui-field-contain auto_break">    
-                    5. Total Number Working days in July- December 2015.. 
+                    5. Total Number Working days in Jan-June, 2016.. 
                     <input type="number" name="act_1_total_work" id="act_1_total_work" />
                </li>
                 <li class="ui-field-contain auto_break">            	
@@ -2634,7 +2538,7 @@ function act_teachers(){
                </li> 
            </div>    
                
-               <li style="background-color:#F2F2F2;" class="auto_break">8. Description of Additional Classes and Regular Classes in reference Semester (July-December, 2015)</li>
+               <li style="background-color:#F2F2F2;" class="auto_break">8. Description of Additional Classes and Regular Classes in reference Semester (Jan-June, 2016)</li>
                 <li class="ui-field-contain" style="overflow:scroll;">  
                 
                 <table width="100%" class="tbl_bro_color"  cellspacing="0" cellpadding="0" >  
@@ -2819,7 +2723,7 @@ function act_teachers(){
                         </fieldset>
                </li>
                 <li class="ui-field-contain auto_break">    
-                    6. How many SMC meetings were held in the last six months (July-December, 2015)
+                    6. How many SMC meetings were held in the last six months (Jan-June, 2016)
                     <input type="number" name="smc_meeting" id="smc_meeting" />
                </li>
                <li class="ui-field-contain auto_break">    
@@ -2855,7 +2759,7 @@ function act_teachers(){
                     <input type="date" name="pta_reformed_ins" id="pta_reformed_ins" placeholder="dd-mm-yyyy" />
                </li>
                <li class="ui-field-contain auto_break">    
-                    8.2 If PTA exists in the Institution, how much PTA grants has the institution received in the last 6 months? Taka 
+                    8.2 Amount of grants (EACM and/or SA) disburses to institution PTA account in the last 6 months. Taka  
                     <input type="number" name="pta_ins_rec_taka" id="pta_ins_rec_taka" />
                </li>
               <!-- <li class="ui-field-contain auto_break">   
@@ -2885,7 +2789,7 @@ function act_teachers(){
 
                
                <li class="ui-field-contain auto_break">    
-                    9. How many PTA meetings were held between July-December, 2015 
+                    9. How many PTA meetings were held between Jan-June, 2016 
                     <input type="number" name="pta_meet" id="pta_meet" />
                </li>
                 <li class="ui-field-contain auto_break">    
@@ -3004,7 +2908,7 @@ function act_teachers(){
                     </select>   
                </li>
                <li class="ui-field-contain auto_break">    
-                 2. Did the institution receive any Grant for SA in the 2nd Instalment of 2015
+                 2. Did the institution receive any Grant for SA in the 1st Instalment of 2016
                       <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
                         <input name="ins_rec_grant_sa" id="radio-choice-h-2a" value="1"  type="radio" onclick="rec_sec_instal()" >
                         <label for="radio-choice-h-2a">Yes</label>
@@ -3088,7 +2992,7 @@ function act_teachers(){
                     </fieldset>
                </li>
                <li class="ui-field-contain auto_break">    
-                    How many-mails were sent to SEQAEP during July-December, 2015
+                    How many-mails were sent to SEQAEP during Jan-June, 2016
                     <select name="how_sec_email" id="how_sec_email" data-native-menu="false" >
                     	<option value="0">Select</option>
                         <option value="1">0</option>
@@ -3116,7 +3020,7 @@ function act_teachers(){
                     </select>
                </li> 
                <li class="ui-field-contain auto_break">    
-                   ICT Grant received during July-December, 2015  
+                   ICT Grant received during Jan-June, 2016  
                      <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
                         <input name="ict_grant_rec" id="radio-choice-h-2a" value="1" checked="checked" type="radio" >
                         <label for="radio-choice-h-2a">Yes</label>
@@ -3521,7 +3425,7 @@ function act_teachers(){
                </li>
         </div>
                 <li class="ui-field-contain auto_break" >    
-                    6. Was there any tubewell set up in the Institution by SEQAEP during FY 2015 
+                    6. Was there any tubewell set up in the Institution by SEQAEP during FY 2016 
                     <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
                         <input name="tube_setup_ins" id="radio-choice-h-2a" value="1"  type="radio" onclick="tube_setup()">
                         <label for="radio-choice-h-2a">Yes</label>
@@ -3635,7 +3539,7 @@ function act_teachers(){
                     <td class="tbl_bro_color" align="center">No. of GPA-5</td>
                  </tr>
                	 <tr>
-               	   <td class="tbl_bro_color" rowspan="2" align="center">2013</td>
+               	   <td class="tbl_bro_color" rowspan="2" align="center">2014</td>
                	   <td class="tbl_bro_color" align="center">PMT</td>
                	   <td class="tbl_bro_color" align="center"><input type="number" id="pmt_stu_app_ssc_exam_13" name="pmt_stu_app_ssc_exam_13" /></td>
                	   <td class="tbl_bro_color" align="center"><input type="number" id="pmt_stu_pass_ssc_exam_13" name="pmt_stu_pass_ssc_exam_13" /></td>
@@ -3648,7 +3552,7 @@ function act_teachers(){
                	   <td class="tbl_bro_color" align="center"><input type="number" id="nonpmt_stu_gpa_13" name="nonpmt_stu_gpa_13" /></td>
            	     </tr>
                	 <tr>
-               	   <td class="tbl_bro_color" rowspan="2" align="center">2014</td>
+               	   <td class="tbl_bro_color" rowspan="2" align="center">2015</td>
                	   <td class="tbl_bro_color" align="center">PMT</td>
                	   <td class="tbl_bro_color" align="center"><input type="number" id="pmt_stu_app_ssc_exam_14" name="pmt_stu_app_ssc_exam_14" /></td>
                	   <td class="tbl_bro_color" align="center"><input type="number" id="pmt_stu_pass_ssc_exam_14" name="pmt_stu_pass_ssc_exam_14" /></td>
@@ -3661,7 +3565,7 @@ function act_teachers(){
                	   <td class="tbl_bro_color" align="center"><input type="number" id="nonpmt_stu_gpa_14" name="nonpmt_stu_gpa_14" /></td>
            	     </tr>
                  <tr>
-               	   <td class="tbl_bro_color" rowspan="2" align="center">2015</td>
+               	   <td class="tbl_bro_color" rowspan="2" align="center">2016</td>
                	   <td class="tbl_bro_color" align="center">PMT</td>
                	   <td class="tbl_bro_color" align="center"><input type="number" id="pmt_stu_app_ssc_exam_15" name="pmt_stu_app_ssc_exam_15" /></td>
                	   <td class="tbl_bro_color" align="center"><input type="number" id="pmt_stu_pass_ssc_exam_15" name="pmt_stu_pass_ssc_exam_15" /></td>
@@ -3681,12 +3585,13 @@ function act_teachers(){
              <ul data-role="listview" data-inset="true">
              
                <li style="background-color:#e2e2e2;" class="auto_break">J. PMT SSC (or equivalent) Pass Award</li>
-               <li class="ui-field-contain auto_break" style="overflow:scroll;"> 
+               <li class="ui-field-contain auto_break" style="overflow:scroll;">
+                1. PMT Students who appeared in SSC or Equivalent examination in 2016 
                <table width="100%" border="1" class="tbl_bro_color" cellspacing="0" cellpadding="0">
                	 <tr>
-                 	<td class="tbl_bro_color" align="center" >Total students in grade 10 to receive PMT stipend in 2014</td>
-                    <td class="tbl_bro_color" align="center">Total PMT students in grade 10 who appeared in the SSC exam in 2015</td>
-                    <td class="tbl_bro_color" align="center">Number of PMTstudents who passed SSC or equivalent in 2015</td>
+                 	<td class="tbl_bro_color" align="center" >Total students in grade 10 to receive PMT stipend in 2015</td>
+                    <td class="tbl_bro_color" align="center">Total PMT students in grade 10 who appeared in the SSC exam in 2016</td>
+                    <td class="tbl_bro_color" align="center">Number of PMTstudents who passed SSC or equivalent in 2016</td>
                     <td class="tbl_bro_color" align="center">Number of PMT students who collected PMT SSC or equivalent Pass award</td>
                     <td class="tbl_bro_color" align="center">How many of these PMT students who passed SSC or equivalent went for higher secondary school study? (approximate number)</td>
                  </tr>
@@ -4066,10 +3971,10 @@ function act_teachers(){
                     <table width="100%" border="1" class="tbl_bro_color" cellspacing="0" cellpadding="0">
                     <tr>
                     	<td align="center" class="tbl_bro_color auto_break">Grades</td>
-                        <td align="center" class="tbl_bro_color auto_break">Number of students included in the DRH program during  July- Dec 2015 </td>
-                        <td align="center" class="tbl_bro_color auto_break">Number of program books received as per ACF during July- Dec 2015 </td>
-                        <td align="center" class="tbl_bro_color auto_break">Number of students who participated in evaluation test held during July- Dec 2015</td>
-                        <td align="center" class="tbl_bro_color auto_break">Number of students who passed the evaluation test during July-Dec 2015</td>
+                        <td align="center" class="tbl_bro_color auto_break">Number of students included in the DRH program during   2015 </td>
+                        <td align="center" class="tbl_bro_color auto_break">Number of program books received as per ACF during  2015 </td>
+                        <td align="center" class="tbl_bro_color auto_break">Number of students who participated in evaluation test held during 2015</td>
+                        <td align="center" class="tbl_bro_color auto_break">Number of students who passed the evaluation test during 2015</td>
                         <td align="center" class="tbl_bro_color auto_break">Number of awardees </td>
                         <td colspan="2" align="center" class="tbl_bro_color auto_break">Only DRH books</td>
                     </tr>
@@ -4138,7 +4043,7 @@ function act_teachers(){
                     
              </li>
                <li class="ui-field-contain auto_break">    
-                    6. Verify the received quantity of program books and number of awardees by grade during July- Dec2015 from the register
+                    6. Verify the received quantity of program books and number of awardees by grade during July- Dec 2015 from the register
                       <select name="ver_rec_qty_pro_book" id="ver_rec_qty_pro_book" data-native-menu="false" >
                       	<option value="0">Select </option>
                         <option value="1">1-Verified </option>
