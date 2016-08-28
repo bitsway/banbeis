@@ -1,6 +1,4 @@
 
-
-
 var achPhoto="";
 var achPhoto2="";
 var imageName = "";
@@ -21,14 +19,14 @@ function getLocationInfoAchPmt() {
 }
 // onSuccess Geolocation
 function onSuccessPmt(position) {
-	$("#ach_lat").val(position.coords.latitude);
-	$("#ach_long").val(position.coords.longitude);
+	$("#pmt_ach_lat").val(position.coords.latitude);
+	$("#pmt_ach_long").val(position.coords.longitude);
 	$(".errorChk").html("Location Confirmed");
 }
 // onError Callback receives a PositionError object
 function onErrorPmt(error) {
-   $("#ach_lat").val(0);
-   $("#ach_long").val(0);
+   $("#pmt_ach_lat").val(0);
+   $("#pmt_ach_long").val(0);
    $(".errorChk").html("Failed to Confirmed Location.");
 }
 
@@ -478,7 +476,6 @@ function getpou(){
 				 
 				 $("#s_pou").val(pouName); 
 				 $("#boothNo").val(pouID);
-				 $(".sucChk").text("");
 				 
 			  }		  
 		});	 
@@ -972,7 +969,7 @@ function pmtDataSubmit(){
 	}
 
 //------------------------------------image 1
-function getAchivementImagePmt() {
+function getAchivementImage1Pmt() {
 	navigator.camera.getPicture(onSuccessA, onFailA, { quality: 50,
 	targetWidth: 300,
 	destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true});		
@@ -1171,9 +1168,8 @@ function syncDataPmt(){
 							
 							$("#pmt_ach_lat").val("");
 							$("#pmt_ach_long").val("");
-							$("#pmt_achPhoto").val("");
-							$("#pmt_achPhoto_2").val("");
-																	
+							$("#pmt_achPhoto").val("");										
+							$("#pmt_achPhoto_2").val("");	
 							
 							$(".sucChk").text('Successfully Submitted');
 							$(".errorChk").text("");
@@ -1820,7 +1816,7 @@ function complianceData2Next(){
 		banbeisComData2="&pmt_boys_6="+pmt_boys_6+"&not_pmt_boys_6="+not_pmt_boys_6+"&pmt_girls_6="+pmt_girls_6+"&not_pmt_girls_6="+not_pmt_girls_6+"&pmt_boys_7="+pmt_boys_7+"&not_pmt_boys_7="+not_pmt_boys_7+"&pmt_girls_7="+pmt_girls_7+"&not_pmt_girls_7="+not_pmt_girls_7+"&pmt_boys_8="+pmt_boys_8+"&not_pmt_boys_8="+not_pmt_boys_8+"&pmt_girls_8="+pmt_girls_8+"&not_pmt_girls_8="+not_pmt_girls_8+"&pmt_boys_9="+pmt_boys_9+"&not_pmt_boys_9="+not_pmt_boys_9+"&pmt_girls_9="+pmt_girls_9+"&not_pmt_girls_9="+not_pmt_girls_9+"&pmt_boys_10="+pmt_boys_10+"&not_pmt_boys_10="+not_pmt_boys_10+"&pmt_girls_10="+pmt_girls_10+"&not_pmt_girls_10="+not_pmt_girls_10+"&stip_pro_semister="+stip_pro_semister+"&stip_pro_year="+stip_pro_year+"&disbursement_date="+disbursement_date+"&stu_rec_stipend_6="+stu_rec_stipend_6+"&stu_attendance_6="+stu_attendance_6+"&stu_pass_annual_exam_6="+stu_pass_annual_exam_6+"&stu_got_married_6="+stu_got_married_6+"&stu_present_visit_6="+stu_present_visit_6+"&stu_rec_stipend_7="+stu_rec_stipend_7+"&stu_attendance_7="+stu_attendance_7+"&stu_pass_annual_exam_7="+stu_pass_annual_exam_7+"&stu_got_married_7="+stu_got_married_7+"&stu_present_visit_7="+stu_present_visit_7+"&stu_rec_stipend_8="+stu_rec_stipend_8+"&stu_attendance_8="+stu_attendance_8+"&stu_pass_annual_exam_8="+stu_pass_annual_exam_8+"&stu_got_married_8="+stu_got_married_8+"&stu_present_visit_8="+stu_present_visit_8+"&stu_rec_stipend_9="+stu_rec_stipend_9+"&stu_attendance_9="+stu_attendance_9+"&stu_pass_annual_exam_9="+stu_pass_annual_exam_9+"&stu_got_married_9="+stu_got_married_9+"&stu_present_visit_9="+stu_present_visit_9+"&stu_rec_stipend_10="+stu_rec_stipend_10+"&stu_attendance_10="+stu_attendance_10+"&stu_pass_annual_exam_10="+stu_pass_annual_exam_10+"&stu_got_married_10="+stu_got_married_10+"&stu_present_visit_10="+stu_present_visit_10;
 				
 				
-		alert(banbeisComData2);
+		//alert(banbeisComData2);
 		$(".errorChk").text("");
 		url="#compliancePage3";					
 		$.mobile.navigate(url);		
