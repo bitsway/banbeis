@@ -3,6 +3,9 @@ var imageNamePmt = "";
 var imageName2Pmt = "";
 var imagePathPmtA="";
 var imagePath2PmtA="";
+var pmt_achPhoto="";
+var pmt_achPhoto_2="";
+
 
 var achPhoto="";
 var achPhoto2="";
@@ -55,12 +58,12 @@ function onErrorComp(error) {
 
 
 //---- online 
-var apipath_pmt="http://c003.cloudapp.net/banbeis/syncmobile/";
-var apipath_compliance="http://c003.cloudapp.net/banbeis/syncmobile_comp_new/";
+//var apipath_pmt="http://c003.cloudapp.net/banbeis/syncmobile/";
+//var apipath_compliance="http://c003.cloudapp.net/banbeis/syncmobile_comp_new/";
 
 //--- local
-//var apipath_pmt="http://127.0.0.1:8000/banbeis/syncmobile/";
-//var apipath_compliance="http://127.0.0.1:8000/banbeis/syncmobile_comp_new/";
+var apipath_pmt="http://127.0.0.1:8000/banbeis/syncmobile/";
+var apipath_compliance="http://127.0.0.1:8000/banbeis/syncmobile_comp_new/";
 
  url ="";
 
@@ -928,7 +931,7 @@ function pmtDataSubmit(){
 		$("#btn_pmt_submit").hide();
 		
 		var d = new Date();	
-		var get_time=d.getTime();		
+		var get_time_pmt=d.getTime();		
 
 		
 		pmt_latitude=$("#pmt_ach_lat").val();
@@ -944,7 +947,7 @@ function pmtDataSubmit(){
 			pmt_longitude=0;
 			}
 		//---------------
-		if (pmt_achPhoto=='' || pmt_achPhoto==undefined){
+		/*if (pmt_achPhoto=='' || pmt_achPhoto==undefined){
 			$(".errorChk").text("Please confirm Photo 1 ");
 			$("#btn_pmt_submit").show();
 		}else{
@@ -959,7 +962,7 @@ function pmtDataSubmit(){
 					//imagePathA="test"					
 					if (imagePathPmtA!=""){							
 						$(".errorChk").text("Syncing photo 1..");
-						imageNamePmt = localStorage.mobile_no+"_"+get_time+".jpg";										
+						imageNamePmt = localStorage.mobile_no+"_"+get_time_pmt+".jpg";										
 						uploadPhotoAchPmt(imagePathPmtA, imageNamePmt);	
 						//$("#btn_pmt_submit").show();					
 					}
@@ -967,9 +970,9 @@ function pmtDataSubmit(){
 				//} //-end check location
 				
 			}//Photo 2
-		}//chk photo
+		}//chk photo*/
 		
-		//syncDataPmt()
+		syncDataPmt()
 		
 	}
 
@@ -980,10 +983,10 @@ function getAchivementImage1Pmt() {
 	destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true});		
 }
 
-function onSuccessPmtA(imageURI) {		
+function onSuccessPmtA(imageURIPmt) {		
     var image = document.getElementById('pmt_myImageA');
-    image.src = imageURI;
-	imagePathPmtA = imageURI;	
+    image.src = imageURIPmt;
+	imagePathPmtA = imageURIPmt;	
 	$("#pmt_achPhoto").val(imagePathPmtA);
 	
 }
@@ -996,7 +999,7 @@ function onFailPmtA(message) {
 
 
 
-function uploadPhotoAchPmt(imageURI, imageNamePmt) { // First Step of compliance submission
+function uploadPhotoAchPmt(imageURIPmt, imageNamePmt) { // First Step of compliance submission
 		
 	//winAchInfo();
 	var options = new FileUploadOptions();
@@ -1010,8 +1013,8 @@ function uploadPhotoAchPmt(imageURI, imageNamePmt) { // First Step of compliance
 
     options.params = params;
 
-    var ft = new FileTransfer();
-	ft.upload(imageURI, encodeURI("http://e4.businesssolutionapps.com/mrepimage/banbeis_upload/fileUploader/"),winAchInfoPmt,onfailPmt,options);
+    var ftPmt = new FileTransfer();
+	ftPmt.upload(imageURIPmt, encodeURI("http://e4.businesssolutionapps.com/mrepimage/banbeis_upload/fileUploader/"),winAchInfoPmt,onfailPmt,options);
 	
 }
 
@@ -1019,12 +1022,12 @@ function winAchInfoPmt(r) {
 	$(".errorChk").text('Image 1 upload Successful. Syncing image 2...');
 	
 	var d = new Date();	
-	var get_time=d.getTime();
+	var get_time_pmt=d.getTime();
 		
 	//imagePath2A="test2"
 	if (imagePath2PmtA!=""){							
 		$(".errorChk").text("Syncing photo 2..");
-		imageName2Pmt = localStorage.mobile_no+"_"+get_time+".jpg";
+		imageName2Pmt = localStorage.mobile_no+"_"+get_time_pmt+".jpg";
 				
 		uploadPhoto2AchPmt(imagePath2PmtA, imageName2Pmt);
 		//$("#btn_com_submit").show();		
@@ -1046,10 +1049,10 @@ function getAchivementImage2Pmt() { //unused
 	destinationType: Camera.DestinationType.FILE_URI,correctOrientation: true });		
 }
 
-function onSuccess2PmtA(imageURI) {	//unused	
+function onSuccess2PmtA(imageURIPmt) {	//unused	
     var image = document.getElementById('pmt_myImage2A');
-    image.src = imageURI;
-	imagePath2PmtA = imageURI;	
+    image.src = imageURIPmt;
+	imagePath2PmtA = imageURIPmt;	
 	$("#pmt_achPhoto_2").val(imagePath2PmtA);
 	
 }
@@ -1060,7 +1063,7 @@ function onFail2PmtA(message) { //unused
 }
 
 
-function uploadPhoto2AchPmt(imageURI, imageName2Pmt) { // second step
+function uploadPhoto2AchPmt(imageURIPmt, imageName2Pmt) { // second step
 	//winComInfo2();
 	var options = new FileUploadOptions();
     options.fileKey="upload";
@@ -1073,8 +1076,8 @@ function uploadPhoto2AchPmt(imageURI, imageName2Pmt) { // second step
 
     options.params = params;
 
-    var ft = new FileTransfer();
-	ft.upload(imageURI, encodeURI("http://e4.businesssolutionapps.com/mrepimage/banbeis_upload/fileUploader/"),winComInfo2Pmt,onfail,options);
+    var ftPmt = new FileTransfer();
+	ftPmt.upload(imageURIPmt, encodeURI("http://e4.businesssolutionapps.com/mrepimage/banbeis_upload/fileUploader/"),winComInfo2Pmt,onfailPmt,options);
 	
 }
 
@@ -3732,7 +3735,7 @@ function complianceDataSubmit(){
 			com_longitude=0;
 			}
 		//---------------
-		if (com_achPhoto=='' || com_achPhoto==undefined){
+		/*if (com_achPhoto=='' || com_achPhoto==undefined){
 			$(".errorChk").text("Please confirm Photo 1 ");
 			$("#btn_com_submit").show();
 		}else{
@@ -3755,9 +3758,9 @@ function complianceDataSubmit(){
 				//} //-end check location
 				
 			}//Photo 2
-		}//chk photo
+		}//chk photo*/
 		
-		//syncDataCom()
+		syncDataCom()
 		
 	}
 
