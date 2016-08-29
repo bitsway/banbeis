@@ -58,12 +58,12 @@ function onErrorComp(error) {
 
 
 //---- online 
-//var apipath_pmt="http://c003.cloudapp.net/banbeis/syncmobile/";
-//var apipath_compliance="http://c003.cloudapp.net/banbeis/syncmobile_comp_new/";
+var apipath_pmt="http://c003.cloudapp.net/banbeis/syncmobile/";
+var apipath_compliance="http://c003.cloudapp.net/banbeis/syncmobile_comp_new/";
 
 //--- local
-var apipath_pmt="http://127.0.0.1:8000/banbeis/syncmobile/";
-var apipath_compliance="http://127.0.0.1:8000/banbeis/syncmobile_comp_new/";
+//var apipath_pmt="http://127.0.0.1:8000/banbeis/syncmobile/";
+//var apipath_compliance="http://127.0.0.1:8000/banbeis/syncmobile_comp_new/";
 
  url ="";
 
@@ -947,7 +947,7 @@ function pmtDataSubmit(){
 			pmt_longitude=0;
 			}
 		//---------------
-		/*if (pmt_achPhoto=='' || pmt_achPhoto==undefined){
+		if (pmt_achPhoto=='' || pmt_achPhoto==undefined){
 			$(".errorChk").text("Please confirm Photo 1 ");
 			$("#btn_pmt_submit").show();
 		}else{
@@ -970,9 +970,9 @@ function pmtDataSubmit(){
 				//} //-end check location
 				
 			}//Photo 2
-		}//chk photo*/
+		}//chk photo
 		
-		syncDataPmt()
+		//syncDataPmt()
 		
 	}
 
@@ -3735,7 +3735,7 @@ function complianceDataSubmit(){
 			com_longitude=0;
 			}
 		//---------------
-		/*if (com_achPhoto=='' || com_achPhoto==undefined){
+		if (com_achPhoto=='' || com_achPhoto==undefined){
 			$(".errorChk").text("Please confirm Photo 1 ");
 			$("#btn_com_submit").show();
 		}else{
@@ -3758,9 +3758,9 @@ function complianceDataSubmit(){
 				//} //-end check location
 				
 			}//Photo 2
-		}//chk photo*/
+		}//chk photo
 		
-		syncDataCom()
+		//syncDataCom()
 		
 	}
 
