@@ -1,12 +1,10 @@
 
 var imageNamePmt = "";
 var imageName2Pmt = "";
-var imagePathPmtA="";
-var imagePath2PmtA="";
-var pmt_achPhoto="";
+var imagePathPmtA= "";
+var imagePath2PmtA= "";
+var pmt_achPhoto= "";
 var pmt_achPhoto_2="";
-
-
 
 
 var achPhoto="";
@@ -953,10 +951,10 @@ function pmtDataSubmit(){
 			$(".errorChk").text("Please confirm Photo 1 ");
 			$("#btn_pmt_submit").show();
 		}else{
-			if (pmt_achPhoto_2=='' || pmt_achPhoto_2==undefined){
+			/*if (pmt_achPhoto_2=='' || pmt_achPhoto_2==undefined){
 				$(".errorChk").text("Please confirm Photo 2 ");
 				$("#btn_pmt_submit").show();
-			}else{		
+			}else{*/		
 				//if(pmt_latitude==0 || pmt_latitude==0){
 				//	$(".errorChk").text("Please confirm your location ");
 				//	$("#btn_pmt_submit").show();
@@ -976,7 +974,7 @@ function pmtDataSubmit(){
 		
 		//syncDataPmt()
 		
-	}
+	//}
 
 //------------------------------------image 1
 function getAchivementImage1Pmt() {
@@ -1022,18 +1020,17 @@ function uploadPhotoAchPmt(imageURIPmt, imageNamePmt) { // First Step of complia
 
 function winAchInfoPmt(r) {	
 	$(".errorChk").text('Image 1 upload Successful. Syncing image 2...');
-	
-	var d = new Date();	
+	syncDataPmt();
+	/*var d = new Date();	
 	var get_time_pmt=d.getTime();
 		
 	//imagePath2A="test2"
 	if (imagePath2PmtA!=""){							
 		$(".errorChk").text("Syncing photo 2..");
 		imageName2Pmt = localStorage.mobile_no+"_"+get_time_pmt+".jpg";
-				
 		uploadPhoto2AchPmt(imagePath2PmtA, imageName2Pmt);
 		//$("#btn_com_submit").show();		
-	}
+	}*/
 	
 	
 }
