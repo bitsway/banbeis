@@ -1,9 +1,9 @@
 
 var imageNamePmt = "";
 var imageName2Pmt = "";
-var imagePathPmtA= "";
-var imagePath2PmtA= "";
-var pmt_achPhoto= "";
+var imagePathPmtA="";
+var imagePath2PmtA="";
+var pmt_achPhoto="";
 var pmt_achPhoto_2="";
 
 
@@ -560,13 +560,13 @@ function banbeisDataNext(){
 				$(".errorChk").text("Required Fathers Name");	
 			}else if (!fathers_name.match(regStr)){
 				$(".errorChk").text("Father Name Only Alphabetic Character Allowed");		
-			}else if (fathers_nid.length !=13){
+			}else if (fathers_nid!="" && fathers_nid.length !=13){
 				$(".errorChk").text("Fathers Nid maximum 13 digit");	
 			}else if (mothers_name=="" ){
 				$(".errorChk").text("Required Mothers Name");
 			}else if (!mothers_name.match(regStr)){
 				$(".errorChk").text("Mother Name Only Alphabetic Character Allowed");		
-			}else if (mothers_nid.length !=13 ){
+			}else if (mothers_nid!="" && mothers_nid.length !=13 ){
 				$(".errorChk").text("Mothers Nid maximum 13 digit");
 			}else if (gen_der=="" ){
 				$(".errorChk").text("Required Gender");	
@@ -659,13 +659,13 @@ function banbeisDataNext(){
 				$(".errorChk").text("Required Fathers Name");	
 			}else if (!fathers_name.match(regStr)){
 				$(".errorChk").text("Father Name Only Alphabetic Character Allowed");		
-			}else if (fathers_nid.length !=13){
+			}else if (fathers_nid!="" && fathers_nid.length !=13){
 				$(".errorChk").text("Fathers Nid maximum 13 digit");	
 			}else if (mothers_name=="" ){
 				$(".errorChk").text("Required Mothers Name");
 			}else if (!mothers_name.match(regStr)){
 				$(".errorChk").text("Mother Name Only Alphabetic Character Allowed");		
-			}else if (mothers_nid.length !=13 ){
+			}else if (mothers_nid!="" && mothers_nid.length !=13 ){
 				$(".errorChk").text("Mothers Nid maximum 13 digit");
 			}else if (gen_der=="" ){
 				$(".errorChk").text("Required Gender");	
@@ -788,8 +788,7 @@ function banbeisData2Next(){
 		var q15_a=$("#q15_a").val();
 		
 		var regStr=/^[a-zA-Z\s]+$/;
-						
-					
+		
 		if (q1_a=="" ){
 			$(".errorChk").text("Required Q1");
 		}else if (!q1_a.match(regStr)){
@@ -951,15 +950,15 @@ function pmtDataSubmit(){
 			$(".errorChk").text("Please confirm Photo 1 ");
 			$("#btn_pmt_submit").show();
 		}else{
-			/*if (pmt_achPhoto_2=='' || pmt_achPhoto_2==undefined){
+			if (pmt_achPhoto_2=='' || pmt_achPhoto_2==undefined){
 				$(".errorChk").text("Please confirm Photo 2 ");
 				$("#btn_pmt_submit").show();
-			}else{*/		
+			}else{		
 				//if(pmt_latitude==0 || pmt_latitude==0){
 				//	$(".errorChk").text("Please confirm your location ");
 				//	$("#btn_pmt_submit").show();
 				//}else{				
-					//imagePathA="test"					
+					//imagePathPmtA="test"					
 					if (imagePathPmtA!=""){							
 						$(".errorChk").text("Syncing photo 1..");
 						imageNamePmt = localStorage.mobile_no+"_"+get_time_pmt+".jpg";										
@@ -972,9 +971,9 @@ function pmtDataSubmit(){
 			}//Photo 2
 		}//chk photo
 		
-		//syncDataPmt()
 		
-	//}
+		
+	}
 
 //------------------------------------image 1
 function getAchivementImage1Pmt() {
@@ -999,9 +998,8 @@ function onFailPmtA(message) {
 
 
 
-function uploadPhotoAchPmt(imageURIPmt, imageNamePmt) { // First Step of compliance submission
-		
-	//winAchInfo();
+function uploadPhotoAchPmt(imageURIPmt, imageNamePmt) { 	
+	//winAchInfoPmt();
 	var options = new FileUploadOptions();
     options.fileKey="upload";
     options.fileName=imageNamePmt;
@@ -1020,17 +1018,18 @@ function uploadPhotoAchPmt(imageURIPmt, imageNamePmt) { // First Step of complia
 
 function winAchInfoPmt(r) {	
 	$(".errorChk").text('Image 1 upload Successful. Syncing image 2...');
-	syncDataPmt();
-	/*var d = new Date();	
+	
+	var d = new Date();	
 	var get_time_pmt=d.getTime();
 		
-	//imagePath2A="test2"
+	//imagePath2PmtA="test2"
 	if (imagePath2PmtA!=""){							
 		$(".errorChk").text("Syncing photo 2..");
 		imageName2Pmt = localStorage.mobile_no+"_"+get_time_pmt+".jpg";
+				
 		uploadPhoto2AchPmt(imagePath2PmtA, imageName2Pmt);
 		//$("#btn_com_submit").show();		
-	}*/
+	}
 	
 	
 }
@@ -1063,7 +1062,8 @@ function onFail2PmtA(message) { //unused
 
 
 function uploadPhoto2AchPmt(imageURIPmt, imageName2Pmt) { // second step
-	//winComInfo2();
+	
+	//winComInfo2Pmt();
 	var options = new FileUploadOptions();
     options.fileKey="upload";
     options.fileName=imageName2Pmt;
@@ -1076,7 +1076,7 @@ function uploadPhoto2AchPmt(imageURIPmt, imageName2Pmt) { // second step
     options.params = params;
 
     var ftPmt = new FileTransfer();
-	ftPmt.upload(imageURIPmt, encodeURI("http://e4.businesssolutionapps.com/mrepimage/banbeis_upload/fileUploader/"),winComInfo2Pmt,onfail2Pmt,options);
+	ftPmt.upload(imageURIPmt, encodeURI("http://e4.businesssolutionapps.com/mrepimage/banbeis_upload/fileUploader/"),winComInfo2Pmt,onfailPmt,options);
 	
 }
 
@@ -1098,17 +1098,17 @@ function syncDataPmt(){
 			var pou_name=$("#s_pou").val();
 			
 			
-			//alert(apipath_pmt+"submitData_pmt?cid=BANBEIS&mobile_no="+localStorage.mobile_no+"&syncCode="+localStorage.sync_code+'&pmt_achPhoto='+imageName+'&pmt_achPhoto2='+imageName2+'&latitude='+pmt_latitude+'&longitude='+pmt_longitude+"&app_serial_no="+app_serial_no+"&division_name="+division_name+"&zila_name="+zila_name+"&upazila_name="+upazila_name+"&union_name="+union_name+"&pou_name="+pou_name+'&tempText='+ encodeURIComponent(banbeisData)+encodeURIComponent(banbeisDataPage2)+encodeURIComponent(banbeisDataPage3));
+			//alert(apipath_pmt+"submitData_pmt?cid=BANBEIS&mobile_no="+localStorage.mobile_no+"&syncCode="+localStorage.sync_code+'&pmt_achPhoto='+imageNamePmt+'&pmt_achPhoto2='+imageName2Pmt+'&latitude='+pmt_latitude+'&longitude='+pmt_longitude+"&app_serial_no="+app_serial_no+"&division_name="+division_name+"&zila_name="+zila_name+"&upazila_name="+upazila_name+"&union_name="+union_name+"&pou_name="+encodeURIComponent(pou_name)+'&tempText='+ encodeURIComponent(banbeisData)+encodeURIComponent(banbeisDataPage2)+encodeURIComponent(banbeisDataPage3));
 			$.ajax({
 					type: 'POST',
-					url:apipath_pmt+"submitData_pmt?cid=BANBEIS&mobile_no="+localStorage.mobile_no+"&syncCode="+localStorage.sync_code+'&pmt_achPhoto='+imageNamePmt+'&pmt_achPhoto2='+imageName2Pmt+'&latitude='+pmt_latitude+'&longitude='+pmt_longitude+"&app_serial_no="+app_serial_no+"&division_name="+division_name+"&zila_name="+zila_name+"&upazila_name="+upazila_name+"&union_name="+union_name+"&pou_name="+pou_name+'&tempText='+ encodeURIComponent(banbeisData)+encodeURIComponent(banbeisDataPage2)+encodeURIComponent(banbeisDataPage3),
+					url:apipath_pmt+"submitData_pmt?cid=BANBEIS&mobile_no="+localStorage.mobile_no+"&syncCode="+localStorage.sync_code+'&pmt_achPhoto='+imageNamePmt+'&pmt_achPhoto2='+imageName2Pmt+'&latitude='+pmt_latitude+'&longitude='+pmt_longitude+"&app_serial_no="+app_serial_no+"&division_name="+division_name+"&zila_name="+zila_name+"&upazila_name="+upazila_name+"&union_name="+union_name+"&pou_name="+encodeURIComponent(pou_name)+'&tempText='+ encodeURIComponent(banbeisData)+encodeURIComponent(banbeisDataPage2)+encodeURIComponent(banbeisDataPage3),
 					
 					
 					   success: function(result) {
 						   if(result=='Success'){							
 							//alert(result)
 							//--------------
-							 $("#edu_year").val("");
+							 $("#edu_year").val(0);
 							 $("#s_div").val("");
 							 $("#s_dist").val("");
 							 $("#s_up").val("");
@@ -1126,10 +1126,10 @@ function syncDataPmt(){
 							 $("#mothers_nid").val("");
 							 
 							 $("#dob").val("");
-							 $("#gen_der").val("");
+							 $("#gen_der").val("BOY");
 							 $("#pre_stu_located").val("");
 							 $("#guardian_absence_of_parents").val("");
-							 $("#relation_student_with_guardian").val("");
+							 $("#relation_student_with_guardian").val(1);
 							
 							 $("#parents_village").val("");
 							 $("#parents_post").val("");
@@ -1144,37 +1144,37 @@ function syncDataPmt(){
 							 $("#student_district").val("");
 							
 							 $("#q1_a").val("");
-							 $("#q2_a").val("");
-							 $("#q3_a").val("");
-							 $("#q4_a").val("");
-							 $("#q5_a").val("");
-							 $("#q6_a").val("");
+							 $("#q2_a").val(1);
+							 $("#q3_a").val(1);
+							 $("#q4_a").val(1);
+							 $("#q5_a").val(1);
+							 $("#q6_a").val(1);
 							 $("#q7_a").val("");
 							 $("#q8_a").val("");
 							 $("#q9_a").val("");
 							 $("#q10_a").val("");
-							 $("#q11_a").val("");
-							 $("#q12_a").val("");
+							 $("#q11_a").val(1);
+							 $("#q12_a").val(1);
 							 $("#q13_a").val("");
-							 $("#q14_a").val("");
-							 $("#q15_a").val("");
-							 $("#q16_a").val("");
-							 $("#q17_a").val("");
-							 $("#q18_a").val("");
-							 $("#q19_a").val("");
-							 $("#q20_a").val("");
-							 $("#q21_a").val("");	
-							 $("#q22_a").val("");
-							 $("#q23_a").val("");
-							 $("#q24_a").val("");
-							 $("#q25_a").val("");
-							 $("#q26_a").val("");
-							 $("#q27_a").val("");
+							 $("#q14_a").val(1);
+							 $("#q15_a").val(1);
+							 $("#q16_a").val(1);
+							 $("#q17_a").val(1);
+							 $("#q18_a").val(1);
+							 $("#q19_a").val(1);
+							 $("#q20_a").val(1);
+							 $("#q21_a").val(1);	
+							 $("#q22_a").val(1);
+							 $("#q23_a").val(1);
+							 $("#q24_a").val(1);
+							 $("#q25_a").val(1);
+							 $("#q26_a").val(1);
+							 $("#q27_a").val(1);
 							
 							//--------------
 							
-							$("#pmt_ach_lat").val("");
-							$("#pmt_ach_long").val("");
+							$("#pmt_ach_lat").val(0);
+							$("#pmt_ach_long").val(0);
 							$("#pmt_achPhoto").val("");										
 							$("#pmt_achPhoto_2").val("");	
 							
@@ -3734,7 +3734,7 @@ function complianceDataSubmit(){
 			com_longitude=0;
 			}
 		//---------------
-		if (com_achPhoto=='' || com_achPhoto==undefined){
+		/*if (com_achPhoto=='' || com_achPhoto==undefined){
 			$(".errorChk").text("Please confirm Photo 1 ");
 			$("#btn_com_submit").show();
 		}else{
@@ -3757,9 +3757,9 @@ function complianceDataSubmit(){
 				//} //-end check location
 				
 			}//Photo 2
-		}//chk photo
+		}//chk photo*/
 		
-		//syncDataCom()
+		syncDataCom()
 		
 	}
 
