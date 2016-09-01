@@ -273,7 +273,7 @@ function pmthhVerification(){
 
 
 //-----------------
-function student(type){
+function student(type){// not use
 	$(".comp_error").text("");
 	
 	if (type=="QUICKS"){
@@ -3734,7 +3734,7 @@ function complianceDataSubmit(){
 			com_longitude=0;
 			}
 		//---------------
-		/*if (com_achPhoto=='' || com_achPhoto==undefined){
+		if (com_achPhoto=='' || com_achPhoto==undefined){
 			$(".errorChk").text("Please confirm Photo 1 ");
 			$("#btn_com_submit").show();
 		}else{
@@ -3757,9 +3757,9 @@ function complianceDataSubmit(){
 				//} //-end check location
 				
 			}//Photo 2
-		}//chk photo*/
+		}//chk photo
 		
-		syncDataCom()
+		//syncDataCom()
 		
 	}
 
