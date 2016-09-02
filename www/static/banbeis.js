@@ -365,12 +365,6 @@ function student(type){// not use
 }
 
 
-function banbeisFirstDataNextPMt(){	
-	
-	url="#pmt_first_next_page";					
-	$.mobile.navigate(url);	
-	
-	}
 
 
 
@@ -499,8 +493,6 @@ function banbeisDataNextSearch(){
 		var zila_name=$("#s_dist").val();
 		var upazila_name=$("#s_up").val();
 		var union_name=$("#s_un").val();
-		var pourashava_name=$("#s_pou").val();
-		var boothNo=$("#boothNo").val();
 		//alert(pourashava_name+"-"+boothNo);
 		if (edu_year=="" || edu_year==0 ){
 			$(".errorChk").text("Required Education Year");
@@ -510,11 +502,10 @@ function banbeisDataNextSearch(){
 			$(".errorChk").text("Required Zila Name");	
 		}else if (upazila_name=="" ){
 			$(".errorChk").text("Required Upazila Name");	
-		}else if(boothNo==""){
-			$(".errorChk").text("Required Booth No");
+		
 		}else{
 			
-			banbeisDataSearch="&edu_year="+edu_year+"&division_name="+division_name+"&zila_name="+zila_name+"&upazila_name="+upazila_name+"&union_name="+union_name+"&pourashava_name="+pourashava_name+"&boothNo="+boothNo
+			banbeisDataSearch="&edu_year="+edu_year+"&division_name="+division_name+"&zila_name="+zila_name+"&upazila_name="+upazila_name+"&union_name="+union_name
 		
 		//alert(banbeisDataSearch);
 		}
@@ -527,7 +518,9 @@ function banbeisDataNextSearch(){
 //===================		
 function banbeisDataNext(){
 	
-	
+		
+		var pourashava_name=$("#s_pou").val();
+		var boothNo=$("#boothNo").val();
 		var appSerialNo=$("#appSerialNo").val();
 				
 		var student_name=$("#student_name").val();
@@ -561,8 +554,9 @@ function banbeisDataNext(){
 			guardian_absence_of_parents='';
 			relation_student_with_guardian='';
 					
-			
-			if(appSerialNo==""){
+			if(boothNo==""){
+				$(".errorChk").text("Required Booth No");
+			}else if(appSerialNo==""){
 				$(".errorChk").text("Required Application Serial No");
 			}else if(appSerialNo.length !=4){
 				$(".errorChk").text("Application Serial no maximum 4 digit");
@@ -634,7 +628,7 @@ function banbeisDataNext(){
 				$(".errorChk").text("Student District Only Alphabetic Character Allowed");	
 			}else{
 					
-					banbeisData="&appSerialNo="+appSerialNo+"&student_name="+student_name+"&fathers_name="+fathers_name+"&fathers_nid="+fathers_nid+"&mothers_name="+mothers_name+"&mothers_nid="+mothers_nid+"&dob="+dob+"&gen_der="+gen_der+"&par_abs_ano_guar="+par_abs_ano_guar+"&guardian_absence_of_parents="+guardian_absence_of_parents+"&relation_student_with_guardian="+relation_student_with_guardian+"&parents_village="+parents_village+"&parents_post="+parents_post+"&parents_union="+parents_union+"&parents_upazila="+parents_upazila+"&parents_district="+parents_district+"&student_village="+student_village+"&student_post="+student_post+"&student_union="+student_union+"&student_upazila="+student_upazila+"&student_district="+student_district				
+					banbeisData="&pourashava_name="+pourashava_name+"&boothNo="+boothNo+"&appSerialNo="+appSerialNo+"&student_name="+student_name+"&fathers_name="+fathers_name+"&fathers_nid="+fathers_nid+"&mothers_name="+mothers_name+"&mothers_nid="+mothers_nid+"&dob="+dob+"&gen_der="+gen_der+"&par_abs_ano_guar="+par_abs_ano_guar+"&guardian_absence_of_parents="+guardian_absence_of_parents+"&relation_student_with_guardian="+relation_student_with_guardian+"&parents_village="+parents_village+"&parents_post="+parents_post+"&parents_union="+parents_union+"&parents_upazila="+parents_upazila+"&parents_district="+parents_district+"&student_village="+student_village+"&student_post="+student_post+"&student_union="+student_union+"&student_upazila="+student_upazila+"&student_district="+student_district	
 								
 					
 					//alert(banbeisData);
@@ -649,8 +643,9 @@ function banbeisDataNext(){
 					$.mobile.navigate(url);				
 		}
 		}else{
-				
-			if(appSerialNo==""){
+			if(boothNo==""){
+				$(".errorChk").text("Required Booth No");	
+			}else if(appSerialNo==""){
 				$(".errorChk").text("Required Application Serial No");
 			}else if(appSerialNo.length !=4){
 				$(".errorChk").text("Application Serial no maximum 4 digit");
@@ -722,7 +717,7 @@ function banbeisDataNext(){
 				$(".errorChk").text("Student District Only Alphabetic Character Allowed");	
 			}else{
 					
-					banbeisData="&appSerialNo="+appSerialNo+"&student_name="+student_name+"&fathers_name="+fathers_name+"&fathers_nid="+fathers_nid+"&mothers_name="+mothers_name+"&mothers_nid="+mothers_nid+"&dob="+dob+"&gen_der="+gen_der+"&par_abs_ano_guar="+par_abs_ano_guar+"&guardian_absence_of_parents="+guardian_absence_of_parents+"&relation_student_with_guardian="+relation_student_with_guardian+"&parents_village="+parents_village+"&parents_post="+parents_post+"&parents_union="+parents_union+"&parents_upazila="+parents_upazila+"&parents_district="+parents_district+"&student_village="+student_village+"&student_post="+student_post+"&student_union="+student_union+"&student_upazila="+student_upazila+"&student_district="+student_district				
+					banbeisData="&pourashava_name="+pourashava_name+"&boothNo="+boothNo+"&appSerialNo="+appSerialNo+"&student_name="+student_name+"&fathers_name="+fathers_name+"&fathers_nid="+fathers_nid+"&mothers_name="+mothers_name+"&mothers_nid="+mothers_nid+"&dob="+dob+"&gen_der="+gen_der+"&par_abs_ano_guar="+par_abs_ano_guar+"&guardian_absence_of_parents="+guardian_absence_of_parents+"&relation_student_with_guardian="+relation_student_with_guardian+"&parents_village="+parents_village+"&parents_post="+parents_post+"&parents_union="+parents_union+"&parents_upazila="+parents_upazila+"&parents_district="+parents_district+"&student_village="+student_village+"&student_post="+student_post+"&student_union="+student_union+"&student_upazila="+student_upazila+"&student_district="+student_district				
 								
 					
 					//alert(banbeisData);

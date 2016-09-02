@@ -1206,16 +1206,7 @@ function act_teachers(){
                         <option value="">Select Union</option>							 												
                     </select>
                 </li>
-                 <li class="ui-field-contain" >  
-                 <label for="s_pou">5. Name of Pourashava </label>
-                 <label for="" id="s_pou_show"> </label>
-                    <input type="hidden" name="s_pou" id="s_pou" />
-                </li>
-                 <li class="ui-field-contain">
-                    <label for="boothNo" id="boothNo">6. Booth No</label>
-                    <label for="" id="lbl_boothNo" ></label>
-                    <input type="hidden" name="boothNo" id="boothNo"  />
-                 </li>
+                 
               </ul>
                  
   <a data-role="button" onclick="banbeisDataNextSearch()" href="#" data-transition="slide" >Search</a>
@@ -1235,7 +1226,17 @@ function act_teachers(){
     
     <div data-role="content" >
              
-            <ul data-role="listview" data-inset="true">    
+            <ul data-role="listview" data-inset="true"> 
+            	  <li class="ui-field-contain" >  
+                 <label for="s_pou">5. Name of Pourashava </label>
+                <!-- <label for="" id="s_pou_show"> </label>-->
+                    <input type="text" name="s_pou" id="s_pou" readonly="readonly" style="background-color:#E8E8E8;" />
+                </li>
+                 <li class="ui-field-contain">
+                    <label for="boothNo" >6. Booth No</label>
+                  <!--  <label for="" id="lbl_boothNo" ></label>-->
+                    <input type="number" name="boothNo" id="boothNo" readonly="readonly" style="background-color:#E8E8E8;" />
+                 </li>   
                   <li class="ui-field-contain">
                     <label for="appSerialNo">7. Application Serial No</label>
                     <input type="number" name="appSerialNo" id="appSerialNo" />
