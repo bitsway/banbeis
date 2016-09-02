@@ -1185,19 +1185,19 @@ function act_teachers(){
                 <li class="ui-field-contain" >
                     <label for="s_div">1. Division </label>
                        <select name="s_div" id="s_div" data-native-menu="false" onchange="getDist()">
-                            <option value="">Select Division</option>							 												
+                            <option value="0">Select Division</option>							 												
                         </select>
                 </li>
                 <li class="ui-field-contain" >
                  <label for="s_dist">2. District </label>
                    <select name="s_dist" id="s_dist" data-native-menu="false" onchange="getUp()">
-                        <option value="">Select District</option>							 												
+                        <option value="0">Select District</option>							 												
                     </select>
                 </li>
                 <li class="ui-field-contain" >  
                  <label for="s_up">3. Upazila </label>
                    <select name="s_up" id="s_up" data-native-menu="false" onchange="getUn()">
-                        <option value="">Select Upazila</option>							 												
+                        <option value="0">Select Upazila</option>							 												
                     </select>
                 </li>
                  <li class="ui-field-contain" >  
@@ -1208,11 +1208,13 @@ function act_teachers(){
                 </li>
                  <li class="ui-field-contain" >  
                  <label for="s_pou">5. Name of Pourashava </label>
-                    <input type="text" name="s_pou" id="s_pou" style="background-color:#E8E8E8;" readonly="readonly"/>
+                 <label for="" id="s_pou_show"> </label>
+                    <input type="hidden" name="s_pou" id="s_pou" />
                 </li>
                  <li class="ui-field-contain">
-                    <label for="boothNo">6. Booth No</label>
-                    <input type="number" name="boothNo" id="boothNo" style="background-color:#E8E8E8;" readonly="readonly"/>
+                    <label for="boothNo" id="boothNo">6. Booth No</label>
+                    <label for="" id="lbl_boothNo" ></label>
+                    <input type="hidden" name="boothNo" id="boothNo"  />
                  </li>
               </ul>
                  
@@ -1220,11 +1222,8 @@ function act_teachers(){
         <div class="errorChk"></div>
             <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     </div>
-    
-
 </div>
                 
-                 
                  
                  
 <div data-role="page" data-theme="c" id="second_page" style="overflow:scroll;">

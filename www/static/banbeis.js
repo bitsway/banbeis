@@ -482,7 +482,9 @@ function getpou(){
 					rpt_rep_ob.append(pouCmbo);
 					rpt_rep_ob.selectmenu("refresh");*/
 				 
+				 $("#s_pou_show").text(pouName); 
 				 $("#s_pou").val(pouName); 
+				 $("#lbl_boothNo").text(pouID);
 				 $("#boothNo").val(pouID);
 				 
 			  }		  
@@ -499,7 +501,7 @@ function banbeisDataNextSearch(){
 		var union_name=$("#s_un").val();
 		var pourashava_name=$("#s_pou").val();
 		var boothNo=$("#boothNo").val();
-		
+		//alert(pourashava_name+"-"+boothNo);
 		if (edu_year=="" || edu_year==0 ){
 			$(".errorChk").text("Required Education Year");
 		}else if (division_name=="" ){
@@ -512,13 +514,13 @@ function banbeisDataNextSearch(){
 			$(".errorChk").text("Required Booth No");
 		}else{
 			
-			banbeisDataSearch="&edu_year="+edu_year+"&division_name="+division_name+"&zila_name="+zila_name+"&upazila_name="+upazila_name+"&union_name="+union_name+"&pourashava_name="+pourashava_name+"&boothNo="+boothNo;
+			banbeisDataSearch="&edu_year="+edu_year+"&division_name="+division_name+"&zila_name="+zila_name+"&upazila_name="+upazila_name+"&union_name="+union_name+"&pourashava_name="+pourashava_name+"&boothNo="+boothNo
 		
 		//alert(banbeisDataSearch);
 		}
-	
-	url="#second_page";					
-	$.mobile.navigate(url);	
+		$(".errorChk").text("");
+		url="#second_page";					
+		$.mobile.navigate(url);	
 	
 	}
 
