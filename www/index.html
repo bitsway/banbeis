@@ -14,8 +14,7 @@
 	
 	<script>
 		$(document).ready(function(){
-				//$("#disbursement_date").datepicker();
-		
+				
 				
 				$("#new_union_name").hide();
 				$("#new_ward_no").hide();
@@ -1109,7 +1108,7 @@ function act_teachers(){
             </ul>
     </div>
     
-    <div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting 20160730</div><!------/footer 20150401-20150309 -->
+    <div data-theme="c" data-role="footer" data-position="fixed" style="font-size:12px;background-color:#CCC;" align="center" >m-Reporting 20160919</div><!------/footer 20150401-20150309 -->
     
     <div data-role="panel" id="leftpanel" data-position="left" data-display="overlay" data-theme="c">
         <div align="center"></div>
@@ -1185,19 +1184,19 @@ function act_teachers(){
                 <li class="ui-field-contain" >
                     <label for="s_div">1. Division </label>
                        <select name="s_div" id="s_div" data-native-menu="false" onchange="getDist()">
-                            <option value="">Select Division</option>							 												
+                            <option value="0">Select Division</option>							 												
                         </select>
                 </li>
                 <li class="ui-field-contain" >
                  <label for="s_dist">2. District </label>
                    <select name="s_dist" id="s_dist" data-native-menu="false" onchange="getUp()">
-                        <option value="">Select District</option>							 												
+                        <option value="0">Select District</option>							 												
                     </select>
                 </li>
                 <li class="ui-field-contain" >  
                  <label for="s_up">3. Upazila </label>
                    <select name="s_up" id="s_up" data-native-menu="false" onchange="getUn()">
-                        <option value="">Select Upazila</option>							 												
+                        <option value="0">Select Upazila</option>							 												
                     </select>
                 </li>
                  <li class="ui-field-contain" >  
@@ -1206,16 +1205,39 @@ function act_teachers(){
                         <option value="">Select Union</option>							 												
                     </select>
                 </li>
-                 <li class="ui-field-contain" >  
+                 
+              </ul>
+                 
+  <a data-role="button" onclick="banbeisDataNextSearch()" href="#" data-transition="slide" >Search</a>
+        <div class="errorChk"></div>
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    </div>
+</div>
+                
+                 
+                 
+<div data-role="page" data-theme="c" id="second_page" style="overflow:scroll;">
+    <div data-theme="c" data-role="header" data-position="fixed" >
+        <a data-role="button" onClick="menuClick();" data-icon="bullets" data-iconpos="left" class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="menu.png" /></a>
+        <a data-role="button" onclick="backClick();" data-rel="back" class="ui-btn-right" data-transition="slide"><img src="back.png" /></a>
+        <h3>BANBEIS</h3>
+    </div>
+    
+    <div data-role="content" >
+             
+            <ul data-role="listview" data-inset="true"> 
+            	  <li class="ui-field-contain" >  
                  <label for="s_pou">5. Name of Pourashava </label>
-                    <input type="text" name="s_pou" id="s_pou" style="background-color:#E8E8E8;" readonly="readonly"/>
+                <!-- <label for="" id="s_pou_show"> </label>-->
+                    <input type="text" name="s_pou" id="s_pou" readonly="readonly" style="background-color:#E8E8E8;" />
                 </li>
                  <li class="ui-field-contain">
-                    <label for="boothNo">6. Booth No</label>
-                    <input type="number" name="boothNo" id="boothNo" style="background-color:#E8E8E8;" readonly="readonly"/>
-                 </li>
+                    <label for="boothNo" >6. Booth No</label>
+                  <!--  <label for="" id="lbl_boothNo" ></label>-->
+                    <input type="number" name="boothNo" id="boothNo" readonly="readonly" style="background-color:#E8E8E8;" />
+                 </li>   
                   <li class="ui-field-contain">
-                    <label for="appSerialNo">7. Application Serial No </label>
+                    <label for="appSerialNo">7. Application Serial No</label>
                     <input type="number" name="appSerialNo" id="appSerialNo" />
                  </li>
                  
@@ -1248,7 +1270,7 @@ function act_teachers(){
                 <li class="ui-field-contain">
                     <label for="gen_der">7. Gender</label>
                     <select name="gen_der" id="gen_der" data-native-menu="false">
-                        <option value="BOY">Boy</option> 
+                        <option value="BOY" selected="selected">Boy</option> 
                         <option value="GIRL">Girl</option>				
                     </select>
                 </li>
@@ -1357,15 +1379,16 @@ function act_teachers(){
                 <li class="ui-field-contain auto_break">	
                     <label for="q2_a">2. শিক্ষার্থীর অভিভাবক পুরুষ না মহিলা ?</label>
                         <select name="q2_a" id="q2_a" data-native-menu="false" >
-                            <option value="1">পুরুষ</option>
+                            <option value="1" selected="selected">পুরুষ</option>
                             <option value="2">মহিলা </option>								 												
                         </select>
                </li>
                
                 <li class="ui-field-contain auto_break">
                     <label for="q3_a">3. শিক্ষার্থীর অভিভাবকের বৈবাহিক অবস্থা?</label>
-                       <select name="q3_a" id="q3_a" data-native-menu="false" >
-                            <option value="1">১-বিবাহিত</option>
+                       <select name="q3_a" id="q3_a" data-native-menu="false" onchange="q3_a_q5_a()">
+                            <option value="0" selected="selected"></option>
+                            <option value="1" >১-বিবাহিত</option>
                             <option value="2">২-অবিবাহিত</option>
                             <option value="3">৩-বিধবা/বিপত্নিক</option>
                             <option value="4">৪-তালাকপ্রাপ্ত</option>
@@ -1376,7 +1399,7 @@ function act_teachers(){
                 <li class="ui-field-contain auto_break">
                     <label for="q4_a">4. শিক্ষার্থীর অভিভাবকের সর্বোচ্চ শিক্ষাগত যোগ্যতা?</label>
                         <select name="q4_a" id="q4_a" data-native-menu="false" >
-                            <option value="1">১-কখনো স্কুলে যায়নি</option>
+                            <option value="1" selected="selected">১-কখনো স্কুলে যায়নি</option>
                             <option value="2">২-প্রাথমিক বিদ্যালয় হতে ঝরে পড়েছে</option>
                             <option value="3">৩-PSC (পঞ্চম শ্রেণী) পাশ</option>
                             <option value="4">৪-JSC/JDC  অষ্টম শ্রেণী) পাশ</option>
@@ -1387,10 +1410,10 @@ function act_teachers(){
                         </select>
                   </li>
                 
-                <li class="ui-field-contain auto_break">
+                <li class="ui-field-contain auto_break" id="q5_a_hide">
                     <label for="q5_a">5. শিক্ষার্থীর অভিভাবকের স্বামী বা স্ত্রীর  সর্বোচ্চ শিক্ষাগত যোগ্যতা?</label>
                         <select name="q5_a" id="q5_a" data-native-menu="false" >
-                            <option value="1">১-কখনো স্কুলে যায়নি</option>
+                            <option value="1" selected="selected">১-কখনো স্কুলে যায়নি</option>
                             <option value="2">২-প্রাথমিক বিদ্যালয় হতে ঝরে পড়েছে</option>
                             <option value="3">৩-PSC (পঞ্চম শ্রেণী) পাশ</option>
                             <option value="4">৪-JSC/JDC  অষ্টম শ্রেণী) পাশ</option>
@@ -1404,7 +1427,7 @@ function act_teachers(){
                 <li class="ui-field-contain auto_break">
                     <label for="q6_a">6. শিক্ষার্থীর অভিভাবক কোন পেশায়  নিয়োজিত?</label>
                         <select name="q6_a" id="q6_a" data-native-menu="false" >
-                            <option value="1">১-চাকুরী (সরকারী/বেসরকারী)</option>
+                            <option value="1" selected="selected">১-চাকুরী (সরকারী/বেসরকারী)</option>
                             <option value="2" class="auto_break" >২-আত্নকর্মসংস্থান/উদ্যোক্তা (নিজ পেশা- যেমন: দোকানদার, মিস্ত্রি, মেকার, ছোট ব্যবসা ইত্যাদি)</option>
                             <option value="3">৩-কৃষি ভিত্তিক দিন মজুর</option>
                             <option value="4">৪-অকৃষি ভিত্তিক দিন মজুর</option>
@@ -1435,6 +1458,7 @@ function act_teachers(){
                 <li class="ui-field-contain auto_break">
                     <label for="q11_a">11. শিক্ষার্থীর অভিভাবকের নিজের বাসগৃহের  প্রধান ঘরের দেয়াল কি দিয়ে তৈরী?</label>
                         <select name="q11_a" id="q11_a" data-native-menu="false" onchange="q11_q12()">
+                        	<option value="0" selected="selected"></option>
                             <option value="1" >১-বাঁশের চটা বা চাটাই/পাইখড়ি</option>
                             <option value="2" >২-মাটির দেওয়াল</option>
                             <option value="3" >৩-টিন/ কাঠ</option>
@@ -1446,7 +1470,7 @@ function act_teachers(){
                     <label for="q12_a">12. শিক্ষার্থীর অভিভাবকের নিজের বাসগৃহের  প্রধান ঘরের দেয়াল কি দিয়ে তৈরী?</label>
                         <div id="q12_a_1">
                         <select name="q12_a" id="q12_a1" data-native-menu="false" >
-                            <option value="1">১-ছন/খড়/পাতা,টিন/কাঠ/টালি</option>
+                            <option value="1" selected="selected">১-ছন/খড়/পাতা,টিন/কাঠ/টালি</option>
                             <option value="2" >২-কংক্রিট</option>
                             <option value="3" >৩-ঢালাই</option>
                             <option value="4">৪-অন্যান্য</option>					 												
@@ -1454,7 +1478,7 @@ function act_teachers(){
                     </div>
                     <div id="q12_a_2">
                         <select name="q12_a" id="q12_a2" data-native-menu="false" >
-                            <option value="1">১-ছন/খড়/পাতা,টিন/কাঠ/টালি</option>
+                            <option value="1" selected="selected">১-ছন/খড়/পাতা,টিন/কাঠ/টালি</option>
                             <option value="4">৪-অন্যান্য</option>					 												
                         </select>
                      </div>
@@ -1468,7 +1492,7 @@ function act_teachers(){
                 <li class="ui-field-contain auto_break">
                     <label for="q14_a">14. আলাদা খাবার ঘর আছে কিনা?</label>
                         <select name="q14_a" id="q14_a" data-native-menu="false" >
-                            <option value="1">হ্যাঁ </option>
+                            <option value="1" selected="selected">হ্যাঁ </option>
                             <option value="2">না</option>				
                         </select>
                 </li>
@@ -1476,7 +1500,7 @@ function act_teachers(){
                 <li class="ui-field-contain auto_break">
                     <label for="q15_a">15. আলাদা রান্নাঘর আছে কিনা?</label>
                         <select name="q15_a" id="q15_a" data-native-menu="false" >
-                            <option value="1">হ্যাঁ </option>
+                            <option value="1" selected="selected">হ্যাঁ </option>
                             <option value="2">না</option>				
                         </select>
                 </li>
@@ -1611,24 +1635,14 @@ function act_teachers(){
 
 </div>
 
-<div data-role="page" data-theme="c" id="inPhoto" >
+<div data-role="page" data-theme="c" id="inPhoto" style="overflow:scroll" >
     <div data-theme="c" data-role="header" data-position="fixed" >
     <a data-role="button" onClick="menuClick();" data-icon="bullets" data-iconpos="left" class="ui-btn ui-shadow ui-corner-all ui-icon-bullets " ><img src="menu.png" /></a>
         <a data-role="button" onclick="backClick();" data-rel="back" class="ui-btn-right" data-transition="slide"><img src="back.png" /></a>
         <h3>BANBEIS</h3>
   </div>
     <div data-role="content">       
-       <!-- <a data-role="button" id="btn_1_take_pic_pmt" onClick="getAchivementImagePmt();" class="ui-btn" >Take Picture</a>       
-        <img src="" width="128" height="128" alt="Image1" id="myImagePmtA" />        
-        <input name="achPhoto1" id="achPhoto1" value=""  type="hidden">
-        
-        <a data-role="button" id="btn_2_take_pic_pmt" onClick="getAchivementImage2();" class="ui-btn" >Take Picture 2</a>       
-        <img src="" width="128" height="128" alt="Image2" id="myImagePtaB" />
-        <input name="achPhoto2" id="achPhoto2" value=""  type="hidden">
-        
-        <input name="ach_lat" id="ach_lat" value=""  type="hidden">
-        <input name="ach_long" id="ach_long" value=""  type="hidden">
-        <a data-role="button" id="btn_ach_lat_long" onClick="getLocationInfoAch();" class="ui-btn" >Confirm Location</a>-->
+       
         <a data-role="button" id="btn_1_take_pic_pmt" onClick="getAchivementImage1Pmt();" class="ui-btn" >Take Picture 1</a>       
         <img src="" width="128" height="128" alt="Image1" id="pmt_myImageA" />        
         <input name="pmt_achPhoto" id="pmt_achPhoto" value=""  type="hidden">
@@ -1643,7 +1657,7 @@ function act_teachers(){
         
 		<div class="errorChk" style="color:#F00;"></div>
         <div class="sucChk" style="color:#00CA00;"></div>
-        <br/><br/>
+        <br/>
 		<br/>
         <a data-role="button" id="btn_pmt_submit" onClick="pmtDataSubmit();" class="ui-btn" >Submit</a> 
 		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
