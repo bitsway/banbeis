@@ -880,7 +880,7 @@ function banbeisData2Next(){
 					$(".errorChk").text("Q1 Only Alphabetic Character Allowed");	
 			}else if (q2_a=="" ){
 				$(".errorChk").text("Required Q2");	
-			}else if (q3_a=="" ){
+			}else if (q3_a=="" ||q3_a==0){
 				$(".errorChk").text("Required Q3");		
 			}else if (q4_a=="" ){
 				$(".errorChk").text("Required Q4");		
@@ -4502,7 +4502,9 @@ function syncDataCom_1(sl){
 							$("#only_drh_book_total").val("");
 							$("#inc_drh_book_total").val("");
 							$("#all_drh_books").val("");
-												
+							<!----------$("#inc_drh_book_total").val("");----------->	
+														
+							
 							//--------------
 							
 							$("#com_ach_lat").val("");
@@ -4513,6 +4515,10 @@ function syncDataCom_1(sl){
 						
 							$(".sucChk").text('Successfully Submitted');
 							$(".errorChk").text("");
+							//$("#btn_1_take_pic").hide();
+							//$("#btn_2_take_pic").hide();
+							//$("#btn_com_ach_lat_long").hide();
+							//$("#btn_com_submit").hide();
 							$("#btn_com_submit").show();						
 						}else{
 							$(".errorChk").text('Unauthorized Access');																	
