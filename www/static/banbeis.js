@@ -58,11 +58,11 @@ function onErrorComp(error) {
 
 
 //---- online 
-var apipath_pmt="http://c003.cloudapp.net/banbeis/syncmobile/";
+var apipath_pmt="http://c003.cloudapp.net/banbeis/syncmobile_new/";
 var apipath_compliance="http://c003.cloudapp.net/banbeis/syncmobile_comp_new/";
 
 //--- local
-//var apipath_pmt="http://127.0.0.1:8000/banbeis/syncmobile/";
+//var apipath_pmt="http://127.0.0.1:8000/banbeis/syncmobile_new/";
 //var apipath_compliance="http://127.0.0.1:8000/banbeis/syncmobile_comp_new/";
 
  url ="";
