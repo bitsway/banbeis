@@ -794,7 +794,7 @@ function banbeisData2Next(){
 		var q10_a=$("#q10_a").val().replace(/\./g, '');
 		var q11_a=$("#q11_a").val();
 		var q12_a=$("#q12_a").val();
-		var q13_a=$("#q13_a").val();
+		var q13_a=$("#q13_a").val().replace(/\./g, '');
 		var q14_a=$("#q14_a").val();
 		var q15_a=$("#q15_a").val();
 		
@@ -4529,6 +4529,7 @@ function syncDataCom_1(sl){
 			});//end ajax
 	
 	}
+
 
 
 
