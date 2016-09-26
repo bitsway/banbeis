@@ -1168,6 +1168,7 @@ function winComInfo2Pmt(r) {
 
 
 function syncDataPmt(){	
+			var boothNo=$("#boothNo").val();
 			var app_serial_no=$("#appSerialNo").val();
 			var division_name=$("#s_div").val();
 			var zila_name=$("#s_dist").val();
@@ -1179,7 +1180,7 @@ function syncDataPmt(){
 			//alert(apipath_pmt+"submitData_pmt?cid=BANBEIS&mobile_no="+localStorage.mobile_no+"&syncCode="+localStorage.sync_code+'&pmt_achPhoto='+imageNamePmt+'&pmt_achPhoto2='+imageName2Pmt+'&latitude='+pmt_latitude+'&longitude='+pmt_longitude+"&app_serial_no="+app_serial_no+"&division_name="+division_name+"&zila_name="+zila_name+"&upazila_name="+upazila_name+"&union_name="+union_name+"&pou_name="+encodeURIComponent(pou_name)+'&tempText='+ encodeURIComponent(banbeisDataSearch)+encodeURIComponent(banbeisData)+encodeURIComponent(banbeisDataPage2)+encodeURIComponent(banbeisDataPage3));
 			$.ajax({
 					type: 'POST',
-					url:apipath_pmt+"submitData_pmt?cid=BANBEIS&mobile_no="+localStorage.mobile_no+"&syncCode="+localStorage.sync_code+'&pmt_achPhoto='+imageNamePmt+'&pmt_achPhoto2='+imageName2Pmt+'&latitude='+pmt_latitude+'&longitude='+pmt_longitude+"&app_serial_no="+app_serial_no+"&division_name="+division_name+"&zila_name="+zila_name+"&upazila_name="+upazila_name+"&union_name="+union_name+"&pou_name="+encodeURIComponent(pou_name)+'&tempText='+ encodeURIComponent(banbeisDataSearch)+encodeURIComponent(banbeisData)+encodeURIComponent(banbeisDataPage2)+encodeURIComponent(banbeisDataPage3),
+					url:apipath_pmt+"submitData_pmt?cid=BANBEIS&mobile_no="+localStorage.mobile_no+"&syncCode="+localStorage.sync_code+'&pmt_achPhoto='+imageNamePmt+'&pmt_achPhoto2='+imageName2Pmt+'&latitude='+pmt_latitude+'&longitude='+pmt_longitude+"&boothNo="+boothNo+"&app_serial_no="+app_serial_no+"&division_name="+division_name+"&zila_name="+zila_name+"&upazila_name="+upazila_name+"&union_name="+union_name+"&pou_name="+encodeURIComponent(pou_name)+'&tempText='+ encodeURIComponent(banbeisDataSearch)+encodeURIComponent(banbeisData)+encodeURIComponent(banbeisDataPage2)+encodeURIComponent(banbeisDataPage3),
 					
 					
 					   success: function(result) {
