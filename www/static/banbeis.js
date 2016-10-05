@@ -829,7 +829,7 @@ function banbeisData2Next(){
 			}else if (q9_a=="" ){
 				$(".errorChk").text("Required Q9");	
 			}else if (q9_a >= 21 ){
-				$(".errorChk").text("Q8 maximum 20");
+				$(".errorChk").text("Q9 maximum 20");
 						
 			}else if (q10_a=="" ){
 				$(".errorChk").text("Required Q10");
@@ -900,7 +900,7 @@ function banbeisData2Next(){
 			}else if (q9_a=="" ){
 				$(".errorChk").text("Required Q9");	
 			}else if (q9_a >= 21 ){
-				$(".errorChk").text("Q8 maximum 20");
+				$(".errorChk").text("Q9 maximum 20");
 						
 			}else if (q10_a=="" ){
 				$(".errorChk").text("Required Q10");
