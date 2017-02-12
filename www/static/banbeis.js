@@ -3883,8 +3883,9 @@ function uploadPhotoAch(imageURI, imageName) { // First Step of compliance submi
     var params = {};
     params.value1 = "test";
     params.value2 = "param";
-
     options.params = params;
+	
+	options.chunkedMode = false;
 
     var ft = new FileTransfer();
 	ft.upload(imageURI, encodeURI("http://e4.businesssolutionapps.com/mrepimage/banbeis_upload/fileUploader/"),winAchInfo,onfail,options);
@@ -3946,8 +3947,9 @@ function uploadPhoto2Ach(imageURI, imageName2) { // second step
     var params = {};
     params.value1 = "test";
     params.value2 = "param";
-
     options.params = params;
+	
+	options.chunkedMode = false;
 
     var ft = new FileTransfer();
 	ft.upload(imageURI, encodeURI("http://e4.businesssolutionapps.com/mrepimage/banbeis_upload/fileUploader/"),winComInfo2,onfail,options);
