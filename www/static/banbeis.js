@@ -1017,7 +1017,7 @@ function pmtDataSubmit(){
 		pmt_achPhoto=$("#pmt_achPhoto").val();
 		pmt_achPhoto_2=$("#pmt_achPhoto_2").val();
 		
-		if (pmt_latitude==undefined || pmt_latitude==''){
+		/*if (pmt_latitude==undefined || pmt_latitude==''){
 			pmt_latitude=0;
 			}
 		if (pmt_longitude==undefined || pmt_longitude==''){
@@ -1047,9 +1047,9 @@ function pmtDataSubmit(){
 				//} //-end check location
 				
 			}//Photo 2
-		}//chk photo
+		}//chk photo*/
 		
-	//syncDataPmt();
+	syncDataPmt();
 		
 	}
 
@@ -1177,7 +1177,7 @@ function syncDataPmt(){
 			var pou_name=$("#s_pou").val();
 			
 			
-			//alert(apipath_pmt+"submitData_pmt?cid=BANBEIS&mobile_no="+localStorage.mobile_no+"&syncCode="+localStorage.sync_code+'&pmt_achPhoto='+imageNamePmt+'&pmt_achPhoto2='+imageName2Pmt+'&latitude='+pmt_latitude+'&longitude='+pmt_longitude+"&app_serial_no="+app_serial_no+"&division_name="+division_name+"&zila_name="+zila_name+"&upazila_name="+upazila_name+"&union_name="+union_name+"&pou_name="+encodeURIComponent(pou_name)+'&tempText='+ encodeURIComponent(banbeisDataSearch)+encodeURIComponent(banbeisData)+encodeURIComponent(banbeisDataPage2)+encodeURIComponent(banbeisDataPage3));
+			//alert(apipath_pmt+"submitData_pmt?cid=BANBEIS&mobile_no="+localStorage.mobile_no+"&syncCode="+localStorage.sync_code+'&pmt_achPhoto='+imageNamePmt+'&pmt_achPhoto2='+imageName2Pmt+'&latitude='+pmt_latitude+'&longitude='+pmt_longitude+"&boothNo="+boothNo+"&app_serial_no="+app_serial_no+"&division_name="+division_name+"&zila_name="+zila_name+"&upazila_name="+upazila_name+"&union_name="+union_name+"&pou_name="+encodeURIComponent(pou_name)+'&tempText='+ encodeURIComponent(banbeisDataSearch)+encodeURIComponent(banbeisData)+encodeURIComponent(banbeisDataPage2)+encodeURIComponent(banbeisDataPage3));
 			$.ajax({
 					type: 'POST',
 					url:apipath_pmt+"submitData_pmt?cid=BANBEIS&mobile_no="+localStorage.mobile_no+"&syncCode="+localStorage.sync_code+'&pmt_achPhoto='+imageNamePmt+'&pmt_achPhoto2='+imageName2Pmt+'&latitude='+pmt_latitude+'&longitude='+pmt_longitude+"&boothNo="+boothNo+"&app_serial_no="+app_serial_no+"&division_name="+division_name+"&zila_name="+zila_name+"&upazila_name="+upazila_name+"&union_name="+union_name+"&pou_name="+encodeURIComponent(pou_name)+'&tempText='+ encodeURIComponent(banbeisDataSearch)+encodeURIComponent(banbeisData)+encodeURIComponent(banbeisDataPage2)+encodeURIComponent(banbeisDataPage3),
@@ -3542,6 +3542,8 @@ function complianceData8Next(){
 		var no_award_10=$("#no_award_10").val().replace(/\./g, '');
 		var only_drh_book_10=$("#only_drh_book_10").val().replace(/\./g, '');
 		//var inc_drh_book_10=$("#inc_drh_book_10").val();
+		var pro_book_rec_total=$("#pro_book_rec_total").val();
+		var only_drh_book_total=$("#only_drh_book_total").val();
 		
 		var ver_rec_qty_pro_book=$("#ver_rec_qty_pro_book").val();
 		var total_drh_book=$("#total_drh_book").val();
@@ -3660,6 +3662,7 @@ function complianceData8Next(){
 			$(".errorChk").text("Required Including DRH Books VI");
 		}else if (parseInt(only_drh_book_6)>parseInt(inc_drh_book_6)){
 			$(".errorChk").text("Class VI Column 7<Column 8 ");	*/
+		
 			
 		}else if (stu_inc_drh_7==""){
 			$(".errorChk").text("Required DRH program VII ");	
@@ -3767,6 +3770,10 @@ function complianceData8Next(){
 			$(".errorChk").text("Required All books including DRH books");	
 		}else if (parseInt(all_drh_books.length) > 4 ){
 			$(".errorChk").text("Required 4 digit All books including DRH books");			
+		}else if (pro_book_rec_total > 1200){
+			$(".errorChk").text("Total Books received as per ACF during Last Year <=1200");
+		}else if (only_drh_book_total > 1200){
+			$(".errorChk").text("Total Only DRH books <=1200");
 					
 		}else{
 		
